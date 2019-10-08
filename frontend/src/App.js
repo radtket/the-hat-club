@@ -1,35 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
+import { useQuery } from "@apollo/react-hooks";
+import { ALL_ITEMS_QUERY } from "./reslovers/Query";
 
 const App = () => {
-  const [state, setState] = useState({
-    name: "",
-    greeting: "",
-  });
+  const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
 
-  const handleChange = event => {
-    setState({ name: event.target.value });
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    fetch(`/api/greeting?name=${encodeURIComponent(state.name)}`)
-      .then(response => response.json())
-      .then(newState => setState(newState));
-  };
+  if (error) {
+    return <div>Error! {error.message}</div>;
+  }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: </label>
-        <input
-          id="name"
-          onChange={handleChange}
-          type="text"
-          value={state.name}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      <p>{state.greeting}</p>
+      <h1>App</h1>
+      <ul>
+        {data.items.map(({ id, title }) => (
+          <li key={id}>{title}</li>
+        ))}
+      </ul>
     </div>
   );
 };
