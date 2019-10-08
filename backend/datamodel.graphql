@@ -1,5 +1,18 @@
+# This is for Prisma
+
 type User {
 	id: ID! @id
 	name: String!
 	email: String!
+}
+
+
+type Item {
+	id: ID! @id
+	title: String!
+	description: String!
+	price: Int!
+	image: String!
+	largeImage: String
+	# user: User!
 }
