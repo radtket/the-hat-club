@@ -1,8 +1,9 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { ALL_ITEMS_QUERY } from "./reslovers/Query";
 
-const App = () => {
+import { ALL_ITEMS_QUERY } from "../reslovers/Query";
+
+const Home = () => {
   const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
 
   if (loading) {
@@ -12,10 +13,9 @@ const App = () => {
   if (error) {
     return <div>Error! {error.message}</div>;
   }
-
   return (
     <div>
-      <h1>App</h1>
+      <h1>Home</h1>
       <ul>
         {data.items.map(({ id, title }) => (
           <li key={id}>{title}</li>
@@ -25,4 +25,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
