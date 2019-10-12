@@ -6,7 +6,6 @@ import { Container } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 
 // Pages
-import Home from "./pages/Home";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
@@ -19,10 +18,7 @@ const Routes = () => {
       <Navbar />
       <Container component="main" maxWidth="xl">
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/shop">
+          <Route path={["/", "/shop"]}>
             <Shop />
           </Route>
           <Route path="/sell">

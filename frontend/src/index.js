@@ -1,17 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ApolloProvider } from "react-apollo";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 import client from "./utils/client-apollo";
 import Theme from "./utils/theme";
+import { StatusSnackbarProvider } from "./components/StatusSnackbar";
 
 ReactDOM.render(
   <Theme>
     <Router>
       <ApolloProvider {...{ client }}>
-        <Routes />
+        <StatusSnackbarProvider>
+          <Routes />
+        </StatusSnackbarProvider>
       </ApolloProvider>
     </Router>
   </Theme>,

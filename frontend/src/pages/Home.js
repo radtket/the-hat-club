@@ -1,9 +1,11 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 
+import { Grid } from "@material-ui/core";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
+import ProductCard from "./ProductCard";
 
-const Home = () => {
+const Shop = () => {
   const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
 
   if (loading) {
@@ -14,15 +16,17 @@ const Home = () => {
     return <div>Error! {error.message}</div>;
   }
   return (
-    <div>
-      <h1>Home</h1>
-      <ul>
-        {data.items.map(({ id, title }) => (
-          <li key={id}>{title}</li>
+    <>
+      <h1>Shop</h1>
+      <Grid container spacing={3}>
+        {data.items.map(item => (
+          <Grid key={item.id} item xs={4}>
+            <ProductCard {...item} />
+          </Grid>
         ))}
-      </ul>
-    </div>
+      </Grid>
+    </>
   );
 };
 
-export default Home;
+export default Shop;

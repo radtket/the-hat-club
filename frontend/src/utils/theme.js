@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/styles";
 import { CssBaseline, createMuiTheme } from "@material-ui/core";
-import { common, red } from "@material-ui/core/colors";
+import { common, red, green } from "@material-ui/core/colors";
 import * as fonts from "../assets/fonts";
 import "typeface-roboto";
 
@@ -40,6 +40,9 @@ const customTheme = createMuiTheme({
     },
     error: {
       main: red.A400,
+    },
+    success: {
+      main: green[700],
     },
     background: {
       default: common.white,
