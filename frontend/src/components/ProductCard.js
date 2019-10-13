@@ -17,7 +17,7 @@ import { DELETE_ITEM_MUTATION } from "../reslovers/Mutation";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
 
 const ProductCard = ({ id, title, price, description, image, largeImage }) => {
-  const [deleteItem, { error, loading }] = useMutation(DELETE_ITEM_MUTATION);
+  const [deleteItem] = useMutation(DELETE_ITEM_MUTATION);
   return (
     <Card>
       <CardActionArea>
@@ -83,15 +83,17 @@ const ProductCard = ({ id, title, price, description, image, largeImage }) => {
                 variables: {
                   id,
                 },
-                update(store, { data }) {
-                  const { items } = store.readQuery({ query: ALL_ITEMS_QUERY });
-
-                  console.log({ store });
+                update(cache, { data }) {
+                  const { items } = cache.readQuery({ query: ALL_ITEMS_QUERY });
 
                   // 3. Put the items back!
-                  store.writeQuery({
+                  cache.writeQuery({
                     query: ALL_ITEMS_QUERY,
-                    data: items.filter(item => item.id !== data.deleteItem.id),
+                    data: {
+                      items: items.filter(
+                        item => item.id !== data.deleteItem.id
+                      ),
+                    },
                   });
                 },
               });

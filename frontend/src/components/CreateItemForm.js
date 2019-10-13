@@ -30,12 +30,23 @@ const CreateItemForm = () => {
 
   const handleChange = name => ({ target }) => {
     const { value } = target;
-    setValues(prev => {
-      return {
-        ...prev,
-        [name]: name === "price" ? parseInt(value, 10) : value,
-      };
-    });
+    if (name === "price" && /^\d+$/.test(value)) {
+      setValues(prev => {
+        return {
+          ...prev,
+          [name]: value,
+        };
+      });
+    }
+
+    if (name !== "price") {
+      setValues(prev => {
+        return {
+          ...prev,
+          [name]: value,
+        };
+      });
+    }
   };
 
   const uploadFile = async ({ target }) => {
@@ -88,9 +99,9 @@ const CreateItemForm = () => {
               },
             })
               .then(async ({ data }) => {
-                const { id } = await data.createItem;
+                const { id, title } = await data.createItem;
                 await openSnackbar({
-                  message: `Successfully Created Item: ${id}`,
+                  message: `Successfully Created Item: ${title}`,
                   variant: "success",
                 });
                 push(`/item/${id}`);
