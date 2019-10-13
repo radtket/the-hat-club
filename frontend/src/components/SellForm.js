@@ -38,8 +38,31 @@ const SellForm = () => {
     });
   };
 
-  const uploadFile = ({ target }) => {
-    console.log({ target }, "uploading file!!!!");
+  const uploadFile = async ({ target }) => {
+    const [file] = target.files;
+    const data = new FormData();
+    data.append("file", file);
+    data.append(
+      "upload_preset",
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
+
+    await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    )
+      .then(res => res.json())
+      .then(({ secure_url: image, eager }) => {
+        const { secure_url: largeImage } = eager[0];
+        return setValues(prev => ({
+          ...prev,
+          image,
+          largeImage,
+        }));
+      });
   };
 
   if (error) {
@@ -93,13 +116,15 @@ const SellForm = () => {
             }}
             label="Image"
             margin="normal"
-            // onChange={handleChange("image")}
             onChange={uploadFile}
             required
             type="file"
-            value={values.image}
             variant="outlined"
           />
+
+          {values.image && (
+            <img alt="Upload Preview" src={values.image} width="200" />
+          )}
 
           <TextField
             aria-busy={loading}
