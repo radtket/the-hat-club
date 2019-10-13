@@ -4,9 +4,12 @@ import { useQuery } from "@apollo/react-hooks";
 import { Grid } from "@material-ui/core";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
 import ProductCard from "../components/ProductCard";
+import Pagination from "../components/Pagination";
+import { useRouteQuery } from "../utils/helpers";
 
 const Shop = () => {
   const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);
+  const page = parseInt(useRouteQuery("page") || 1, 10);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -15,6 +18,7 @@ const Shop = () => {
   if (error) {
     return <div>Error! {error.message}</div>;
   }
+
   return (
     <>
       <h1>Shop</h1>
@@ -25,6 +29,7 @@ const Shop = () => {
           </Grid>
         ))}
       </Grid>
+      <Pagination {...{ page }} />
     </>
   );
 };

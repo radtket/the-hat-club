@@ -25,3 +25,13 @@ export const GET_SINGLE_ITEM_QUERY = gql`
     }
   }
 `;
+
+export const PAGINATION_QUERY = gql`
+  query PAGINATION_QUERY {
+    itemsConnection {
+      aggregate {
+        count
+      }
+    }
+  }
+`;

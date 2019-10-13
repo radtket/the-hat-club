@@ -1,3 +1,5 @@
+import { useLocation } from "react-router-dom";
+
 export const formatMoney = amount => {
   const options = {
     style: "currency",
@@ -17,4 +19,9 @@ export const calcTotalPrice = cart => {
     }
     return tally + quantity * item.price;
   }, 0);
+};
+
+export const useRouteQuery = query => {
+  const { search } = useLocation();
+  return new URLSearchParams(search).get(query);
 };
