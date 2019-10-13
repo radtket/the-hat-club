@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardActionArea,
@@ -52,10 +53,12 @@ const ProductCard = ({ id, title, price, description, image, largeImage }) => {
         variant="text"
       >
         <Button
+          component={Link}
           startIcon={<Edit />}
           style={{
             borderRadius: 0,
           }}
+          to={`/item/${id}`}
         >
           Edit
         </Button>

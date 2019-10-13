@@ -15,7 +15,7 @@ import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
 import { StatusSnackbarContext } from "./StatusSnackbar";
 
-const SellForm = () => {
+const CreateItemForm = () => {
   const { openSnackbar } = useContext(StatusSnackbarContext);
   const { push } = useHistory();
   const [createNewItem, { error, loading }] = useMutation(CREATE_ITEM_MUTATION);
@@ -93,7 +93,7 @@ const SellForm = () => {
                   message: `Successfully Created Item: ${id}`,
                   variant: "success",
                 });
-                push(`/items/${id}`);
+                push(`/item/${id}`);
               })
               .catch(err => {
                 openSnackbar({
@@ -176,4 +176,4 @@ const SellForm = () => {
   );
 };
 
-export default SellForm;
+export default CreateItemForm;

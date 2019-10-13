@@ -1,11 +1,11 @@
 import React from "react";
-import SellForm from "../components/SellForm";
+import CreateItemForm from "../components/CreateItemForm";
 
 const Sell = () => {
   return (
     <div>
       <h1>Sell</h1>
-      <SellForm />
+      <CreateItemForm />
     </div>
   );
 };

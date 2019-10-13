@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import { Grid } from "@material-ui/core";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 
 const Shop = () => {
   const { loading, error, data } = useQuery(ALL_ITEMS_QUERY);

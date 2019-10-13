@@ -6,11 +6,12 @@ import { Container } from "@material-ui/core";
 import Navbar from "./components/Navbar";
 
 // Pages
+import Account from "./pages/Account";
+import Item from "./pages/Item";
+import Orders from "./pages/Orders";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
-import Orders from "./pages/Orders";
-import Account from "./pages/Account";
 
 const Routes = () => {
   return (
@@ -29,6 +30,9 @@ const Routes = () => {
           </Route>
           <Route path="/orders">
             <Orders />
+          </Route>
+          <Route path="/item/:id">
+            <Item />
           </Route>
           <Route path="/account">
             <Account />
