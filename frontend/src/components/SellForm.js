@@ -24,10 +24,8 @@ const SellForm = () => {
     title: "",
     description: "",
     price: "",
-    image:
-      "https://i.pinimg.com/originals/a0/05/be/a005be44eaeb48187059089b9edb5634.jpg",
-    largeImage:
-      "https://i.pinimg.com/originals/a0/05/be/a005be44eaeb48187059089b9edb5634.jpg",
+    image: "",
+    largeImage: "",
   });
 
   const handleChange = name => ({ target }) => {
@@ -38,6 +36,10 @@ const SellForm = () => {
         [name]: name === "price" ? parseInt(value, 10) : value,
       };
     });
+  };
+
+  const uploadFile = ({ target }) => {
+    console.log({ target }, "uploading file!!!!");
   };
 
   if (error) {
@@ -80,6 +82,24 @@ const SellForm = () => {
           width={1}
         >
           <ErrorMessage error={error} />
+
+          <TextField
+            aria-busy={loading}
+            autoFocus
+            disabled={loading}
+            fullWidth
+            InputLabelProps={{
+              shrink: true,
+            }}
+            label="Image"
+            margin="normal"
+            // onChange={handleChange("image")}
+            onChange={uploadFile}
+            required
+            type="file"
+            value={values.image}
+            variant="outlined"
+          />
 
           <TextField
             aria-busy={loading}

@@ -18,7 +18,7 @@ const Routes = () => {
       <Navbar />
       <Container component="main" maxWidth="xl">
         <Switch>
-          <Route path={["/", "/shop"]}>
+          <Route exact path={["/", "/shop"]}>
             <Shop />
           </Route>
           <Route path="/sell">

@@ -4,13 +4,13 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
-  CardActions,
+  // CardActions,
   ButtonGroup,
   Button,
-  IconButton,
+  // IconButton,
   Typography,
 } from "@material-ui/core";
-import { Delete, Edit, Share, AddShoppingCart } from "@material-ui/icons";
+import { Delete, Edit, AddShoppingCart } from "@material-ui/icons";
 
 const ProductCard = ({ id, title, price, description, image, largeImage }) => {
   return (
