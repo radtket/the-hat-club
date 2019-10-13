@@ -12,8 +12,12 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Delete, Edit, AddShoppingCart } from "@material-ui/icons";
+import { useMutation } from "react-apollo";
+import { DELETE_ITEM_MUTATION } from "../reslovers/Mutation";
+import { ALL_ITEMS_QUERY } from "../reslovers/Query";
 
 const ProductCard = ({ id, title, price, description, image, largeImage }) => {
+  const [deleteItem, { error, loading }] = useMutation(DELETE_ITEM_MUTATION);
   return (
     <Card>
       <CardActionArea>
@@ -71,6 +75,28 @@ const ProductCard = ({ id, title, price, description, image, largeImage }) => {
           Add To Cart
         </Button>
         <Button
+          onClick={() => {
+            // eslint-disable-next-line no-alert
+            // eslint-disable-next-line no-restricted-globals
+            if (confirm("Are you sure you want to delete this?")) {
+              deleteItem({
+                variables: {
+                  id,
+                },
+                update(store, { data }) {
+                  const { items } = store.readQuery({ query: ALL_ITEMS_QUERY });
+
+                  console.log({ store });
+
+                  // 3. Put the items back!
+                  store.writeQuery({
+                    query: ALL_ITEMS_QUERY,
+                    data: items.filter(item => item.id !== data.deleteItem.id),
+                  });
+                },
+              });
+            }
+          }}
           startIcon={<Delete />}
           style={{
             borderRadius: 0,

@@ -46,6 +46,28 @@ const Mutation = {
     );
     return item;
   },
+
+  async deleteItem(
+    parent,
+    { id },
+    {
+      db: { query, mutation },
+    },
+    info
+  ) {
+    // 1. find the item
+    const item = await query.item(
+      { where: { id } },
+      `{
+      id
+      title
+    }`
+    );
+    // 2.check they own that item, or have the permisions
+    // TODO:
+    // 3. Delete it
+    return mutation.deleteItem({ where: { id } }, info);
+  },
 };
 
 module.exports = Mutation;
