@@ -14,5 +14,7 @@ type Item {
 	price: Int!
 	image: String!
 	largeImage: String
+	createdAt: DateTime! @createdAt
+	updatedAt: DateTime! @updatedAt
 	# user: User!
 }

@@ -13,12 +13,12 @@ const Item = () => {
     },
   });
 
-  if (error) {
-    return <ErrorMessage {...{ error }} />;
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  if (loading) {
-    return <h1>Loading</h1>;
+  if (error) {
+    return <ErrorMessage {...{ error }} />;
   }
 
   return (

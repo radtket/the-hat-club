@@ -27,16 +27,31 @@ const UpdateItemForm = ({ id, title, description, price }) => {
 
   const handleChange = name => ({ target }) => {
     const { value } = target;
-    setValues(prev => {
-      return {
-        ...prev,
-        [name]: name === "price" ? parseInt(value, 10) : value,
-      };
-    });
+    if (name === "price" && /^\d+$/.test(value)) {
+      setValues(prev => {
+        return {
+          ...prev,
+          [name]: parseInt(value, 10),
+        };
+      });
+    }
+
+    if (name !== "price") {
+      setValues(prev => {
+        return {
+          ...prev,
+          [name]: value,
+        };
+      });
+    }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (error) {
-    return <h1>Error</h1>;
+    return <ErrorMessage {...{ error }} />;
   }
 
   return (

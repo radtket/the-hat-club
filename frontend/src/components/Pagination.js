@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useQuery } from "react-apollo";
-import { parse } from "graphql";
+import PropTypes from "prop-types";
 import { PAGINATION_QUERY } from "../reslovers/Query";
+import ErrorMessage from "./ErrorMessage";
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -29,24 +30,27 @@ const PaginationStyles = styled.div`
   }
 `;
 
-const Pagination = ({ page }) => {
+const Pagination = ({ page, perPage }) => {
   const { data, error, loading } = useQuery(PAGINATION_QUERY);
-  console.log("yoooooo", { page });
+
   if (loading) {
-    return <h1>Loading</h1>;
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <ErrorMessage {...{ error }} />;
   }
 
   const { count } = data.itemsConnection.aggregate;
-  const pages = count / parseInt(process.env.REACT_APP_PAGINATION_PER_PAGE, 10);
+  const pages = Math.ceil(count / perPage);
 
-  console.log(data.itemsConnection.aggregate.count);
   return (
     <PaginationStyles>
       <Link
         aria-disabled={page <= 1}
         className="prev"
+        disabled={page <= 1}
         to={{
-          pathname: "/items",
           search: `?page=${page - 1}`,
         }}
       >
@@ -59,8 +63,8 @@ const Pagination = ({ page }) => {
       <Link
         aria-disabled={page >= pages}
         className="prev"
+        disabled={page >= pages}
         to={{
-          // pathname: "/items",
           search: `?page=${page + 1}`,
         }}
       >
@@ -68,6 +72,16 @@ const Pagination = ({ page }) => {
       </Link>
     </PaginationStyles>
   );
+};
+
+Pagination.propTypes = {
+  page: PropTypes.number,
+  perPage: PropTypes.number,
+};
+
+Pagination.defaultProps = {
+  page: 1,
+  perPage: 4,
 };
 
 export default Pagination;

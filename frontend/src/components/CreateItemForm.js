@@ -18,7 +18,12 @@ import { StatusSnackbarContext } from "./StatusSnackbar";
 const CreateItemForm = () => {
   const { openSnackbar } = useContext(StatusSnackbarContext);
   const { push } = useHistory();
-  const [createNewItem, { error, loading }] = useMutation(CREATE_ITEM_MUTATION);
+  const [createNewItem, { error, loading }] = useMutation(
+    CREATE_ITEM_MUTATION,
+    {
+      partialRefetch: true,
+    }
+  );
 
   const [values, setValues] = useState({
     title: "",
@@ -34,7 +39,7 @@ const CreateItemForm = () => {
       setValues(prev => {
         return {
           ...prev,
-          [name]: value,
+          [name]: parseInt(value, 10),
         };
       });
     }
@@ -76,8 +81,12 @@ const CreateItemForm = () => {
       });
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   if (error) {
-    return <h1>Error</h1>;
+    return <ErrorMessage {...{ error }} />;
   }
 
   return (
