@@ -50,3 +50,18 @@ export const DELETE_ITEM_MUTATION = gql`
     }
   }
 `;
+
+export const USER_SIGNUP_MUTATION = gql`
+  mutation USER_SIGNUP_MUTATION(
+    $name: String!
+    $email: String!
+    $password: String!
+  ) {
+    signup(name: $name, email: $email, password: $password) {
+      name
+      email
+      password
+      permissions
+    }
+  }
+`;
