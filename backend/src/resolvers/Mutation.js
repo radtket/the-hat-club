@@ -94,7 +94,7 @@ const Mutation = {
       {
         userId: user.id,
       },
-      process.env.PRISMA_SECRET
+      process.env.APP_SECRET
     );
 
     // We set the jwt as a cookie on the response
