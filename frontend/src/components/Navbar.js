@@ -65,38 +65,6 @@ const Navbar = () => {
           >
             Shop
           </Button>
-          <Button
-            className={button}
-            color="inherit"
-            component={NavLink}
-            to="/sell"
-          >
-            Sell
-          </Button>
-          <Button
-            className={button}
-            color="inherit"
-            component={NavLink}
-            to="/signup"
-          >
-            Signup
-          </Button>
-          <Button
-            className={button}
-            color="inherit"
-            component={NavLink}
-            to="/orders"
-          >
-            Orders
-          </Button>
-          <Button
-            className={button}
-            color="inherit"
-            component={NavLink}
-            to="/me"
-          >
-            Account
-          </Button>
           <User styles={button} />
         </Box>
       </Toolbar>

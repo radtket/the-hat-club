@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { Button, IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -29,7 +30,12 @@ const User = ({ styles }) => {
 
   if (!data.me) {
     return (
-      <Button className={styles} color="inherit">
+      <Button
+        className={styles}
+        color="inherit"
+        component={NavLink}
+        to="/signup"
+      >
         Login
       </Button>
     );
@@ -37,6 +43,17 @@ const User = ({ styles }) => {
 
   return (
     <>
+      <Button className={styles} color="inherit" component={NavLink} to="/sell">
+        Sell
+      </Button>
+      <Button
+        className={styles}
+        color="inherit"
+        component={NavLink}
+        to="/orders"
+      >
+        Orders
+      </Button>
       <IconButton
         aria-controls="menu-appbar"
         aria-haspopup="true"
@@ -61,8 +78,10 @@ const User = ({ styles }) => {
           horizontal: "right",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem component={NavLink} onClick={handleClose} to="/me">
+          Account
+        </MenuItem>
+        <MenuItem onClick={handleClose}>Log Out</MenuItem>
       </Menu>
     </>
   );
