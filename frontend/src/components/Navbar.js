@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { LogoTextPadding } from "./Branding";
+import User from "./User";
 
 const useStyles = makeStyles(({ palette, spacing }) => {
   return {
@@ -96,6 +97,7 @@ const Navbar = () => {
           >
             Account
           </Button>
+          <User styles={button} />
         </Box>
       </Toolbar>
     </AppBar>
