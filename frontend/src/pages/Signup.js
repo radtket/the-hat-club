@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { useMutation } from "react-apollo";
 import SubmitButton from "../components/SubmitButton";
 import { USER_SIGNUP_MUTATION } from "../reslovers/Mutation";
 import ErrorMessage from "../components/ErrorMessage";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 
 const Signup = () => {
   const defaultValues = {
@@ -11,6 +13,7 @@ const Signup = () => {
     email: "",
     password: "",
   };
+
   const [values, setValues] = useState({
     ...defaultValues,
   });
@@ -35,56 +38,14 @@ const Signup = () => {
   }
 
   return (
-    <div>
-      <h1>Signup</h1>
-      <form
-        method="post"
-        onSubmit={e => {
-          e.preventDefault();
-          signup().then(item => {
-            console.log({ item }, item.signup);
-            setValues({
-              ...defaultValues,
-            });
-          });
-        }}
-      >
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Name"
-          margin="normal"
-          onChange={handleChange("name")}
-          required
-          value={values.name}
-        />
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Email"
-          margin="normal"
-          onChange={handleChange("email")}
-          required
-          value={values.email}
-        />
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Password"
-          margin="normal"
-          onChange={handleChange("password")}
-          required
-          value={values.password}
-        />
-        <SubmitButton {...{ loading }} />
-      </form>
-    </div>
+    <Grid container spacing={3}>
+      <Grid item xs={4}>
+        <SignIn />
+      </Grid>
+      <Grid item xs={4}>
+        <SignUp />
+      </Grid>
+    </Grid>
   );
 };
 

@@ -66,3 +66,13 @@ export const USER_SIGNUP_MUTATION = gql`
     }
   }
 `;
+
+export const USER_SIGNIN_MUTATION = gql`
+  mutation USER_SIGNIN_MUTATION($email: String!, $password: String!) {
+    signin(email: $email, password: $password) {
+      id
+      name
+      email
+    }
+  }
+`;
