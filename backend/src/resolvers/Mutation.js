@@ -163,7 +163,7 @@ const Mutation = {
         resetTokenExpiry,
       },
     });
-    console.log({ response });
+
     return { message: "Check your Email!" };
     // 3. Email them that reset token
   },

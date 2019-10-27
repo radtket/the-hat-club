@@ -1,28 +1,31 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useMutation } from "react-apollo";
-import { USER_SIGNUP_MUTATION } from "../reslovers/Mutation";
-import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import { RESET_MUTATION } from "../reslovers/Mutation";
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
+import { CURRENT_USER_QUERY } from "../reslovers/Query";
 
-const SignUp = () => {
+const PasswordReset = ({ resetToken }) => {
   const defaultValues = {
-    name: "",
-    email: "",
     password: "",
+    confirmPassword: "",
   };
 
   const [values, setValues] = useState({
     ...defaultValues,
   });
 
-  const [signup, { error, loading }] = useMutation(USER_SIGNUP_MUTATION, {
-    variables: {
-      ...values,
-    },
-    refetchQueries: () => [{ query: CURRENT_USER_QUERY }],
-  });
+  const [requestReset, { error, loading, called }] = useMutation(
+    RESET_MUTATION,
+    {
+      variables: {
+        resetToken,
+        ...values,
+      },
+      refetchQueries: () => [{ query: CURRENT_USER_QUERY }],
+    }
+  );
 
   const handleChange = name => ({ target }) => {
     setValues(prev => {
@@ -39,42 +42,21 @@ const SignUp = () => {
 
   return (
     <div>
-      <h1>SignUp</h1>
+      <h1>Reset Your Password</h1>
+      {!error && !loading && called && (
+        <p>Success! Check your email for a reset link! </p>
+      )}
       <form
         method="post"
         onSubmit={e => {
           e.preventDefault();
-          signup().then(item => {
-            console.log({ item }, item.signup);
+          requestReset().then(() => {
             setValues({
               ...defaultValues,
             });
           });
         }}
       >
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Name"
-          margin="normal"
-          onChange={handleChange("name")}
-          required
-          value={values.name}
-        />
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Email"
-          margin="normal"
-          onChange={handleChange("email")}
-          required
-          type="email"
-          value={values.email}
-        />
         <TextField
           aria-busy={loading}
           autoFocus
@@ -87,10 +69,22 @@ const SignUp = () => {
           type="password"
           value={values.password}
         />
+        <TextField
+          aria-busy={loading}
+          autoFocus
+          disabled={loading}
+          fullWidth
+          label="Confirm Password"
+          margin="normal"
+          onChange={handleChange("confirmPassword")}
+          required
+          type="password"
+          value={values.confirmPassword}
+        />
         <SubmitButton {...{ loading }} />
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default PasswordReset;

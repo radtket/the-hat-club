@@ -12,6 +12,7 @@ import Orders from "./pages/Orders";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
+import Reset from "./pages/Reset";
 
 const Routes = () => {
   return (
@@ -36,6 +37,9 @@ const Routes = () => {
           </Route>
           <Route path="/account">
             <Account />
+          </Route>
+          <Route path="/reset">
+            <Reset />
           </Route>
         </Switch>
       </Container>

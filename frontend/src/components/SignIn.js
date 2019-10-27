@@ -60,6 +60,7 @@ const SignIn = () => {
           margin="normal"
           onChange={handleChange("email")}
           required
+          type="email"
           value={values.email}
         />
         <TextField
@@ -71,6 +72,7 @@ const SignIn = () => {
           margin="normal"
           onChange={handleChange("password")}
           required
+          type="password"
           value={values.password}
         />
         <SubmitButton {...{ loading }} />
