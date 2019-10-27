@@ -8,13 +8,24 @@ const Mutation = {
     parent,
     args,
     {
+      req,
       db: { mutation },
     },
     info
   ) {
+    if (!req.userId) {
+      throw new Error("You must be logged in to do that");
+    }
+
     const item = await mutation.createItem(
       {
         data: {
+          // This is how to create a relationship between the Item and the User
+          user: {
+            connect: {
+              id: req.userId,
+            },
+          },
           ...args,
         },
       },
