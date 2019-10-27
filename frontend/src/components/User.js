@@ -5,6 +5,7 @@ import { Button, IconButton, Menu, MenuItem } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ErrorMessage from "./ErrorMessage";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import Logout from "./Logout";
 
 const User = ({ styles }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -81,7 +82,8 @@ const User = ({ styles }) => {
         <MenuItem component={NavLink} onClick={handleClose} to="/me">
           Account
         </MenuItem>
-        <MenuItem onClick={handleClose}>Log Out</MenuItem>
+
+        <Logout {...{ handleClose }} />
       </Menu>
     </>
   );

@@ -3,6 +3,9 @@
 
 
 # This is our public facing API that we interface with our JavaScript
+type SuccessMessage {
+	message: String
+}
 
 type Mutation {
 	createItem(title: String, description: String, price: Int, image: String, largeImage: String): Item!
@@ -10,6 +13,7 @@ type Mutation {
 	deleteItem(id: ID!): Item
 	signup(email: String!, password: String!, name: String!): User!
 	signin(email: String!, password: String!): User!
+	logout: SuccessMessage
 }
 
 type Query {

@@ -139,6 +139,10 @@ const Mutation = {
     // 5. Return the user
     return user;
   },
+  logout(parent, args, ctx, info) {
+    ctx.res.clearCookie("token");
+    return { message: "Goodbye" };
+  },
 };
 
 module.exports = Mutation;

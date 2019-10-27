@@ -76,3 +76,11 @@ export const USER_SIGNIN_MUTATION = gql`
     }
   }
 `;
+
+export const USER_LOGOUT_MUTATION = gql`
+  mutation USER_LOGOUT_MUTATION {
+    logout {
+      message
+    }
+  }
+`;
