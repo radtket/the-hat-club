@@ -7,6 +7,7 @@ import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 import { useRouteQuery } from "../utils/helpers";
 import { ErrorMessage } from "../components";
+import User from "../components/User";
 
 const Shop = () => {
   const page = parseInt(useRouteQuery("page") || 1, 10);
@@ -28,6 +29,7 @@ const Shop = () => {
   return (
     <>
       <h1>Shop Page {page}</h1>
+      <User />
       <Grid container spacing={3}>
         {data.items.map(item => (
           <Grid key={item.id} item xs={4}>

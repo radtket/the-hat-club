@@ -4,16 +4,16 @@ const Query = {
   items: forwardTo("db"),
   item: forwardTo("db"),
   itemsConnection: forwardTo("db"),
-  me(parent, args, { request, db }, info) {
+  me(parent, args, { req, db }, info) {
     // check if there is a current user ID
-    if (!request.userId) {
+    if (!req.userId) {
       return null;
     }
 
     return db.query.user(
       {
         where: {
-          id: request.userId,
+          id: req.userId,
         },
       },
       info

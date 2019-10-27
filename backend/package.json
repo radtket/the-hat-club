@@ -10,6 +10,7 @@
     "deploy": "prisma deploy --env-file .env"
   },
   "dependencies": {
+    "apollo-server-express": "^2.9.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
