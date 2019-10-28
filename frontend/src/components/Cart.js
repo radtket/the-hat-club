@@ -1,7 +1,6 @@
 import React from "react";
 import {
   makeStyles,
-  useTheme,
   Drawer,
   IconButton,
   Divider,
@@ -11,6 +10,9 @@ import {
   ListItemIcon,
 } from "@material-ui/core";
 import { Inbox, Close } from "@material-ui/icons";
+import { useQuery, useMutation } from "react-apollo";
+import { LOCAL_STATE_QUERY } from "../reslovers/Query";
+import { TOGGLE_CART_MUTATION } from "../reslovers/Mutation";
 
 const cartDrawerWidth = 600;
 
@@ -31,9 +33,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Cart = ({ isCartOpen, setCartOpen }) => {
+const Cart = () => {
   const { drawerPaper, drawer, drawerHeader } = useStyles();
-  const theme = useTheme();
+  const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
+  const {
+    data: { isCartOpen },
+  } = useQuery(LOCAL_STATE_QUERY);
   return (
     <Drawer
       anchor="right"
@@ -45,11 +50,7 @@ const Cart = ({ isCartOpen, setCartOpen }) => {
       variant="persistent"
     >
       <div className={drawerHeader}>
-        <IconButton
-          onClick={() => {
-            setCartOpen(false);
-          }}
-        >
+        <IconButton onClick={toggleCart}>
           <Close />
         </IconButton>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   AppBar,
   Box,
@@ -6,10 +6,8 @@ import {
   Toolbar,
   Link,
   useTheme,
-  IconButton,
   makeStyles,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 import { NavLink } from "react-router-dom";
 import { LogoTextPadding } from "./Branding";
 import User from "./User";
@@ -31,7 +29,6 @@ const useStyles = makeStyles(({ palette, spacing }) => {
 const Navbar = () => {
   const { palette, spacing } = useTheme();
   const { button } = useStyles();
-  const [isCartOpen, setCartOpen] = useState(false);
 
   return (
     <>
@@ -72,20 +69,10 @@ const Navbar = () => {
               Shop
             </Button>
             <User styles={button} />
-            <IconButton
-              aria-label="open drawer"
-              color="inherit"
-              edge="end"
-              onClick={() => {
-                setCartOpen(true);
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
           </Box>
         </Toolbar>
       </AppBar>
-      <Cart {...{ isCartOpen, setCartOpen }} />
+      <Cart />
     </>
   );
 };
