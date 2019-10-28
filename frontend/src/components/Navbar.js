@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -6,11 +6,14 @@ import {
   Toolbar,
   Link,
   useTheme,
+  IconButton,
   makeStyles,
 } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 import { NavLink } from "react-router-dom";
 import { LogoTextPadding } from "./Branding";
 import User from "./User";
+import Cart from "./Cart";
 
 const useStyles = makeStyles(({ palette, spacing }) => {
   return {
@@ -28,47 +31,62 @@ const useStyles = makeStyles(({ palette, spacing }) => {
 const Navbar = () => {
   const { palette, spacing } = useTheme();
   const { button } = useStyles();
+  const [isCartOpen, setCartOpen] = useState(false);
+
   return (
-    <AppBar
-      position="static"
-      style={{
-        marginBottom: spacing(3),
-      }}
-    >
-      <Toolbar
+    <>
+      <AppBar
+        position="static"
         style={{
-          display: "flex",
-          justifyContent: "space-between",
+          marginBottom: spacing(3),
         }}
       >
-        <Link
-          color="inherit"
-          component={NavLink}
-          to="/"
-          underline="none"
-          variant="h6"
+        <Toolbar
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
-          <LogoTextPadding
-            fill={palette.getContrastText(palette.primary.main)}
-            style={{
-              height: spacing(5),
-              display: "block",
-            }}
-          />
-        </Link>
-        <Box>
-          <Button
-            className={button}
+          <Link
             color="inherit"
             component={NavLink}
-            to="/shop"
+            to="/"
+            underline="none"
+            variant="h6"
           >
-            Shop
-          </Button>
-          <User styles={button} />
-        </Box>
-      </Toolbar>
-    </AppBar>
+            <LogoTextPadding
+              fill={palette.getContrastText(palette.primary.main)}
+              style={{
+                height: spacing(5),
+                display: "block",
+              }}
+            />
+          </Link>
+          <Box>
+            <Button
+              className={button}
+              color="inherit"
+              component={NavLink}
+              to="/shop"
+            >
+              Shop
+            </Button>
+            <User styles={button} />
+            <IconButton
+              aria-label="open drawer"
+              color="inherit"
+              edge="end"
+              onClick={() => {
+                setCartOpen(true);
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Cart {...{ isCartOpen, setCartOpen }} />
+    </>
   );
 };
 
