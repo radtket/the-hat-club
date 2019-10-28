@@ -37,7 +37,7 @@ const client = new ApolloClient({
       },
     },
     defaults: {
-      isCartOpen: true,
+      isCartOpen: false,
     },
   },
 });
