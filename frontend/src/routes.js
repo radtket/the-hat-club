@@ -13,6 +13,7 @@ import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
 import Reset from "./pages/Reset";
+import Permissions from "./pages/Permissions";
 
 const Routes = () => {
   return (
@@ -40,6 +41,9 @@ const Routes = () => {
           </Route>
           <Route path="/reset">
             <Reset />
+          </Route>
+          <Route path="/permissions">
+            <Permissions />
           </Route>
         </Switch>
       </Container>

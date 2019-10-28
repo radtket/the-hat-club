@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import { useMutation } from "react-apollo";
+import PropTypes from "prop-types";
 import { RESET_MUTATION } from "../reslovers/Mutation";
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
@@ -85,6 +86,14 @@ const PasswordReset = ({ resetToken }) => {
       </form>
     </div>
   );
+};
+
+PasswordReset.propTypes = {
+  resetToken: PropTypes.string,
+};
+
+PasswordReset.defaultProps = {
+  resetToken: "",
 };
 
 export default PasswordReset;

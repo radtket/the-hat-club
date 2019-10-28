@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
+  Button,
+  ButtonGroup,
   Card,
   CardActionArea,
-  CardMedia,
   CardContent,
-  // CardActions,
-  ButtonGroup,
-  Button,
-  // IconButton,
+  CardMedia,
   Typography,
+  // CardActions,
+  // IconButton,
 } from "@material-ui/core";
 import { Delete, Edit, AddShoppingCart } from "@material-ui/icons";
 import { useMutation } from "react-apollo";
 import { DELETE_ITEM_MUTATION } from "../reslovers/Mutation";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
+import { StatusSnackbarContext } from "./StatusSnackbar";
 
 const ProductCard = ({ id, title, price, description, image, largeImage }) => {
+  const { openSnackbar } = useContext(StatusSnackbarContext);
   const [deleteItem] = useMutation(DELETE_ITEM_MUTATION);
+
   return (
     <Card>
       <CardActionArea>
@@ -96,6 +100,11 @@ const ProductCard = ({ id, title, price, description, image, largeImage }) => {
                     },
                   });
                 },
+              }).catch(err => {
+                openSnackbar({
+                  message: err.message,
+                  variant: "error",
+                });
               });
             }
           }}
@@ -109,6 +118,15 @@ const ProductCard = ({ id, title, price, description, image, largeImage }) => {
       </ButtonGroup>
     </Card>
   );
+};
+
+ProductCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
 };
 
 export default ProductCard;

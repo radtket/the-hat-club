@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
 
+const db = require("./db");
 const server = require("./server");
 const app = express();
 
@@ -15,14 +16,36 @@ app.use(
 );
 
 app.use(cookieParser());
+
+// decode the JWT so we can get the user Id on each request
 app.use((req, res, next) => {
-  // checks for user in cookies and adds userId to the requests
   const { token } = req.cookies;
 
   if (token) {
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
+    // put the userId onto the req for future requests to access
     req.userId = userId;
   }
+  next();
+});
+
+// Create a middleware that populates the user on each request
+app.use(async (req, res, next) => {
+  // if they aren't logged in, skip this
+  if (!req.userId) {
+    return next();
+  }
+
+  const [user] = await db.query.users(
+    {
+      where: {
+        id: req.userId,
+      },
+    },
+    "{ id, permissions, email, name }"
+  );
+
+  req.user = user;
   next();
 });
 

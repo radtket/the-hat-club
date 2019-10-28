@@ -1,8 +1,6 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
-import RequestPasswordReset from "../components/RequestPasswordReset";
+import { SignIn, SignUp, RequestPasswordReset } from "../components";
 
 const Signup = () => {
   return (
