@@ -6,7 +6,6 @@ import { useMutation } from "react-apollo";
 import { ADD_TO_CART_MUTATION } from "../../../reslovers/Mutation";
 
 const AddToCart = ({ id }) => {
-  console.log({ id });
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
     variables: {
       id,

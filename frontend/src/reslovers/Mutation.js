@@ -61,8 +61,6 @@ export const USER_SIGNUP_MUTATION = gql`
       id
       name
       email
-      password
-      permissions
     }
   }
 `;

@@ -68,7 +68,7 @@ const Mutation = {
     parent,
     { id },
     {
-      req,
+      req: { user, userId },
       db: { query, mutation },
     },
     info
@@ -77,8 +77,8 @@ const Mutation = {
     const item = await query.item({ where: { id } }, `{ id title user { id }}`);
 
     // 2.check they own that item, or have the permisions
-    const ownsItem = item.user.id === req.userId;
-    const hasPermissions = req.user.permissions.some(permission =>
+    const ownsItem = item.user.id === userId;
+    const hasPermissions = user.permissions.some(permission =>
       ["ADMIN", "ITEMDELETE"].includes(permission)
     );
 
@@ -89,13 +89,21 @@ const Mutation = {
     // 3. Delete it
     return mutation.deleteItem({ where: { id } }, info);
   },
-  async signup(parent, args, ctx, info) {
+  async signup(
+    parent,
+    args,
+    {
+      res,
+      db: { mutation },
+    },
+    info
+  ) {
     const data = { ...args };
     data.email = data.email.toLowerCase();
     // hash their password
     const password = await bcrypt.hash(data.password, 10);
     // create the user in the database
-    const user = await ctx.db.mutation.createUser(
+    const user = await mutation.createUser(
       {
         data: {
           ...data,
@@ -117,7 +125,7 @@ const Mutation = {
     );
 
     // We set the jwt as a cookie on the response
-    ctx.res.cookie("token", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
     });
@@ -125,9 +133,16 @@ const Mutation = {
     // return user to the browser
     return user;
   },
-  async signin(parent, { email, password }, ctx) {
+  async signin(
+    parent,
+    { email, password },
+    {
+      res,
+      db: { query },
+    }
+  ) {
     // 1. Check if there is a user with that email
-    const user = await ctx.db.query.user({ where: { email } });
+    const user = await query.user({ where: { email } });
 
     if (!user) {
       throw new Error(`No such user found for email ${email}`);
@@ -149,7 +164,7 @@ const Mutation = {
     );
 
     // 4. Set the cookie with the token
-    ctx.res.cookie("token", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
     });
@@ -157,13 +172,19 @@ const Mutation = {
     // 5. Return the user
     return user;
   },
-  logout(parent, args, ctx) {
-    ctx.res.clearCookie("token");
+  logout(parent, args, { res }) {
+    res.clearCookie("token");
     return { message: "Goodbye" };
   },
-  async requestReset(parent, { email }, ctx) {
+  async requestReset(
+    parent,
+    { email },
+    {
+      db: { query, mutation },
+    }
+  ) {
     // 1. Check if this is a real user
-    const user = await ctx.db.query.user({ where: { email } });
+    const user = await query.user({ where: { email } });
     if (!user) {
       throw new Error(`No such user found for email ${email}`);
     }
@@ -172,7 +193,7 @@ const Mutation = {
     const resetToken = (await randowBytesAsPromise(20)).toString("hex");
     const resetTokenExpiry = Date.now() + 36000000; // 1 hour from now
 
-    const response = await ctx.db.mutation.updateUser({
+    const response = await mutation.updateUser({
       where: { email },
       data: {
         resetToken,
@@ -195,13 +216,20 @@ const Mutation = {
     // 4. Return the message
     return { message: "Check your Email!" };
   },
-  async resetPassword(parent, { password, confirmPassword, resetToken }, ctx) {
+  async resetPassword(
+    parent,
+    { password, confirmPassword, resetToken },
+    {
+      res,
+      db: { query, mutation },
+    }
+  ) {
     // 1. Check if the passwords match
     if (password !== confirmPassword) {
       throw new Error(`Yo Passwords dont match`);
     }
     // 2. Chick if it's it a legit reset token and not expired
-    const [user] = await ctx.db.query.users({
+    const [user] = await query.users({
       where: {
         resetToken: resetToken,
         resetTokenExpiry_gte: Date.now() - 36000000,
@@ -216,7 +244,7 @@ const Mutation = {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // 5. Save the new password to the user and remove old resetToken fields
-    const updatedUser = await ctx.db.mutation.updateUser({
+    const updatedUser = await mutation.updateUser({
       where: { email: user.email },
       data: {
         password: hashedPassword,
@@ -229,7 +257,7 @@ const Mutation = {
     const token = jwt.sign({ userId: updatedUser.id }, process.env.APP_SECRET);
 
     // 7. Set the JWT Cookie
-    ctx.res.cookie("token", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
     });
@@ -237,17 +265,25 @@ const Mutation = {
     // 8. return the new user
     return updatedUser;
   },
-  async updatePermissions(parent, args, ctx, info) {
+  async updatePermissions(
+    parent,
+    { permissions, userId },
+    {
+      req,
+      db: { query, mutation },
+    },
+    info
+  ) {
     // 1. Check if they are logged in
-    if (!ctx.req.userId) {
+    if (!req.userId) {
       throw new Error("You must be logged in!");
     }
 
     // 2. Query the current user
-    const currentUser = await ctx.db.query.user(
+    const currentUser = await query.user(
       {
         where: {
-          id: ctx.req.userId,
+          id: req.userId,
         },
       },
       info
@@ -257,15 +293,15 @@ const Mutation = {
     hasPermission(currentUser, ["ADMIN", "PERMISSIONUPDATE"]);
 
     // 4. Update the permissions
-    return ctx.db.mutation.updateUser(
+    return mutation.updateUser(
       {
         data: {
           permissions: {
-            set: args.permissions,
+            set: permissions,
           },
         },
         where: {
-          id: args.userId,
+          id: userId,
         },
       },
       info
@@ -273,7 +309,7 @@ const Mutation = {
   },
   async addToCart(
     parent,
-    args,
+    { id },
     {
       req,
       db: { mutation, query },
@@ -291,7 +327,7 @@ const Mutation = {
     const [existingCartItem] = await query.cartItems({
       where: {
         user: { id: userId },
-        item: { id: args.id },
+        item: { id },
       },
     });
 
@@ -315,7 +351,7 @@ const Mutation = {
             connect: { id: userId },
           },
           item: {
-            connect: { id: args.id },
+            connect: { id },
           },
         },
       },

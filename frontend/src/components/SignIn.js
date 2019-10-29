@@ -16,7 +16,7 @@ const SignIn = () => {
     ...defaultValues,
   });
 
-  const [signup, { error, loading }] = useMutation(USER_SIGNIN_MUTATION, {
+  const [signin, { error, loading }] = useMutation(USER_SIGNIN_MUTATION, {
     variables: {
       ...values,
     },
@@ -43,8 +43,7 @@ const SignIn = () => {
         method="post"
         onSubmit={e => {
           e.preventDefault();
-          signup().then(item => {
-            console.log({ item }, item.signup);
+          signin().then(() => {
             setValues({
               ...defaultValues,
             });

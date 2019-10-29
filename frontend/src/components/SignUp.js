@@ -44,8 +44,7 @@ const SignUp = () => {
         method="post"
         onSubmit={e => {
           e.preventDefault();
-          signup().then(item => {
-            console.log({ item }, item.signup);
+          signup().then(() => {
             setValues({
               ...defaultValues,
             });
