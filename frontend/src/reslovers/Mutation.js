@@ -130,10 +130,18 @@ export const TOGGLE_CART_MUTATION = gql`
 `;
 
 export const ADD_TO_CART_MUTATION = gql`
-  mutation addToCart($id: ID!) {
+  mutation ADD_TO_CART_MUTATION($id: ID!) {
     addToCart(id: $id) {
       id
       quantity
+    }
+  }
+`;
+
+export const REMOVE_ITEM_FROM_CART_MUTATION = gql`
+  mutation REMOVE_ITEM_FROM_CART_MUTATION($id: ID!) {
+    removeFromCart(id: $id) {
+      id
     }
   }
 `;
