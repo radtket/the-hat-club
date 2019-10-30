@@ -12,7 +12,19 @@ import {
 import RemoveFromCart from "./RemoveFromCart";
 import { formatMoney } from "../../utils/helpers";
 
-const CartItem = ({ id, quantity, item: { title, image, price } }) => {
+const CartItem = ({ id, quantity, item }) => {
+  if (!item) {
+    return (
+      <ListItem>
+        <ListItemText primary="This item has been deleted from the seller" />
+        <ListItemSecondaryAction>
+          <RemoveFromCart {...{ id }} />
+        </ListItemSecondaryAction>
+      </ListItem>
+    );
+  }
+  const { title, image, price } = item;
+
   return (
     <ListItem button>
       <ListItemAvatar>
@@ -45,7 +57,11 @@ CartItem.propTypes = {
     title: PropTypes.string,
     image: PropTypes.string,
     price: PropTypes.number,
-  }).isRequired,
+  }),
+};
+
+CartItem.defaultProps = {
+  item: null,
 };
 
 export default CartItem;

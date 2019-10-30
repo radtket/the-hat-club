@@ -357,7 +357,6 @@ const Mutation = {
       info
     );
   },
-
   async removeFromCart(
     parent,
     { id },

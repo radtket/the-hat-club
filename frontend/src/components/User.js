@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useQuery, useMutation } from "react-apollo";
+import { useQuery } from "react-apollo";
 import { Button, IconButton, Menu, MenuItem } from "@material-ui/core";
-import { ShoppingCart, AccountCircle } from "@material-ui/icons";
+import { AccountCircle } from "@material-ui/icons";
 import ErrorMessage from "./ErrorMessage";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
-import { TOGGLE_CART_MUTATION } from "../reslovers/Mutation";
 import Logout from "./Logout";
+import CartToggleButton from "./Cart/CartToggleButton";
 
 const User = ({ styles }) => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
   const { data, error, loading } = useQuery(CURRENT_USER_QUERY);
 
   const open = Boolean(anchorEl);
@@ -87,14 +86,12 @@ const User = ({ styles }) => {
 
         <Logout {...{ handleClose }} />
       </Menu>
-      <IconButton
-        aria-label="open drawer"
-        color="inherit"
-        edge="end"
-        onClick={toggleCart}
-      >
-        <ShoppingCart />
-      </IconButton>
+      <CartToggleButton
+        itemsInCart={data.me.cart.reduce(
+          (tally, { quantity }) => tally + quantity,
+          0
+        )}
+      />
     </>
   );
 };
