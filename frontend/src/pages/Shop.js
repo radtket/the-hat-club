@@ -4,7 +4,12 @@ import { Grid } from "@material-ui/core";
 
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
 import { useRouteQuery } from "../utils/helpers";
-import { ProductCard, Pagination, ErrorMessage } from "../components";
+import {
+  ProductCard,
+  Pagination,
+  ErrorMessage,
+  SearchBar,
+} from "../components";
 import { perPage } from "../utils/constants";
 
 const Shop = () => {
@@ -27,6 +32,8 @@ const Shop = () => {
   return (
     <>
       <h1>Shop Page {page}</h1>
+      <SearchBar />
+      {/* <AutoComplete /> */}
       <Grid container spacing={3}>
         {data.items.map(item => (
           <Grid key={item.id} item xs={4}>

@@ -6,6 +6,7 @@ import PasswordReset from "./PasswordReset";
 import PleaseSignIn from "./PleaseSignIn";
 import ProductCard from "./ProductCard";
 import RequestPasswordReset from "./RequestPasswordReset";
+import SearchBar from "./SearchBar";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SubmitButton from "./SubmitButton";
@@ -21,6 +22,7 @@ export {
   PleaseSignIn,
   ProductCard,
   RequestPasswordReset,
+  SearchBar,
   SignIn,
   SignUp,
   SubmitButton,
