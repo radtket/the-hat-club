@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SearchBar = () => {
-  const { search, searchIcon, root, input } = useStyles();
+  const { search, root, input } = useStyles();
   const history = useHistory();
   const { spacing } = useTheme();
   const [searchItems, { data, loading }] = useLazyQuery(SEARCH_ITEMS_QUERY);

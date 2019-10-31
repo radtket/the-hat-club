@@ -13,6 +13,7 @@ import { useQuery, useMutation } from "react-apollo";
 import { CURRENT_USER_QUERY, LOCAL_STATE_QUERY } from "../../reslovers/Query";
 import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
 import CartItem from "./CartItem";
+import TakeMyMoney from "./TakeMyMoney";
 
 const cartDrawerWidth = 600;
 
@@ -82,6 +83,7 @@ const Cart = () => {
           <CartItem key={item.id} {...item} />
         ))}
       </List>
+      <TakeMyMoney {...data.me} />
     </Drawer>
   );
 };
