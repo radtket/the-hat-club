@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useLazyQuery } from "react-apollo";
-import Downshift from "downshift";
+import Downshift, { resetIdCounter } from "downshift";
 import debounce from "lodash.debounce";
 
 import {
@@ -60,6 +60,7 @@ const SearchBar = () => {
     await searchItems({ variables: { searchTerm: target.value } });
   }, 350);
 
+  resetIdCounter();
   return (
     <Downshift
       itemToString={item => (item === null ? "" : item.title)}

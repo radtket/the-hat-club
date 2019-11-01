@@ -36,7 +36,7 @@ const Order = () => {
       </p>
       <p>
         <span>Date</span>
-        {/* <span>{format(order.createdAt, "MMMM d")}</span> */}
+        <span>{format(new Date(order.createdAt), "MMMM d, yyyy h:mm a")}</span>
       </p>
       <p>
         <span>Order Total</span>
