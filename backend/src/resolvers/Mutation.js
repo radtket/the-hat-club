@@ -398,15 +398,14 @@ const Mutation = {
     { token },
     {
       req,
-      db: { query },
-    },
-    info
+      db: { query, mutation },
+    }
   ) {
     // 1. Query the current user and make sure they are signed in
     isLoggedIn(req);
     const { userId } = req;
 
-    const user = await query.user(
+    const { cart } = await query.user(
       {
         where: {
           id: userId,
@@ -431,7 +430,7 @@ const Mutation = {
     );
 
     // 2. recalculate the total for the price
-    const amount = calcTotalPrice(user.cart);
+    const amount = calcTotalPrice(cart);
     console.log(`going to charge for total of ${amount}`);
 
     // 3. Create the stripe charge (turn token into $$$)
@@ -442,9 +441,51 @@ const Mutation = {
     });
 
     // 4. Convert the CartItems to OrderItems
+    const orderItems = cart.map(
+      ({ item: { description, image, price, title }, quantity }) => {
+        // Return New: OrderItem
+        return {
+          title,
+          description,
+          price,
+          image,
+          quantity,
+          user: {
+            connect: {
+              id: userId,
+            },
+          },
+        };
+      }
+    );
+
     // 5. create the Order
+    const order = mutation.createOrder({
+      data: {
+        total: charge.amount,
+        charge: charge.id,
+        items: {
+          create: orderItems,
+        },
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+      },
+    });
+
     // 6. Clean up - clear the users cart, delete cartItems
+    const cartItemIds = cart.map(item => item.id);
+
+    await mutation.deleteManyCartItems({
+      where: {
+        id_in: cartItemIds,
+      },
+    });
+
     // 7. Return the Order to the client
+    return order;
   },
 };
 

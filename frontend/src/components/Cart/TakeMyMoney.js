@@ -14,12 +14,11 @@ const totalItems = cart => {
 
 const TakeMyMoney = ({ cart, email }) => {
   const { openSnackbar } = useContext(StatusSnackbarContext);
-  const [createOrder, { loading, error }] = useMutation(CREATE_ORDER_MUTATION, {
+  const [createOrder, { loading }] = useMutation(CREATE_ORDER_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
 
   const onToken = res => {
-    console.log({ res });
     createOrder({
       variables: {
         token: res.id,
@@ -47,7 +46,9 @@ const TakeMyMoney = ({ cart, email }) => {
       stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
       token={res => onToken(res)}
     >
-      <Button variant="contained">Take my Money</Button>
+      <Button disabled={loading} variant="contained">
+        Take my Money
+      </Button>
     </StripeCheckout>
   );
 };
