@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import PropTypes from "prop-types";
 import { useMutation } from "@apollo/react-hooks";
-import { calcTotalPrice } from "../../utils/helpers";
+import { Button } from "@material-ui/core";
+import { calcTotalPrice, isArrayEmpty } from "../../utils/helpers";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
+import { CREATE_ORDER_MUTATION } from "../../reslovers/Mutation";
+import { StatusSnackbarContext } from "../StatusSnackbar";
 
 const totalItems = cart => {
   cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
 };
 
 const TakeMyMoney = ({ cart, email }) => {
+  const { openSnackbar } = useContext(StatusSnackbarContext);
+  const [createOrder, { loading, error }] = useMutation(CREATE_ORDER_MUTATION, {
+    refetchQueries: [{ query: CURRENT_USER_QUERY }],
+  });
+
   const onToken = res => {
     console.log({ res });
+    createOrder({
+      variables: {
+        token: res.id,
+      },
+    }).catch(({ message }) => {
+      openSnackbar({
+        message,
+        variant: "error",
+      });
+    });
   };
+
+  if (isArrayEmpty(cart)) {
+    return null;
+  }
 
   return (
     <StripeCheckout
@@ -25,7 +47,7 @@ const TakeMyMoney = ({ cart, email }) => {
       stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
       token={res => onToken(res)}
     >
-      <h1>Take my </h1>
+      <Button variant="contained">Take my Money</Button>
     </StripeCheckout>
   );
 };

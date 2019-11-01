@@ -1,3 +1,5 @@
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const isArrayEmpty = arrayArg => {
   if (arrayArg && arrayArg.length) {
     return false;
@@ -22,5 +24,16 @@ const hasPermission = (user, permissionsNeeded) => {
   }
 };
 
+const calcTotalPrice = cart => {
+  return cart.reduce((tally, { item, quantity }) => {
+    if (!item) {
+      return tally;
+    }
+    return tally + quantity * item.price;
+  }, 0);
+};
+
 exports.hasPermission = hasPermission;
 exports.isArrayEmpty = isArrayEmpty;
+exports.calcTotalPrice = calcTotalPrice;
+exports.stripe = stripe;

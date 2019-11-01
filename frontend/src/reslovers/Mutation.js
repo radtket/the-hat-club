@@ -145,3 +145,17 @@ export const REMOVE_ITEM_FROM_CART_MUTATION = gql`
     }
   }
 `;
+
+export const CREATE_ORDER_MUTATION = gql`
+  mutation CREATE_ORDER_MUTATION($token: String!) {
+    createOrder(token: $token) {
+      id
+      charge
+      total
+      items {
+        id
+        title
+      }
+    }
+  }
+`;

@@ -29,3 +29,10 @@ export const useRouteQuery = query => {
   const { search } = useLocation();
   return new URLSearchParams(search).get(query);
 };
+
+export const isArrayEmpty = arrayArg => {
+  if (arrayArg && arrayArg.length) {
+    return false;
+  }
+  return true;
+};

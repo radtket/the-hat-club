@@ -3,7 +3,13 @@ const jwt = require("jsonwebtoken");
 const { randomBytes } = require("crypto");
 const { promisify } = require("util");
 const { transport, makeANiceEmail } = require("../mail");
-const { hasPermission } = require("../utils");
+const { hasPermission, calcTotalPrice, stripe } = require("../utils");
+
+const isLoggedIn = req => {
+  if (!req.userId) {
+    throw new Error("You must be logged in to do that");
+  }
+};
 
 const Mutation = {
   async createItem(
@@ -15,9 +21,7 @@ const Mutation = {
     },
     info
   ) {
-    if (!req.userId) {
-      throw new Error("You must be logged in to do that");
-    }
+    isLoggedIn(req);
 
     const item = await mutation.createItem(
       {
@@ -275,9 +279,7 @@ const Mutation = {
     info
   ) {
     // 1. Check if they are logged in
-    if (!req.userId) {
-      throw new Error("You must be logged in!");
-    }
+    isLoggedIn(req);
 
     // 2. Query the current user
     const currentUser = await query.user(
@@ -317,12 +319,9 @@ const Mutation = {
     info
   ) {
     // 1. Make sure they are signed in
+    isLoggedIn(req);
+
     const { userId } = req;
-
-    if (!userId) {
-      throw new Error("You must be signed in soooon");
-    }
-
     // 2. Query the users current cart
     const [existingCartItem] = await query.cartItems({
       where: {
@@ -393,6 +392,59 @@ const Mutation = {
       },
       info
     );
+  },
+  async createOrder(
+    parent,
+    { token },
+    {
+      req,
+      db: { query },
+    },
+    info
+  ) {
+    // 1. Query the current user and make sure they are signed in
+    isLoggedIn(req);
+    const { userId } = req;
+
+    const user = await query.user(
+      {
+        where: {
+          id: userId,
+        },
+      },
+      `{
+        id
+        name
+        email
+        cart {
+          id
+          quantity
+          item {
+            title
+            price
+            id
+            description
+            image
+          }
+        }
+      }`
+    );
+
+    // 2. recalculate the total for the price
+    const amount = calcTotalPrice(user.cart);
+    console.log(`going to charge for total of ${amount}`);
+
+    // 3. Create the stripe charge (turn token into $$$)
+    const charge = await stripe.charges.create({
+      amount,
+      currency: "USD",
+      source: token,
+    });
+
+    // 4. Convert the CartItems to OrderItems
+    // 5. create the Order
+    // 6. Clean up - clear the users cart, delete cartItems
+    // 7. Return the Order to the client
   },
 };
 
