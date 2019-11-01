@@ -1,16 +1,24 @@
 const { forwardTo } = require("prisma-binding");
-const { hasPermission } = require("../utils");
+const { hasPermission, isLoggedIn } = require("../utils");
 const Query = {
   items: forwardTo("db"),
   item: forwardTo("db"),
   itemsConnection: forwardTo("db"),
-  me(parent, args, { req, db }, info) {
+  me(
+    parent,
+    args,
+    {
+      req,
+      db: { query },
+    },
+    info
+  ) {
     // check if there is a current user ID
     if (!req.userId) {
       return null;
     }
 
-    return db.query.user(
+    return query.user(
       {
         where: {
           id: req.userId,
@@ -19,17 +27,54 @@ const Query = {
       info
     );
   },
-  async users(parent, args, ctx, info) {
+  async users(
+    parent,
+    args,
+    {
+      req,
+      db: { query },
+    },
+    info
+  ) {
     // 1. Check if they are logged in
-    if (!ctx.req.userId) {
-      throw new Error("You must be logged in!");
-    }
+    isLoggedIn(req);
 
     // 2. Check if the user has the permissions to query all the users
-    hasPermission(ctx.req.user, ["ADMIN", "PERMISSIONUPDATE"]);
+    hasPermission(req.user, ["ADMIN", "PERMISSIONUPDATE"]);
 
     // 3. if they do, query all the users!
-    return ctx.db.query.users({}, info);
+    return query.users({}, info);
+  },
+  async order(
+    parent,
+    { id },
+    {
+      req,
+      db: { query },
+    },
+    info
+  ) {
+    // 1. Make sure they are logged in
+    isLoggedIn(req);
+
+    // 2. Query the current order
+    const order = await query.order(
+      {
+        where: { id },
+      },
+      info
+    );
+
+    // 3. Check if the have the permissions to see this order
+    const ownsOrder = order.user.id === req.userId;
+    const hasPermissionToSeeOrder = req.user.permissions.includes("ADMIN");
+
+    if (!ownsOrder || !hasPermissionToSeeOrder) {
+      throw new Error("You are not allowed to see this");
+    }
+
+    // 4. Return the order
+    return order;
   },
   // async items(
   //   parent,

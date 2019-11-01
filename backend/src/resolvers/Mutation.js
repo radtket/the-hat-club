@@ -3,13 +3,12 @@ const jwt = require("jsonwebtoken");
 const { randomBytes } = require("crypto");
 const { promisify } = require("util");
 const { transport, makeANiceEmail } = require("../mail");
-const { hasPermission, calcTotalPrice, stripe } = require("../utils");
-
-const isLoggedIn = req => {
-  if (!req.userId) {
-    throw new Error("You must be logged in to do that");
-  }
-};
+const {
+  hasPermission,
+  calcTotalPrice,
+  stripe,
+  isLoggedIn,
+} = require("../utils");
 
 const Mutation = {
   async createItem(

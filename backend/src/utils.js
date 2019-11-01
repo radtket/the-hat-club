@@ -33,7 +33,14 @@ const calcTotalPrice = cart => {
   }, 0);
 };
 
+const isLoggedIn = req => {
+  if (!req.userId) {
+    throw new Error("You must be logged in to do that");
+  }
+};
+
 exports.hasPermission = hasPermission;
 exports.isArrayEmpty = isArrayEmpty;
 exports.calcTotalPrice = calcTotalPrice;
 exports.stripe = stripe;
+exports.isLoggedIn = isLoggedIn;

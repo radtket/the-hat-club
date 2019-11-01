@@ -14,6 +14,7 @@ import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
 import Reset from "./pages/Reset";
 import Permissions from "./pages/Permissions";
+import Order from "./pages/Order";
 
 const Routes = () => {
   return (
@@ -44,6 +45,9 @@ const Routes = () => {
           </Route>
           <Route path="/permissions">
             <Permissions />
+          </Route>
+          <Route path="/order/:id">
+            <Order />
           </Route>
         </Switch>
       </Container>

@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 
 const SearchBar = () => {
   const { search, root, input } = useStyles();
-  const history = useHistory();
+  const { push } = useHistory();
   const { spacing } = useTheme();
   const [searchItems, { data, loading }] = useLazyQuery(SEARCH_ITEMS_QUERY);
 
@@ -64,7 +64,7 @@ const SearchBar = () => {
     <Downshift
       itemToString={item => (item === null ? "" : item.title)}
       onChange={item => {
-        history.push(`/item/${item.id}`);
+        push(`/item/${item.id}`);
       }}
     >
       {({

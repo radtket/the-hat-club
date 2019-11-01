@@ -92,3 +92,25 @@ export const SEARCH_ITEMS_QUERY = gql`
     }
   }
 `;
+
+export const SINGLE_ORDER_QUERY = gql`
+  query SINGLE_ORDER_QUERY($id: ID!) {
+    order(id: $id) {
+      id
+      charge
+      total
+      createdAt
+      user {
+        id
+      }
+      items {
+        id
+        title
+        description
+        price
+        image
+        quantity
+      }
+    }
+  }
+`;
