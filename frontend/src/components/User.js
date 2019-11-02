@@ -48,14 +48,6 @@ const User = ({ styles }) => {
       <Button className={styles} color="inherit" component={NavLink} to="/sell">
         Sell
       </Button>
-      <Button
-        className={styles}
-        color="inherit"
-        component={NavLink}
-        to="/orders"
-      >
-        Orders
-      </Button>
       <IconButton
         aria-controls="menu-appbar"
         aria-haspopup="true"
@@ -83,7 +75,9 @@ const User = ({ styles }) => {
         <MenuItem component={NavLink} onClick={handleClose} to="/me">
           Account
         </MenuItem>
-
+        <MenuItem component={NavLink} onClick={handleClose} to="/orders">
+          Orders
+        </MenuItem>
         <Logout {...{ handleClose }} />
       </Menu>
       <CartToggleButton

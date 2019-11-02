@@ -76,6 +76,27 @@ const Query = {
     // 4. Return the order
     return order;
   },
+  async orders(
+    parent,
+    args,
+    {
+      req,
+      db: { query },
+    },
+    info
+  ) {
+    isLoggedIn(req);
+    const { userId } = req;
+
+    return query.orders(
+      {
+        where: {
+          user: { id: userId },
+        },
+      },
+      info
+    );
+  },
   // async items(
   //   parent,
   //   args,
