@@ -1,7 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   makeStyles,
-  useTheme,
   Card,
   CardContent,
   CardMedia,
@@ -35,22 +35,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const OrderItem = ({ id, title, description, price, image, quantity }) => {
+const OrderItem = ({ title, description, price, image, quantity }) => {
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
-    //   <div key={item.id} className="order-item">
-    //   <img alt={item.title} src={item.image} />
-    //   <div className="item-details">
-    //     <h2>{item.title}</h2>
-    //     <p>Qty: {item.quantity}</p>
-    //     <p>Each: {formatMoney(item.price)}</p>
-    //     <p>SubTotal: {formatMoney(item.price * item.quantity)}</p>
-    //     <p>{item.description}</p>
-    //   </div>
-    // </div>
-
     <Card className={classes.card}>
       <CardMedia className={classes.cover} image={image} title={title} />
       <div className={classes.details}>
@@ -74,6 +62,14 @@ const OrderItem = ({ id, title, description, price, image, quantity }) => {
       </div>
     </Card>
   );
+};
+
+OrderItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default OrderItem;
