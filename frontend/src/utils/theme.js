@@ -1,60 +1,24 @@
 import React from "react";
-import { ThemeProvider } from "@material-ui/styles";
-import { CssBaseline, createMuiTheme } from "@material-ui/core";
-import { common, red, green } from "@material-ui/core/colors";
-import * as fonts from "../assets/fonts";
-import "typeface-roboto";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/Global";
 
-const futura = {
-  fontFamily: "Futura Light",
-  fontStyle: "normal",
-  fontDisplay: "swap",
-  fontWeight: 300,
-  src: `
-  local('Futura Light'), local('Futura-Light'),
-  url('${fonts.FuturaLightWOFF}') format('woff'),
-  url('${fonts.FuturaLightTTF}') format('truetype')
-  `,
-  unicodeRange:
-    "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF",
+const theme = {
+  red: "#FF0000",
+  black: "#393939",
+  grey: "#3A3A3A",
+  lightgrey: "#E1E1E1",
+  offWhite: "#EDEDED",
+  maxWidth: "1000px",
+  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
+  smallSpacing: "12px",
+  baseSpacing: "24px",
+  largeSpacing: "48px",
 };
-
-// Create a theme instance.
-const customTheme = createMuiTheme({
-  typography: {
-    fontFamily: "Futura Light",
-  },
-  overrides: {
-    MuiCssBaseline: {
-      "@global": {
-        "@font-face": [futura],
-      },
-    },
-  },
-  palette: {
-    primary: {
-      main: red.A700,
-    },
-    secondary: {
-      main: common.black,
-    },
-    error: {
-      main: red.A400,
-    },
-    success: {
-      main: green[700],
-    },
-    background: {
-      default: common.white,
-    },
-  },
-});
 
 const Theme = ({ children }) => {
   return (
-    <ThemeProvider theme={customTheme}>
-      {/* <GlobalStyle /> */}
-      <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
       {children}
     </ThemeProvider>
   );

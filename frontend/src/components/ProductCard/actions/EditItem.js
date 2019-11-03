@@ -1,14 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
-import { IconButton } from "@material-ui/core";
-import { Edit } from "@material-ui/icons";
+import { PencilIcon } from "../../Icons";
 
 const EditItem = ({ id }) => {
+  const { push } = useHistory();
   return (
-    <IconButton aria-label="Edit" component={Link} to={`/item/${id}`}>
-      <Edit />
-    </IconButton>
+    <button
+      aria-label="Edit Item"
+      onClick={e => {
+        e.preventDefault();
+        push(`/item/${id}`);
+      }}
+      type="button"
+    >
+      <PencilIcon />
+    </button>
   );
 };
 

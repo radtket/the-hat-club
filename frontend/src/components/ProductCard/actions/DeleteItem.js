@@ -6,13 +6,15 @@ import { useMutation } from "react-apollo";
 import { DELETE_ITEM_MUTATION } from "../../../reslovers/Mutation";
 import { ALL_ITEMS_QUERY } from "../../../reslovers/Query";
 import { StatusSnackbarContext } from "../../StatusSnackbar";
+import { TrashIcon } from "../../Icons";
 
 const DeleteItem = ({ id }) => {
   const [deleteItem] = useMutation(DELETE_ITEM_MUTATION);
   const { openSnackbar } = useContext(StatusSnackbarContext);
 
   return (
-    <IconButton
+    <button
+      aria-label="Edit"
       onClick={() => {
         // eslint-disable-next-line no-alert
         // eslint-disable-next-line no-restricted-globals
@@ -40,9 +42,10 @@ const DeleteItem = ({ id }) => {
           });
         }
       }}
+      type="button"
     >
-      <Delete />
-    </IconButton>
+      <TrashIcon />
+    </button>
   );
 };
 

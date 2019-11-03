@@ -5,8 +5,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 import client from "./utils/client-apollo";
-import Theme from "./utils/theme";
 import { StatusSnackbarProvider } from "./components/StatusSnackbar";
+import Theme from "./utils/theme";
 
 ReactDOM.render(
   <Theme>

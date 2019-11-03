@@ -20,7 +20,11 @@ const Routes = () => {
   return (
     <>
       <Navbar />
-      <Container component="main" maxWidth="xl">
+      <main
+        style={{
+          marginTop: 80,
+        }}
+      >
         <Switch>
           <Route exact path={["/", "/shop"]}>
             <Shop />
@@ -50,7 +54,7 @@ const Routes = () => {
             <Order />
           </Route>
         </Switch>
-      </Container>
+      </main>
     </>
   );
 };

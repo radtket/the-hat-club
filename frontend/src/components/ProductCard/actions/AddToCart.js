@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { IconButton } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
 import { useMutation } from "react-apollo";
 import { ADD_TO_CART_MUTATION } from "../../../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../../../reslovers/Query";
+import { CartIcon } from "../../Icons";
 
 const AddToCart = ({ id }) => {
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
@@ -15,9 +14,9 @@ const AddToCart = ({ id }) => {
   });
 
   return (
-    <IconButton aria-label="Add to Shopping Cart" onClick={addToCart}>
-      <AddShoppingCart />
-    </IconButton>
+    <button aria-label="Add to Shopping Cart" onClick={addToCart} type="button">
+      <CartIcon />
+    </button>
   );
 };
 
