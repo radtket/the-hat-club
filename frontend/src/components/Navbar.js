@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { CartIcon, SearchIcon } from "./Icons";
+import { NavLink } from "react-router-dom";
+import { SearchIcon } from "./Icons";
 import MenuOverlay from "./MenuOverlay";
 import NavbarStyles from "../styles/NavbarStyles";
+import Cart from "./Cart";
+import { LogoTextPadding } from "./Branding";
+import CartToggleButton from "./Cart/CartToggleButton";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <NavbarStyles
@@ -12,13 +17,15 @@ const Navbar = () => {
         className={`navbar ${isMenuOpen ? "is-active" : ""}`}
       >
         <div className="navbar__inner container">
+          <NavLink className="navbar__logo" to="/">
+            <LogoTextPadding />
+          </NavLink>
+
           <nav>
             <button className="svg-button" type="button">
               <SearchIcon />
             </button>
-            <button className="svg-button" type="button">
-              <CartIcon />
-            </button>
+            <CartToggleButton />
             <button
               className="menu-wrapper"
               onClick={() => {
@@ -31,6 +38,7 @@ const Navbar = () => {
           </nav>
         </div>
       </NavbarStyles>
+      <Cart />
       <MenuOverlay {...{ isMenuOpen }} />
     </>
   );

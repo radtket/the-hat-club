@@ -29,28 +29,28 @@ const Routes = () => {
           <Route exact path={["/", "/shop"]}>
             <Shop />
           </Route>
-          <Route path="/sell">
+          <Route exact path="/sell">
             <Sell />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <Signup />
           </Route>
-          <Route path="/orders">
+          <Route exact path="/orders">
             <Orders />
           </Route>
-          <Route path="/item/:id">
+          <Route exact path="/item/:id">
             <Item />
           </Route>
-          <Route path="/account">
+          <Route exact path="/account">
             <Account />
           </Route>
-          <Route path="/reset">
+          <Route exact path="/reset">
             <Reset />
           </Route>
-          <Route path="/permissions">
+          <Route exact path="/permissions">
             <Permissions />
           </Route>
-          <Route path="/order/:id">
+          <Route exact path="/order/:id">
             <Order />
           </Route>
         </Switch>

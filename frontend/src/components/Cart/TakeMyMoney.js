@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import PropTypes from "prop-types";
 import { useMutation } from "@apollo/react-hooks";
-import { Button } from "@material-ui/core";
 import { calcTotalPrice, isArrayEmpty } from "../../utils/helpers";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 import {
@@ -47,20 +46,31 @@ const TakeMyMoney = ({ cart, email }) => {
   }
 
   return (
-    <StripeCheckout
-      amount={calcTotalPrice(cart)}
-      currency="USD"
-      description={`Order of ${totalItems(cart)} items!`}
-      email={email}
-      image={cart[0].item && cart[0].item.image}
-      name="Sick Fits"
-      stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
-      token={res => onToken(res)}
-    >
-      <Button disabled={loading} variant="contained">
-        Take my Money
-      </Button>
-    </StripeCheckout>
+    <footer>
+      <dl>
+        <dt>Subtotal:</dt>
+        <dd>
+          <span>$</span>
+          {calcTotalPrice(cart)}
+        </dd>
+      </dl>
+      <nav>
+        <button type="button">View Cart</button>
+        <StripeCheckout
+          amount={calcTotalPrice(cart)}
+          currency="USD"
+          description={`Order of ${totalItems(cart)} items!`}
+          disabled={loading}
+          email={email}
+          image={cart[0].item && cart[0].item.image}
+          name="Sick Fits"
+          stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
+          token={res => onToken(res)}
+        >
+          <button type="button">Checkout</button>
+        </StripeCheckout>
+      </nav>
+    </footer>
   );
 };
 

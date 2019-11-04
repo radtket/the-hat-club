@@ -1,52 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  Box,
-  Typography,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  ListItemSecondaryAction,
-} from "@material-ui/core";
+import { Link } from "react-router-dom";
 import RemoveFromCart from "./RemoveFromCart";
 import { formatMoney } from "../../utils/helpers";
 
 const CartItem = ({ id, quantity, item }) => {
+  const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
   if (!item) {
     return (
-      <ListItem>
-        <ListItemText primary="This item has been deleted from the seller" />
-        <ListItemSecondaryAction>
-          <RemoveFromCart {...{ id }} />
-        </ListItemSecondaryAction>
-      </ListItem>
+      <li className="cart-item">
+        This item has been deleted from the seller
+        <RemoveFromCart {...{ id }} />
+      </li>
     );
   }
+
   const { title, image, price } = item;
 
   return (
-    <ListItem button>
-      <ListItemAvatar>
-        <Avatar alt={title} src={image} />
-      </ListItemAvatar>
-      <ListItemText
-        primary={
-          <Box display="flex" justifyContent="space-between">
-            <Typography>{title}</Typography>
-            <Typography>{formatMoney(price * quantity)}</Typography>
-          </Box>
-        }
-        secondary={
-          <em>
-            {quantity} &times; {formatMoney(price)} each
-          </em>
-        }
-      />
-      <ListItemSecondaryAction>
-        <RemoveFromCart {...{ id }} />
-      </ListItemSecondaryAction>
-    </ListItem>
+    <li className="cart-item">
+      <Link className="cart-item__image" to={`/item/${id}`}>
+        <figure>
+          <img alt={title} src={image} />
+        </figure>
+      </Link>
+      <dl className="cart-item__desc">
+        <dt>
+          <Link to={`/item/${id}`}>{title}</Link>
+        </dt>
+        <dd>
+          <label className="input-group" htmlFor="quantity">
+            {/* Quantity */}
+            Qty
+            <fieldset>
+              <button
+                className="minus"
+                onClick={() => {
+                  setUpdatedQuantity(prev => prev - 1);
+                }}
+                type="button"
+              >
+                Reduce Quantity
+              </button>
+              <input
+                className="input-group-field"
+                name="quantity"
+                onChange={({ target }) => {
+                  setUpdatedQuantity(target.value);
+                }}
+                type="number"
+                value={updatedQuantity}
+              />
+              <button
+                className="add"
+                onClick={() => {
+                  setUpdatedQuantity(prev => prev + 1);
+                }}
+                type="button"
+              >
+                Increase Quantity
+              </button>
+            </fieldset>
+          </label>
+          <span>
+            <span>$</span>
+            {/* {price} */}
+            {formatMoney(price * updatedQuantity)}
+          </span>
+        </dd>
+      </dl>
+      <RemoveFromCart {...{ id }} />
+    </li>
   );
 };
 

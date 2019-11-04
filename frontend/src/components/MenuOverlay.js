@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import MenuStyles from "../styles/MenuStyles";
 
 const MenuOverlay = ({ isMenuOpen }) => {
@@ -17,57 +18,76 @@ const MenuOverlay = ({ isMenuOpen }) => {
           <div className="column" />
           <div className="column" />
         </div>
-        <li
-          className="link active-page"
+
+        <NavLink
+          className="link"
           data-link="work"
+          exact
           onMouseEnter={() => {
             setIsHovering(true);
           }}
           onMouseLeave={() => {
             setIsHovering(false);
           }}
+          strict
+          to="/"
         >
-          <a href="/">Store</a>
-        </li>
+          <span>Store</span>
+        </NavLink>
+
         <br />
-        <li
-          className="link "
+
+        <NavLink
+          className="link"
           data-link="about"
+          exact
           onMouseEnter={() => {
             setIsHovering(true);
           }}
           onMouseLeave={() => {
             setIsHovering(false);
           }}
+          strict
+          to="/sell"
         >
-          <a href="/about">Sell</a>
-        </li>
+          <span>Sell</span>
+        </NavLink>
+
         <br />
-        <li
-          className="link "
+
+        <NavLink
+          className="link"
           data-link="labs"
+          exact
           onMouseEnter={() => {
             setIsHovering(true);
           }}
           onMouseLeave={() => {
             setIsHovering(false);
           }}
+          strict
+          to="/labs"
         >
-          <a href="/labs">Account</a>
-        </li>
+          <span>Account</span>
+        </NavLink>
+
         <br />
-        <li
-          className="link "
+
+        <NavLink
+          className="link"
           data-link="labs"
+          exact
           onMouseEnter={() => {
             setIsHovering(true);
           }}
           onMouseLeave={() => {
             setIsHovering(false);
           }}
+          strict
+          to="/labs"
         >
-          <a href="/labs">Cart</a>
-        </li>
+          <span>Cart</span>
+        </NavLink>
       </ul>
     </MenuStyles>
   );

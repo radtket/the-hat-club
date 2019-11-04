@@ -1,15 +1,14 @@
 import styled from "styled-components";
+import { position, size } from "polished";
 
 const barWidth = "20px";
 const barHeight = "1px";
 const barSpacing = "6px";
 
 const NavbarStyles = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
+  ${position("absolute", 0, null, null, 0)};
   background-color: ${({ isMenuOpen }) =>
-    isMenuOpen ? "transparent" : "blue"};
+    isMenuOpen ? "transparent" : "#000"};
   transition: background-color 700ms cubic-bezier(0.8, 0, 0.55, 0.94);
   transition-delay: 700ms;
   width: 100%;
@@ -44,10 +43,21 @@ const NavbarStyles = styled.header`
     }
   }
 
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      height: 40px;
+      fill: #fff;
+    }
+  }
+
   .navbar__inner {
     display: flex;
     height: 80px;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     > nav {
       align-items: center;
@@ -67,7 +77,7 @@ const NavbarStyles = styled.header`
       transition: visibility 700ms cubic-bezier(0.8, 0, 0.55, 0.94) 1400ms;
       svg {
         display: block;
-        fill: red;
+        fill: #fff;
         height: 18px;
         opacity: 1;
         transition: opacity 700ms cubic-bezier(0.8, 0, 0.55, 0.94) 700ms;
@@ -81,34 +91,29 @@ const NavbarStyles = styled.header`
   }
 
   .hamburger-menu {
-    background: red;
+    ${size(barHeight, barWidth)}
+    display: block;
+    background: #fff;
     position: relative;
     transition: all 0ms 700ms;
-    display: block;
-    width: ${barWidth};
-    height: ${barHeight};
 
-    &::before {
+    &::before,
+    &::after {
+      ${size(barHeight, barWidth)}
       display: block;
-      width: ${barWidth};
-      height: ${barHeight};
-      background: red;
-      bottom: ${barSpacing};
+      background: #fff;
       content: "";
       left: 0;
       position: absolute;
+    }
+
+    &::before {
+      bottom: ${barSpacing};
       transition: bottom 700ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
         transform 700ms cubic-bezier(0.23, 1, 0.32, 1);
     }
 
     &::after {
-      display: block;
-      width: ${barWidth};
-      height: ${barHeight};
-      background: red;
-      content: "";
-      left: 0;
-      position: absolute;
       top: ${barSpacing};
       transition: top 700ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
         transform 700ms cubic-bezier(0.23, 1, 0.32, 1);

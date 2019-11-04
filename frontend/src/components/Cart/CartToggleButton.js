@@ -1,29 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useMutation } from "react-apollo";
-import { Badge, IconButton } from "@material-ui/core";
-import { ShoppingCart } from "@material-ui/icons";
 import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
+import { CartIcon } from "../Icons";
 
 const CartToggleButton = ({ itemsInCart }) => {
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
 
   return (
-    <IconButton
+    <button
       aria-label="open drawer"
-      color="inherit"
-      edge="end"
+      className="svg-button"
       onClick={toggleCart}
+      type="button"
     >
-      <Badge badgeContent={itemsInCart} color="secondary">
-        <ShoppingCart />
-      </Badge>
-    </IconButton>
+      <CartIcon />
+    </button>
   );
 };
 
 CartToggleButton.propTypes = {
-  itemsInCart: PropTypes.number.isRequired,
+  itemsInCart: PropTypes.number,
+};
+
+CartToggleButton.defaultProps = {
+  itemsInCart: 0,
 };
 
 export default CartToggleButton;

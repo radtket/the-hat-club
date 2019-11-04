@@ -13,6 +13,11 @@ const theme = {
   smallSpacing: "12px",
   baseSpacing: "24px",
   largeSpacing: "48px",
+  spacing: {
+    small: "12px",
+    base: "24px",
+    large: "48px",
+  },
 };
 
 const Theme = ({ children }) => {

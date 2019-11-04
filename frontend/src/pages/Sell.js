@@ -1,11 +1,12 @@
 import React from "react";
 import CreateItemForm from "../components/CreateItemForm";
 import PleaseSignIn from "../components/PleaseSignIn";
+import PageTitle from "../components/PageTitle";
 
 const Sell = () => {
   return (
     <div>
-      <h1>Sell</h1>
+      <PageTitle title="Sell" />
       <PleaseSignIn>
         <CreateItemForm />
       </PleaseSignIn>

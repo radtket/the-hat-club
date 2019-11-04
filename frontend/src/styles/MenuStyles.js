@@ -135,13 +135,13 @@ const MenuStyles = styled.div`
       color 400ms cubic-bezier(0.8, 0, 0.55, 0.94);
     user-select: none;
 
-    &.active-page {
+    &.active {
       color: #000;
       text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
         1px 1px 0 #fff;
     }
 
-    a {
+    span {
       background-color: transparent;
       color: inherit;
       line-height: 0.6;
@@ -154,7 +154,7 @@ const MenuStyles = styled.div`
     .link {
       color: rgba(255, 255, 255, 0.1);
 
-      &.active-page {
+      &.active {
         color: #000;
         text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
           1px 1px 0 #fff;

@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { padding } from "polished";
 
 const NavbarStyles = styled.header`
-  padding-top: ${({ theme }) => theme.largeSpacing};
-  padding-bottom: ${({ theme }) => theme.largeSpacing};
+  ${({ theme }) => padding(theme.largeSpacing, null)};
   margin-bottom: ${({ theme }) => theme.largeSpacing};
   background: #eee;
   color: #4b4e53;

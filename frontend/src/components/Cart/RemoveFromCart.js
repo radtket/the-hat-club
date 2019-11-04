@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { IconButton } from "@material-ui/core";
-
-import { Remove } from "@material-ui/icons";
 import { useMutation } from "react-apollo";
 import { REMOVE_ITEM_FROM_CART_MUTATION } from "../../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
@@ -42,11 +39,9 @@ const RemoveFromCart = ({ id }) => {
   );
 
   return (
-    <IconButton
-      aria-label="comments"
-      color="primary"
+    <button
+      className="delete-button"
       disabled={loading}
-      edge="end"
       onClick={() =>
         removeFromCart().catch(({ message }) => {
           openSnackbar({
@@ -56,9 +51,10 @@ const RemoveFromCart = ({ id }) => {
         })
       }
       size="small"
+      type="button"
     >
-      <Remove fontSize="small" />
-    </IconButton>
+      x
+    </button>
   );
 };
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { cover, size, position, margin } from "polished";
 
 const ProductSyles = styled.div`
   border-radius: 5px;
@@ -33,13 +34,8 @@ const ProductSyles = styled.div`
         position: relative;
 
         &::after {
-          width: 100%;
-          height: 100%;
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
+          ${cover()}
+          ${size("100%")}
           backface-visibility: hidden;
           background-color: transparent;
           box-shadow: inset 0 0 0 0 #fff;
@@ -52,9 +48,7 @@ const ProductSyles = styled.div`
     }
 
     &__nav {
-      position: absolute;
-      bottom: 20px;
-      left: -100%;
+      ${position("absolute", null, null, "20px", "-100%")}
       display: flex;
       justify-content: center;
       transition: 0.8s;
@@ -62,8 +56,7 @@ const ProductSyles = styled.div`
       z-index: 3;
 
       button {
-        margin-left: 2px;
-        margin-right: 2px;
+        ${margin(null, "2px")}
         padding: 12px;
 
         svg {
