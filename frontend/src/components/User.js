@@ -8,7 +8,7 @@ import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import Logout from "./Logout";
 import CartToggleButton from "./Cart/CartToggleButton";
 
-const User = ({ styles }) => {
+const User = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { data, error, loading } = useQuery(CURRENT_USER_QUERY);
 
@@ -32,12 +32,7 @@ const User = ({ styles }) => {
 
   if (!data.me) {
     return (
-      <Button
-        className={styles}
-        color="inherit"
-        component={NavLink}
-        to="/signup"
-      >
+      <Button color="inherit" component={NavLink} to="/signup">
         Login
       </Button>
     );
@@ -45,7 +40,7 @@ const User = ({ styles }) => {
 
   return (
     <>
-      <Button className={styles} color="inherit" component={NavLink} to="/sell">
+      <Button color="inherit" component={NavLink} to="/sell">
         Sell
       </Button>
       <IconButton

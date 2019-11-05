@@ -10,6 +10,7 @@ import {
   TOGGLE_CART_MUTATION,
 } from "../../reslovers/Mutation";
 import { StatusSnackbarContext } from "../StatusSnackbar";
+import Button from "../Button";
 
 const totalItems = cart => {
   cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
@@ -55,7 +56,9 @@ const TakeMyMoney = ({ cart, email }) => {
         </dd>
       </dl>
       <nav>
-        <button type="button">View Cart</button>
+        <Button border="white" size="lg" type="button">
+          View Cart
+        </Button>
         <StripeCheckout
           amount={calcTotalPrice(cart)}
           currency="USD"
@@ -67,7 +70,9 @@ const TakeMyMoney = ({ cart, email }) => {
           stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
           token={res => onToken(res)}
         >
-          <button type="button">Checkout</button>
+          <Button size="lg" type="button">
+            Checkout
+          </Button>
         </StripeCheckout>
       </nav>
     </footer>

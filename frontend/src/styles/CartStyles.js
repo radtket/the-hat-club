@@ -1,24 +1,25 @@
 import styled from "styled-components";
-import { cover, hideText, position, padding, size, triangle } from "polished";
+import { position, padding, size, triangle } from "polished";
 
-const CartStyles = styled.div`
+const CartStyles = styled.aside`
   ${position("fixed", 0, 0, 0, null)};
-  ${size("100%", "40%")}
+  ${size("100%", "500px")}
   background: #333;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
-  min-width: 500px;
-  padding: 24px 36px;
+  line-height: 1.2;
+  overflow: hidden;
   transform: translateX(100%);
   transition: transform 0.3s ease;
   z-index: 5;
   ${({ open }) => open && `transform: translateX(0);`};
 
+  @media (max-width: 2100px) {
+    width: 410px;
+  }
+
   .delete-button {
     ${position("absolute", "10px", 0, null, null)};
-    /* position: relative;
-    display: inline-block; */
-    width: 16px;
-    height: 16px;
+    ${size("16px")};
     overflow: hidden;
     font-size: 0;
     line-height: 16px;
@@ -58,19 +59,43 @@ const CartStyles = styled.div`
       ${size("100%", "auto")}
       overflow-x: hidden;
       overflow-y: scroll;
-      position: relative;
     }
 
     &__items {
-      margin-top: 12px;
-      margin-bottom: 12px;
+      position: relative;
+      color: #eee;
+      padding: 7px 0 6px;
+
+      &--wrap {
+        ${padding("79px", "37px", "175px")}
+
+        @media (max-width: 2100px) {
+          padding-bottom: 231px;
+        }
+      }
+
+      > .cart-item {
+        &:last-of-type {
+          border-bottom-color: transparent;
+        }
+      }
     }
   }
 
   header {
-    padding-bottom: 24px;
+    background: #333;
     border-bottom: 1px solid #464646;
+    color: #282828;
+    font-size: 16px;
+    left: 0;
+    line-height: 1;
+    overflow: hidden;
+    padding: 32px 37px;
+    position: absolute;
     text-align: right;
+    top: 0;
+    width: 100%;
+    z-index: 110;
 
     button {
       color: #eee;
@@ -85,6 +110,11 @@ const CartStyles = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
+
+    z-index: 102;
+    padding: 0 37px 37px;
+    overflow: hidden;
+    background: #333;
 
     dl {
       ${padding("20px", 0)}
@@ -101,18 +131,14 @@ const CartStyles = styled.div`
 
     nav {
       button {
-        color: #eee;
-        display: inline-block;
         width: 48%;
-        padding: 12px;
-        border: 1px solid #5f5f5f;
-      }
-    }
-  }
+        margin-bottom: 12px;
 
-  .cart__items {
-    > .cart-item:last-of-type {
-      border-bottom-color: transparent;
+        @media (max-width: 2100px) {
+          display: block;
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -153,8 +179,6 @@ const CartStyles = styled.div`
   }
 
   .input-group {
-    /* display: flex;
-    align-items: center; */
     display: flex;
     color: #a5a5a5;
 

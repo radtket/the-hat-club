@@ -5,12 +5,14 @@ import PageTitle from "../components/PageTitle";
 
 const Sell = () => {
   return (
-    <div>
+    <>
       <PageTitle title="Sell" />
-      <PleaseSignIn>
-        <CreateItemForm />
-      </PleaseSignIn>
-    </div>
+      <section className="container">
+        <PleaseSignIn>
+          <CreateItemForm />
+        </PleaseSignIn>
+      </section>
+    </>
   );
 };
 

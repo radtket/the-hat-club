@@ -1,19 +1,13 @@
 import React, { useState, useContext } from "react";
 import { useMutation } from "react-apollo";
 import { useHistory } from "react-router-dom";
-import {
-  Box,
-  Container,
-  Paper,
-  InputAdornment,
-  TextField,
-} from "@material-ui/core";
 import { CREATE_ITEM_MUTATION } from "../reslovers/Mutation";
 
 // Components
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
 import { StatusSnackbarContext } from "./StatusSnackbar";
+import Form from "../styles/Form";
 
 const CreateItemForm = () => {
   const { openSnackbar } = useContext(StatusSnackbarContext);
@@ -90,109 +84,86 @@ const CreateItemForm = () => {
   }
 
   return (
-    <Container maxWidth="md">
-      <Box
-        alignItems="center"
-        component={Paper}
-        display="flex"
-        flexDirection="column"
-        p={5}
-      >
-        <Box
-          component="form"
-          onSubmit={async e => {
-            e.preventDefault();
-            await createNewItem({
-              variables: {
-                ...values,
-              },
-            })
-              .then(async ({ data }) => {
-                const { id, title } = await data.createItem;
-                await openSnackbar({
-                  message: `Successfully Created Item: ${title}`,
-                  variant: "success",
-                });
-                push(`/item/${id}`);
-              })
-              .catch(err => {
-                openSnackbar({
-                  message: err.message,
-                  variant: "error",
-                });
-              });
-          }}
-          width={1}
-        >
-          <ErrorMessage error={error} />
+    <Form
+      onSubmit={async e => {
+        e.preventDefault();
+        await createNewItem({
+          variables: {
+            ...values,
+          },
+        })
+          .then(async ({ data }) => {
+            const { id, title } = await data.createItem;
+            await openSnackbar({
+              message: `Successfully Created Item: ${title}`,
+              variant: "success",
+            });
+            push(`/item/${id}`);
+          })
+          .catch(err => {
+            openSnackbar({
+              message: err.message,
+              variant: "error",
+            });
+          });
+      }}
+      width={1}
+    >
+      <ErrorMessage error={error} />
 
-          <TextField
-            aria-busy={loading}
-            autoFocus
-            disabled={loading}
-            fullWidth
-            InputLabelProps={{
-              shrink: true,
-            }}
-            label="Image"
-            margin="normal"
-            onChange={uploadFile}
-            required
-            type="file"
-            variant="outlined"
-          />
+      <label htmlFor="file">
+        Image
+        <input
+          id="file"
+          name="file"
+          onChange={uploadFile}
+          placeholder="Upload an image"
+          required
+          type="file"
+        />
+        {values.image && (
+          <img alt="Upload Preview" src={values.image} width="200" />
+        )}
+      </label>
 
-          {values.image && (
-            <img alt="Upload Preview" src={values.image} width="200" />
-          )}
+      <label htmlFor="title">
+        Title
+        <input
+          id="title"
+          name="title"
+          onChange={handleChange("title")}
+          required
+          type="text"
+          value={values.title}
+        />
+      </label>
 
-          <TextField
-            aria-busy={loading}
-            autoFocus
-            disabled={loading}
-            fullWidth
-            label="Title"
-            margin="normal"
-            onChange={handleChange("title")}
-            required
-            value={values.title}
-            variant="outlined"
-          />
-          <TextField
-            aria-busy={loading}
-            autoFocus
-            disabled={loading}
-            fullWidth
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">$</InputAdornment>
-              ),
-            }}
-            label="Price"
-            margin="normal"
-            onChange={handleChange("price")}
-            required
-            value={values.price}
-            variant="outlined"
-          />
-          <TextField
-            aria-busy={loading}
-            autoFocus
-            disabled={loading}
-            fullWidth
-            label="Description"
-            margin="normal"
-            multiline
-            onChange={handleChange("description")}
-            required
-            rows={4}
-            value={values.description}
-            variant="outlined"
-          />
-          <SubmitButton {...{ loading }} />
-        </Box>
-      </Box>
-    </Container>
+      <label htmlFor="price">
+        Price
+        <input
+          id="price"
+          name="price"
+          onChange={handleChange("price")}
+          placeholder="Price"
+          required
+          type="number"
+          value={values.price}
+        />
+      </label>
+
+      <label htmlFor="description">
+        Description
+        <textarea
+          id="description"
+          name="description"
+          onChange={handleChange("description")}
+          placeholder="Enter A Description"
+          required
+          value={values.description}
+        />
+      </label>
+      <SubmitButton {...{ loading }} />
+    </Form>
   );
 };
 

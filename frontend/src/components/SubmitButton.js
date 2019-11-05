@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "@material-ui/core";
 import PropTypes from "prop-types";
+import Button from "./Button";
 
 const SubmitButton = ({ loading }) => {
   return (
-    <Button color="primary" type="submit" variant="contained">
+    <Button size="lg" type="submit">
       Sav{loading ? "ing" : "e"} Changes
     </Button>
   );

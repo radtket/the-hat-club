@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { IconButton } from "@material-ui/core";
-import { Delete } from "@material-ui/icons";
 import { useMutation } from "react-apollo";
 import { DELETE_ITEM_MUTATION } from "../../../reslovers/Mutation";
 import { ALL_ITEMS_QUERY } from "../../../reslovers/Query";

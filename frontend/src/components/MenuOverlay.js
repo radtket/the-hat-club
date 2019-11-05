@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuStyles from "../styles/MenuStyles";
+// import User from "./User";
 
 const MenuOverlay = ({ isMenuOpen }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -88,6 +89,7 @@ const MenuOverlay = ({ isMenuOpen }) => {
         >
           <span>Cart</span>
         </NavLink>
+        {/* <User /> */}
       </ul>
     </MenuStyles>
   );

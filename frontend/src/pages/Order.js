@@ -2,10 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { format } from "date-fns";
-import { Grid, List, ListItem, ListItemText } from "@material-ui/core";
 import { SINGLE_ORDER_QUERY } from "../reslovers/Query";
 import ErrorMessage from "../components/ErrorMessage";
 import OrderItem from "../components/OrderItem";
+import SectionSmall from "../components/SectionSmall";
+import OrderStyles from "../styles/OrderStyles";
 
 const Order = () => {
   const { id } = useParams();
@@ -24,36 +25,93 @@ const Order = () => {
   }
 
   const { order } = data;
-
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={6}>
-        {order.items.map(item => (
-          <OrderItem key={item.id} {...item} />
-        ))}
-      </Grid>
-      <Grid item xs={6}>
-        <List
-          subheader={`Ordered ${format(
-            new Date(order.createdAt),
-            "MMM d, yyyy h:mm a"
-          )}`}
-        >
-          <ListItem>
-            <ListItemText primary="Order ID:" secondary={id} />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary="Charge #:" secondary={order.charge} />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary="Item Count:"
-              secondary={order.items.length}
-            />
-          </ListItem>
-        </List>
-      </Grid>
-    </Grid>
+    <SectionSmall>
+      <div
+        className="container"
+        style={{
+          maxWidth: "900px",
+        }}
+      >
+        <OrderStyles className="order-details">
+          <header>
+            <ul>
+              <li>
+                Order number: <strong>#{id}</strong>
+              </li>
+
+              <li>
+                Date:{" "}
+                <strong>
+                  {format(new Date(order.createdAt), "MMM d, yyyy h:mm a")}
+                </strong>
+              </li>
+
+              <li>
+                Total:
+                <strong>
+                  <span>306.00</span>
+                </strong>
+              </li>
+
+              <li>
+                Charge: <strong>#{order.charge}</strong>
+              </li>
+            </ul>
+          </header>
+          <h2>Order details</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {order.items.map(item => (
+                <OrderItem key={item.id} {...item} />
+              ))}
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th scope="row">Subtotal:</th>
+                <td>
+                  <span>
+                    <span>$</span>
+                    379.00
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Shipping:</th>
+                <td>
+                  <span>
+                    <span>$</span>
+                    10.00
+                  </span>
+                  &nbsp;<small>via Standard</small>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Payment method:</th>
+                <td>Check payments</td>
+              </tr>
+              <tr>
+                <th scope="row">Total:</th>
+                <td>
+                  <span>
+                    <span>$</span>
+                    {order.total}
+                  </span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </OrderStyles>
+      </div>
+    </SectionSmall>
   );
 };
 
