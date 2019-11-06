@@ -10,6 +10,10 @@ import CartToggleButton from "./Cart/CartToggleButton";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
       <NavbarStyles
@@ -26,20 +30,14 @@ const Navbar = () => {
               <SearchIcon />
             </button>
             <CartToggleButton />
-            <button
-              className="menu-wrapper"
-              onClick={() => {
-                setIsMenuOpen(!isMenuOpen);
-              }}
-              type="button"
-            >
+            <button className="menu-wrapper" onClick={toggleMenu} type="button">
               <span className="hamburger-menu" />
             </button>
           </nav>
         </div>
       </NavbarStyles>
       <Cart />
-      <MenuOverlay {...{ isMenuOpen }} />
+      <MenuOverlay {...{ isMenuOpen, toggleMenu }} />
     </>
   );
 };

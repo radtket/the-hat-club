@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import MenuStyles from "../styles/MenuStyles";
-// import User from "./User";
+import User from "./User";
+import NavItem from "./NavItem";
 
-const MenuOverlay = ({ isMenuOpen }) => {
+const MenuOverlay = ({ isMenuOpen, toggleMenu }) => {
   const [isHovering, setIsHovering] = useState(false);
+  const [isActive, setisActive] = useState(false);
+
   return (
     <MenuStyles
       className={`menu-overlay ${isMenuOpen ? "is-active" : ""} ${
@@ -19,77 +22,8 @@ const MenuOverlay = ({ isMenuOpen }) => {
           <div className="column" />
           <div className="column" />
         </div>
-
-        <NavLink
-          className="link"
-          data-link="work"
-          exact
-          onMouseEnter={() => {
-            setIsHovering(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovering(false);
-          }}
-          strict
-          to="/"
-        >
-          <span>Store</span>
-        </NavLink>
-
-        <br />
-
-        <NavLink
-          className="link"
-          data-link="about"
-          exact
-          onMouseEnter={() => {
-            setIsHovering(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovering(false);
-          }}
-          strict
-          to="/sell"
-        >
-          <span>Sell</span>
-        </NavLink>
-
-        <br />
-
-        <NavLink
-          className="link"
-          data-link="labs"
-          exact
-          onMouseEnter={() => {
-            setIsHovering(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovering(false);
-          }}
-          strict
-          to="/labs"
-        >
-          <span>Account</span>
-        </NavLink>
-
-        <br />
-
-        <NavLink
-          className="link"
-          data-link="labs"
-          exact
-          onMouseEnter={() => {
-            setIsHovering(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovering(false);
-          }}
-          strict
-          to="/labs"
-        >
-          <span>Cart</span>
-        </NavLink>
-        {/* <User /> */}
+        <NavItem name="Store" to="/" {...{ setIsHovering }} />
+        <User {...{ setIsHovering, toggleMenu }} />
       </ul>
     </MenuStyles>
   );

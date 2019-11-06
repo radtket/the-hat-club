@@ -1,10 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { useMutation } from "react-apollo";
 import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
 import { CartIcon } from "../Icons";
+import CartCount from "../CartCount";
 
-const CartToggleButton = ({ itemsInCart }) => {
+const CartToggleButton = () => {
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
 
   return (
@@ -12,19 +12,15 @@ const CartToggleButton = ({ itemsInCart }) => {
       aria-label="open drawer"
       className="svg-button"
       onClick={toggleCart}
+      style={{
+        position: "relative",
+      }}
       type="button"
     >
+      <CartCount />
       <CartIcon />
     </button>
   );
-};
-
-CartToggleButton.propTypes = {
-  itemsInCart: PropTypes.number,
-};
-
-CartToggleButton.defaultProps = {
-  itemsInCart: 0,
 };
 
 export default CartToggleButton;
