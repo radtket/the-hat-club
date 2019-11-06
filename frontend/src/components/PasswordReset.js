@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
 import { useMutation } from "react-apollo";
 import PropTypes from "prop-types";
 import { RESET_MUTATION } from "../reslovers/Mutation";
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import TextField from "./TextField";
+import Form from "../styles/Form";
 
 const PasswordReset = ({ resetToken }) => {
   const defaultValues = {
@@ -47,7 +48,7 @@ const PasswordReset = ({ resetToken }) => {
       {!error && !loading && called && (
         <p>Success! Check your email for a reset link! </p>
       )}
-      <form
+      <Form
         method="post"
         onSubmit={e => {
           e.preventDefault();
@@ -58,32 +59,28 @@ const PasswordReset = ({ resetToken }) => {
           });
         }}
       >
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Password"
-          margin="normal"
-          onChange={handleChange("password")}
-          required
-          type="password"
-          value={values.password}
-        />
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Confirm Password"
-          margin="normal"
-          onChange={handleChange("confirmPassword")}
-          required
-          type="password"
-          value={values.confirmPassword}
-        />
-        <SubmitButton {...{ loading }} />
-      </form>
+        <fieldset aria-busy={loading} disabled={loading}>
+          <TextField
+            label="Password"
+            name="password"
+            onChange={handleChange("password")}
+            required
+            type="password"
+            value={values.password}
+          />
+
+          <TextField
+            label="Confirm Password"
+            name="confirmPassword"
+            onChange={handleChange("confirmPassword")}
+            required
+            type="password"
+            value={values.confirmPassword}
+          />
+
+          <SubmitButton {...{ loading }} />
+        </fieldset>
+      </Form>
     </div>
   );
 };

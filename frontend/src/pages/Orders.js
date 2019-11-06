@@ -7,6 +7,7 @@ import { formatMoney } from "../utils/helpers";
 import { USER_ORDERS_QUERY } from "../reslovers/Query";
 import ErrorMessage from "../components/ErrorMessage";
 import Button from "../components/Button";
+import PageTitle from "../components/PageTitle";
 
 const Styles = styled.table`
   width: 100%;
@@ -53,41 +54,43 @@ const Orders = () => {
   const { orders } = data;
 
   return (
-    <div className="container">
-      <h2>You have {orders.length} orders</h2>
-      <Styles>
-        <thead>
-          <tr>
-            <th>Order</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map(({ id, items, createdAt, total }) => {
-            return (
-              <tr key={id}>
-                <td>
-                  <Button as={Link} to={`/order/${id}`}>
-                    #{id}
-                  </Button>
-                </td>
-                <td>{format(new Date(createdAt), "MMM d, yyyy")}</td>
-                <td>Pending</td>
-                <td>{formatMoney(total)}</td>
-                <td>
-                  <Button as={Button} to={`/order/${id}`}>
-                    View
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Styles>
-    </div>
+    <>
+      <PageTitle subtitle={`You have ${orders.length} orders`} title="Orders" />
+      <div className="container">
+        <Styles>
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Total</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders.map(({ id, items, createdAt, total }) => {
+              return (
+                <tr key={id}>
+                  <td>
+                    <Button as={Link} to={`/order/${id}`}>
+                      #{id}
+                    </Button>
+                  </td>
+                  <td>{format(new Date(createdAt), "MMM d, yyyy")}</td>
+                  <td>Pending</td>
+                  <td>{formatMoney(total)}</td>
+                  <td>
+                    <Button as={Button} to={`/order/${id}`}>
+                      View
+                    </Button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Styles>
+      </div>
+    </>
   );
 };
 

@@ -1,20 +1,20 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import styled from "styled-components";
 import { SignIn, SignUp, RequestPasswordReset } from "../components";
+
+const Columns = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+`;
 
 const Signup = () => {
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={4}>
-        <SignIn />
-      </Grid>
-      <Grid item xs={4}>
-        <SignUp />
-      </Grid>
-      <Grid item xs={4}>
-        <RequestPasswordReset />
-      </Grid>
-    </Grid>
+    <Columns className="container">
+      <SignIn />
+      <SignUp />
+      <RequestPasswordReset />
+    </Columns>
   );
 };
 

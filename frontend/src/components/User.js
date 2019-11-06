@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useQuery } from "react-apollo";
-import { Button, IconButton, Menu, MenuItem } from "@material-ui/core";
+import { IconButton, Menu, MenuItem } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import ErrorMessage from "./ErrorMessage";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import Logout from "./Logout";
 import CartToggleButton from "./Cart/CartToggleButton";
+import Button from "./Button";
 
 const User = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -32,7 +33,7 @@ const User = () => {
 
   if (!data.me) {
     return (
-      <Button color="inherit" component={NavLink} to="/signup">
+      <Button as={NavLink} to="/signup">
         Login
       </Button>
     );
@@ -40,7 +41,7 @@ const User = () => {
 
   return (
     <>
-      <Button color="inherit" component={NavLink} to="/sell">
+      <Button as={NavLink} to="/sell">
         Sell
       </Button>
       <IconButton

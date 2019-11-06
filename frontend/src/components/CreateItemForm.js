@@ -8,6 +8,8 @@ import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
 import { StatusSnackbarContext } from "./StatusSnackbar";
 import Form from "../styles/Form";
+import TextField from "./TextField";
+import TextArea from "./TextArea";
 
 const CreateItemForm = () => {
   const { openSnackbar } = useContext(StatusSnackbarContext);
@@ -110,38 +112,32 @@ const CreateItemForm = () => {
       width={1}
     >
       <ErrorMessage error={error} />
-
-      <label htmlFor="file">
-        Image
-        <input
-          id="file"
+      <fieldset aria-busy={loading} disabled={loading}>
+        <TextField
+          label="Image"
           name="file"
           onChange={uploadFile}
           placeholder="Upload an image"
           required
           type="file"
-        />
-        {values.image && (
-          <img alt="Upload Preview" src={values.image} width="200" />
-        )}
-      </label>
+        >
+          {values.image && (
+            <img alt="Upload Preview" src={values.image} width="200" />
+          )}
+        </TextField>
 
-      <label htmlFor="title">
-        Title
-        <input
-          id="title"
+        <TextField
+          label="Title"
           name="title"
           onChange={handleChange("title")}
+          placeholder="Upload an image"
           required
           type="text"
           value={values.title}
         />
-      </label>
 
-      <label htmlFor="price">
-        Price
-        <input
-          id="price"
+        <TextField
+          label="Price"
           name="price"
           onChange={handleChange("price")}
           placeholder="Price"
@@ -149,20 +145,18 @@ const CreateItemForm = () => {
           type="number"
           value={values.price}
         />
-      </label>
 
-      <label htmlFor="description">
-        Description
-        <textarea
-          id="description"
+        <TextArea
+          label="Description"
           name="description"
           onChange={handleChange("description")}
           placeholder="Enter A Description"
           required
           value={values.description}
         />
-      </label>
-      <SubmitButton {...{ loading }} />
+
+        <SubmitButton {...{ loading }} />
+      </fieldset>
     </Form>
   );
 };

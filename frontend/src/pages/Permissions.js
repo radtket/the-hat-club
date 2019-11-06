@@ -1,11 +1,14 @@
 import React from "react";
 import { PleaseSignIn, UserPermissionsTable } from "../components";
+import PageTitle from "../components/PageTitle";
 
 const Permissions = () => {
   return (
     <PleaseSignIn>
-      <h1>Permissions</h1>
-      <UserPermissionsTable />
+      <PageTitle title="Permissions" />
+      <div className="container">
+        <UserPermissionsTable />
+      </div>
     </PleaseSignIn>
   );
 };

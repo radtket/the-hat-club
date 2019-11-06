@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useMutation } from "react-apollo";
-import { Button, Checkbox, TableCell, TableRow } from "@material-ui/core";
+
 import PropTypes from "prop-types";
 import { possiblePermissions } from "../../utils/constants";
 import { UPDATE_PERMISSIONS_MUTATION } from "../../reslovers/Mutation";
 import ErrorMessage from "../ErrorMessage";
 import { ALL_USERS_QUERY } from "../../reslovers/Query";
+import Button from "../Button";
 
 const SingleUserPermissions = ({ user }) => {
   const { name, email, id: userId } = user;
@@ -38,38 +39,38 @@ const SingleUserPermissions = ({ user }) => {
   };
 
   if (error) {
-    return <ErrorMessage {...{ error }} />;
+    return (
+      <tr>
+        <td colSpan="8">
+          <ErrorMessage {...{ error }} />
+        </td>
+      </tr>
+    );
   }
 
   return (
-    <TableRow>
-      <TableCell component="th" scope="row">
-        {name}
-      </TableCell>
-      <TableCell>{email}</TableCell>
+    <tr>
+      <td>{name}</td>
+      <td>{email}</td>
       {possiblePermissions.map(permission => (
-        <TableCell key={permission}>
-          <Checkbox
-            checked={permissions.includes(permission)}
-            inputProps={{
-              "aria-label": "primary checkbox",
-            }}
-            onChange={handlePermissionChange}
-            value={permission}
-          />
-        </TableCell>
+        <td key={permission}>
+          <label htmlFor={`${userId}-permission-${permission}`}>
+            <input
+              checked={permissions.includes(permission)}
+              id={`${userId}-permission-${permission}`}
+              onChange={handlePermissionChange}
+              type="checkbox"
+              value={permission}
+            />
+          </label>
+        </td>
       ))}
-      <TableCell>
-        <Button
-          color="primary"
-          disabled={loading}
-          onClick={updatePermissions}
-          variant="contained"
-        >
+      <td>
+        <Button disabled={loading} onClick={updatePermissions} type="button">
           Updat{loading ? "ing" : "e"}
         </Button>
-      </TableCell>
-    </TableRow>
+      </td>
+    </tr>
   );
 };
 

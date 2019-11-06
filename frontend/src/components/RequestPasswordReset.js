@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
 import { useMutation } from "react-apollo";
 import { REQUEST_RESET_MUTATION } from "../reslovers/Mutation";
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
+import TextField from "./TextField";
+import Form from "../styles/Form";
 
 const RequestPasswordReset = () => {
   const defaultValues = {
@@ -42,7 +43,7 @@ const RequestPasswordReset = () => {
       {!error && !loading && called && (
         <p>Success! Check your email for a reset link! </p>
       )}
-      <form
+      <Form
         method="post"
         onSubmit={e => {
           e.preventDefault();
@@ -53,20 +54,17 @@ const RequestPasswordReset = () => {
           });
         }}
       >
-        <TextField
-          aria-busy={loading}
-          autoFocus
-          disabled={loading}
-          fullWidth
-          label="Email"
-          margin="normal"
-          onChange={handleChange("email")}
-          required
-          type="email"
-          value={values.email}
-        />
-        <SubmitButton {...{ loading }} />
-      </form>
+        <fieldset aria-busy={loading} disabled={loading}>
+          <TextField
+            label="Email"
+            name="email"
+            onChange={handleChange("email")}
+            type="email"
+            value={values.email}
+          />
+          <SubmitButton {...{ loading }} />
+        </fieldset>
+      </Form>
     </div>
   );
 };

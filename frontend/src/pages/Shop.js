@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { Grid } from "@material-ui/core";
 
+import styled from "styled-components";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
 import { useRouteQuery } from "../utils/helpers";
 import {
@@ -12,6 +12,14 @@ import {
 } from "../components";
 import { perPage } from "../utils/constants";
 import PageTitle from "../components/PageTitle";
+
+const ItemsList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 60px;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 0 auto;
+`;
 
 const Shop = () => {
   const page = parseInt(useRouteQuery("page") || 1, 10);
@@ -35,13 +43,11 @@ const Shop = () => {
       <PageTitle title="Shop" />
       <div className="container">
         <SearchBar />
-        <Grid container spacing={3}>
+        <ItemsList>
           {data.items.map(item => (
-            <Grid key={item.id} item xs={4}>
-              <ProductCard {...item} />
-            </Grid>
+            <ProductCard key={item.id} {...item} />
           ))}
-        </Grid>
+        </ItemsList>
         <Pagination {...{ page, perPage }} />
       </div>
     </>
