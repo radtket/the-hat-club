@@ -10,7 +10,7 @@ const BreadCrumbStyles = styled.ul`
     color: #101010;
     display: inline-block;
     font-size: 15px;
-    font-weight: 700;
+    font-family: "Maisonneue Bold";
     left: 1px;
     margin-right: 12px;
     padding-right: 12px;

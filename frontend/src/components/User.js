@@ -24,7 +24,7 @@ const User = ({ setIsHovering, toggleMenu }) => {
   return (
     <>
       <NavItem name="Sell" to="/sell" {...{ setIsHovering }} />
-      <NavItem name="Account" to="/me" {...{ setIsHovering }} />
+      <NavItem name="Account" to="/account" {...{ setIsHovering }} />
       <NavItem name="Cart" to="/cart" {...{ setIsHovering }} />
       <Logout {...{ toggleMenu }} />
     </>

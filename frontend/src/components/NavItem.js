@@ -18,7 +18,6 @@ const NavItem = ({ setIsHovering, to, name }) => {
       >
         <span>{name}</span>
       </NavLink>
-
       <br />
     </>
   );

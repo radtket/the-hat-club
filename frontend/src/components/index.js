@@ -10,6 +10,10 @@ import SearchBar from "./SearchBar";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SubmitButton from "./SubmitButton";
+import Tab from "./Tabs/Tab";
+import TabList from "./Tabs/TabList";
+import TabPanel from "./Tabs/TabPanel";
+import Tabs from "./Tabs";
 import UpdateItemForm from "./UpdateItemForm";
 import UserPermissionsTable from "./UserPermissionsTable";
 
@@ -26,6 +30,10 @@ export {
   SignIn,
   SignUp,
   SubmitButton,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
   UpdateItemForm,
   UserPermissionsTable,
 };
