@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import MenuStyles from "../styles/MenuStyles";
 import User from "./User";
 import NavItem from "./NavItem";
 
 const MenuOverlay = ({ isMenuOpen, toggleMenu }) => {
   const [isHovering, setIsHovering] = useState(false);
-  const [isActive, setisActive] = useState(false);
 
   return (
     <MenuStyles
@@ -22,7 +20,7 @@ const MenuOverlay = ({ isMenuOpen, toggleMenu }) => {
           <div className="column" />
           <div className="column" />
         </div>
-        <NavItem name="Store" to="/" {...{ setIsHovering }} />
+        <NavItem name="Store" to="/" {...{ setIsHovering, toggleMenu }} />
         <User {...{ setIsHovering, toggleMenu }} />
       </ul>
     </MenuStyles>

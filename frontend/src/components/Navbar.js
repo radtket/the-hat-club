@@ -11,6 +11,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
+    console.log("ran");
     setIsMenuOpen(!isMenuOpen);
   };
 

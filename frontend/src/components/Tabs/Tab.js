@@ -4,8 +4,9 @@ import { TabContext } from ".";
 const Tab = ({
   name,
   className = "",
-  onClick = () => {},
+  onClick = () => { },
   children,
+  style,
   ...restProps
 }) => {
   const { activeTab, changeTab } = useContext(TabContext);
@@ -29,6 +30,7 @@ const Tab = ({
         lineHeight: "2",
         margin: "0 17px",
         color: activeTab === name ? "#000" : "#777777",
+        ...style,
       }}
       type="button"
       {...restProps}

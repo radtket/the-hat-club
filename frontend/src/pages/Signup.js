@@ -25,8 +25,26 @@ const Signup = () => {
             marginBottom: 24,
           }}
         >
-          <Tab name="tab-login">Login</Tab>
-          <Tab name="tab-register">Register</Tab>
+          <Tab
+            name="tab-login"
+            style={{
+              fontSize: 24,
+              paddingLeft: 20,
+              paddingRight: 20,
+            }}
+          >
+            Login
+          </Tab>
+          <Tab
+            name="tab-register"
+            style={{
+              fontSize: 24,
+              paddingLeft: 20,
+              paddingRight: 20,
+            }}
+          >
+            Register
+          </Tab>
         </TabList>
 
         <TabPanel name="tab-login">

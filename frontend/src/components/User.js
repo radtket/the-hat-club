@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useQuery } from "react-apollo";
 import ErrorMessage from "./ErrorMessage";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
@@ -18,17 +18,28 @@ const User = ({ setIsHovering, toggleMenu }) => {
   }
 
   if (!data.me) {
-    return <NavItem name="Login" to="/signup" {...{ setIsHovering }} />;
+    return (
+      <NavItem name="Login" to="/signup" {...{ setIsHovering, toggleMenu }} />
+    );
   }
 
   return (
     <>
-      <NavItem name="Sell" to="/sell" {...{ setIsHovering }} />
-      <NavItem name="Account" to="/account" {...{ setIsHovering }} />
-      <NavItem name="Cart" to="/cart" {...{ setIsHovering }} />
+      <NavItem name="Sell" to="/sell" {...{ setIsHovering, toggleMenu }} />
+      <NavItem
+        name="Account"
+        to="/account"
+        {...{ setIsHovering, toggleMenu }}
+      />
+      <NavItem name="Cart" to="/cart" {...{ setIsHovering, toggleMenu }} />
       <Logout {...{ toggleMenu }} />
     </>
   );
+};
+
+User.propTypes = {
+  setIsHovering: PropTypes.func.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default User;
