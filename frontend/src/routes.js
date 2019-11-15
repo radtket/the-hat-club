@@ -6,13 +6,14 @@ import Navbar from "./components/Navbar";
 // Pages
 import Account from "./pages/Account";
 import Item from "./pages/Item";
+import LostPassword from "./pages/LostPassword";
+import Order from "./pages/Order";
 import Orders from "./pages/Orders";
+import Permissions from "./pages/Permissions";
+import Reset from "./pages/Reset";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
-import Reset from "./pages/Reset";
-import Permissions from "./pages/Permissions";
-import Order from "./pages/Order";
 
 const Routes = () => {
   return (
@@ -44,6 +45,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/reset">
             <Reset />
+          </Route>
+          <Route exact path="/lost-password">
+            <LostPassword />
           </Route>
           <Route exact path="/permissions">
             <Permissions />

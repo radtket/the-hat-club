@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import { REQUEST_RESET_MUTATION } from "../reslovers/Mutation";
 import ErrorMessage from "./ErrorMessage";
-import SubmitButton from "./SubmitButton";
+import Button from "./Button";
 import TextField from "./TextField";
 import Form from "../styles/Form";
 
@@ -38,8 +38,7 @@ const RequestPasswordReset = () => {
   }
 
   return (
-    <div>
-      <h1>Request a Password Reset</h1>
+    <>
       {!error && !loading && called && (
         <p>Success! Check your email for a reset link! </p>
       )}
@@ -62,10 +61,12 @@ const RequestPasswordReset = () => {
             type="email"
             value={values.email}
           />
-          <SubmitButton {...{ loading }} />
+          <Button disabled={loading} size="lg" type="submit">
+            Reset Password
+          </Button>
         </fieldset>
       </Form>
-    </div>
+    </>
   );
 };
 
