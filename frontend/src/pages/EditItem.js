@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { GET_SINGLE_ITEM_QUERY } from "../reslovers/Query";
 
-import { ErrorMessage, Product } from "../components";
+import { ErrorMessage, UpdateItemForm } from "../components";
 
-const Item = () => {
+const EditItem = () => {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_SINGLE_ITEM_QUERY, {
     variables: {
@@ -23,9 +23,10 @@ const Item = () => {
 
   return (
     <div>
-      <Product {...data.item} />
+      <h1>Item</h1>
+      <UpdateItemForm {...data.item} />
     </div>
   );
 };
 
-export default Item;
+export default EditItem;

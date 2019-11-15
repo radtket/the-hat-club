@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 // Pages
 import Account from "./pages/Account";
 import Item from "./pages/Item";
+import EditItem from "./pages/EditItem";
 import LostPassword from "./pages/LostPassword";
 import Order from "./pages/Order";
 import Orders from "./pages/Orders";
@@ -39,6 +40,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/item/:id">
             <Item />
+          </Route>
+          <Route exact path="/edit/:id">
+            <EditItem />
           </Route>
           <Route exact path="/account">
             <Account />

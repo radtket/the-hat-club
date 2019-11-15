@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Pagination from "./Pagination";
 import PasswordReset from "./PasswordReset";
 import PleaseSignIn from "./PleaseSignIn";
+import Product from "./Product";
 import ProductCard from "./ProductCard";
 import RequestPasswordReset from "./RequestPasswordReset";
 import SearchBar from "./SearchBar";
@@ -26,6 +27,7 @@ export {
   Pagination,
   PasswordReset,
   PleaseSignIn,
+  Product,
   ProductCard,
   RequestPasswordReset,
   SearchBar,
