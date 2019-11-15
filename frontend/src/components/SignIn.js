@@ -1,11 +1,23 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "react-apollo";
+import styled from "styled-components";
 import { USER_SIGNIN_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import ErrorMessage from "./ErrorMessage";
-import SubmitButton from "./SubmitButton";
+import Button from "./Button";
 import Form from "../styles/Form";
 import TextField from "./TextField";
+
+const ResetPasswordLink = styled(Link)`
+  bottom: 0;
+  color: #000;
+  font-weight: 600;
+  /* Size of Input Height */
+  line-height: 38px;
+  position: absolute;
+  right: 20px;
+`;
 
 const SignIn = () => {
   const defaultValues = {
@@ -13,6 +25,7 @@ const SignIn = () => {
     password: "",
   };
 
+  const { push } = useHistory();
   const [values, setValues] = useState({
     ...defaultValues,
   });
@@ -38,28 +51,28 @@ const SignIn = () => {
   }
 
   return (
-    <div>
-      <h1>SignIn</h1>
-      <Form
-        method="post"
-        onSubmit={e => {
-          e.preventDefault();
-          signin().then(() => {
-            setValues({
-              ...defaultValues,
-            });
+    <Form
+      method="post"
+      onSubmit={e => {
+        e.preventDefault();
+        signin().then(() => {
+          push("/");
+          setValues({
+            ...defaultValues,
           });
-        }}
-      >
-        <fieldset aria-busy={loading} disabled={loading}>
-          <TextField
-            label="Email"
-            name="email"
-            onChange={handleChange("email")}
-            required
-            type="email"
-            value={values.email}
-          />
+        });
+      }}
+    >
+      <fieldset aria-busy={loading} disabled={loading}>
+        <TextField
+          label="Email"
+          name="email"
+          onChange={handleChange("email")}
+          required
+          type="email"
+          value={values.email}
+        />
+        <div style={{ position: "relative" }}>
           <TextField
             label="Password"
             name="password"
@@ -68,10 +81,14 @@ const SignIn = () => {
             type="password"
             value={values.password}
           />
-          <SubmitButton {...{ loading }} />
-        </fieldset>
-      </Form>
-    </div>
+          <ResetPasswordLink to="/lost-password">Forgot?</ResetPasswordLink>
+        </div>
+
+        <Button disabled={loading} fullWidth size="lg" type="submit">
+          Login
+        </Button>
+      </fieldset>
+    </Form>
   );
 };
 

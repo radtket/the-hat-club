@@ -1,3 +1,4 @@
+import { PageSection, SmallSection } from "./Sections";
 import CreateItemForm from "./CreateItemForm";
 import ErrorMessage from "./ErrorMessage";
 import Navbar from "./Navbar";
@@ -21,6 +22,7 @@ export {
   CreateItemForm,
   ErrorMessage,
   Navbar,
+  PageSection,
   Pagination,
   PasswordReset,
   PleaseSignIn,
@@ -29,6 +31,7 @@ export {
   SearchBar,
   SignIn,
   SignUp,
+  SmallSection,
   SubmitButton,
   Tab,
   TabList,

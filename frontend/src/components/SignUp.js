@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "react-apollo";
 import { USER_SIGNUP_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import ErrorMessage from "./ErrorMessage";
-import SubmitButton from "./SubmitButton";
+import Button from "./Button";
 import TextField from "./TextField";
 import Form from "../styles/Form";
 
@@ -14,6 +15,7 @@ const SignUp = () => {
     password: "",
   };
 
+  const { push } = useHistory();
   const [values, setValues] = useState({
     ...defaultValues,
   });
@@ -39,48 +41,47 @@ const SignUp = () => {
   }
 
   return (
-    <div>
-      <h1>SignUp</h1>
-      <Form
-        method="post"
-        onSubmit={e => {
-          e.preventDefault();
-          signup().then(() => {
-            setValues({
-              ...defaultValues,
-            });
+    <Form
+      method="post"
+      onSubmit={e => {
+        e.preventDefault();
+        signup().then(() => {
+          push("/");
+          setValues({
+            ...defaultValues,
           });
-        }}
-      >
-        {" "}
-        <fieldset aria-busy={loading} disabled={loading}>
-          <TextField
-            label="Name"
-            name="name"
-            onChange={handleChange("name")}
-            required
-            value={values.name}
-          />
-          <TextField
-            label="Email"
-            name="email"
-            onChange={handleChange("email")}
-            required
-            type="email"
-            value={values.email}
-          />
-          <TextField
-            label="Password"
-            name="password"
-            onChange={handleChange("password")}
-            required
-            type="password"
-            value={values.password}
-          />
-          <SubmitButton {...{ loading }} />
-        </fieldset>
-      </Form>
-    </div>
+        });
+      }}
+    >
+      <fieldset aria-busy={loading} disabled={loading}>
+        <TextField
+          label="Name"
+          name="name"
+          onChange={handleChange("name")}
+          required
+          value={values.name}
+        />
+        <TextField
+          label="Email"
+          name="email"
+          onChange={handleChange("email")}
+          required
+          type="email"
+          value={values.email}
+        />
+        <TextField
+          label="Password"
+          name="password"
+          onChange={handleChange("password")}
+          required
+          type="password"
+          value={values.password}
+        />
+        <Button disabled={loading} fullWidth size="lg" type="submit">
+          Register
+        </Button>
+      </fieldset>
+    </Form>
   );
 };
 

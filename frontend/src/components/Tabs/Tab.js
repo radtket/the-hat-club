@@ -23,7 +23,7 @@ const Tab = ({
     `}
       onClick={handleClick}
       style={{
-        display: "flex",
+        display: "inline-block",
         cursor: "pointer",
         fontSize: "18px",
         lineHeight: "2",
