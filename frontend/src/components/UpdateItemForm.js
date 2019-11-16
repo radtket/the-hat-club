@@ -1,18 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import PropTypes from "prop-types";
+import notifier from "simple-react-notifications";
 import { UPDATE_ITEM_MUTATION } from "../reslovers/Mutation";
 
 // Components
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
-import { StatusSnackbarContext } from "./StatusSnackbar";
 import Form from "../styles/Form";
 import TextField from "./TextField";
 import TextArea from "./TextArea";
 
 const UpdateItemForm = ({ id, title, description, price }) => {
-  const { openSnackbar } = useContext(StatusSnackbarContext);
   const [updateItem, { error, loading }] = useMutation(UPDATE_ITEM_MUTATION);
 
   const [values, setValues] = useState({
@@ -64,16 +63,12 @@ const UpdateItemForm = ({ id, title, description, price }) => {
           })
             .then(async ({ data }) => {
               const { title: updatedTitle } = await data.updateItem;
-              await openSnackbar({
-                message: `Successfully Updated Item: ${updatedTitle}`,
-                variant: "success",
-              });
+              await notifier.success(
+                `Successfully Updated Item: ${updatedTitle}`
+              );
             })
             .catch(err => {
-              openSnackbar({
-                message: err.message,
-                variant: "error",
-              });
+              notifier.success(err.message);
             });
         }}
         width={1}

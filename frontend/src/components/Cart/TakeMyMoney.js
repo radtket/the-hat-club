@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import PropTypes from "prop-types";
 import { useMutation } from "@apollo/react-hooks";
+import notifier from "simple-react-notifications";
 import { calcTotalPrice, isArrayEmpty } from "../../utils/helpers";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 import {
   CREATE_ORDER_MUTATION,
   TOGGLE_CART_MUTATION,
 } from "../../reslovers/Mutation";
-import { StatusSnackbarContext } from "../StatusSnackbar";
 import Button from "../Button";
 
 const totalItems = cart => {
@@ -18,7 +18,6 @@ const totalItems = cart => {
 
 const TakeMyMoney = ({ cart, email }) => {
   const { push } = useHistory();
-  const { openSnackbar } = useContext(StatusSnackbarContext);
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
   const [createOrder, { loading }] = useMutation(CREATE_ORDER_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
@@ -35,10 +34,7 @@ const TakeMyMoney = ({ cart, email }) => {
         push(`/order/${data.createOrder.id}`);
       })
       .catch(({ message }) => {
-        openSnackbar({
-          message,
-          variant: "error",
-        });
+        notifier.error(message);
       });
   };
 

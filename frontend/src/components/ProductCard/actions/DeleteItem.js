@@ -1,14 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import notifier from "simple-react-notifications";
 import { useMutation } from "react-apollo";
 import { DELETE_ITEM_MUTATION } from "../../../reslovers/Mutation";
 import { ALL_ITEMS_QUERY } from "../../../reslovers/Query";
-import { StatusSnackbarContext } from "../../StatusSnackbar";
 import { TrashIcon } from "../../Icons";
 
 const DeleteItem = ({ id }) => {
   const [deleteItem] = useMutation(DELETE_ITEM_MUTATION);
-  const { openSnackbar } = useContext(StatusSnackbarContext);
 
   return (
     <button
@@ -33,10 +32,7 @@ const DeleteItem = ({ id }) => {
               });
             },
           }).catch(err => {
-            openSnackbar({
-              message: err.message,
-              variant: "error",
-            });
+            notifier.error(err.message);
           });
         }
       }}

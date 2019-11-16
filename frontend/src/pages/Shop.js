@@ -12,6 +12,7 @@ import {
 } from "../components";
 import { perPage } from "../utils/constants";
 import PageTitle from "../components/PageTitle";
+import Loading from "../components/Loading";
 
 const ItemsList = styled.div`
   display: grid;
@@ -31,7 +32,7 @@ const Shop = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {

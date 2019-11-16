@@ -5,16 +5,14 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
 import client from "./utils/client-apollo";
-import { StatusSnackbarProvider } from "./components/StatusSnackbar";
 import Theme from "./utils/theme";
+import "simple-react-notifications/dist/index.css";
 
 ReactDOM.render(
   <Theme>
     <Router>
       <ApolloProvider {...{ client }}>
-        <StatusSnackbarProvider>
-          <Routes />
-        </StatusSnackbarProvider>
+        <Routes />
       </ApolloProvider>
     </Router>
   </Theme>,

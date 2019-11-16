@@ -1,13 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { useMutation } from "react-apollo";
+import notifier from "simple-react-notifications";
 import { REMOVE_ITEM_FROM_CART_MUTATION } from "../../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
-import { StatusSnackbarContext } from "../StatusSnackbar";
 
 const RemoveFromCart = ({ id }) => {
-  const { openSnackbar } = useContext(StatusSnackbarContext);
-
   const [removeFromCart, { loading }] = useMutation(
     REMOVE_ITEM_FROM_CART_MUTATION,
     {
@@ -44,10 +42,7 @@ const RemoveFromCart = ({ id }) => {
       disabled={loading}
       onClick={() =>
         removeFromCart().catch(({ message }) => {
-          openSnackbar({
-            message,
-            variant: "error",
-          });
+          notifier.error(message);
         })
       }
       size="small"

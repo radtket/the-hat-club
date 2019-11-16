@@ -1,18 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import { useHistory } from "react-router-dom";
+import notifier from "simple-react-notifications";
 import { CREATE_ITEM_MUTATION } from "../reslovers/Mutation";
 
 // Components
 import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
-import { StatusSnackbarContext } from "./StatusSnackbar";
 import Form from "../styles/Form";
 import TextField from "./TextField";
 import TextArea from "./TextArea";
 
 const CreateItemForm = () => {
-  const { openSnackbar } = useContext(StatusSnackbarContext);
   const { push } = useHistory();
   const [createNewItem, { error, loading }] = useMutation(
     CREATE_ITEM_MUTATION,
@@ -96,17 +95,11 @@ const CreateItemForm = () => {
         })
           .then(async ({ data }) => {
             const { id, title } = await data.createItem;
-            await openSnackbar({
-              message: `Successfully Created Item: ${title}`,
-              variant: "success",
-            });
+            await notifier.success(`Successfully Created Item: ${title}`);
             push(`/item/${id}`);
           })
           .catch(err => {
-            openSnackbar({
-              message: err.message,
-              variant: "error",
-            });
+            notifier.error(err.message);
           });
       }}
       width={1}

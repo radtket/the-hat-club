@@ -2,10 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Flex, Box } from "@rebass/grid";
 import styled from "styled-components";
+import { useMutation } from "react-apollo";
 import { PageSection } from "./Sections";
 import Button from "./Button";
 import { formatMoney } from "../utils/helpers";
 import BreadCrumbs from "./BreadCrumbs";
+import { ADD_TO_CART_MUTATION } from "../reslovers/Mutation";
+import { CURRENT_USER_QUERY } from "../reslovers/Query";
 
 const PageStyles = styled(PageSection)`
   .product-terms {
@@ -21,6 +24,13 @@ const PageStyles = styled(PageSection)`
 `;
 
 const Product = ({ description, id, image, largeImage, price, title }) => {
+  const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
+    variables: {
+      id,
+    },
+    refetchQueries: () => [{ query: CURRENT_USER_QUERY }],
+  });
+
   return (
     <PageStyles>
       <Flex className="container">
@@ -32,7 +42,13 @@ const Product = ({ description, id, image, largeImage, price, title }) => {
           <h2>{title}</h2>
           <h4>{formatMoney(price)}</h4>
           <p>{description}</p>
-          <Button fullWidth size="lg" type="button">
+          <Button
+            aria-label="Add to Shopping Cart"
+            fullWidth
+            onClick={addToCart}
+            size="lg"
+            type="button"
+          >
             Add to Cart
           </Button>
 
