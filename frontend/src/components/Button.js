@@ -1,6 +1,6 @@
 /* eslint-disable react/button-has-type */
-
 import React from "react";
+import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 
 const ButtonStyles = styled.button`
@@ -186,8 +186,12 @@ const ButtonStyles = styled.button`
   }}
 `;
 
-const Button = props => {
-  return <ButtonStyles {...props}>{props.children}</ButtonStyles>;
+const Button = ({ children, ...props }) => {
+  return <ButtonStyles {...props}>{children}</ButtonStyles>;
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Button;

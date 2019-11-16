@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Flex, Box } from "@rebass/grid";
 import styled from "styled-components";
 import { PageSection } from "./Sections";
@@ -70,6 +71,15 @@ const Product = ({ description, id, image, largeImage, price, title }) => {
       </Flex>
     </PageStyles>
   );
+};
+
+Product.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
 };
 
 export default Product;

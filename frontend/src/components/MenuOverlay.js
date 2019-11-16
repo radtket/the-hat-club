@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import MenuStyles from "../styles/MenuStyles";
 import User from "./User";
 import NavItem from "./NavItem";
@@ -25,6 +26,11 @@ const MenuOverlay = ({ isMenuOpen, toggleMenu }) => {
       </ul>
     </MenuStyles>
   );
+};
+
+MenuOverlay.propTypes = {
+  isMenuOpen: PropTypes.bool.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
 };
 
 export default MenuOverlay;

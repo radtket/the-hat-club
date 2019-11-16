@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 import {
   makeStyles,
@@ -104,4 +105,8 @@ export const StatusSnackbarProvider = ({ children }) => {
       {children}
     </StatusSnackbarContext.Provider>
   );
+};
+
+StatusSnackbarProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

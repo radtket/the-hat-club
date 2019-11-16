@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-// import "./tabs.scss";
+import PropTypes from "prop-types";
 
 export const TabContext = createContext();
 
@@ -11,6 +11,11 @@ const Tabs = ({ initialValue, children, ...restProps }) => {
       <div {...restProps}>{children}</div>
     </TabContext.Provider>
   );
+};
+
+Tabs.propTypes = {
+  initialValue: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Tabs;
