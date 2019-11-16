@@ -12,9 +12,13 @@ const TextArea = ({ label, children, name, ...props }) => {
 };
 
 TextArea.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+};
+
+TextArea.defaultProps = {
+  children: null,
 };
 
 export default TextArea;

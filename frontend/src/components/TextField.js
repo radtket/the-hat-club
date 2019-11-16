@@ -12,9 +12,13 @@ const TextField = ({ label, children, name, ...props }) => {
 };
 
 TextField.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+};
+
+TextField.defaultProps = {
+  children: null,
 };
 
 export default TextField;
