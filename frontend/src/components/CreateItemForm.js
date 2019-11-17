@@ -10,6 +10,7 @@ import SubmitButton from "./SubmitButton";
 import Form from "../styles/Form";
 import TextField from "./TextField";
 import TextArea from "./TextArea";
+import Select from "./Select";
 
 const CreateItemForm = () => {
   const { push } = useHistory();
@@ -25,6 +26,7 @@ const CreateItemForm = () => {
     description: "",
     price: "",
     image: "",
+    tag: "",
     largeImage: "",
   });
 
@@ -123,10 +125,21 @@ const CreateItemForm = () => {
           label="Title"
           name="title"
           onChange={handleChange("title")}
-          placeholder="Upload an image"
+          placeholder="Title of Item"
           required
           type="text"
           value={values.title}
+        />
+
+        <Select
+          label="tag"
+          name="tag"
+          onChange={handleChange("tag")}
+          options={["NFL", "MLB"]}
+          placeholder="Tag of Item"
+          required
+          type="text"
+          value={values.tag}
         />
 
         <TextField
