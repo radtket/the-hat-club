@@ -8,11 +8,14 @@ import {
   Loading,
   PageTitle,
   Pagination,
+  PageSection,
   ProductCard,
   SearchBar,
 } from "../components";
 import { useRouteQuery } from "../utils/helpers";
 import { perPage } from "../utils/constants";
+import SingleItem from "../components/SingleItem";
+import FilterNav from "../components/FilterNav";
 
 const Shop = () => {
   const page = parseInt(useRouteQuery("page") || 1, 10);
@@ -34,18 +37,25 @@ const Shop = () => {
   return (
     <>
       <HomeSlider />
-      <PageTitle title="Shop" />
-      <div className="container">
-        <SearchBar />
-        <Flex>
+      <PageSection className="container">
+        {/* <SearchBar /> */}
+        <FilterNav />
+        <Flex flexWrap="wrap">
           {data.items.map(item => (
-            <Box key={item.id} px={2} width={1 / 3}>
-              <ProductCard {...item} />
+            <Box key={item.id} px={3} width={1 / 3}>
+              <SingleItem {...item} />
+              {/* <ProductCard {...item} /> */}
             </Box>
           ))}
         </Flex>
-        <Pagination {...{ page, perPage }} />
-      </div>
+        <Box
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <Pagination {...{ page, perPage }} />
+        </Box>
+      </PageSection>
     </>
   );
 };

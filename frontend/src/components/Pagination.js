@@ -8,8 +8,7 @@ import ErrorMessage from "./ErrorMessage";
 
 const PaginationStyles = styled.div`
   text-align: center;
-  display: inline-grid;
-  grid-template-columns: repeat(4, auto);
+  display: inline-flex;
   align-items: stretch;
   justify-content: center;
   align-content: center;

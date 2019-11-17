@@ -12,7 +12,7 @@ import TextField from "./TextField";
 const ResetPasswordLink = styled(Link)`
   bottom: 0;
   color: #000;
-  font-weight: 600;
+  font-family: "Maisonneue Bold";
   /* Size of Input Height */
   line-height: 38px;
   position: absolute;

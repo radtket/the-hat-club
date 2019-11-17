@@ -77,7 +77,7 @@ export default createGlobalStyle`
 			font-family: 'Maisonneue Book';
 			font-size: 16px;
 			-webkit-font-smoothing: antialiased;
-			font-weight: 600;
+      font-weight: 400;
 			line-height: 1;
 			text-align: center;
 			text-decoration: none;

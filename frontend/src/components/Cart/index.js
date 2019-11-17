@@ -6,10 +6,11 @@ import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
 import CartItem from "./CartItem";
 import TakeMyMoney from "./TakeMyMoney";
 import { isArrayEmpty } from "../../utils/helpers";
+import ErrorMessage from "../ErrorMessage";
 
 const Cart = () => {
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
-  const { data, loading } = useQuery(CURRENT_USER_QUERY);
+  const { data, loading, error } = useQuery(CURRENT_USER_QUERY);
   const {
     data: { isCartOpen },
   } = useQuery(LOCAL_STATE_QUERY);
@@ -18,8 +19,8 @@ const Cart = () => {
     return null;
   }
 
-  if (!data.me) {
-    return null;
+  if (error) {
+    return <ErrorMessage {...{ error }} />;
   }
 
   const {
