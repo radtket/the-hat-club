@@ -1,26 +1,18 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-
-import styled from "styled-components";
+import { Flex, Box } from "@rebass/grid";
 import { ALL_ITEMS_QUERY } from "../reslovers/Query";
-import { useRouteQuery } from "../utils/helpers";
 import {
-  ProductCard,
-  Pagination,
   ErrorMessage,
+  HomeSlider,
+  Loading,
+  PageTitle,
+  Pagination,
+  ProductCard,
   SearchBar,
 } from "../components";
+import { useRouteQuery } from "../utils/helpers";
 import { perPage } from "../utils/constants";
-import PageTitle from "../components/PageTitle";
-import Loading from "../components/Loading";
-
-const ItemsList = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
-  max-width: ${({ theme }) => theme.maxWidth};
-  margin: 0 auto;
-`;
 
 const Shop = () => {
   const page = parseInt(useRouteQuery("page") || 1, 10);
@@ -41,14 +33,17 @@ const Shop = () => {
 
   return (
     <>
+      <HomeSlider />
       <PageTitle title="Shop" />
       <div className="container">
         <SearchBar />
-        <ItemsList>
+        <Flex>
           {data.items.map(item => (
-            <ProductCard key={item.id} {...item} />
+            <Box key={item.id} px={2} width={1 / 3}>
+              <ProductCard {...item} />
+            </Box>
           ))}
-        </ItemsList>
+        </Flex>
         <Pagination {...{ page, perPage }} />
       </div>
     </>

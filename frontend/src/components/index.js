@@ -1,7 +1,10 @@
 import { PageSection, SmallSection } from "./Sections";
 import CreateItemForm from "./CreateItemForm";
 import ErrorMessage from "./ErrorMessage";
+import HomeSlider from "./HomeSlider";
+import Loading from "./Loading";
 import Navbar from "./Navbar";
+import PageTitle from "./PageTitle";
 import Pagination from "./Pagination";
 import PasswordReset from "./PasswordReset";
 import PleaseSignIn from "./PleaseSignIn";
@@ -22,8 +25,11 @@ import UserPermissionsTable from "./UserPermissionsTable";
 export {
   CreateItemForm,
   ErrorMessage,
+  HomeSlider,
+  Loading,
   Navbar,
   PageSection,
+  PageTitle,
   Pagination,
   PasswordReset,
   PleaseSignIn,
