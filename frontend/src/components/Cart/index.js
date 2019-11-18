@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, useMutation } from "react-apollo";
-import CartStyles from "../../styles/CartStyles";
+import CartStyles, { CartOverlay } from "../../styles/CartStyles";
 import { CURRENT_USER_QUERY, LOCAL_STATE_QUERY } from "../../reslovers/Query";
 import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
 import CartItem from "./CartItem";
@@ -28,35 +28,38 @@ const Cart = () => {
   } = data;
 
   return (
-    <CartStyles open={isCartOpen}>
-      <div className="cart__container">
-        <header>
-          <button onClick={toggleCart} type="button">
-            Close
-          </button>
-        </header>
+    <>
+      <CartStyles open={isCartOpen}>
+        <div className="cart__container">
+          <header>
+            <button onClick={toggleCart} type="button">
+              Close
+            </button>
+          </header>
 
-        <div className="cart__items--wrap">
-          <ul className="cart__items">
-            {isArrayEmpty(cart) && (
-              <li
-                className="cart-item"
-                style={{
-                  textAlign: "center",
-                }}
-              >
-                Your cart is Empty
-              </li>
-            )}
-            {cart.map(item => (
-              <CartItem key={item.id} {...item} />
-            ))}
-            {/* <li className="empty">No products in the cart.</li> */}
-          </ul>
+          <div className="cart__items--wrap">
+            <ul className="cart__items">
+              {isArrayEmpty(cart) && (
+                <li
+                  className="cart-item"
+                  style={{
+                    textAlign: "center",
+                  }}
+                >
+                  Your cart is Empty
+                </li>
+              )}
+              {cart.map(item => (
+                <CartItem key={item.id} {...item} />
+              ))}
+              {/* <li className="empty">No products in the cart.</li> */}
+            </ul>
+          </div>
+          <TakeMyMoney {...data.me} />
         </div>
-        <TakeMyMoney {...data.me} />
-      </div>
-    </CartStyles>
+      </CartStyles>
+      <CartOverlay {...{ isCartOpen }} />
+    </>
   );
 };
 

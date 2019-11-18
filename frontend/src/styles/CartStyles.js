@@ -1,6 +1,25 @@
 import styled from "styled-components";
 import { position, padding, size, triangle } from "polished";
 
+export const CartOverlay = styled.div`
+  ${position("fixed", 0)};
+  ${size(0)}
+  background: rgba(241, 241, 241, 0.73);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease 0s;
+
+  ${({ isCartOpen }) =>
+    isCartOpen &&
+    `
+    width: 100%;
+    height: 100%;
+    visibility: visible;
+    opacity: 1;
+  `}
+`;
+
 const CartStyles = styled.aside`
   ${position("fixed", 0, 0, 0, null)};
   ${size("100%", "500px")}
@@ -10,7 +29,7 @@ const CartStyles = styled.aside`
   overflow: hidden;
   transform: translateX(100%);
   transition: transform 0.3s ease;
-  z-index: 5;
+  z-index: 12;
   ${({ open }) => open && `transform: translateX(0);`};
 
   @media (max-width: 2100px) {

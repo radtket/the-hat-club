@@ -9,8 +9,7 @@ const CartToggleButton = () => {
 
   return (
     <button
-      aria-label="open drawer"
-      className="svg-button"
+      aria-label="Open Cart"
       onClick={toggleCart}
       style={{
         position: "relative",

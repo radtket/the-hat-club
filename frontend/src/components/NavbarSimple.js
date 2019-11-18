@@ -3,14 +3,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useWindowScroll } from "react-use";
 import { position, padding, size } from "polished";
+import { useQuery } from "react-apollo";
 import { HatClubLogo } from "./Branding";
-import { AccountIcon, CartIcon } from "./Icons";
+import CartToggleButton from "./Cart/CartToggleButton";
+import AccountButton from "./AccountButton";
+import { CURRENT_USER_QUERY } from "../reslovers/Query";
 
 const Navbar = styled.header`
   ${padding(({ isCompact }) => (isCompact ? "12px" : "6px"), null)}
   ${position("fixed", 0, null, null, 0)}
   width: 100%;
-  z-index: 99;
+  z-index: 10;
   background: ${({ isCompact }) => (isCompact ? "#fff" : "#23262B")};
   transition-property: background, padding;
   transition-duration: 0.5s;
@@ -28,7 +31,8 @@ const Navbar = styled.header`
     display: flex;
     justify-content: space-between;
 
-    a {
+    a,
+    button {
       padding: 16px 14px;
       display: inline-block;
       font-size: 18px;
@@ -56,6 +60,7 @@ const Navbar = styled.header`
 `;
 
 const NavbarSimple = () => {
+  const { data } = useQuery(CURRENT_USER_QUERY);
   const scrollRef = useRef(null);
   const { y } = useWindowScroll();
 
@@ -69,14 +74,8 @@ const NavbarSimple = () => {
             <Link to="/sell">Sell</Link>
           </div>
           <div>
-            <Link to="/">
-              <AccountIcon />
-            </Link>
-            <Link to="/">
-              <CartIcon />
-            </Link>
-            {/* <Link to="/">Sign In</Link>
-            <Link to="/">Cart</Link> */}
+            <AccountButton {...data} />
+            <CartToggleButton />
           </div>
         </nav>
       </div>

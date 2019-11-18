@@ -7,10 +7,12 @@ import * as serviceWorker from "./serviceWorker";
 import client from "./utils/client-apollo";
 import Theme from "./utils/theme";
 import "simple-react-notifications/dist/index.css";
+import ScrollToTop from "./components/ScrollToTop";
 
 ReactDOM.render(
   <Theme>
     <Router>
+      <ScrollToTop />
       <ApolloProvider {...{ client }}>
         <Routes />
       </ApolloProvider>

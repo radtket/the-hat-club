@@ -82,6 +82,7 @@ export default createGlobalStyle`
 
 		button {
 			appearance: none;
+      background: transparent;
 			border: 0;
 			cursor: pointer;
 			display: inline-block;

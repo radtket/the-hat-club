@@ -6,13 +6,13 @@ import { Flex, Box } from "@rebass/grid";
 import { CREATE_ITEM_MUTATION } from "../reslovers/Mutation";
 
 // Components
+import Button from "./Button";
 import ErrorMessage from "./ErrorMessage";
-import SubmitButton from "./SubmitButton";
 import Form from "../styles/Form";
-import TextField from "./TextField";
-import TextArea from "./TextArea";
-import Select from "./Select";
 import RadioButton from "./RadioButton";
+import Select from "./Select";
+import TextArea from "./TextArea";
+import TextField from "./TextField";
 
 const CreateItemForm = () => {
   const { push } = useHistory();
@@ -197,7 +197,9 @@ const CreateItemForm = () => {
             />
           </Box>
 
-          {/* <SubmitButton {...{ loading }} /> */}
+          <Button disabled={loading} size="lg" type="submit">
+            List Item
+          </Button>
         </Flex>
       </fieldset>
     </Form>

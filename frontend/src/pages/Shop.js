@@ -6,11 +6,11 @@ import {
   ErrorMessage,
   HomeSlider,
   Loading,
-  PageTitle,
   Pagination,
   PageSection,
-  ProductCard,
-  SearchBar,
+  // PageTitle,
+  // ProductCard,
+  // SearchBar,
 } from "../components";
 import { useRouteQuery } from "../utils/helpers";
 import { perPage } from "../utils/constants";

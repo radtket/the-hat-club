@@ -2,9 +2,10 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 // Components
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NavbarSimple from "./components/NavbarSimple";
+import Cart from "./components/Cart";
 
 // Pages
 import Account from "./pages/Account";
@@ -23,6 +24,7 @@ const Routes = () => {
   return (
     <>
       <NavbarSimple />
+      <Cart />
       <main
         style={{
           marginTop: 80,
