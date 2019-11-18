@@ -16,7 +16,7 @@ const HomeSliderStyles = styled(Slider)`
   text-align: center;
 
   img {
-    box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.3);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px 0px;
     border-radius: 6px;
   }
 

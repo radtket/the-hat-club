@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "react-apollo";
 import { useHistory } from "react-router-dom";
 import notifier from "simple-react-notifications";
+import { Flex, Box } from "@rebass/grid";
 import { CREATE_ITEM_MUTATION } from "../reslovers/Mutation";
 
 // Components
@@ -11,6 +12,7 @@ import Form from "../styles/Form";
 import TextField from "./TextField";
 import TextArea from "./TextArea";
 import Select from "./Select";
+import RadioButton from "./RadioButton";
 
 const CreateItemForm = () => {
   const { push } = useHistory();
@@ -108,60 +110,95 @@ const CreateItemForm = () => {
     >
       <ErrorMessage error={error} />
       <fieldset aria-busy={loading} disabled={loading}>
-        <TextField
-          label="Image"
-          name="file"
-          onChange={uploadFile}
-          placeholder="Upload an image"
-          required
-          type="file"
+        <Flex
+          aria-busy={loading}
+          component="fieldset"
+          disabled={loading}
+          flexWrap="wrap"
         >
-          {values.image && (
-            <img alt="Upload Preview" src={values.image} width="200" />
-          )}
-        </TextField>
+          <Box px={2} width={1}>
+            <TextField
+              label="Image"
+              name="file"
+              onChange={uploadFile}
+              placeholder="Upload an image"
+              required
+              type="file"
+            >
+              {values.image && (
+                <img alt="Upload Preview" src={values.image} width="200" />
+              )}
+            </TextField>
+          </Box>
 
-        <TextField
-          label="Title"
-          name="title"
-          onChange={handleChange("title")}
-          placeholder="Title of Item"
-          required
-          type="text"
-          value={values.title}
-        />
+          <Box px={2} width={1}>
+            <TextField
+              label="What are you selling?"
+              name="title"
+              onChange={handleChange("title")}
+              placeholder="Item Name"
+              required
+              type="text"
+              value={values.title}
+            />
+          </Box>
+          <Box px={2} width={1}>
+            <Select
+              label="Category"
+              name="tag"
+              onChange={handleChange("tag")}
+              options={["NFL", "MLB"]}
+              placeholder="Choose one"
+              required
+              type="text"
+              value={values.tag}
+            />
+          </Box>
+          <Box px={2} width={1 / 2}>
+            <TextField
+              label="Price"
+              name="price"
+              onChange={handleChange("price")}
+              placeholder="Price"
+              required
+              type="number"
+              value={values.price}
+            />
+          </Box>
 
-        <Select
-          label="tag"
-          name="tag"
-          onChange={handleChange("tag")}
-          options={["NFL", "MLB"]}
-          placeholder="Tag of Item"
-          required
-          type="text"
-          value={values.tag}
-        />
+          <Box px={2} width={1 / 2}>
+            <fieldset>
+              <legend>Condition</legend>
+              <div className="radio row">
+                <RadioButton
+                  label="New"
+                  name="New"
+                  onChange={handleChange("new")}
+                  value={values.new}
+                />
+                <RadioButton
+                  label="Used"
+                  name="Used"
+                  onChange={handleChange("used")}
+                  value={values.used}
+                />
+              </div>
+            </fieldset>
+          </Box>
 
-        <TextField
-          label="Price"
-          name="price"
-          onChange={handleChange("price")}
-          placeholder="Price"
-          required
-          type="number"
-          value={values.price}
-        />
+          <Box px={2} width={1}>
+            <TextArea
+              label="Description"
+              name="description"
+              onChange={handleChange("description")}
+              placeholder="Enter A Description"
+              required
+              value={values.description}
+            />
+          </Box>
 
-        <TextArea
-          label="Description"
-          name="description"
-          onChange={handleChange("description")}
-          placeholder="Enter A Description"
-          required
-          value={values.description}
-        />
-
-        <SubmitButton {...{ loading }} />
+          {/* <SubmitButton {...{ loading }} /> */}
+        </Flex>
       </fieldset>
     </Form>
   );

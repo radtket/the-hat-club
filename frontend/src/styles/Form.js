@@ -9,16 +9,30 @@ const Form = styled.form`
   input,
   textarea,
   select {
-    width: 100%;
-    padding: 10px 20px;
-    font-size: 16px;
     border: 1px solid #e8e8e8;
-    line-height: normal;
+    display: inline-block;
+    font-size: 16px;
+    height: 48px;
+    line-height: 1.42857143;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    padding: 10px 20px;
+    vertical-align: middle;
+    width: 100%;
+    transition: border-color ease-in-out 0.15s;
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.24);
+    }
 
     &:focus {
       outline: 0;
       border-color: #262626;
     }
+  }
+
+  textarea {
+    height: auto;
   }
 
   /* button,
