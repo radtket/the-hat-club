@@ -1,7 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+
 // Components
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Pages
 import Account from "./pages/Account";
@@ -61,6 +63,7 @@ const Routes = () => {
           </Route>
         </Switch>
       </main>
+      <Footer />
     </>
   );
 };
