@@ -26,7 +26,7 @@ const HomeSliderStyles = styled(Slider)`
     position: absolute;
     left: 15%;
     bottom: 96px;
-    z-index: 1000;
+    z-index: 7;
     padding: 12px;
     width: auto;
 

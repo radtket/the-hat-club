@@ -1,17 +1,21 @@
 import React from "react";
-import CreateItemForm from "../components/CreateItemForm";
-import PleaseSignIn from "../components/PleaseSignIn";
-import PageTitle from "../components/PageTitle";
+
+import {
+  PageTitle,
+  PleaseSignIn,
+  CreateItemForm,
+  SmallSection,
+} from "../components";
 
 const Sell = () => {
   return (
     <>
       <PageTitle title="Sell" />
-      <section className="container">
+      <SmallSection className="container">
         <PleaseSignIn>
           <CreateItemForm />
         </PleaseSignIn>
-      </section>
+      </SmallSection>
     </>
   );
 };
