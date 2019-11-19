@@ -8,14 +8,14 @@ import {
   Loading,
   Pagination,
   PageSection,
+  SingleItem,
+  FilterNav,
   // PageTitle,
   // ProductCard,
   // SearchBar,
 } from "../components";
 import { useRouteQuery } from "../utils/helpers";
 import { perPage } from "../utils/constants";
-import SingleItem from "../components/SingleItem";
-import FilterNav from "../components/FilterNav";
 
 const Shop = () => {
   const page = parseInt(useRouteQuery("page") || 1, 10);

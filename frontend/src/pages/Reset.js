@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouteQuery } from "../utils/helpers";
-import PasswordReset from "../components/PasswordReset";
+import { PasswordReset } from "../components";
 
 const Reset = () => {
   const resetToken = useRouteQuery("resetToken");

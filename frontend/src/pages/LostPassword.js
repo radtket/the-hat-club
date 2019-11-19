@@ -1,6 +1,5 @@
 import React from "react";
-import { RequestPasswordReset } from "../components";
-import { PageSection } from "../components/Sections";
+import { RequestPasswordReset, PageSection } from "../components";
 
 const LostPassword = () => {
   return (

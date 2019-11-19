@@ -3,10 +3,9 @@ import { useQuery, useMutation } from "react-apollo";
 import CartStyles, { CartOverlay } from "../../styles/CartStyles";
 import { CURRENT_USER_QUERY, LOCAL_STATE_QUERY } from "../../reslovers/Query";
 import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
-import CartItem from "./CartItem";
 import TakeMyMoney from "./TakeMyMoney";
-import { isArrayEmpty } from "../../utils/helpers";
 import ErrorMessage from "../ErrorMessage";
+import CartList from "./CartList";
 
 const Cart = () => {
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
@@ -23,9 +22,7 @@ const Cart = () => {
     return <ErrorMessage {...{ error }} />;
   }
 
-  const {
-    me: { cart },
-  } = data;
+  const { me } = data;
 
   return (
     <>
@@ -39,23 +36,10 @@ const Cart = () => {
 
           <div className="cart__items--wrap">
             <ul className="cart__items">
-              {isArrayEmpty(cart) && (
-                <li
-                  className="cart-item"
-                  style={{
-                    textAlign: "center",
-                  }}
-                >
-                  Your cart is Empty
-                </li>
-              )}
-              {cart.map(item => (
-                <CartItem key={item.id} {...item} />
-              ))}
-              {/* <li className="empty">No products in the cart.</li> */}
+              <CartList {...me} />
             </ul>
           </div>
-          <TakeMyMoney {...data.me} />
+          <TakeMyMoney {...me} />
         </div>
       </CartStyles>
       <CartOverlay {...{ isCartOpen }} />

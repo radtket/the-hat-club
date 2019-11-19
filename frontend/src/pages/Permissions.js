@@ -1,6 +1,5 @@
 import React from "react";
-import { PleaseSignIn, UserPermissionsTable } from "../components";
-import PageTitle from "../components/PageTitle";
+import { PageTitle, PleaseSignIn, UserPermissionsTable } from "../components";
 
 const Permissions = () => {
   return (

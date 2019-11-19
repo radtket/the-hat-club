@@ -1,16 +1,10 @@
 import styled from "styled-components";
 
 const BreadCrumbStyles = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-
   li {
     color: #101010;
     display: inline-block;
-    font-size: 15px;
-    font-family: "Maisonneue Bold";
+    font-size: 16px;
     left: 1px;
     margin-right: 12px;
     padding-right: 12px;

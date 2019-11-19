@@ -1,48 +1,69 @@
 import React from "react";
-import Tabs from "../components/Tabs";
-import TabList from "../components/Tabs/TabList";
-import Tab from "../components/Tabs/Tab";
-import TabPanel from "../components/Tabs/TabPanel";
-import PageTitle from "../components/PageTitle";
-import OrdersTable from "../components/OrdersTable";
-// Dashboard
-// Orders
-// Downloads
-// Addresses
-// Account Details
-// Logout
+import { Box } from "@rebass/grid";
+import styled from "styled-components";
+import {
+  Logout,
+  OrdersTable,
+  PageTitleStacked,
+  SmallSection,
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs,
+} from "../components";
+
+const TabContent = styled(TabPanel)`
+  h2 {
+    margin-top: 0;
+    font-weight: normal;
+  }
+`;
 
 const Account = () => {
   return (
     <>
-      <PageTitle title="My Account" />
-      <div className="container">
+      <PageTitleStacked title="My Account" />
+      <SmallSection className="container">
         <Tabs
-          initialValue="tab-dashboard"
+          initialValue="tab-account-details"
           style={{
             display: "flex",
           }}
         >
-          <TabList
-            style={{
-              width: "30%",
-            }}
+          <Box
+            alignItems="flex-start"
+            component={TabList}
+            display="flex"
+            flexDirection="column"
+            width={1 / 3}
           >
-            <Tab name="tab-dashboard">Dashboard</Tab>
             <Tab name="tab-orders">Orders</Tab>
+            <Tab name="tab-wishlist">Wish List</Tab>
             <Tab name="tab-addresses">Addresses</Tab>
-          </TabList>
-          <TabPanel name="tab-dashboard">
-            <p>Dashboard</p>
-          </TabPanel>
-          <TabPanel name="tab-orders">
+            <Tab name="tab-account-details">Account Details</Tab>
+            <Logout
+              style={{
+                margin: 0,
+                padding: 0,
+                fontSize: "18px",
+              }}
+            />
+          </Box>
+          <TabContent name="tab-orders">
+            <h2>Orders</h2>
             <OrdersTable />
-          </TabPanel>
-          <TabPanel name="tab-addresses">
-            <p>Addresses</p>
-          </TabPanel>
+          </TabContent>
+          <TabContent name="tab-wishlist">
+            <h2>Wish List</h2>
+          </TabContent>
+          <TabContent name="tab-addresses">
+            <h2>Addresses</h2>
+          </TabContent>
+          <TabContent name="tab-account-details">
+            <h2>Account Details</h2>
+          </TabContent>
         </Tabs>
-      </div>
+      </SmallSection>
     </>
   );
 };

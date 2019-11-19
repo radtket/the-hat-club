@@ -13,7 +13,6 @@ import Item from "./pages/Item";
 import EditItem from "./pages/EditItem";
 import LostPassword from "./pages/LostPassword";
 import Order from "./pages/Order";
-import Orders from "./pages/Orders";
 import Permissions from "./pages/Permissions";
 import Reset from "./pages/Reset";
 import Sell from "./pages/Sell";
@@ -39,9 +38,6 @@ const Routes = () => {
           </Route>
           <Route exact path="/signup">
             <Signup />
-          </Route>
-          <Route exact path="/orders">
-            <Orders />
           </Route>
           <Route exact path="/item/:id">
             <Item />

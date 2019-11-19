@@ -2,7 +2,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { GET_SINGLE_ITEM_QUERY } from "../reslovers/Query";
-
 import { ErrorMessage, Product } from "../components";
 
 const Item = () => {
