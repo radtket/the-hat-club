@@ -19,13 +19,16 @@ const Navbar = styled.header`
   transition-duration: 0.5s;
   /* border-bottom: 1px solid #eee; */
 
-  svg.logo {
-    ${position("absolute", null, null, null, "50%")}
-    ${size("100%", "124px")}
-    margin-left: ${124 * -0.5}px;
-    fill: ${({ isCompact }) => (isCompact ? "#23262B" : "#fff")};
-    transition: fill 0.5s;
+  .logo {
+    svg {
+      ${position("absolute", null, null, null, "50%")}
+      ${size("100%", "124px")}
+      margin-left: ${124 * -0.5}px;
+      fill: ${({ isCompact }) => (isCompact ? "#23262B" : "#fff")};
+      transition: fill 0.5s;
+    }
   }
+
 
   nav {
     display: flex;
@@ -67,7 +70,9 @@ const NavbarSimple = () => {
   return (
     <Navbar isCompact={y <= 100}>
       <div ref={scrollRef} className="container">
-        <HatClubLogo className="logo" />
+        <Link className="logo" to="/">
+          <HatClubLogo />
+        </Link>
         <nav>
           <div>
             <Link to="/">Shop</Link>

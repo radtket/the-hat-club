@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { padding } from "polished";
+import { SmallSection } from "../components/Sections";
 
-const NavbarStyles = styled.header`
-  ${({ theme }) => padding(theme.largeSpacing, null)};
+const PageTitleStyles = styled(SmallSection)`
   margin-bottom: ${({ theme }) => theme.largeSpacing};
   background: #eee;
   color: #4b4e53;
@@ -10,13 +10,14 @@ const NavbarStyles = styled.header`
   h1 {
     font-size: 36px;
     line-height: 1;
-    margin-bottom: 0;
+    margin: 0;
   }
 
   .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 `;
 
-export default NavbarStyles;
+export default PageTitleStyles;

@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BreadCrumbs from "./BreadCrumbs";
-import NavbarStyles from "../styles/PageTitleStyles";
+import PageTitleStyles from "../styles/PageTitleStyles";
 
 const PageTitle = ({ title }) => {
   return (
-    <NavbarStyles>
+    <PageTitleStyles>
       <div className="container">
         <h1>{title}</h1>
         <BreadCrumbs activePage={title} />
       </div>
-    </NavbarStyles>
+    </PageTitleStyles>
   );
 };
 

@@ -41,13 +41,10 @@ const Styles = styled.div`
   }
 `;
 
-const BigCallout = () => {
+const BigCallout = ({ children }) => {
   return (
     <Styles>
-      <h1 className="h1 reveal--load">
-        Welcome, <br />
-        Taylor Radtke
-      </h1>
+      <h1>{children}</h1>
     </Styles>
   );
 };

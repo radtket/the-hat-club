@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Styles = styled.div`
   position: relative;
@@ -34,14 +34,76 @@ const Styles = styled.div`
       margin: 0px;
     }
   }
+
+  ${({ bgColor }) => {
+    switch (bgColor) {
+      case "black":
+        return css`
+          /* background: #24262b; */
+          background: #1c1c1c;
+          .sec-title {
+            .big-title {
+              color: rgba(255, 255, 255, 0.1);
+            }
+
+            h2 {
+              color: #ffffff;
+            }
+          }
+        `;
+      case "red":
+        return css`
+          background: #ee5050;
+
+          .sec-title {
+            .big-title {
+              color: rgba(160, 39, 39, 0.2);
+            }
+
+            h2 {
+              color: #a02727;
+            }
+          }
+        `;
+
+      case "grey":
+        return css`
+          background: #f4f4f7;
+
+          .sec-title {
+            .big-title {
+              color: rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+              color: #272727;
+            }
+          }
+        `;
+
+      default:
+        return css`
+          background: #fff;
+          .sec-title {
+            .big-title {
+              color: #f6f6f6;
+            }
+
+            h2 {
+              color: #333333;
+            }
+          }
+        `;
+    }
+  }}
 `;
 
-const BigTitle = () => {
+const BigTitle = ({ accent, title, bgColor }) => {
   return (
-    <Styles>
+    <Styles {...{ bgColor }}>
       <div className="sec-title centered">
-        <div className="big-title">YOUR ACCOUNT</div>
-        <h2>Welcome Taylor</h2>
+        <div className="big-title">{accent}</div>
+        <h2>{title}</h2>
       </div>
     </Styles>
   );
