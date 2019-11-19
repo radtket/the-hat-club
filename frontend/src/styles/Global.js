@@ -3,6 +3,21 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 	${styledNormalize}
+
+    @font-face {
+    font-family: "square721_cn_btbold";
+    src: url("fonts/Square721-Cn-BT-Bold/square-721-bold-condensed-bt-webfont.eot");
+    src: url("fonts/Square721-Cn-BT-Bold/square-721-bold-condensed-bt-webfont.eot?#iefix")
+        format("embedded-opentype"),
+      url("fonts/Square721-Cn-BT-Bold/square-721-bold-condensed-bt-webfont.woff2") format("woff2"),
+      url("fonts/Square721-Cn-BT-Bold/square-721-bold-condensed-bt-webfont.woff") format("woff"),
+      url("fonts/Square721-Cn-BT-Bold/square-721-bold-condensed-bt-webfont.ttf") format("truetype"),
+      url("fonts/Square721-Cn-BT-Bold/square-721-bold-condensed-bt-webfont.svg#square721_cn_btbold")
+        format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+
 	@font-face {
 			font-family: 'Maisonneue Bold';
 			src: url('/fonts/maisonneue/maisonneue_bold.woff') format('woff'),
