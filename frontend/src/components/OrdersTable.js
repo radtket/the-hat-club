@@ -68,15 +68,13 @@ const OrdersTable = () => {
           return (
             <tr key={id}>
               <td>
-                <Button as={Link} to={`/order/${id}`}>
-                  #{id}
-                </Button>
+                <Link to={`/order/${id}`}>#{id}</Link>
               </td>
               <td>{format(new Date(createdAt), "MMM d, yyyy")}</td>
               <td>Pending</td>
               <td>{formatMoney(total)}</td>
               <td>
-                <Button as={Button} to={`/order/${id}`}>
+                <Button as={Link} to={`/order/${id}`}>
                   View
                 </Button>
               </td>

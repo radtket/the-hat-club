@@ -3,16 +3,21 @@ import { Box } from "@rebass/grid";
 import styled from "styled-components";
 import {
   Logout,
-  OrdersTable,
   PageTitleStacked,
   SmallSection,
   Tab,
   TabList,
   TabPanel,
   Tabs,
-} from "../components";
+} from "../../components";
 
-const TabContent = styled(TabPanel)`
+// Subpages
+import AccountDetails from "./sub-pages/AccountDetails";
+import Addresses from "./sub-pages/Addresses";
+import Orders from "./sub-pages/Orders";
+import WishList from "./sub-pages/WishList";
+
+export const TabContent = styled(TabPanel)`
   h2 {
     margin-top: 0;
     font-weight: normal;
@@ -50,17 +55,16 @@ const Account = () => {
             />
           </Box>
           <TabContent name="tab-orders">
-            <h2>Orders</h2>
-            <OrdersTable />
+            <Orders />
           </TabContent>
           <TabContent name="tab-wishlist">
-            <h2>Wish List</h2>
+            <WishList />
           </TabContent>
           <TabContent name="tab-addresses">
-            <h2>Addresses</h2>
+            <Addresses />
           </TabContent>
           <TabContent name="tab-account-details">
-            <h2>Account Details</h2>
+            <AccountDetails />
           </TabContent>
         </Tabs>
       </SmallSection>
