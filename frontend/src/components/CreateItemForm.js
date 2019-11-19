@@ -196,10 +196,17 @@ const CreateItemForm = () => {
               value={values.description}
             />
           </Box>
-
-          <Button disabled={loading} size="lg" type="submit">
-            List Item
-          </Button>
+          <Box
+            px={2}
+            style={{
+              textAlign: "right",
+            }}
+            width={1}
+          >
+            <Button disabled={loading} size="lg" type="submit">
+              List Item
+            </Button>
+          </Box>
         </Flex>
       </fieldset>
     </Form>
