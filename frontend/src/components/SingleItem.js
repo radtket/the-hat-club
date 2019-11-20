@@ -7,8 +7,16 @@ const Styles = styled.div`
   margin-top: 48px;
   margin-bottom: 48px;
 
+  &:hover {
+    img {
+      transform: translate3d(0, -6px, 0);
+    }
+  }
+
   img {
     display: block;
+    backface-visibility: hidden;
+    transition: 0.3s ease;
   }
 
   dl {
