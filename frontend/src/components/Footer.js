@@ -180,22 +180,22 @@ const Footer = () => {
             <h4>About Hat Club</h4>
             <ul className="menu">
               <li>
-                <a href="/pages/about-us">About</a>
+                <Link to="/about-us">About</Link>
               </li>
               <li>
-                <a href="pages/contact-us-2">Contact</a>
+                <Link to="pages/contact-us-2">Contact</Link>
               </li>
               <li>
-                <a href="tools/store-locator">Store Locations</a>
+                <Link to="tools/store-locator">Store Locations</Link>
               </li>
               <li>
-                <a href="/pages/sweepstakes">Sweepstakes</a>
+                <Link to="/pages/sweepstakes">Sweepstakes</Link>
               </li>
               <li>
-                <a href="/pages/affiliate-signup">Become an Affiliate</a>
+                <Link to="/pages/affiliate-signup">Become an Affiliate</Link>
               </li>
               <li>
-                <a href="pages/job-oppurtunities">Job Opportunities</a>
+                <Link to="pages/job-oppurtunities">Job Opportunities</Link>
               </li>
             </ul>
           </Box>
@@ -203,24 +203,26 @@ const Footer = () => {
             <h4>Customer Service</h4>
             <ul className="menu">
               <li>
-                <a href="/pages/faq">FAQs</a>
+                <Link to="/pages/faq">FAQs</Link>
               </li>
               <li>
-                <a href="/pages/shipping-info">Shipping Info</a>
+                <Link to="/pages/shipping-info">Shipping Info</Link>
               </li>
               <li>
-                <a href="/pages/returns-exchanges">Returns &amp; Exchanges</a>
+                <Link to="/pages/returns-exchanges">
+                  Returns &amp; Exchanges
+                </Link>
               </li>
               <li>
-                <a href="/account/login">Login</a>
+                <Link to="/account/login">Login</Link>
               </li>
               <li>
-                <a href="/pages/accessibility-statement">
+                <Link to="/pages/accessibility-statement">
                   Accessibility Statement
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/pages/klarna-faqs">Klarna FAQ's</a>
+                <Link to="/pages/klarna-faqs">Klarna FAQ's</Link>
               </li>
             </ul>
           </Box>

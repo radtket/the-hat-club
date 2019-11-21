@@ -41,9 +41,9 @@ const Styles = styled.div`
   }
 `;
 
-const BigCallout = ({ children }) => {
+const BigCallout = ({ children, ...props }) => {
   return (
-    <Styles>
+    <Styles {...props}>
       <h1>{children}</h1>
     </Styles>
   );
