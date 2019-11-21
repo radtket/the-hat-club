@@ -4,7 +4,7 @@ import StripeCheckout from "react-stripe-checkout";
 import PropTypes from "prop-types";
 import { useMutation } from "@apollo/react-hooks";
 import notifier from "simple-react-notifications";
-import { calcTotalPrice, isArrayEmpty } from "../../utils/helpers";
+import { calcTotalPrice, formatMoney, isArrayEmpty } from "../../utils/helpers";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 import {
   CREATE_ORDER_MUTATION,
@@ -46,10 +46,7 @@ const TakeMyMoney = ({ cart, email }) => {
     <footer>
       <dl>
         <dt>Subtotal:</dt>
-        <dd>
-          <span>$</span>
-          {calcTotalPrice(cart)}
-        </dd>
+        <dd>{formatMoney(calcTotalPrice(cart))}</dd>
       </dl>
       <nav>
         <Button border="white" size="lg" type="button">

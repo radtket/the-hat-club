@@ -24,6 +24,7 @@ export const GET_SINGLE_ITEM_QUERY = gql`
       description
       image
       largeImage
+      tag
     }
   }
 `;

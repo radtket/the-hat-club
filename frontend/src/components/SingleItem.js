@@ -13,6 +13,10 @@ const Styles = styled.div`
     }
   }
 
+  > a {
+    display: block;
+  }
+
   img {
     display: block;
     backface-visibility: hidden;
@@ -49,7 +53,7 @@ const SingleItem = ({ id, title, price, description, image, largeImage }) => {
       </Link>
       <dl>
         <dt>{title}</dt>
-        <dd>{formatMoney(price)}.00</dd>
+        <dd>{formatMoney(price)}</dd>
       </dl>
     </Styles>
   );

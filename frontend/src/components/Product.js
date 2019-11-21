@@ -23,7 +23,7 @@ const PageStyles = styled(PageSection)`
   }
 `;
 
-const Product = ({ description, id, image, largeImage, price, title }) => {
+const Product = ({ description, id, image, largeImage, price, title, tag }) => {
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
     variables: {
       id,
@@ -38,7 +38,7 @@ const Product = ({ description, id, image, largeImage, price, title }) => {
           <img alt={title} src={image} />
         </Box>
         <Box px={4} width={1 / 2}>
-          <BreadCrumbs activePage={id} />
+          <BreadCrumbs activePage={id} {...{ tag }} />
           <h2>{title}</h2>
           <h4>{formatMoney(price)}</h4>
           <p>{description}</p>
@@ -96,6 +96,7 @@ Product.propTypes = {
   price: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   largeImage: PropTypes.string.isRequired,
+  tag: PropTypes.oneOf(["MLB", "NFL"]).isRequired,
 };
 
 export default Product;

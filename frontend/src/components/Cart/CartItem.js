@@ -63,7 +63,6 @@ const CartItem = ({ id, quantity, item }) => {
             </fieldset>
           </label>
           <span>
-            <span>$</span>
             {/* {price} */}
             {formatMoney(price * updatedQuantity)}
           </span>
