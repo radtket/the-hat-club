@@ -32,6 +32,15 @@ const SlideWrap = styled.figure`
       color: #fff;
       padding: 6px 3px 0;
       text-indent: -2px;
+      transition: color 0.3s;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.88);
+
+        &::before {
+          width: 100%;
+        }
+      }
 
       &::before {
         content: "";
@@ -39,6 +48,7 @@ const SlideWrap = styled.figure`
         width: 40%;
         height: 2px;
         background: #cf3a3a;
+        transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
     }
   }
