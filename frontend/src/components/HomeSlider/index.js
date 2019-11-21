@@ -11,6 +11,7 @@ import MILLB from "../../assets/images/slider-miilb.jpg";
 import NewArivals from "../../assets/images/slider-new-arivals.jpg";
 
 const HomeSliderStyles = styled(Slider)`
+  overflow: hidden;
   padding-top: 24px;
   padding-bottom: 24px;
   text-align: center;

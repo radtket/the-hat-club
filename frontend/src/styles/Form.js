@@ -33,6 +33,7 @@ const Form = styled.form`
 
   textarea {
     height: auto;
+    min-height: 150px;
   }
 
   /* button,

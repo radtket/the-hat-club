@@ -89,127 +89,129 @@ const CreateItemForm = () => {
   }
 
   return (
-    <Form
-      onSubmit={async e => {
-        e.preventDefault();
-        await createNewItem({
-          variables: {
-            ...values,
-          },
-        })
-          .then(async ({ data }) => {
-            const { id, title } = await data.createItem;
-            await notifier.success(`Successfully Created Item: ${title}`);
-            push(`/item/${id}`);
+    <>
+      <Form
+        onSubmit={async e => {
+          e.preventDefault();
+          await createNewItem({
+            variables: {
+              ...values,
+            },
           })
-          .catch(err => {
-            notifier.error(err.message);
-          });
-      }}
-      width={1}
-    >
-      <ErrorMessage error={error} />
-      <fieldset aria-busy={loading} disabled={loading}>
-        <Flex
-          aria-busy={loading}
-          component="fieldset"
-          disabled={loading}
-          flexWrap="wrap"
-        >
-          <Box px={2} width={1}>
-            <TextField
-              label="Image"
-              name="file"
-              onChange={uploadFile}
-              placeholder="Upload an image"
-              required
-              type="file"
-            >
-              {values.image && (
-                <img alt="Upload Preview" src={values.image} width="200" />
-              )}
-            </TextField>
-          </Box>
-
-          <Box px={2} width={1}>
-            <TextField
-              label="What are you selling?"
-              name="title"
-              onChange={handleChange("title")}
-              placeholder="Item Name"
-              required
-              type="text"
-              value={values.title}
-            />
-          </Box>
-          <Box px={2} width={1}>
-            <Select
-              label="Category"
-              name="tag"
-              onChange={handleChange("tag")}
-              options={["NFL", "MLB"]}
-              placeholder="Choose one"
-              required
-              type="text"
-              value={values.tag}
-            />
-          </Box>
-          <Box px={2} width={1 / 2}>
-            <TextField
-              label="Price"
-              name="price"
-              onChange={handleChange("price")}
-              placeholder="Price"
-              required
-              type="number"
-              value={values.price}
-            />
-          </Box>
-
-          <Box px={2} width={1 / 2}>
-            <fieldset>
-              <legend>Condition</legend>
-              <div className="radio row">
-                <RadioButton
-                  label="New"
-                  name="New"
-                  onChange={handleChange("new")}
-                  value={values.new}
-                />
-                <RadioButton
-                  label="Used"
-                  name="Used"
-                  onChange={handleChange("used")}
-                  value={values.used}
-                />
-              </div>
-            </fieldset>
-          </Box>
-
-          <Box px={2} width={1}>
-            <TextArea
-              label="Description"
-              name="description"
-              onChange={handleChange("description")}
-              placeholder="Enter A Description"
-              required
-              value={values.description}
-            />
-          </Box>
-          <Box
-            px={2}
-            style={{
-              textAlign: "right",
-            }}
-            width={1}
+            .then(async ({ data }) => {
+              const { id, title } = await data.createItem;
+              await notifier.success(`Successfully Created Item: ${title}`);
+              push(`/item/${id}`);
+            })
+            .catch(err => {
+              notifier.error(err.message);
+            });
+        }}
+        width={1}
+      >
+        <ErrorMessage error={error} />
+        <fieldset aria-busy={loading} disabled={loading}>
+          <Flex
+            aria-busy={loading}
+            component="fieldset"
+            disabled={loading}
+            flexWrap="wrap"
           >
-            <Button disabled={loading} size="lg" type="submit">
-              List Item
-            </Button>
-          </Box>
-        </Flex>
-      </fieldset>
-    </Form>
+            <Box px={2} width={1}>
+              <TextField
+                label="Image"
+                name="file"
+                onChange={uploadFile}
+                placeholder="Upload an image"
+                required
+                type="file"
+              >
+                {values.image && (
+                  <img alt="Upload Preview" src={values.image} width="200" />
+                )}
+              </TextField>
+            </Box>
+
+            <Box px={2} width={1}>
+              <TextField
+                label="What are you selling?"
+                name="title"
+                onChange={handleChange("title")}
+                placeholder="Item Name"
+                required
+                type="text"
+                value={values.title}
+              />
+            </Box>
+            <Box px={2} width={1}>
+              <Select
+                label="Category"
+                name="tag"
+                onChange={handleChange("tag")}
+                options={["NFL", "MLB"]}
+                placeholder="Choose one"
+                required
+                type="text"
+                value={values.tag}
+              />
+            </Box>
+            <Box px={2} width={1 / 2}>
+              <TextField
+                label="Price"
+                name="price"
+                onChange={handleChange("price")}
+                placeholder="Price"
+                required
+                type="number"
+                value={values.price}
+              />
+            </Box>
+
+            <Box px={2} width={1 / 2}>
+              <fieldset>
+                <legend>Condition</legend>
+                <div className="radio row">
+                  <RadioButton
+                    label="New"
+                    name="New"
+                    onChange={handleChange("new")}
+                    value={values.new}
+                  />
+                  <RadioButton
+                    label="Used"
+                    name="Used"
+                    onChange={handleChange("used")}
+                    value={values.used}
+                  />
+                </div>
+              </fieldset>
+            </Box>
+
+            <Box px={2} width={1}>
+              <TextArea
+                label="Description"
+                name="description"
+                onChange={handleChange("description")}
+                placeholder="Enter A Description"
+                required
+                value={values.description}
+              />
+            </Box>
+            <Box
+              px={2}
+              style={{
+                textAlign: "right",
+              }}
+              width={1}
+            >
+              <Button disabled={loading} size="lg" type="submit">
+                List Item
+              </Button>
+            </Box>
+          </Flex>
+        </fieldset>
+      </Form>
+    </>
   );
 };
 

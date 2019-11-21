@@ -15,6 +15,7 @@ import {
   VisaIcon,
   DiscoverIcon,
 } from "./Icons";
+import { socialMediaUrls } from "../utils/constants";
 
 const FooterSyles = styled.footer`
   background: #ee5050;
@@ -129,6 +130,7 @@ const FooterSyles = styled.footer`
 `;
 
 const Footer = () => {
+  const { facebook, twitter, instagram } = socialMediaUrls;
   return (
     <FooterSyles>
       <Flex
@@ -150,7 +152,12 @@ const Footer = () => {
           </p>
           <ul className="list--social">
             <li className="list--social__item">
-              <a className="list--social__link" href="#">
+              <a
+                className="list--social__link"
+                href={facebook}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <i className="list--social__icon">
                   <FacebookIcon />
                 </i>
@@ -158,7 +165,12 @@ const Footer = () => {
               </a>{" "}
             </li>
             <li className="list--social__item">
-              <a className="list--social__link" href="#">
+              <a
+                className="list--social__link"
+                href={twitter}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <i className="list--social__icon">
                   <TwitterIcon />
                 </i>
@@ -166,7 +178,12 @@ const Footer = () => {
               </a>{" "}
             </li>
             <li className="list--social__item">
-              <a className="list--social__link" href="#">
+              <a
+                className="list--social__link"
+                href={instagram}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 <i className="list--social__icon">
                   <InstagramIcon />
                 </i>

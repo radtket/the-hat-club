@@ -15,6 +15,7 @@ import {
 import AccountDetails from "./sub-pages/AccountDetails";
 import Addresses from "./sub-pages/Addresses";
 import Orders from "./sub-pages/Orders";
+import Selling from "./sub-pages/Selling";
 import WishList from "./sub-pages/WishList";
 
 export const TabContent = styled(TabPanel)`
@@ -46,6 +47,7 @@ const Account = () => {
             <Tab name="tab-wishlist">Wish List</Tab>
             <Tab name="tab-addresses">Addresses</Tab>
             <Tab name="tab-account-details">Account Details</Tab>
+            <Tab name="tab-selling">Selling</Tab>
             <Logout
               style={{
                 margin: 0,
@@ -65,6 +67,9 @@ const Account = () => {
           </TabContent>
           <TabContent name="tab-account-details">
             <AccountDetails />
+          </TabContent>
+          <TabContent name="tab-selling">
+            <Selling />
           </TabContent>
         </Tabs>
       </SmallSection>

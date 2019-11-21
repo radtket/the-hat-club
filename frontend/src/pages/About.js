@@ -1,13 +1,7 @@
 import React from "react";
 import { Flex, Box } from "@rebass/grid";
 import styled from "styled-components";
-import {
-  BigTitle,
-  BigCallout,
-  PleaseSignIn,
-  CreateItemForm,
-  PageSection,
-} from "../components";
+import { BigCallout, PageSection } from "../components";
 
 // Images
 import HatsOnShelves from "../assets/images/about/hats-on-shelves.jpg";

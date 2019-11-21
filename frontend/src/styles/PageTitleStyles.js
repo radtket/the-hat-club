@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { padding } from "polished";
 import { SmallSection } from "../components/Sections";
 
 const PageTitleStyles = styled(SmallSection)`
