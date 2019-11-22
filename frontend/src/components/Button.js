@@ -11,7 +11,8 @@ const ButtonStyles = styled.button`
   cursor: pointer;
   display: inline-block;
   height: auto;
-  font-weight: 400;
+  font-family: 'Maisonneue Bold';
+  font-weight: normal;
   line-height: 1.5;
   margin-bottom: 0;
   text-align: center;
@@ -26,7 +27,7 @@ const ButtonStyles = styled.button`
 
   &:hover,
   &:focus {
-    font-weight: 400;
+    font-weight: normal;
     text-decoration: none;
     outline: none;
     border-color: transparent;

@@ -6,7 +6,7 @@ import { REMOVE_ITEM_FROM_CART_MUTATION } from "../../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 import { RemoveFromCartButton } from "../../styles/CartStyles";
 
-const RemoveFromCart = ({ id }) => {
+const RemoveFromCart = ({ id, ...props }) => {
   const [removeFromCart, { loading }] = useMutation(
     REMOVE_ITEM_FROM_CART_MUTATION,
     {
@@ -39,6 +39,7 @@ const RemoveFromCart = ({ id }) => {
 
   return (
     <RemoveFromCartButton
+      {...props}
       disabled={loading}
       onClick={() =>
         removeFromCart().catch(({ message }) => {

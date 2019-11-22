@@ -84,15 +84,15 @@ const QuanityToggleStyles = styled.div`
   }
 `;
 
-const QuanityToggle = () => {
-  const [quanity, setQuanity] = useState(1);
+const QuanityToggle = ({ quantity }) => {
+  const [quanityState, setQuanityState] = useState(quantity);
   return (
     <QuanityToggleStyles className="quantity buttons_added">
       <button
         className="minus"
         onClick={e => {
           e.preventDefault();
-          setQuanity(quanity - 1);
+          setQuanityState(quanityState - 1);
         }}
         type="button"
       >
@@ -116,14 +116,14 @@ const QuanityToggle = () => {
           step="1"
           title="Qty"
           type="text"
-          value={quanity}
+          value={quanityState}
         />
       </label>
       <button
         className="plus"
         onClick={e => {
           e.preventDefault();
-          setQuanity(quanity + 1);
+          setQuanityState(quanityState + 1);
         }}
         type="button"
       >
