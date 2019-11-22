@@ -1,8 +1,10 @@
+import { Accordion, AccordionItem } from "./Accordion";
 import { PageSection, SmallSection } from "./Sections";
 import BigCallout from "./BigCallout";
 import BigTitle from "./BigTitle";
 import CreateItemForm from "./CreateItemForm";
 import ErrorMessage from "./ErrorMessage";
+import FaqItem from "./FaqItem";
 import FilterNav from "./FilterNav";
 import HomeSlider from "./HomeSlider";
 import Loading from "./Loading";
@@ -32,10 +34,13 @@ import UpdateItemForm from "./UpdateItemForm";
 import UserPermissionsTable from "./UserPermissionsTable";
 
 export {
+  Accordion,
+  AccordionItem,
   BigCallout,
   BigTitle,
   CreateItemForm,
   ErrorMessage,
+  FaqItem,
   FilterNav,
   HomeSlider,
   Loading,

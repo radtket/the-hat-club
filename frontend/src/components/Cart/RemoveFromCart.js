@@ -4,6 +4,7 @@ import { useMutation } from "react-apollo";
 import notifier from "simple-react-notifications";
 import { REMOVE_ITEM_FROM_CART_MUTATION } from "../../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
+import { RemoveFromCartButton } from "../../styles/CartStyles";
 
 const RemoveFromCart = ({ id }) => {
   const [removeFromCart, { loading }] = useMutation(
@@ -37,8 +38,7 @@ const RemoveFromCart = ({ id }) => {
   );
 
   return (
-    <button
-      className="delete-button"
+    <RemoveFromCartButton
       disabled={loading}
       onClick={() =>
         removeFromCart().catch(({ message }) => {
@@ -49,7 +49,7 @@ const RemoveFromCart = ({ id }) => {
       type="button"
     >
       x
-    </button>
+    </RemoveFromCartButton>
   );
 };
 

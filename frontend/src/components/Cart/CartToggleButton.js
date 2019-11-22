@@ -1,25 +1,25 @@
 import React from "react";
 import { useMutation } from "react-apollo";
+import PropTypes from "prop-types";
 import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
-import { CartIcon } from "../Icons";
-import CartCount from "../CartCount";
 
-const CartToggleButton = () => {
+const CartToggleButton = ({ children, ...props }) => {
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
 
   return (
     <button
-      aria-label="Open Cart"
+      aria-label="Open/Close Cart"
       onClick={toggleCart}
-      style={{
-        position: "relative",
-      }}
+      {...props}
       type="button"
     >
-      <CartCount />
-      <CartIcon />
+      {children}
     </button>
   );
+};
+
+CartToggleButton.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default CartToggleButton;

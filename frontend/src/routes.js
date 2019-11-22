@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Account from "./pages/Account";
 import CartDetails from "./pages/CartDetails";
 import EditItem from "./pages/EditItem";
+import FAQ from "./pages/FAQ";
 import Item from "./pages/Item";
 import LostPassword from "./pages/LostPassword";
 import Order from "./pages/Order";
@@ -67,6 +68,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/cart">
             <CartDetails />
+          </Route>
+          <Route exact path="/faq">
+            <FAQ />
           </Route>
         </Switch>
       </main>

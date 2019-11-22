@@ -3,65 +3,35 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import RemoveFromCart from "./RemoveFromCart";
 import { formatMoney } from "../../utils/helpers";
+import { CartItemStyles } from "../../styles/CartStyles";
+import CartQuanity from "./CartQuanity";
 
-const CartItem = ({ id, quantity, item }) => {
+const CartItem = ({ id, quantity, item, ...props }) => {
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
   if (!item) {
     return (
-      <li className="cart-item">
+      <CartItemStyles {...props}>
         This item has been deleted from the seller
         <RemoveFromCart {...{ id }} />
-      </li>
+      </CartItemStyles>
     );
   }
 
   const { title, image, price } = item;
 
   return (
-    <li className="cart-item">
-      <Link className="cart-item__image" to={`/item/${id}`}>
+    <CartItemStyles {...props}>
+      <Link to={`/item/${id}`}>
         <figure>
           <img alt={title} src={image} />
         </figure>
       </Link>
-      <dl className="cart-item__desc">
+      <dl>
         <dt>
           <Link to={`/item/${id}`}>{title}</Link>
         </dt>
         <dd>
-          <label className="input-group" htmlFor="quantity">
-            {/* Quantity */}
-            Qty
-            <fieldset>
-              <button
-                className="minus"
-                onClick={() => {
-                  setUpdatedQuantity(prev => prev - 1);
-                }}
-                type="button"
-              >
-                Reduce Quantity
-              </button>
-              <input
-                className="input-group-field"
-                name="quantity"
-                onChange={({ target }) => {
-                  setUpdatedQuantity(target.value);
-                }}
-                type="number"
-                value={updatedQuantity}
-              />
-              <button
-                className="add"
-                onClick={() => {
-                  setUpdatedQuantity(prev => prev + 1);
-                }}
-                type="button"
-              >
-                Increase Quantity
-              </button>
-            </fieldset>
-          </label>
+          <CartQuanity {...{ updatedQuantity, setUpdatedQuantity }} />
           <span>
             {/* {price} */}
             {formatMoney(price * updatedQuantity)}
@@ -69,7 +39,7 @@ const CartItem = ({ id, quantity, item }) => {
         </dd>
       </dl>
       <RemoveFromCart {...{ id }} />
-    </li>
+    </CartItemStyles>
   );
 };
 

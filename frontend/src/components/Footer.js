@@ -206,9 +206,6 @@ const Footer = () => {
                 <Link to="tools/store-locator">Store Locations</Link>
               </li>
               <li>
-                <Link to="/pages/sweepstakes">Sweepstakes</Link>
-              </li>
-              <li>
                 <Link to="/pages/affiliate-signup">Become an Affiliate</Link>
               </li>
               <li>
@@ -220,7 +217,7 @@ const Footer = () => {
             <h4>Customer Service</h4>
             <ul className="menu">
               <li>
-                <Link to="/pages/faq">FAQs</Link>
+                <Link to="/faq">FAQs</Link>
               </li>
               <li>
                 <Link to="/pages/shipping-info">Shipping Info</Link>

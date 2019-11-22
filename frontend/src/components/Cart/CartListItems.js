@@ -2,25 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import { isArrayEmpty } from "../../utils/helpers";
 import CartItem from "./CartItem";
+import { CartItemStyles } from "../../styles/CartStyles";
 
-const CartList = ({ cart }) => {
+const CartListItems = ({ cart }) => {
   if (isArrayEmpty(cart)) {
     return (
-      <li
-        className="cart-item"
+      <CartItemStyles
         style={{
           textAlign: "center",
         }}
       >
         Your cart is Empty
-      </li>
+      </CartItemStyles>
     );
   }
 
   return cart.map(item => <CartItem key={item.id} {...item} />);
 };
 
-CartList.propTypes = {
+CartListItems.propTypes = {
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -36,8 +36,8 @@ CartList.propTypes = {
   ),
 };
 
-CartList.defaultProps = {
+CartListItems.defaultProps = {
   cart: [],
 };
 
-export default CartList;
+export default CartListItems;

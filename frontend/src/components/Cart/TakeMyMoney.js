@@ -11,6 +11,7 @@ import {
   TOGGLE_CART_MUTATION,
 } from "../../reslovers/Mutation";
 import Button from "../Button";
+import { CartFooter } from "../../styles/CartStyles";
 
 const totalItems = cart => {
   cart.reduce((tally, cartItem) => tally + cartItem.quantity, 0);
@@ -43,7 +44,7 @@ const TakeMyMoney = ({ cart, email }) => {
   }
 
   return (
-    <footer>
+    <CartFooter>
       <dl>
         <dt>Subtotal:</dt>
         <dd>{formatMoney(calcTotalPrice(cart))}</dd>
@@ -77,7 +78,7 @@ const TakeMyMoney = ({ cart, email }) => {
           </Button>
         </StripeCheckout>
       </nav>
-    </footer>
+    </CartFooter>
   );
 };
 

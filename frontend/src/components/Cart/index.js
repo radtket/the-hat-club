@@ -1,14 +1,20 @@
 import React from "react";
-import { useQuery, useMutation } from "react-apollo";
-import CartStyles, { CartOverlay } from "../../styles/CartStyles";
+import { useQuery } from "react-apollo";
+import {
+  CartDrawer,
+  CartHeader,
+  CartItems,
+  CartItemsWrap,
+  CartOverlay,
+} from "../../styles/CartStyles";
 import { CURRENT_USER_QUERY, LOCAL_STATE_QUERY } from "../../reslovers/Query";
-import { TOGGLE_CART_MUTATION } from "../../reslovers/Mutation";
-import TakeMyMoney from "./TakeMyMoney";
+
+import CartListItems from "./CartListItems";
+import CartToggleButton from "./CartToggleButton";
 import ErrorMessage from "../ErrorMessage";
-import CartList from "./CartList";
+import TakeMyMoney from "./TakeMyMoney";
 
 const Cart = () => {
-  const [toggleCart] = useMutation(TOGGLE_CART_MUTATION);
   const { data, loading, error } = useQuery(CURRENT_USER_QUERY);
   const {
     data: { isCartOpen },
@@ -26,22 +32,20 @@ const Cart = () => {
 
   return (
     <>
-      <CartStyles open={isCartOpen}>
-        <div className="cart__container">
-          <header>
-            <button onClick={toggleCart} type="button">
-              Close
-            </button>
-          </header>
+      <CartDrawer open={isCartOpen}>
+        <div>
+          <CartHeader>
+            <CartToggleButton>Close</CartToggleButton>
+          </CartHeader>
 
-          <div className="cart__items--wrap">
-            <ul className="cart__items">
-              <CartList {...me} />
-            </ul>
-          </div>
+          <CartItemsWrap>
+            <CartItems>
+              <CartListItems {...me} />
+            </CartItems>
+          </CartItemsWrap>
           <TakeMyMoney {...me} />
         </div>
-      </CartStyles>
+      </CartDrawer>
       <CartOverlay {...{ isCartOpen }} />
     </>
   );

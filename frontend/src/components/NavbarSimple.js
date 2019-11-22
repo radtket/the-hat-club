@@ -8,6 +8,8 @@ import { HatClubLogo } from "./Branding";
 import CartToggleButton from "./Cart/CartToggleButton";
 import AccountButton from "./AccountButton";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import CartCount from "./CartCount";
+import { CartIcon } from "./Icons";
 
 const Navbar = styled.header`
   ${padding(({ isCompact }) => (isCompact ? "12px" : "6px"), null)}
@@ -80,7 +82,14 @@ const NavbarSimple = () => {
           </div>
           <div>
             <AccountButton {...data} />
-            <CartToggleButton />
+            <CartToggleButton
+              style={{
+                position: "relative",
+              }}
+            >
+              <CartCount />
+              <CartIcon />
+            </CartToggleButton>
           </div>
         </nav>
       </div>
