@@ -8,9 +8,11 @@ import NavbarSimple from "./components/NavbarSimple";
 import Cart from "./components/Cart";
 
 // Pages
+import About from "./pages/About";
 import Account from "./pages/Account";
-import Item from "./pages/Item";
+import CartDetails from "./pages/CartDetails";
 import EditItem from "./pages/EditItem";
+import Item from "./pages/Item";
 import LostPassword from "./pages/LostPassword";
 import Order from "./pages/Order";
 import Permissions from "./pages/Permissions";
@@ -18,7 +20,6 @@ import Reset from "./pages/Reset";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
-import About from "./pages/About";
 
 const Routes = () => {
   return (
@@ -63,6 +64,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/about-us">
             <About />
+          </Route>
+          <Route exact path="/cart">
+            <CartDetails />
           </Route>
         </Switch>
       </main>

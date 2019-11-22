@@ -22,7 +22,9 @@ const Styles = styled.figure`
         top: 0;
         > a {
           &::after {
-            width: 100%;
+            /* width: 100%; */
+            opacity: 1;
+            transform: scaleX(1);
           }
         }
       }
@@ -90,9 +92,13 @@ const Styles = styled.figure`
           left: 0;
           bottom: -2px;
           height: 1px;
-          width: 0;
-          transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s;
+          width: 100%;
+          /* transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s; */
           background: #707070;
+          opacity: 0;
+          transform: scaleX(0);
+          transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s,
+            opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s;
         }
       }
     }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import PropTypes from "prop-types";
 import { useMutation } from "@apollo/react-hooks";
@@ -49,7 +49,16 @@ const TakeMyMoney = ({ cart, email }) => {
         <dd>{formatMoney(calcTotalPrice(cart))}</dd>
       </dl>
       <nav>
-        <Button border="white" size="lg" type="button">
+        <Button
+          border="white"
+          onClick={e => {
+            e.preventDefault();
+            toggleCart();
+            push("/cart");
+          }}
+          size="lg"
+          type="button"
+        >
           View Cart
         </Button>
         <StripeCheckout
