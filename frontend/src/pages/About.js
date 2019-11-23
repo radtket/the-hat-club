@@ -1,7 +1,7 @@
 import React from "react";
-import { Flex, Box } from "@rebass/grid";
+import { Box } from "@rebass/grid";
 import styled from "styled-components";
-import { BigCallout, PageSection } from "../components";
+import { BigCallout, PageSection, SmallSection } from "../components";
 
 // Images
 import HatsOnShelves from "../assets/images/about/hats-on-shelves.jpg";
@@ -10,6 +10,12 @@ import CactusChallenge from "../assets/images/about/chuck_dirk.png";
 import ChildrensHospital from "../assets/images/about/childrens-hospital.jpg";
 import BoysGirlsClub from "../assets/images/about/boys-and-girls.jpg";
 import { HLogo } from "../components/Branding";
+
+const Row = styled(SmallSection)`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`;
 
 const AboutStyles = styled.div`
   h2 {
@@ -52,27 +58,13 @@ const AboutStyles = styled.div`
     background: #24262b;
     color: #fff;
   }
-
-  .row {
-    padding: 30px 0;
-
-    @media (min-width: 480px) {
-      padding-top: 50px;
-      padding-bottom: 50px;
-    }
-
-    @media (min-width: 768px) {
-      padding-top: 70px;
-      padding-bottom: 70px;
-    }
-  }
 `;
 const About = () => {
   return (
     <AboutStyles>
       <PageSection className="bg-red">
         <div className="container">
-          <Flex alignItems="center" className="row" justifyContent="center">
+          <Row>
             <BigCallout
               style={{
                 background: "#ee5050",
@@ -81,8 +73,8 @@ const About = () => {
             >
               Our story so far.
             </BigCallout>
-          </Flex>
-          <Flex alignItems="center" className="row" justifyContent="center">
+          </Row>
+          <Row>
             <Box px={2} width={1 / 2}>
               <h2>The Begining.</h2>
               <p>
@@ -96,12 +88,12 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <HLogo />
             </Box>
-          </Flex>
+          </Row>
         </div>
       </PageSection>
       <PageSection className="bg-gray">
         <div className="container">
-          <Flex alignItems="center" className="row" justifyContent="center">
+          <Row>
             <Box px={4} width={1 / 2}>
               <img alt="" src={HatsOnShelves} />
             </Box>
@@ -123,8 +115,8 @@ const About = () => {
                 and Undefeated, to name a few.
               </p>
             </Box>
-          </Flex>
-          <Flex alignItems="center" className="row" justifyContent="center">
+          </Row>
+          <Row>
             <Box px={2} width={1 / 2}>
               <h2>Our Bond</h2>
               <p>
@@ -154,12 +146,12 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <img alt="" src={DannyAinge} />
             </Box>
-          </Flex>
+          </Row>
         </div>
       </PageSection>
       <PageSection className="bg-black">
         <div className="container">
-          <Flex alignItems="center" className="row" justifyContent="center">
+          <Row>
             <Box
               px={4}
               style={{
@@ -175,8 +167,8 @@ const About = () => {
                 sponsoring a number of charity programs.
               </p>
             </Box>
-          </Flex>
-          <Flex alignItems="center" className="row" justifyContent="center">
+          </Row>
+          <Row>
             <Box px={2} width={1 / 2}>
               <h2>The Hat Club Cactus Challenge</h2>
               <p>
@@ -189,8 +181,8 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <img alt="" src={CactusChallenge} />
             </Box>
-          </Flex>
-          <Flex alignItems="center" className="row" justifyContent="center">
+          </Row>
+          <Row>
             <Box px={4} width={1 / 2}>
               <img alt="" src={ChildrensHospital} />
             </Box>
@@ -203,8 +195,8 @@ const About = () => {
                 promotions and proceeds donations.
               </p>
             </Box>
-          </Flex>
-          <Flex alignItems="center" className="row" justifyContent="center">
+          </Row>
+          <Row>
             <Box px={2} width={1 / 2}>
               <h2>Boys & Girls Club</h2>
               <p>
@@ -216,7 +208,7 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <img alt="" src={BoysGirlsClub} />
             </Box>
-          </Flex>
+          </Row>
         </div>
       </PageSection>
     </AboutStyles>

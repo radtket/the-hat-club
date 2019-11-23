@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Styles = styled.div`
   max-width: 61.5rem;
@@ -47,6 +48,10 @@ const BigCallout = ({ children, ...props }) => {
       <h1>{children}</h1>
     </Styles>
   );
+};
+
+BigCallout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default BigCallout;

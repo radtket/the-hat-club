@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@rebass/grid";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import QuanityToggle from "../QuanityToggle";
 import { formatMoney } from "../../utils/helpers";
 
@@ -130,6 +131,26 @@ const CartTable = ({ cart }) => {
       </table>
     </CartTableStyles>
   );
+};
+
+CartTable.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      quantity: PropTypes.number,
+      item: PropTypes.shape({
+        description: PropTypes.string,
+        id: PropTypes.string,
+        image: PropTypes.string,
+        price: PropTypes.number,
+        title: PropTypes.string,
+      }),
+    })
+  ),
+};
+
+CartTable.defaultProps = {
+  cart: [],
 };
 
 export default CartTable;

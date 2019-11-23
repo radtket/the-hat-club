@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { position, size } from "polished";
 
@@ -89,6 +90,12 @@ const Slide = ({ title, cta, img }) => {
       </figcaption>
     </SlideWrap>
   );
+};
+
+Slide.propTypes = {
+  title: PropTypes.string.isRequired,
+  cta: PropTypes.node.isRequired,
+  img: PropTypes.node.isRequired,
 };
 
 export default Slide;

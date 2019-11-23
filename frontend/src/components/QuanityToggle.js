@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const QuanityToggleStyles = styled.div`
@@ -131,6 +132,10 @@ const QuanityToggle = ({ quantity }) => {
       </button>
     </QuanityToggleStyles>
   );
+};
+
+QuanityToggle.propTypes = {
+  quantity: PropTypes.number.isRequired,
 };
 
 export default QuanityToggle;

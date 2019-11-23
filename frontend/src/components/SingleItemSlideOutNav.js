@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { formatMoney } from "../utils/helpers";
 import { CartIcon } from "./Icons";
@@ -113,14 +114,7 @@ const Styles = styled.div`
   }
 `;
 
-const SingleItemSlideOutNav = ({
-  id,
-  title,
-  price,
-  description,
-  image,
-  largeImage,
-}) => {
+const SingleItemSlideOutNav = ({ id, title, price, image }) => {
   return (
     <Styles>
       <Link to={`/item/${id}`}>
@@ -145,6 +139,13 @@ const SingleItemSlideOutNav = ({
       </figcaption>
     </Styles>
   );
+};
+
+SingleItemSlideOutNav.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default SingleItemSlideOutNav;

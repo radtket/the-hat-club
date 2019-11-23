@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const SelectStyles = styled.div`
   position: relative;
@@ -78,6 +79,12 @@ const Select = ({ options, name, label, ...props }) => {
       </SelectStyles>
     </label>
   );
+};
+
+Select.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
 };
 
 export default Select;

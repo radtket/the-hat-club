@@ -9,7 +9,7 @@ import DeleteItem from "./actions/DeleteItem";
 import EditItem from "./actions/EditItem";
 import ProductSyles from "../../styles/ProductSyles";
 
-const ProductCard = ({ id, title, price, description, image, largeImage }) => {
+const ProductCard = ({ id, title, price, image }) => {
   return (
     <ProductSyles>
       <figure className="product__image">
@@ -36,9 +36,7 @@ ProductCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  largeImage: PropTypes.string.isRequired,
 };
 
 export default ProductCard;

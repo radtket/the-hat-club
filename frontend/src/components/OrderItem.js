@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { formatMoney } from "../utils/helpers";
 
-const OrderItem = ({ id, title, description, price, image, quantity }) => {
+const OrderItem = ({ id, title, price, quantity }) => {
   return (
     <tr>
       <td>
@@ -23,9 +23,7 @@ const OrderItem = ({ id, title, description, price, image, quantity }) => {
 OrderItem.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
 };
 
