@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 import TextField from "../../../components/TextField";
 import Form from "../../../styles/Form";
 
-const AccountDetails = () => {
+const AccountDetailsStyles = styled.div`
+  ${Form} {
+    margin-bottom: 48px;
+
+    legend {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+  }
+`;
+
+const AccountDetails = ({ name, email }) => {
+  const [values, setValues] = useState({
+    name,
+    email,
+    password: "",
+    newPassword: "",
+    newPasswordConfirm: "",
+  });
+
+  const handleChange = key => ({ target }) => {
+    setValues(prev => {
+      return {
+        ...prev,
+        [key]: target.value,
+      };
+    });
+  };
+
   return (
-    <>
-      <h2>Account Details</h2>
+    <AccountDetailsStyles>
       <Form
         method="post"
         onSubmit={e => {
@@ -17,20 +46,21 @@ const AccountDetails = () => {
         // aria-busy={loading}
         // disabled={loading}
         >
+          <legend>Account Details</legend>
           <TextField
             label="Name"
             name="name"
-            // onChange={handleChange("name")}
+            onChange={handleChange("name")}
             required
-            // value={values.name}
+            value={values.name}
           />
           <TextField
             label="Email"
             name="email"
-            // onChange={handleChange("email")}
+            onChange={handleChange("email")}
             required
             type="email"
-            // value={values.email}
+            value={values.email}
           />
         </fieldset>
       </Form>
@@ -46,33 +76,38 @@ const AccountDetails = () => {
           <TextField
             label="Current password (leave blank to leave unchanged)"
             name="password_current"
-            // onChange={handleChange("email")}
+            onChange={handleChange("password")}
             required
             type="password"
-            // value={values.email}
+            value={values.password}
           />
 
           <TextField
             label="New password (leave blank to leave unchanged)"
-            name="password_new_1"
-            // onChange={handleChange("email")}
+            name="newPasswordConfirm"
+            onChange={handleChange("newPassword")}
             required
             type="password"
-            // value={values.email}
+            value={values.newPassword}
           />
 
           <TextField
             label="Confirm new password"
-            name="password_new_2"
-            // onChange={handleChange("email")}
+            name="newPasswordConfirm"
+            onChange={handleChange("newPasswordConfirm")}
             required
             type="password"
-            // value={values.email}
+            value={values.newPasswordConfirm}
           />
         </fieldset>
       </Form>
-    </>
+    </AccountDetailsStyles>
   );
+};
+
+AccountDetails.propTypes = {
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export default AccountDetails;

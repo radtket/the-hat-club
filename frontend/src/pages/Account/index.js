@@ -1,7 +1,10 @@
 import React from "react";
 import { Box } from "@rebass/grid";
+import { useQuery } from "react-apollo";
 import styled from "styled-components";
 import {
+  ErrorMessage,
+  Loading,
   Logout,
   PageTitleStacked,
   SmallSection,
@@ -17,6 +20,7 @@ import Addresses from "./sub-pages/Addresses";
 import Orders from "./sub-pages/Orders";
 import Selling from "./sub-pages/Selling";
 import WishList from "./sub-pages/WishList";
+import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 
 export const TabContent = styled(TabPanel)`
   h2 {
@@ -26,6 +30,18 @@ export const TabContent = styled(TabPanel)`
 `;
 
 const Account = () => {
+  const { data, loading, error } = useQuery(CURRENT_USER_QUERY);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorMessage {...{ error }} />;
+  }
+
+  const { me } = data;
+
   return (
     <>
       <PageTitleStacked title="My Account" />
@@ -66,7 +82,7 @@ const Account = () => {
             <Addresses />
           </TabContent>
           <TabContent name="tab-account-details">
-            <AccountDetails />
+            <AccountDetails {...me} />
           </TabContent>
           <TabContent name="tab-selling">
             <Selling />

@@ -2,6 +2,8 @@ import { Accordion, AccordionItem } from "./Accordion";
 import { PageSection, SmallSection } from "./Sections";
 import BigCallout from "./BigCallout";
 import BigTitle from "./BigTitle";
+import Button from "./Button";
+import CartTable from "./Cart/CartTable";
 import CreateItemForm from "./CreateItemForm";
 import ErrorMessage from "./ErrorMessage";
 import FaqItem from "./FaqItem";
@@ -38,6 +40,8 @@ export {
   AccordionItem,
   BigCallout,
   BigTitle,
+  Button,
+  CartTable,
   CreateItemForm,
   ErrorMessage,
   FaqItem,

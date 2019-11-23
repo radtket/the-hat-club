@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { GET_SINGLE_ITEM_QUERY } from "../reslovers/Query";
-import { ErrorMessage, Product } from "../components";
+import { ErrorMessage, Loading, Product } from "../components";
 
 const Item = () => {
   const { id } = useParams();
@@ -13,7 +13,7 @@ const Item = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
