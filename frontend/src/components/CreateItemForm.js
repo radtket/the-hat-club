@@ -28,7 +28,7 @@ const CreateItemForm = () => {
     description: "",
     price: "",
     image: "",
-    tag: "",
+    tag: "NFL",
     largeImage: "",
   });
 
