@@ -13,6 +13,7 @@ import RadioButton from "./RadioButton";
 import Select from "./Select";
 import TextArea from "./TextArea";
 import TextField from "./TextField";
+import ImageUploader from "./ImageUploader";
 
 const CreateItemForm = () => {
   const { push } = useHistory();
@@ -22,7 +23,7 @@ const CreateItemForm = () => {
       partialRefetch: true,
     }
   );
-
+  const [files, setFiles] = useState([]);
   const [values, setValues] = useState({
     title: "",
     description: "",
@@ -53,8 +54,9 @@ const CreateItemForm = () => {
     }
   };
 
-  const uploadFile = async ({ target }) => {
-    const [file] = target.files;
+  const uploadFile = () => {
+    // const [file] = target.files;
+    const [file] = files;
     const data = new FormData();
     data.append("file", file);
     data.append(
@@ -62,7 +64,7 @@ const CreateItemForm = () => {
       process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
     );
 
-    await fetch(
+    return fetch(
       `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
       {
         method: "POST",
@@ -72,11 +74,11 @@ const CreateItemForm = () => {
       .then(res => res.json())
       .then(({ secure_url: image, eager }) => {
         const { secure_url: largeImage } = eager[0];
-        return setValues(prev => ({
-          ...prev,
+
+        return {
           image,
           largeImage,
-        }));
+        };
       });
   };
 
@@ -93,11 +95,16 @@ const CreateItemForm = () => {
       <Form
         onSubmit={async e => {
           e.preventDefault();
-          await createNewItem({
-            variables: {
-              ...values,
-            },
-          })
+          await uploadFile()
+            .then(({ image, largeImage }) =>
+              createNewItem({
+                variables: {
+                  ...values,
+                  image,
+                  largeImage,
+                },
+              })
+            )
             .then(async ({ data }) => {
               const { id, title } = await data.createItem;
               await notifier.success(`Successfully Created Item: ${title}`);
@@ -118,18 +125,7 @@ const CreateItemForm = () => {
             flexWrap="wrap"
           >
             <Box px={2} width={1}>
-              <TextField
-                label="Image"
-                name="file"
-                onChange={uploadFile}
-                placeholder="Upload an image"
-                required
-                type="file"
-              >
-                {values.image && (
-                  <img alt="Upload Preview" src={values.image} width="200" />
-                )}
-              </TextField>
+              <ImageUploader {...{ files, setFiles }} />
             </Box>
 
             <Box px={2} width={1}>

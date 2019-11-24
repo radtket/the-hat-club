@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
 import Button from "./Button";
 import { PlusIcon, PhotoPlaceholderIcon, CloseIcon } from "./Icons";
@@ -6,6 +8,7 @@ import { PlusIcon, PhotoPlaceholderIcon, CloseIcon } from "./Icons";
 const Styles = styled.div`
   width: 100%;
   display: flex;
+  margin-bottom: 1rem;
 
   .left,
   .right {
@@ -64,6 +67,17 @@ const Styles = styled.div`
   }
 `;
 
+const AddPhotosButton = styled.button`
+  font-size: 16px;
+  text-align: center;
+
+  svg {
+    display: block;
+    height: 20px;
+    margin: 0 auto 12px;
+  }
+`;
+
 const CloseButton = styled.button`
   padding: 0;
   background: #bada55;
@@ -88,43 +102,70 @@ const ThumbnailPlaceholder = styled(PhotoPlaceholderIcon)`
   display: block;
 `;
 
-const ImageUploader = () => {
+const ImageUploader = ({ files, setFiles }) => {
   const NumberOfPhotos = 4;
-  const UploadedImagesArray = [];
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+    accept: "image/*",
+    onDrop: acceptedFiles => {
+      setFiles(prev =>
+        prev.concat(
+          acceptedFiles.map(file =>
+            Object.assign(file, {
+              preview: URL.createObjectURL(file),
+            })
+          )
+        )
+      );
+    },
+  });
 
-  const UploadedImages = () => {
+  const Thumbs = () => {
     const items = [];
     for (let i = 0; i < NumberOfPhotos; i += 1) {
-      if (UploadedImagesArray[i] !== undefined) {
-        items.push(
-          <li key={i}>
-            <CloseButton type="button">
-              <CloseIcon />
-            </CloseButton>
-            <figure
-              style={{
-                backgroundImage: `url('https://fanatics.frgimages.com/FFImage/thumb.aspx?i=/productimages/_3071000/altimages/ff_3071719alt1_full.jpg&w=900')`,
-              }}
-            />
-          </li>
-        );
-      }
+      switch (true) {
+        case files[i] !== undefined:
+          items.push(
+            <li key={`${files[i].name} ${i}`}>
+              <CloseButton
+                onClick={e => {
+                  e.preventDefault();
 
-      if (UploadedImagesArray.length === i) {
-        items.push(
-          <li key={i}>
-            <span>
-              <PlusIcon />
-              <p>Add Photos</p>
-            </span>
-          </li>
-        );
-      } else {
-        items.push(
-          <li key={i}>
-            <ThumbnailPlaceholder />
-          </li>
-        );
+                  setFiles(prev =>
+                    prev.filter(file => file.name !== files[i].name)
+                  );
+                }}
+                type="button"
+              >
+                <CloseIcon />
+              </CloseButton>
+              <figure
+                style={{
+                  backgroundImage: `url('${files[i].preview}')`,
+                }}
+              />
+            </li>
+          );
+          break;
+        case files.length === i:
+          items.push(
+            <li key={i}>
+              <AddPhotosButton
+                disabled={files.length >= NumberOfPhotos}
+                onClick={open}
+                type="button"
+              >
+                <PlusIcon />
+                Add Photos
+              </AddPhotosButton>
+            </li>
+          );
+          break;
+        default:
+          items.push(
+            <li key={i}>
+              <ThumbnailPlaceholder />
+            </li>
+          );
       }
     }
 
@@ -133,43 +174,41 @@ const ImageUploader = () => {
 
   return (
     <Styles>
-      <div className="left">
+      <div className="left" {...getRootProps()}>
         <nav>
-          <Button border size="lg">
+          <Button
+            border
+            disabled={files.length >= NumberOfPhotos}
+            size="lg"
+            type="button"
+          >
             Add Photos
           </Button>
+          <input {...getInputProps()} />
           <p>Add up to {NumberOfPhotos} photos</p>
+          {isDragActive ? (
+            <p>Drop the files here ...</p>
+          ) : (
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          )}
         </nav>
       </div>
       <div className="right">
         <ul>
-          <UploadedImages />
-          {/* <li>
-            <span>
-              <PlusIcon />
-              <p>Add Photos</p>
-            </span>
-          </li>
-          <li>
-            <CloseButton type="button">
-              <CloseIcon />
-            </CloseButton>
-            <figure
-              style={{
-                backgroundImage: `url('https://res.cloudinary.com/de3t9r4ky/image/upload/v1574621102/sickfits/moeaqiaz69r3oxedhjnk.jpg')`,
-              }}
-            />
-          </li>
-          <li>
-            <ThumbnailPlaceholder />
-          </li>
-          <li>
-            <ThumbnailPlaceholder />
-          </li> */}
+          <Thumbs />
         </ul>
       </div>
     </Styles>
   );
+};
+
+ImageUploader.propTypes = {
+  files: PropTypes.arrayOf(PropTypes.object),
+  setFiles: PropTypes.func.isRequired,
+};
+
+ImageUploader.defaultProps = {
+  files: [],
 };
 
 export default ImageUploader;
