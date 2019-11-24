@@ -113,7 +113,6 @@ const SingleItem = ({ id, title, price, image }) => {
       </Link>
       <figcaption>
         <h3>{title}</h3>
-
         <dl>
           <dt>{formatMoney(price)}</dt>
           <dd>

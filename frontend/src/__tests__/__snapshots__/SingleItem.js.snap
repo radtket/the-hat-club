@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleItem /> renders and matches the snapshot 1`] = `
+<styled.figure>
+  <Link
+    to="/item/ABC123"
+  >
+    <img
+      alt="A Cool Item"
+      src="dog.jpg"
+    />
+  </Link>
+  <figcaption>
+    <h3>
+      A Cool Item
+    </h3>
+    <dl>
+      <dt>
+        $40.00
+      </dt>
+      <dd>
+        <Link
+          to="/item/ABC123"
+        >
+          View Details
+        </Link>
+      </dd>
+    </dl>
+  </figcaption>
+</styled.figure>
+`;
