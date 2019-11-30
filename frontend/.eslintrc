@@ -1,5 +1,11 @@
 {
-	"extends": ["airbnb", "airbnb/hooks", "prettier", "prettier/react", "jest-enzyme"],
+	"extends": [
+		"airbnb",
+		"airbnb/hooks",
+		"prettier",
+		"prettier/react",
+		"jest-enzyme"
+	],
 	"parser": "babel-eslint",
 	"parserOptions": {
 		"sourceType": "module",
@@ -31,11 +37,14 @@
 		"react/jsx-uses-react": 1,
 		"react/react-in-jsx-scope": 0,
 		"jsx-a11y/anchor-is-valid": 0,
-		"no-unused-expressions": ["error", {
-			"allowShortCircuit": true,
-			"allowTernary": true,
-			"allowTaggedTemplates": true
-		}],
+		"no-unused-expressions": [
+			"error",
+			{
+				"allowShortCircuit": true,
+				"allowTernary": true,
+				"allowTaggedTemplates": true
+			}
+		],
 		"prettier/prettier": [
 			"error",
 			{

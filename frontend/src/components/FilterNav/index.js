@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+import FilterNavItem from "./FilterNavItem";
 
 const Styles = styled.nav`
   line-height: 18px;
@@ -30,18 +32,21 @@ const Styles = styled.nav`
   }
 `;
 
-const FilterNav = () => {
+const FilterNav = ({ tag, setTag }) => {
   return (
     <Styles>
-      <button className="active" type="button">
-        All
-      </button>
+      <FilterNavItem {...{ tag, setTag }} label="All" tagName="ALL" />
       <span>/</span>
-      <button type="button">MLB</button>
+      <FilterNavItem {...{ tag, setTag }} tagName="MLB" />
       <span>/</span>
-      <button type="button">NFL</button>
+      <FilterNavItem {...{ tag, setTag }} tagName="NFL" />
     </Styles>
   );
+};
+
+FilterNav.propTypes = {
+  tag: PropTypes.string.isRequired,
+  setTag: PropTypes.func.isRequired,
 };
 
 export default FilterNav;

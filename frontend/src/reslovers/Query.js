@@ -15,6 +15,16 @@ export const ALL_ITEMS_QUERY = gql`
   }
 `;
 
+export const ALL_ITEMS_BY_TAG_QUERY = gql`
+  query ALL_ITEMS_BY_TAG_QUERY($tag: String!) {
+    items(where: { tag: $tag }) {
+      id
+      image
+      title
+    }
+  }
+`;
+
 export const GET_SINGLE_ITEM_QUERY = gql`
   query GET_SINGLE_ITEM_QUERY($id: ID!) {
     item(where: { id: $id }) {
