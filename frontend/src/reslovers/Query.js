@@ -9,8 +9,10 @@ export const ALL_ITEMS_QUERY = gql`
       price
       tag
       description
-      image
-      largeImage
+      images {
+        image
+        largeImage
+      }
     }
   }
 `;
@@ -19,7 +21,10 @@ export const ALL_ITEMS_BY_TAG_QUERY = gql`
   query ALL_ITEMS_BY_TAG_QUERY($tag: String!) {
     items(where: { tag: $tag }) {
       id
-      image
+      images {
+        image
+        largeImage
+      }
       title
     }
   }
@@ -32,8 +37,10 @@ export const GET_SINGLE_ITEM_QUERY = gql`
       title
       price
       description
-      image
-      largeImage
+      images {
+        image
+        largeImage
+      }
       tag
     }
   }
@@ -62,7 +69,10 @@ export const CURRENT_USER_QUERY = gql`
         item {
           id
           price
-          image
+          images {
+            image
+            largeImage
+          }
           title
           description
         }
@@ -99,7 +109,10 @@ export const SEARCH_ITEMS_QUERY = gql`
       }
     ) {
       id
-      image
+      images {
+        image
+        largeImage
+      }
       title
     }
   }
@@ -120,7 +133,10 @@ export const SINGLE_ORDER_QUERY = gql`
         title
         description
         price
-        image
+        images {
+          image
+          largeImage
+        }
         quantity
       }
     }
@@ -138,7 +154,10 @@ export const USER_ORDERS_QUERY = gql`
         title
         description
         price
-        image
+        images {
+          image
+          largeImage
+        }
         quantity
       }
     }

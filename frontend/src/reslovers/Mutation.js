@@ -6,16 +6,14 @@ export const CREATE_ITEM_MUTATION = gql`
     $description: String!
     $price: Int!
     $tag: String!
-    $image: String
-    $largeImage: String
+    $images: ImageCreateManyInput
   ) {
     createItem(
       title: $title
       description: $description
       price: $price
       tag: $tag
-      image: $image
-      largeImage: $largeImage
+      images: $images
     ) {
       id
       title

@@ -30,3 +30,15 @@ export const isArrayEmpty = arrayArg => {
   }
   return true;
 };
+
+export const asyncMap = async (array, callback) => {
+  const results = [];
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const item of array) {
+    // eslint-disable-next-line no-await-in-loop
+    results.push(await callback(item));
+  }
+
+  return results;
+};

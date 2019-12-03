@@ -105,11 +105,11 @@ const Styles = styled.figure`
   }
 `;
 
-const SingleItem = ({ id, title, price, image }) => {
+const SingleItem = ({ id, title, price, images }) => {
   return (
     <Styles>
       <Link to={`/item/${id}`}>
-        <img alt={title} src={image} />
+        <img alt={title} src={images[0].largeImage} />
       </Link>
       <figcaption>
         <h3>{title}</h3>
@@ -128,7 +128,12 @@ SingleItem.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      largeImage: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default SingleItem;

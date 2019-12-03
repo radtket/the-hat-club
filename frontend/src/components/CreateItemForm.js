@@ -28,9 +28,8 @@ const CreateItemForm = () => {
     title: "",
     description: "",
     price: "",
-    image: "",
+    images: [],
     tag: "NFL",
-    largeImage: "",
   });
 
   const handleChange = name => ({ target }) => {
@@ -54,9 +53,7 @@ const CreateItemForm = () => {
     }
   };
 
-  const uploadFile = () => {
-    // const [file] = target.files;
-    const [file] = files;
+  const uploadSingleFile = file => {
     const data = new FormData();
     data.append("file", file);
     data.append(
@@ -95,13 +92,14 @@ const CreateItemForm = () => {
       <Form
         onSubmit={async e => {
           e.preventDefault();
-          await uploadFile()
-            .then(({ image, largeImage }) =>
+          await Promise.all(files.map(file => uploadSingleFile(file)))
+            .then(create =>
               createNewItem({
                 variables: {
                   ...values,
-                  image,
-                  largeImage,
+                  images: {
+                    create,
+                  },
                 },
               })
             )

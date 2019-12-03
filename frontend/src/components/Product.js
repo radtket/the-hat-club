@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Flex, Box } from "@rebass/grid";
 import styled from "styled-components";
 import { useMutation } from "react-apollo";
 import { PageSection } from "./Sections";
 import Button from "./Button";
-import { formatMoney } from "../utils/helpers";
+import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import BreadCrumbs from "./BreadCrumbs";
 import { ADD_TO_CART_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
@@ -23,7 +23,9 @@ const PageStyles = styled(PageSection)`
   }
 `;
 
-const Product = ({ description, id, image, largeImage, price, title, tag }) => {
+const Product = ({ description, id, images, price, title, tag }) => {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
     variables: {
       id,
@@ -34,9 +36,34 @@ const Product = ({ description, id, image, largeImage, price, title, tag }) => {
   return (
     <PageStyles>
       <Flex className="container">
-        <Box px={2} width={1 / 2}>
-          <img alt={title} src={image} />
-        </Box>
+        {!isArrayEmpty(images) && (
+          <Box px={2} width={1 / 2}>
+            <img alt={title} src={images[activeImageIndex].largeImage} />
+            <ul>
+              {images.map(({ image }, i) => {
+                return (
+                  <li key={image}>
+                    <button
+                      onClick={() => {
+                        setActiveImageIndex(i);
+                      }}
+                      type="button"
+                    >
+                      <img
+                        alt={`${title} #${i}`}
+                        src={image}
+                        style={{
+                          border: activeImageIndex === i ? "1px solid red" : 0,
+                        }}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </Box>
+        )}
+
         <Box px={4} width={1 / 2}>
           <BreadCrumbs activePage={id} {...{ tag }} />
           <h2>{title}</h2>
@@ -94,9 +121,17 @@ Product.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
-  largeImage: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      largeImage: PropTypes.string.isRequired,
+    })
+  ),
   tag: PropTypes.oneOf(["MLB", "NFL"]).isRequired,
+};
+
+Product.defaultProps = {
+  images: [],
 };
 
 export default Product;
