@@ -33,12 +33,14 @@ const Product = ({ description, id, images, price, title, tag }) => {
     refetchQueries: () => [{ query: CURRENT_USER_QUERY }],
   });
 
+  const { largeImage } = images[activeImageIndex];
+
   return (
     <PageStyles>
       <Flex className="container">
         {!isArrayEmpty(images) && (
           <Box px={2} width={1 / 2}>
-            <img alt={title} src={images[activeImageIndex].largeImage} />
+            <img alt={title} src={largeImage} />
             <ul>
               {images.map(({ image }, i) => {
                 return (

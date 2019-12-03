@@ -8,6 +8,7 @@ import CartQuanity from "./CartQuanity";
 
 const CartItem = ({ id, quantity, item, ...props }) => {
   const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
+
   if (!item) {
     return (
       <CartItemStyles {...props}>
@@ -17,8 +18,8 @@ const CartItem = ({ id, quantity, item, ...props }) => {
     );
   }
 
-  const { title, image, price } = item;
-
+  const { title, images, price } = item;
+  const { image } = images[0];
   return (
     <CartItemStyles {...props}>
       <Link to={`/item/${id}`}>
@@ -48,7 +49,12 @@ CartItem.propTypes = {
   quantity: PropTypes.number.isRequired,
   item: PropTypes.shape({
     title: PropTypes.string,
-    image: PropTypes.string,
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        image: PropTypes.string.isRequired,
+        largeImage: PropTypes.string.isRequired,
+      })
+    ),
     price: PropTypes.number,
   }),
 };
