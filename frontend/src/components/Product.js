@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Flex, Box } from "@rebass/grid";
 import styled from "styled-components";
@@ -9,6 +9,7 @@ import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import BreadCrumbs from "./BreadCrumbs";
 import { ADD_TO_CART_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import SingleProductSlider from "./SingleProductSlider";
 
 const PageStyles = styled(PageSection)`
   .product-terms {
@@ -24,8 +25,6 @@ const PageStyles = styled(PageSection)`
 `;
 
 const Product = ({ description, id, images, price, title, tag }) => {
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
-
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
     variables: {
       id,
@@ -33,40 +32,16 @@ const Product = ({ description, id, images, price, title, tag }) => {
     refetchQueries: () => [{ query: CURRENT_USER_QUERY }],
   });
 
-  const { largeImage } = images[activeImageIndex];
-
   return (
     <PageStyles>
       <Flex className="container">
         {!isArrayEmpty(images) && (
-          <Box px={2} width={1 / 2}>
-            <img alt={title} src={largeImage} />
-            <ul>
-              {images.map(({ image }, i) => {
-                return (
-                  <li key={image}>
-                    <button
-                      onClick={() => {
-                        setActiveImageIndex(i);
-                      }}
-                      type="button"
-                    >
-                      <img
-                        alt={`${title} #${i}`}
-                        src={image}
-                        style={{
-                          border: activeImageIndex === i ? "1px solid red" : 0,
-                        }}
-                      />
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+          <Box px={2} width={7 / 12}>
+            <SingleProductSlider {...{ images, title }} />
           </Box>
         )}
 
-        <Box px={4} width={1 / 2}>
+        <Box px={4} width={5 / 12}>
           <BreadCrumbs activePage={id} {...{ tag }} />
           <h2>{title}</h2>
           <h4>{formatMoney(price)}</h4>
