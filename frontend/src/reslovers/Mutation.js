@@ -149,6 +149,14 @@ export const REMOVE_ITEM_FROM_CART_MUTATION = gql`
   }
 `;
 
+export const UPDATE_CART_ITEM_QUANITY_MUTATION = gql`
+  mutation UPDATE_CART_ITEM_QUANITY_MUTATION($id: ID!, $quantity: Int!) {
+    updateCartItem(where: { id: $id }, data: { quantity: $quantity }) {
+      id
+    }
+  }
+`;
+
 export const CREATE_ORDER_MUTATION = gql`
   mutation CREATE_ORDER_MUTATION($token: String!) {
     createOrder(token: $token) {

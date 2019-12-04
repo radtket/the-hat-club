@@ -9,8 +9,10 @@ const {
   stripe,
   isLoggedIn,
 } = require("../utils");
+const { forwardTo } = require("prisma-binding");
 
 const Mutation = {
+  updateCartItem: forwardTo("db"),
   async createItem(
     parent,
     args,

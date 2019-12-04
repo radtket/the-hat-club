@@ -14,6 +14,6 @@ export const socialMediaHandle = "hatclub";
 
 export const socialMediaUrls = {
   twitter: `//twitter.com/${socialMediaHandle}`,
-  facebook: `//www.facebook.com/${socialMediaHandle}`,
-  instagram: `//www.instagram.com/${socialMediaHandle}/`,
+  facebook: `//facebook.com/${socialMediaHandle}`,
+  instagram: `//instagram.com/${socialMediaHandle}/`,
 };

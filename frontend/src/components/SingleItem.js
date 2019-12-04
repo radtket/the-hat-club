@@ -9,9 +9,9 @@ const Styles = styled.figure`
   margin-bottom: 48px;
 
   &:hover {
-    img {
+    /* img {
       transform: translate3d(0, -6px, 0);
-    }
+    } */
 
     figcaption {
       dt {
@@ -32,13 +32,33 @@ const Styles = styled.figure`
   }
 
   > a {
+    position: relative;
     display: block;
-  }
 
-  img {
-    display: block;
-    backface-visibility: hidden;
-    transition: 0.3s ease;
+    &:hover {
+      img {
+        &:last-of-type {
+          opacity: 1 !important;
+        }
+      }
+    }
+
+    img {
+      margin: 0;
+      display: block;
+      backface-visibility: hidden;
+      transition: 0.3s ease;
+
+      &:last-of-type {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: 0.5s;
+      }
+    }
   }
 
   figcaption {
@@ -93,10 +113,10 @@ const Styles = styled.figure`
           bottom: -2px;
           height: 1px;
           width: 100%;
-          /* transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s; */
           background: #707070;
           opacity: 0;
           transform: scaleX(0);
+          /* transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s; */
           transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s,
             opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s;
         }
@@ -106,10 +126,12 @@ const Styles = styled.figure`
 `;
 
 const SingleItem = ({ id, title, price, images }) => {
+  const [primaryImage, secondaryImage] = images;
   return (
     <Styles>
       <Link to={`/item/${id}`}>
-        <img alt={title} src={images[0].largeImage} />
+        <img alt={title} src={primaryImage.largeImage} />
+        <img alt={title} src={secondaryImage.largeImage} />
       </Link>
       <figcaption>
         <h3>{title}</h3>

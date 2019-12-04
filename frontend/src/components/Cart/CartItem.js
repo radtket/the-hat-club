@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import RemoveFromCart from "./RemoveFromCart";
@@ -7,8 +7,6 @@ import { CartItemStyles } from "../../styles/CartStyles";
 import CartQuanity from "./CartQuanity";
 
 const CartItem = ({ id, quantity, item, ...props }) => {
-  const [updatedQuantity, setUpdatedQuantity] = useState(quantity);
-
   if (!item) {
     return (
       <CartItemStyles {...props}>
@@ -32,10 +30,10 @@ const CartItem = ({ id, quantity, item, ...props }) => {
           <Link to={`/item/${id}`}>{title}</Link>
         </dt>
         <dd>
-          <CartQuanity {...{ updatedQuantity, setUpdatedQuantity }} />
+          <CartQuanity {...{ id, quantity }} />
           <span>
             {/* {price} */}
-            {formatMoney(price * updatedQuantity)}
+            {formatMoney(price * quantity)}
           </span>
         </dd>
       </dl>
