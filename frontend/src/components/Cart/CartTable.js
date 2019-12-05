@@ -1,10 +1,8 @@
 import React from "react";
 import { Box } from "@rebass/grid";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import QuanityToggle from "../QuanityToggle";
-import { formatMoney } from "../../utils/helpers";
+import CartTableRow from "./CartTableRow";
 
 const CartTableStyles = styled(Box)`
   table {
@@ -85,48 +83,9 @@ const CartTable = ({ cart }) => {
           </tr>
         </thead>
         <tbody>
-          {cart.map(
-            ({ id, item: { image, title, price, id: itemID }, quantity }) => {
-              return (
-                <tr key={id}>
-                  <td className="product-thumbnail">
-                    <Link to={`/item/${itemID}`}>
-                      <img alt={title} src={image} />
-                    </Link>
-                  </td>
-
-                  <td className="product-name">
-                    <Link to={`/item/${itemID}`}>{title}</Link>
-                  </td>
-
-                  <td className="product-price">
-                    <span className="woocommerce-Price-amount amount">
-                      {formatMoney(price)}
-                    </span>
-                  </td>
-
-                  <td className="product-quantity">
-                    <QuanityToggle {...{ quantity }} />
-                  </td>
-
-                  <td className="product-subtotal">
-                    {formatMoney(price * quantity)}
-                  </td>
-                  {/* <td className="product-remove"> */}
-                  {/* <RemoveFromCart
-                            {...{ id }}
-                            style={{
-                              position: "static",
-                            }}
-                          /> */}
-                  {/* <button aria-label="Remove this item" type="button">
-                            ×
-                          </button> */}
-                  {/* </td> */}
-                </tr>
-              );
-            }
-          )}
+          {cart.map(({ id, item, quantity }) => {
+            return <CartTableRow key={id} {...{ ...item, quantity }} />;
+          })}
         </tbody>
       </table>
     </CartTableStyles>

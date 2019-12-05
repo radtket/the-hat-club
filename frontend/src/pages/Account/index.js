@@ -76,7 +76,7 @@ const Account = () => {
             <Orders />
           </TabContent>
           <TabContent name="tab-wishlist">
-            <WishList />
+            <WishList {...me} />
           </TabContent>
           <TabContent name="tab-addresses">
             <Addresses />

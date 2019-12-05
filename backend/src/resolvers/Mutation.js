@@ -371,7 +371,7 @@ const Mutation = {
   },
   async addToCart(
     parent,
-    { id },
+    { id, quantity },
     {
       req,
       db: { mutation, query },
@@ -395,7 +395,7 @@ const Mutation = {
       return mutation.updateCartItem(
         {
           where: { id: existingCartItem.id },
-          data: { quantity: existingCartItem.quantity + 1 },
+          data: { quantity: existingCartItem.quantity + quantity },
         },
         info
       );
@@ -411,6 +411,7 @@ const Mutation = {
           item: {
             connect: { id },
           },
+          quantity,
         },
       },
       info

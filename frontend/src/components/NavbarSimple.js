@@ -8,7 +8,7 @@ import { HatClubLogo } from "./Branding";
 import CartToggleButton from "./Cart/CartToggleButton";
 import AccountButton from "./AccountButton";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
-import CartCount from "./CartCount";
+import CartCount from "./Cart/CartCount";
 import { CartIcon } from "./Icons";
 
 const Navbar = styled.header`

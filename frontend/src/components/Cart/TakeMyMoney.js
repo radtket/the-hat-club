@@ -83,7 +83,7 @@ const TakeMyMoney = ({ cart, email }) => {
 };
 
 TakeMyMoney.propTypes = {
-  email: PropTypes.string.isRequired,
+  email: PropTypes.string,
   cart: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -100,6 +100,7 @@ TakeMyMoney.propTypes = {
 };
 
 TakeMyMoney.defaultProps = {
+  email: "",
   cart: [],
 };
 

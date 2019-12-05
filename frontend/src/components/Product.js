@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Flex, Box } from "@rebass/grid";
 import styled from "styled-components";
@@ -11,6 +11,7 @@ import { ADD_TO_CART_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import SingleProductSlider from "./SingleProductSlider";
 import ProduceShareSocial from "./ProduceShareSocial";
+import QuanityToggle from "./QuanityToggle";
 
 const PageStyles = styled(PageSection)`
   .product-terms {
@@ -26,9 +27,11 @@ const PageStyles = styled(PageSection)`
 `;
 
 const Product = ({ description, id, images, price, title, tag }) => {
+  const [quantity, setQuantity] = useState(1);
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
     variables: {
       id,
+      quantity,
     },
     refetchQueries: () => [{ query: CURRENT_USER_QUERY }],
   });
@@ -47,11 +50,19 @@ const Product = ({ description, id, images, price, title, tag }) => {
           <h2>{title}</h2>
           <h4>{formatMoney(price)}</h4>
           <p>{description}</p>
+
+          <QuanityToggle
+            quantityState={quantity}
+            setQuantityState={setQuantity}
+          />
           <Button
             aria-label="Add to Shopping Cart"
             fullWidth
             onClick={addToCart}
             size="lg"
+            style={{
+              marginTop: 12,
+            }}
             type="button"
           >
             Add to Cart

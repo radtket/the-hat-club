@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -85,15 +85,17 @@ const QuanityToggleStyles = styled.div`
   }
 `;
 
-const QuanityToggle = ({ quantity }) => {
-  const [quanityState, setQuanityState] = useState(quantity);
+const QuanityToggle = ({ quantityState, setQuantityState }) => {
   return (
     <QuanityToggleStyles className="quantity buttons_added">
       <button
         className="minus"
         onClick={e => {
           e.preventDefault();
-          setQuanityState(quanityState - 1);
+          if (quantityState >= 2) {
+            setQuantityState(quantityState - 1);
+          }
+          return false;
         }}
         type="button"
       >
@@ -117,14 +119,14 @@ const QuanityToggle = ({ quantity }) => {
           step="1"
           title="Qty"
           type="text"
-          value={quanityState}
+          value={quantityState}
         />
       </label>
       <button
         className="plus"
         onClick={e => {
           e.preventDefault();
-          setQuanityState(quanityState + 1);
+          setQuantityState(quantityState + 1);
         }}
         type="button"
       >
@@ -135,7 +137,8 @@ const QuanityToggle = ({ quantity }) => {
 };
 
 QuanityToggle.propTypes = {
-  quantity: PropTypes.number.isRequired,
+  quantityState: PropTypes.number.isRequired,
+  setQuantityState: PropTypes.func.isRequired,
 };
 
 export default QuanityToggle;

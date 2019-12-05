@@ -30,12 +30,7 @@ const CartCount = () => {
   const { data } = useQuery(CURRENT_USER_QUERY);
   const cart = data && data.me && data.me.cart;
 
-  console.log({ data });
-  if (!isArrayEmpty(cart)) {
-    return <Dot>{cart.length}</Dot>;
-  }
-
-  return null;
+  return !isArrayEmpty(cart) && <Dot>{cart.length}</Dot>;
 };
 
 export default CartCount;
