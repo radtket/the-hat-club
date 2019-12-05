@@ -15,6 +15,12 @@ export const NavigationArrowButton = styled.button`
   width: 24px;
   z-index: 99;
 
+  &:hover {
+    svg {
+      fill: #000;
+    }
+  }
+
   &.slide-prev {
     left: -24px;
   }
@@ -27,7 +33,7 @@ export const NavigationArrowButton = styled.button`
     height: 24px;
     width: 24px;
     display: block;
-    /* fill: #999; */
+    fill: #333333;
   }
 `;
 

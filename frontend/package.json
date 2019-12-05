@@ -28,6 +28,7 @@
 		"react-image-magnify": "^2.7.4",
 		"react-router-dom": "^5.1.2",
 		"react-scripts": "3.2.0",
+		"react-share": "^3.0.1",
 		"react-slick": "^0.25.2",
 		"react-stripe-checkout": "^2.6.3",
 		"react-test-renderer": "^16.11.0",

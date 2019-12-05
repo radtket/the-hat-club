@@ -10,6 +10,7 @@ import BreadCrumbs from "./BreadCrumbs";
 import { ADD_TO_CART_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import SingleProductSlider from "./SingleProductSlider";
+import ProduceShareSocial from "./ProduceShareSocial";
 
 const PageStyles = styled(PageSection)`
   .product-terms {
@@ -55,6 +56,8 @@ const Product = ({ description, id, images, price, title, tag }) => {
           >
             Add to Cart
           </Button>
+
+          <ProduceShareSocial {...{ title }} />
 
           <ul className="product-terms">
             <li>

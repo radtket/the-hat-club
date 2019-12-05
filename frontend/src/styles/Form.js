@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const IconButton = styled.button`
+  &:hover {
+    svg {
+      fill: #282828;
+    }
+  }
+
+  svg {
+    display: block;
+    height: 18px;
+    fill: #a0a0a0;
+    transition: fill 0.3s;
+  }
+`;
+
 const Form = styled.form`
   label {
     display: block;
