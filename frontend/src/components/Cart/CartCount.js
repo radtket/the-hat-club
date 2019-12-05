@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useQuery } from "react-apollo";
-import { CURRENT_USER_QUERY } from "../reslovers/Query";
-import { isArrayEmpty } from "../utils/helpers";
+import { CURRENT_USER_QUERY } from "../../reslovers/Query";
+import { isArrayEmpty } from "../../utils/helpers";
 
 const Dot = styled.div`
   background: ${({ theme }) => theme.red};
