@@ -63,18 +63,30 @@ export const CURRENT_USER_QUERY = gql`
       email
       name
       permissions
-      cart {
-        id
-        quantity
+      wishlist {
         item {
           id
+          title
+          description
           price
           images {
             image
             largeImage
           }
+        }
+      }
+      cart {
+        id
+        quantity
+        item {
+          id
           title
           description
+          price
+          images {
+            image
+            largeImage
+          }
         }
       }
     }

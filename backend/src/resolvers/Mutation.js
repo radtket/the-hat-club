@@ -13,6 +13,65 @@ const { forwardTo } = require("prisma-binding");
 
 const Mutation = {
   updateCartItem: forwardTo("db"),
+  async toggleItemToWishlist(
+    parent,
+    { id },
+    {
+      req,
+      db: { query, mutation },
+    },
+    info
+  ) {
+    isLoggedIn(req);
+
+    // 1. Check if item is in wishlist
+    const [ItemInWishlist] = await query.wishlistItems(
+      {
+        where: {
+          user: {
+            id: req.userId,
+          },
+          item: { id: id },
+        },
+      }
+      // , `{ id }`
+    );
+
+    // 2. IF Item is already in wishlist delete it
+    if (ItemInWishlist) {
+      const item = await mutation.deleteWishlistItem(
+        {
+          where: {
+            id: ItemInWishlist.id,
+          },
+        },
+        info
+      );
+
+      return item;
+    }
+
+    const item = await mutation.createWishlistItem(
+      {
+        data: {
+          user: {
+            connect: {
+              id: req.userId,
+            },
+          },
+          item: {
+            connect: {
+              id: id,
+            },
+          },
+          // ...args,
+        },
+      },
+      info
+    );
+
+    return item;
+  },
   async createItem(
     parent,
     args,

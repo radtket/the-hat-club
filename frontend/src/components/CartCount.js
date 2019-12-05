@@ -27,15 +27,15 @@ const Dot = styled.div`
 `;
 
 const CartCount = () => {
-  const { data, loading } = useQuery(CURRENT_USER_QUERY);
+  const { data } = useQuery(CURRENT_USER_QUERY);
+  const cart = data && data.me && data.me.cart;
 
-  if (loading) {
-    return null;
+  console.log({ data });
+  if (!isArrayEmpty(cart)) {
+    return <Dot>{cart.length}</Dot>;
   }
 
-  const { cart } = data.me;
-
-  return !isArrayEmpty(cart) && <Dot>{cart.length}</Dot>;
+  return null;
 };
 
 export default CartCount;

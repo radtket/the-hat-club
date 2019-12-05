@@ -4,10 +4,11 @@ import {
   TwitterShareButton,
   EmailShareButton,
 } from "react-share";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import { FacebookNoBgIcon, TwitterIcon, MailIcon, HeartIcon } from "./Icons";
+import styled from "styled-components";
+import { FacebookNoBgIcon, TwitterIcon, MailIcon } from "./Icons";
 import { IconButton } from "../styles/Form";
+import WishlistButton from "./WishlistButton";
 
 const Styles = styled.div`
   margin-top: 24px;
@@ -41,12 +42,10 @@ const Styles = styled.div`
   }
 `;
 
-const ProduceShareSocial = ({ title }) => {
+const ProduceShareSocial = ({ id, title }) => {
   return (
     <Styles>
-      <IconButton type="button">
-        <HeartIcon />
-      </IconButton>
+      <WishlistButton {...{ id }} />
       <span className="divider" />
       <EmailShareButton
         body={`I want to recommend this product at Amazon.com \n \n${title} @HatClub\n \n`}
@@ -82,7 +81,18 @@ const ProduceShareSocial = ({ title }) => {
 };
 
 ProduceShareSocial.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  wishlistItem: PropTypes.oneOfType([
+    PropTypes.shape({
+      id: PropTypes.string,
+    }),
+    PropTypes.bool,
+  ]),
+};
+
+ProduceShareSocial.defaultProps = {
+  wishlistItem: false,
 };
 
 export default ProduceShareSocial;

@@ -57,7 +57,12 @@ const Product = ({ description, id, images, price, title, tag }) => {
             Add to Cart
           </Button>
 
-          <ProduceShareSocial {...{ title }} />
+          <ProduceShareSocial
+            {...{
+              id,
+              title,
+            }}
+          />
 
           <ul className="product-terms">
             <li>

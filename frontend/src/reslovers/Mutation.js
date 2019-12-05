@@ -1,5 +1,13 @@
 import { gql } from "apollo-boost";
 
+export const ITEM_WISHLIST_TOGGLE_MUTATION = gql`
+  mutation ITEM_WISHLIST_TOGGLE_MUTATION($id: ID!) {
+    toggleItemToWishlist(id: $id) {
+      id
+    }
+  }
+`;
+
 export const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
     $title: String!
