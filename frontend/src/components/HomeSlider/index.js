@@ -9,12 +9,35 @@ import MLB from "../../assets/images/slider-mlb.jpg";
 import NFL from "../../assets/images/slider-nfl.jpg";
 import MILLB from "../../assets/images/slider-miilb.jpg";
 import NewArivals from "../../assets/images/slider-new-arivals.jpg";
+import {
+  NavigationArrow,
+  NavigationArrowButton,
+} from "../SingleProductSlider/NavigationArrow";
 
 const HomeSliderStyles = styled(Slider)`
-  overflow: hidden;
-  padding-top: 24px;
+  /* overflow: hidden; */
+  margin: 0 auto;
+  max-width: 1750px;
   padding-bottom: 24px;
+  padding-left: 44px;
+  padding-right: 44px;
+  padding-top: 24px;
+  position: relative;
   text-align: center;
+
+  &:hover {
+    ${NavigationArrowButton} {
+      opacity: 1;
+
+      &.slide-prev {
+        left: 0;
+      }
+
+      &.slide-next {
+        right: 0;
+      }
+    }
+  }
 
   img {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px 0px;
@@ -70,6 +93,7 @@ const HomeSliderStyles = styled(Slider)`
     }
   }
 `;
+
 const HomeSlider = () => {
   return (
     <HomeSliderStyles
@@ -79,6 +103,8 @@ const HomeSlider = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        nextArrow: <NavigationArrow size="36px" />,
+        prevArrow: <NavigationArrow isPrev size="36px" />,
       }}
     >
       <Slide

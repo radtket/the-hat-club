@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ChevronRight, ChevronLeft } from "../Icons";
 
 export const NavigationArrowButton = styled.button`
-  height: 24px;
+  height: ${({ size }) => `${size}`};
   opacity: 0;
   outline: none;
   padding: 0;
@@ -12,7 +12,6 @@ export const NavigationArrowButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   transition: 0.5s;
-  width: 24px;
   z-index: 99;
 
   &:hover {
@@ -30,17 +29,16 @@ export const NavigationArrowButton = styled.button`
   }
 
   svg {
-    height: 24px;
-    width: 24px;
+    height: ${({ size }) => `${size}`};
     display: block;
     fill: #333333;
   }
 `;
 
-export const NavigationArrow = ({ onClick, isPrev }) => {
+export const NavigationArrow = ({ onClick, isPrev, size }) => {
   return (
     <NavigationArrowButton
-      {...{ onClick }}
+      {...{ onClick, size }}
       className={`slide-${isPrev ? "prev" : "next"} `}
       type="button"
     >
@@ -52,9 +50,11 @@ export const NavigationArrow = ({ onClick, isPrev }) => {
 NavigationArrow.propTypes = {
   onClick: PropTypes.func,
   isPrev: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 NavigationArrow.defaultProps = {
   isPrev: false,
   onClick: null,
+  size: "24px",
 };
