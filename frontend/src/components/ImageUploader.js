@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDropzone } from "react-dropzone";
+import { position, size } from "polished";
 import styled from "styled-components";
 import Button from "./Button";
 import { PlusIcon, PhotoPlaceholderIcon, CloseIcon } from "./Icons";
 
 const Styles = styled.div`
-  width: 100%;
   display: flex;
   margin-bottom: 1rem;
+  width: 100%;
 
   .left,
   .right {
@@ -35,22 +36,20 @@ const Styles = styled.div`
     width: 100%;
 
     li {
+      ${size("200px", "50%")}
       align-items: center;
       border-bottom: 1px solid #ddd;
       border-right: 1px solid #ddd;
       display: flex;
-      height: 200px;
       justify-content: center;
       position: relative;
       text-align: center;
-      width: 50%;
 
       figure {
+        ${size("100%")}
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        height: 100%;
-        width: 100%;
         margin: 12px;
       }
 
@@ -79,20 +78,16 @@ const AddPhotosButton = styled.button`
 `;
 
 const CloseButton = styled.button`
-  padding: 0;
+  ${position("absolute", "6px", "6px", null, null)}
+  ${size("24px", "100%")}
   background: #bada55;
-  height: 24px;
-  max-width: 24px;
-  width: 100%;
-  display: block;
   border-radius: 50%;
-  position: absolute;
-  right: 6px;
-  top: 6px;
+  display: block;
+  max-width: 24px;
+  padding: 0;
 
   svg {
-    height: 10px;
-    width: 100%;
+    ${size("10px", "100%")}
     display: block;
   }
 `;

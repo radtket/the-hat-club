@@ -3,6 +3,22 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { position, size } from "polished";
 
+const SquareSolid = styled.div`
+  ${position("absolute", "32px", "32px", null, null)};
+  ${size("100%")}
+  background: #ee5050;
+  content: "";
+  z-index: 2;
+`;
+
+const SquareOutline = styled.div`
+  ${position("absolute", null, null, "32px", "32px")};
+  ${size("100%")}
+  border: 6px solid #ee5050;
+  content: "";
+  z-index: 4;
+`;
+
 const SlideWrap = styled.figure`
   color: #fff;
   display: inline-block;
@@ -53,22 +69,6 @@ const SlideWrap = styled.figure`
     }
   }
 
-  .square-solid {
-    ${position("absolute", "32px", "32px", null, null)};
-    ${size("100%")}
-    background: #ee5050;
-    content: "";
-    z-index: 2;
-  }
-
-  .square-outline {
-    ${position("absolute", null, null, "32px", "32px")};
-    ${size("100%")}
-    border: 6px solid #ee5050;
-    content: "";
-    z-index: 4;
-  }
-
   img {
     display: block;
     margin: auto;
@@ -80,9 +80,9 @@ const SlideWrap = styled.figure`
 const Slide = ({ title, cta, img }) => {
   return (
     <SlideWrap>
-      <div className="square-solid" />
+      <SquareSolid />
       {img}
-      <div className="square-outline" />
+      <SquareOutline />
       <figcaption>
         <h1>{title}</h1>
         {cta}

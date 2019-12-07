@@ -5,10 +5,10 @@ export const CartOverlay = styled.div`
   ${position("fixed", 0)};
   ${size(0)}
   background: rgba(241, 241, 241, 0.73);
-  z-index: 10;
-  visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s ease 0s;
+  visibility: hidden;
+  z-index: 10;
 
   ${({ isCartOpen }) =>
     isCartOpen &&
