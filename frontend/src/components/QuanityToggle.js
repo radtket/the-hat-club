@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { size } from "polished";
 
 const QuanityToggleStyles = styled.div`
   display: inline-flex;
@@ -14,6 +15,7 @@ const QuanityToggleStyles = styled.div`
   }
 
   .qty {
+    ${size("48px", "51px")}
     background: transparent;
     border: 1px solid #343434;
     border-radius: 3px 0 0 3px;
@@ -21,7 +23,6 @@ const QuanityToggleStyles = styled.div`
     display: inline-flex;
     font-size: 16px;
     font-weight: 400;
-    height: 48px;
     justify-content: center;
     line-height: 48px;
     margin: 0;
@@ -29,7 +30,6 @@ const QuanityToggleStyles = styled.div`
     outline: 0;
     padding: 0;
     text-align: center;
-    width: 51px;
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
 
@@ -49,6 +49,7 @@ const QuanityToggleStyles = styled.div`
 
   .plus,
   .minus {
+    ${size("24px", "23px")}
     align-items: center;
     background: transparent;
     border: 1px solid #343434;
@@ -57,7 +58,6 @@ const QuanityToggleStyles = styled.div`
     cursor: pointer;
     display: flex;
     font-weight: 400;
-    height: 24px;
     justify-content: center;
     margin: 0;
     outline: 0;
@@ -67,21 +67,20 @@ const QuanityToggleStyles = styled.div`
     text-decoration: none;
     text-shadow: none;
     user-select: none;
-    width: 23px;
   }
 
   .plus {
-    top: 0;
-    right: 0;
+    border-radius: 0 3px 0 0;
     height: 25px;
     line-height: 24px;
-    border-radius: 0 3px 0 0;
+    right: 0;
+    top: 0;
   }
 
   .minus {
+    border-radius: 0 0 3px 0;
     bottom: 0;
     right: 0;
-    border-radius: 0 0 3px 0;
   }
 `;
 

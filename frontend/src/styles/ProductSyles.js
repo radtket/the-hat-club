@@ -3,7 +3,7 @@ import { cover, size, position, margin } from "polished";
 
 const ProductSyles = styled.div`
   border-radius: 5px;
-  box-shadow: 0 25px 70px rgba($c-black, 0.07);
+  box-shadow: 0 25px 70px rgba(#101010, 0.07);
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
@@ -73,7 +73,7 @@ const ProductSyles = styled.div`
     &__title {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
-      color: $c-black;
+      color: #101010;
       margin-bottom: 12px;
       overflow: hidden;
       text-decoration: none;

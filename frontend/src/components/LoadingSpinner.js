@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { size } from "polished";
 
 const LoadingWrap = styled.div`
   @keyframes rotate {
@@ -56,17 +57,15 @@ const LoadingWrap = styled.div`
   width: 100%;
 
   .loader {
+    ${size("50px")}
     animation: rotate 1s infinite;
-    height: 50px;
-    width: 50px;
 
     &:before,
     &:after {
+      ${size("20px")}
       border-radius: 50%;
       content: "";
       display: block;
-      height: 20px;
-      width: 20px;
     }
 
     &:before {

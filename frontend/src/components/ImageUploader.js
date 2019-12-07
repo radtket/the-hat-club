@@ -18,11 +18,11 @@ const Styles = styled.div`
   }
 
   .left {
-    justify-content: center;
     align-items: center;
-    text-align: center;
     border-bottom: 1px solid #ddd;
     flex-grow: 1;
+    justify-content: center;
+    text-align: center;
   }
 
   .right {
@@ -35,15 +35,15 @@ const Styles = styled.div`
     width: 100%;
 
     li {
-      display: flex;
-      justify-content: center;
       align-items: center;
+      border-bottom: 1px solid #ddd;
+      border-right: 1px solid #ddd;
+      display: flex;
+      height: 200px;
+      justify-content: center;
+      position: relative;
       text-align: center;
       width: 50%;
-      height: 200px;
-      border-right: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      position: relative;
 
       figure {
         background-size: contain;

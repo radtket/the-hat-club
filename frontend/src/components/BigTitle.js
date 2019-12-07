@@ -1,38 +1,38 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
+import { position } from "polished";
 
 const Styles = styled.div`
-  position: relative;
+  font-weight: 400;
+  line-height: 1.7em;
   overflow: hidden;
   padding: 180px 0px 100px;
-  line-height: 1.7em;
-  font-weight: 400;
+  position: relative;
 
   .sec-title {
-    position: relative;
     margin-bottom: 85px;
-    z-index: 2;
+    position: relative;
     text-align: center;
+    z-index: 2;
 
     .big-title {
-      position: absolute;
-      top: -20px;
-      width: 100%;
+      ${position("absolute", "-20px", null, null, null)}
+      color: #f6f6f6;
+      font-family: "square721_cn_btbold";
       font-size: 130px;
       font-weight: 800;
-      color: #f6f6f6;
-      text-transform: uppercase;
-      font-family: "square721_cn_btbold";
       letter-spacing: 0.024em;
+      text-transform: uppercase;
+      width: 100%;
     }
 
     h2 {
       position: relative;
-      color: #333333;
+      color: #333;
       font-size: 43px;
       line-height: 1.2em;
-      margin: 0px;
+      margin: 0;
     }
   }
 
@@ -91,7 +91,7 @@ const Styles = styled.div`
             }
 
             h2 {
-              color: #333333;
+              color: #333;
             }
           }
         `;

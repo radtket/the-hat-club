@@ -10,17 +10,17 @@ import ErrorMessage from "./ErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
 
 const OrdersTableStyles = styled.table`
-  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  width: 100%;
 
   th,
   td {
-    padding: 14px;
-    vertical-align: middle;
     font-weight: inherit;
-    vertical-align: top;
+    padding: 14px;
     text-align: left;
+    vertical-align: middle;
+    vertical-align: top;
   }
 
   tr {

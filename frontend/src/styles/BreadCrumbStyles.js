@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import { position } from "polished";
 
 const BreadCrumbStyles = styled.ul`
   li {
+    ${position("relative", null, null, null, "1px")}
     color: #101010;
     display: inline-block;
     font-size: 16px;
-    left: 1px;
     margin-right: 12px;
     padding-right: 12px;
-    position: relative;
     text-transform: capitalize;
 
     &:last-child {
@@ -21,13 +21,11 @@ const BreadCrumbStyles = styled.ul`
     }
 
     &::after {
+      ${position("absolute", 0, "-4px", null, null)}
       color: #101010;
       content: "/";
       font-size: inherit;
       font-weight: 400;
-      position: absolute;
-      right: -4px;
-      top: 0;
     }
 
     a {

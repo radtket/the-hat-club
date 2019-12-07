@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import { position, padding, size } from "polished";
 import styled from "styled-components";
 import Slide from "./Slide";
 
@@ -16,12 +17,9 @@ import {
 
 const HomeSliderStyles = styled(Slider)`
   /* overflow: hidden; */
+  ${padding("24px", "44px")}
   margin: 0 auto;
   max-width: 1750px;
-  padding-bottom: 24px;
-  padding-left: 44px;
-  padding-right: 44px;
-  padding-top: 24px;
   position: relative;
   text-align: center;
 
@@ -45,29 +43,25 @@ const HomeSliderStyles = styled(Slider)`
   }
 
   .slick-dots {
+    ${position("absolute", null, null, "96px", "15%")}
     display: inline-block !important;
     background: #ee5050;
-    position: absolute;
-    left: 15%;
-    bottom: 96px;
     z-index: 7;
     padding: 12px;
     width: auto;
 
     li {
+      ${size("unset")}
       position: relative;
       display: inline-block;
       zoom: 1;
       *display: inline;
       vertical-align: middle;
       margin: 0 6px;
-      width: unset;
-      height: unset;
 
       button {
+        ${size("6px")}
         display: block;
-        width: 6px;
-        height: 6px;
         margin: 0;
         padding: 0;
         border: 0 none;
@@ -84,8 +78,7 @@ const HomeSliderStyles = styled(Slider)`
 
       &.slick-active {
         button {
-          width: 10px;
-          height: 10px;
+          ${size("10px")}
           border: 2px solid #fff;
           background: none;
         }

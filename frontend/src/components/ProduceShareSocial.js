@@ -4,6 +4,7 @@ import {
   TwitterShareButton,
   EmailShareButton,
 } from "react-share";
+import { position, size, margin, padding } from "polished";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FacebookNoBgIcon, TwitterIcon, MailIcon } from "./Icons";
@@ -11,26 +12,20 @@ import { IconButton } from "../styles/Form";
 import WishlistButton from "./WishlistButton";
 
 const Styles = styled.div`
-  margin-top: 24px;
-  margin-bottom: 36px;
+  ${margin("24px", null, "36px")}
 
   button,
   > .divider {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    ${padding("4px", null)}
   }
 
   .divider {
+    ${margin(null, "12px")}
     position: relative;
-    margin-right: 12px;
-    margin-left: 12px;
 
     &::after {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 1px;
+      ${position("absolute", 0, null, null, 0)};
+      ${size("100%", "1px")}
       background: #dadada;
       content: "";
     }

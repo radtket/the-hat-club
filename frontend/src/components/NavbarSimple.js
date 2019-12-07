@@ -14,19 +14,19 @@ import { CartIcon } from "./Icons";
 const Navbar = styled.header`
   ${padding(({ isCompact }) => (isCompact ? "12px" : "6px"), null)}
   ${position("fixed", 0, null, null, 0)}
+  background: ${({ isCompact }) => (isCompact ? "#fff" : "#23262B")};
+  transition-duration: 0.5s;
+  transition-property: background, padding;
   width: 100%;
   z-index: 10;
-  background: ${({ isCompact }) => (isCompact ? "#fff" : "#23262B")};
-  transition-property: background, padding;
-  transition-duration: 0.5s;
   /* border-bottom: 1px solid #eee; */
 
   .logo {
     svg {
       ${position("absolute", null, null, null, "50%")}
       ${size("100%", "124px")}
-      margin-left: ${124 * -0.5}px;
       fill: ${({ isCompact }) => (isCompact ? "#23262B" : "#fff")};
+      margin-left: ${124 * -0.5}px;
       transition: fill 0.5s;
     }
   }
@@ -38,17 +38,18 @@ const Navbar = styled.header`
 
     a,
     button {
-      padding: 16px 14px;
+      color: ${({ isCompact }) => (isCompact ? "#707070" : "#fff")};
       display: inline-block;
       font-size: 18px;
       line-height: 1;
-      color: ${({ isCompact }) => (isCompact ? "#707070" : "#fff")};
-      vertical-align: bottom;
+      padding: 16px 14px;
       text-decoration: none;
       transition: color 0.2s ease;
+      vertical-align: bottom;
 
       &:hover {
         color: ${({ isCompact }) => (isCompact ? "#282828" : "#ee5050")};
+
         svg {
           fill: ${({ isCompact }) => (isCompact ? "#282828" : "#ee5050")};
         }
@@ -57,8 +58,8 @@ const Navbar = styled.header`
 
     svg {
       display: block;
-      height: 18px;
       fill: ${({ isCompact }) => (isCompact ? "#707070" : "#fff")};
+      height: 18px;
       transition: fill 0.2s ease;
     }
   }

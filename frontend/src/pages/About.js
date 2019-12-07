@@ -13,8 +13,8 @@ import { HLogo } from "../components/Branding";
 
 const Row = styled(SmallSection)`
   align-items: center;
-  justify-content: center;
   display: flex;
+  justify-content: center;
 `;
 
 const AboutStyles = styled.div`
@@ -25,22 +25,22 @@ const AboutStyles = styled.div`
   }
 
   p {
-    line-height: 1.7;
     font-size: 18px;
+    line-height: 1.7;
   }
 
   img {
-    display: block;
-    position: relative;
     border-radius: 6px;
-    margin: auto;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px 0px;
+    display: block;
+    margin: auto;
+    position: relative;
   }
 
   svg {
     display: block;
-    margin: auto;
     fill: #cf3a3a;
+    margin: auto;
     max-height: 200px;
   }
 
@@ -50,8 +50,8 @@ const AboutStyles = styled.div`
   }
 
   .bg-gray {
-    color: #272727;
     background: #f4f4f7;
+    color: #272727;
   }
 
   .bg-black {

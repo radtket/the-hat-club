@@ -6,35 +6,38 @@ import CartTableRow from "./CartTableRow";
 
 const CartTableStyles = styled(Box)`
   table {
-    table-layout: auto;
     border-collapse: collapse;
     border-spacing: 0;
-    margin-bottom: 48px;
-    width: 100%;
-    text-align: left;
     color: #343434;
+    margin-bottom: 48px;
+    table-layout: auto;
+    text-align: left;
+    width: 100%;
 
     thead {
+      border-color: inherit;
       display: table-header-group;
       vertical-align: middle;
-      border-color: inherit;
+
       tr {
-        border-top: 1px solid #eaeaea;
         border-bottom: 1px solid #eaeaea;
+        border-top: 1px solid #eaeaea;
 
         th {
-          text-align: left;
           line-height: 1;
           padding: 20px 0;
+          text-align: left;
         }
       }
     }
+
     tbody {
       td,
       th {
-        text-align: inherit;
         color: #343434;
+        text-align: inherit;
       }
+
       tr {
         border-top: 1px solid #eaeaea;
 
@@ -47,19 +50,20 @@ const CartTableStyles = styled(Box)`
           } */
 
           &.product-remove {
-            width: 40px;
             position: relative;
+            width: 40px;
           }
 
           &.product-thumbnail {
             width: 100px;
             a {
               display: inline-block;
+
               img {
                 display: inline-block;
-                vertical-align: middle;
-                max-width: 100%;
                 height: auto;
+                max-width: 100%;
+                vertical-align: middle;
                 -ms-interpolation-mode: bicubic;
               }
             }
@@ -69,6 +73,7 @@ const CartTableStyles = styled(Box)`
     }
   }
 `;
+
 const CartTable = ({ cart }) => {
   return (
     <CartTableStyles width={1}>

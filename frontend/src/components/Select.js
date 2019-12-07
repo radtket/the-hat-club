@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { position } from "polished";
 
 const SelectStyles = styled.div`
   position: relative;
@@ -9,21 +10,23 @@ const SelectStyles = styled.div`
 
   &:after,
   &:before {
+    ${position("absolute", null, "18px", null, null)}
     content: " ";
-    position: absolute;
-    right: 18px;
-    top: 64%;
     margin-top: -4px;
     border: 6px solid transparent;
     border-top: 8px solid #cc0000;
     pointer-events: none;
   }
 
+  &:after {
+    top: "64px";
+  }
+
   &:before {
+    border-bottom: 8px solid #cc0000;
+    border-top: transparent;
     top: 37%;
     z-index: 10;
-    border-top: transparent;
-    border-bottom: 8px solid #cc0000;
   }
 
   .form-control {
@@ -33,9 +36,9 @@ const SelectStyles = styled.div`
     color: #333;
     display: block;
     font-size: 16px;
-    /* line-height: normal; */
     padding: 10px 20px;
     width: 100%;
+    /* line-height: normal; */
     /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; */
 
@@ -45,11 +48,11 @@ const SelectStyles = styled.div`
   }
 
   .select-select {
-    outline: 0;
     appearance: none;
     cursor: pointer;
-    position: relative;
+    outline: 0;
     padding-right: 50px;
+    position: relative;
     text-overflow: "";
     user-select: none;
 

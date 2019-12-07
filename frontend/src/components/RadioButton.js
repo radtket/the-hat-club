@@ -1,33 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { position, margin } from "polished";
 
 const RadioStyles = styled.label`
-  display: inline-block !important;
-  padding-left: 24px;
-  margin-bottom: 0;
-  vertical-align: middle;
-  font-weight: normal;
+  ${margin(null, "24px", 0, null)}
   cursor: pointer;
-  margin-right: 24px;
-  position: relative;
+  display: inline-block !important;
+  font-weight: normal;
   line-height: 48px;
+  padding-left: 24px;
+  position: relative;
+  vertical-align: middle;
 
   input {
-    margin: -10px 0 0 -22px;
-    top: 50%;
-    position: absolute;
+    ${position("absolute", "50%", null, null, null)}
     box-sizing: border-box;
-    padding: 0;
     height: unset;
     line-height: normal;
+    margin: -10px 0 0 -22px;
+    padding: 0;
   }
 `;
 
 const RadioButton = ({ label, children, name, ...props }) => {
   return (
     <RadioStyles htmlFor={name}>
-      <input type="radio" {...props} {...{ name }} />
+      <input type="radio" {...{ ...props, name }} />
       {label}
     </RadioStyles>
   );

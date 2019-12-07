@@ -10,17 +10,16 @@ import DeleteItem from "../../../components/ProductCard/actions/DeleteItem";
 import EditItem from "../../../components/ProductCard/actions/EditItem";
 
 export const SellingTableStyles = styled.table`
-  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  width: 100%;
 
   th,
   td {
-    padding: 12px;
-    vertical-align: middle;
     font-weight: inherit;
-    vertical-align: middle;
+    padding: 12px;
     text-align: left;
+    vertical-align: middle;
   }
 
   tr {
@@ -37,8 +36,8 @@ export const SellingTableStyles = styled.table`
 
   td {
     img {
-      height: 64px;
       display: block;
+      height: 64px;
     }
 
     button {

@@ -44,8 +44,8 @@ const NavbarStyles = styled.header`
   }
 
   .navbar__logo {
-    display: flex;
     align-items: center;
+    display: flex;
 
     svg {
       display: block;
@@ -60,23 +60,23 @@ const NavbarStyles = styled.header`
     justify-content: space-between;
 
     > nav {
+      ${size("100%")}
       align-items: center;
       display: flex;
-      height: 100%;
-      width: 100%;
       justify-content: flex-end;
     }
   }
 
   button {
-    padding: ${({ theme }) => theme.smallSpacing};
     background: transparent;
     border: 0;
     border-radius: 0;
+    padding: ${({ theme }) => theme.smallSpacing};
 
     &.svg-button {
-      visibility: visible;
       transition: visibility 700ms cubic-bezier(0.8, 0, 0.55, 0.94) 1400ms;
+      visibility: visible;
+
       svg {
         display: block;
         fill: #fff;
@@ -101,12 +101,11 @@ const NavbarStyles = styled.header`
 
     &::before,
     &::after {
+      ${position("absolute", null, null, null, 0)}
       ${size(barHeight, barWidth)}
-      display: block;
       background: #fff;
       content: "";
-      left: 0;
-      position: absolute;
+      display: block;
     }
 
     &::before {

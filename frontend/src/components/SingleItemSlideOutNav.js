@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { margin } from "polished";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { formatMoney } from "../utils/helpers";
 import { CartIcon } from "./Icons";
 
 const Styles = styled.div`
-  margin-top: 48px;
-  margin-bottom: 48px;
+  ${margin("48px", null)}
   position: relative;
   overflow: hidden;
 
@@ -44,18 +44,18 @@ const Styles = styled.div`
   }
 
   img {
-    display: block;
     backface-visibility: hidden;
+    display: block;
     transition: 0.3s ease;
   }
 
   > a {
-    display: block;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
     background: #fff;
+    display: block;
+    overflow: hidden;
+    position: relative;
     transition: border-radius 0.3s;
+    z-index: 2;
   }
 
   figcaption {
@@ -66,11 +66,11 @@ const Styles = styled.div`
   }
 
   dl {
-    max-width: 315px;
-    text-align: center;
-    margin: auto;
     color: #272727;
     font-size: 18px;
+    margin: auto;
+    max-width: 315px;
+    text-align: center;
 
     dt {
       margin-bottom: 6px;
@@ -88,15 +88,15 @@ const Styles = styled.div`
 
   nav {
     background: #272727;
-    padding: 36px 12px 12px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    bottom: 100%;
     display: flex;
     justify-content: space-around;
+    padding: 36px 12px 12px;
     position: absolute;
-    width: 100%;
-    bottom: 100%;
-    border-bottom-right-radius: 24px;
-    border-bottom-left-radius: 24px;
     transition: bottom 0.3s;
+    width: 100%;
 
     button {
       &:hover {
@@ -107,9 +107,9 @@ const Styles = styled.div`
     }
 
     svg {
-      height: 18px;
-      fill: #fff;
       display: block;
+      fill: #fff;
+      height: 18px;
     }
   }
 `;

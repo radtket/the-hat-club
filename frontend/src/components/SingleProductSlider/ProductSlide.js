@@ -6,6 +6,7 @@ import styled from "styled-components";
 const ProductSlideStyles = styled.button`
   display: block;
   margin: auto;
+
   img {
     max-width: unset;
   }

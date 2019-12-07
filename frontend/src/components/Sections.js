@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { padding } from "polished";
 
 export const Section = styled.section`
   width: 100%;
@@ -13,34 +14,29 @@ export const Section = styled.section`
 `;
 
 export const PageSection = styled(Section)`
-  padding: 60px 0;
+  ${padding("60px", 0)}
 
   @media (min-width: 480px) {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    ${padding("80px", null)}
   }
 
   @media (min-width: 768px) {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    ${padding("120px", null)}
   }
 
   @media (min-width: 992px) {
-    padding-top: 140px;
-    padding-bottom: 140px;
+    ${padding("140px", null)}
   }
 `;
 
 export const SmallSection = styled(Section)`
-  padding: 30px 0;
+  ${padding("30px", 0)}
 
   @media (min-width: 480px) {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    ${padding("50px", null)}
   }
 
   @media (min-width: 768px) {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    ${padding("70px", null)}
   }
 `;

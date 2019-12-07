@@ -1,11 +1,9 @@
 import styled from "styled-components";
+import { size, position } from "polished";
 
 const MenuStyles = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  ${size("100%")}
+  ${position("fixed", 0, null, null, 0)}
   background-color: #000;
   opacity: 0;
   transform: translate3d(0, -100%, 0);
@@ -31,11 +29,8 @@ const MenuStyles = styled.div`
   }
 
   .grid {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -20vh;
-    left: 0;
+    ${size("100%")}
+    ${position("absolute", "-20vh", null, null, 0)}
     z-index: -1;
     display: flex;
     opacity: 0.18;

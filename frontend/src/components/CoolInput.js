@@ -1,6 +1,6 @@
 import React from "react";
-
 import styled from "styled-components";
+import { position, size } from "polished";
 
 const Styles = styled.label`
   display: inline-block;
@@ -10,29 +10,25 @@ const Styles = styled.label`
   width: 100%;
 
   .label {
+    ${position("absolute", "16px", null, null, 0)};
     color: #9098a9;
     font-size: 16px;
     font-weight: 500;
-    left: 0;
-    position: absolute;
-    top: 16px;
     transform-origin: 0 0;
     transition: all 0.2s ease;
   }
 
   .border {
+    ${size("2px", "100%")};
+    ${position("absolute", null, null, 0, 0)};
     background: #07f;
-    bottom: 0;
-    height: 2px;
-    left: 0;
-    position: absolute;
     transform: scaleX(0);
     transform-origin: 0 0;
     transition: all 0.15s ease;
-    width: 100%;
   }
 
   input {
+    ${size("48px", "100%")};
     background: none;
     border: 0;
     border-bottom: 2px solid #c8ccd4;
@@ -41,12 +37,10 @@ const Styles = styled.label`
     font-family: inherit;
     font-size: 16px;
     font-weight: 500;
-    height: 48px;
     line-height: 1.15;
     margin: 0;
     padding: 12px 0;
     transition: all 0.15s ease;
-    width: 100%;
 
     &:hover {
       background: rgba(34, 50, 84, 0.03);

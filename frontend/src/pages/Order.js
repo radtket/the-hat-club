@@ -3,12 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { format } from "date-fns";
 import { SINGLE_ORDER_QUERY } from "../reslovers/Query";
-import {
-  ErrorMessage,
-  LoadingSpinner,
-  OrderItem,
-  SectionSmall,
-} from "../components";
+import { ErrorMessage, LoadingSpinner, OrderItem } from "../components";
 import OrderStyles from "../styles/OrderStyles";
 
 const Order = () => {
@@ -29,14 +24,9 @@ const Order = () => {
 
   const { order } = data;
   return (
-    <SectionSmall>
-      <div
-        className="container"
-        style={{
-          maxWidth: "900px",
-        }}
-      >
-        <OrderStyles className="order-details">
+    <OrderStyles>
+      <div className="container">
+        <div className="order-details">
           <header>
             <ul>
               <li>
@@ -112,9 +102,9 @@ const Order = () => {
               </tr>
             </tfoot>
           </table>
-        </OrderStyles>
+        </div>
       </div>
-    </SectionSmall>
+    </OrderStyles>
   );
 };
 

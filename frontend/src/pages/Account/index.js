@@ -24,8 +24,8 @@ import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 
 export const TabContent = styled(TabPanel)`
   h2 {
-    margin-top: 0;
     font-weight: normal;
+    margin-top: 0;
   }
 `;
 

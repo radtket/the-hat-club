@@ -1,40 +1,32 @@
 import React from "react";
 import { Flex, Box } from "@rebass/grid";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+import { margin } from "polished";
+
+const FaqItemStyles = styled(Flex)`
+  font-size: 18px;
+  line-height: 1.6;
+
+  dt {
+    ${margin("1em", null)}
+  }
+
+  dd {
+    color: #777;
+  }
+`;
 
 const FaqItem = ({ title, children }) => {
   return (
-    <Flex
-      as="dl"
-      mb={5}
-      style={{
-        fontSize: "18px",
-        lineHeight: 1.6,
-      }}
-    >
-      <Box
-        as="dt"
-        mx={4}
-        style={{
-          marginTop: "1em",
-          marginBottom: "1em",
-        }}
-        width={1 / 3}
-      >
+    <FaqItemStyles as="dl" mb={5}>
+      <Box as="dt" mx={4} width={1 / 3}>
         {title}
       </Box>
-      <Box
-        as="dd"
-        ml={0}
-        mx={4}
-        style={{
-          color: "#777",
-        }}
-        width={2 / 3}
-      >
+      <Box as="dd" ml={0} mx={4} width={2 / 3}>
         {children}
       </Box>
-    </Flex>
+    </FaqItemStyles>
   );
 };
 

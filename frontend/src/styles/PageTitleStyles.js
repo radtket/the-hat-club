@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { SmallSection } from "../components/Sections";
 
 const PageTitleStyles = styled(SmallSection)`
-  margin-bottom: ${({ theme }) => theme.largeSpacing};
   background: #eee;
   color: #4b4e53;
+  margin-bottom: ${({ theme }) => theme.largeSpacing};
 
   h1 {
     font-size: 36px;
@@ -13,9 +13,9 @@ const PageTitleStyles = styled(SmallSection)`
   }
 
   .container {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 `;
 

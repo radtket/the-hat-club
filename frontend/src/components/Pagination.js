@@ -8,22 +8,25 @@ import ErrorMessage from "./ErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PaginationStyles = styled.div`
-  text-align: center;
-  display: inline-flex;
-  align-items: stretch;
-  justify-content: center;
   align-content: center;
-  margin: 2rem 0;
+  align-items: stretch;
   border: 1px solid lightgrey;
   border-radius: 10px;
+  display: inline-flex;
+  justify-content: center;
+  margin: 2rem 0;
+  text-align: center;
+
   & > * {
+    border-right: 1px solid lightgrey;
     margin: 0;
     padding: 15px 30px;
-    border-right: 1px solid lightgrey;
+
     &:last-child {
       border-right: 0;
     }
   }
+
   a[aria-disabled="true"] {
     color: grey;
     pointer-events: none;

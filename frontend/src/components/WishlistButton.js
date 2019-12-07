@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useMutation, useQuery } from "react-apollo";
+import clsx from "clsx";
 import styled from "styled-components";
 import { HeartSolidStrokeIcon } from "./Icons";
 import { IconButton } from "../styles/Form";
@@ -68,7 +69,7 @@ const WishlistButton = ({ id }) => {
 
   return (
     <WishlistButtonStyles
-      className={wishlistItem ? "active" : ""}
+      className={clsx(wishlistItem && "active")}
       disabled={loading}
       onClick={toggleWishlist}
       type="button"

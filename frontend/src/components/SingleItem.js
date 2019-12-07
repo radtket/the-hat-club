@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { margin, cover, size, position } from "polished";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { formatMoney } from "../utils/helpers";
 
 const Styles = styled.figure`
-  margin-top: 48px;
-  margin-bottom: 48px;
+  ${margin("48px", null)}
 
   &:hover {
     /* img {
@@ -20,6 +20,7 @@ const Styles = styled.figure`
 
       dd {
         top: 0;
+
         > a {
           &::after {
             /* width: 100%; */
@@ -32,8 +33,8 @@ const Styles = styled.figure`
   }
 
   > a {
-    position: relative;
     display: block;
+    position: relative;
 
     &:hover {
       img {
@@ -44,17 +45,13 @@ const Styles = styled.figure`
     }
 
     img {
-      margin: 0;
-      display: block;
       backface-visibility: hidden;
+      display: block;
+      margin: 0;
       transition: 0.3s ease;
 
       &:last-of-type {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        ${cover()}
         opacity: 0;
         transition: 0.5s;
       }
@@ -62,10 +59,10 @@ const Styles = styled.figure`
   }
 
   figcaption {
+    color: #272727;
+    margin: auto;
     max-width: 315px;
     text-align: center;
-    margin: auto;
-    color: #272727;
 
     h3,
     dl {
@@ -73,8 +70,7 @@ const Styles = styled.figure`
     }
 
     h3 {
-      margin-top: 0;
-      margin-bottom: 6px;
+      ${margin(0, null, "6px")}
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -83,8 +79,8 @@ const Styles = styled.figure`
 
     dl {
       margin: 0 auto;
-      position: relative;
       overflow: hidden;
+      position: relative;
     }
 
     dt {
@@ -93,26 +89,21 @@ const Styles = styled.figure`
     }
 
     dd {
-      margin-left: 0;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
+      ${position("absolute", "100%", null, null, 0)}
       font-size: 16px;
-      line-height: 27px;
+      line-height: 1.7;
+      margin-left: 0;
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      width: 100%;
 
       > a {
         position: relative;
         color: #707070;
 
         &::after {
+          ${position("absolute", null, null, "-2px", 0)}
+          ${size("1px", "100%")}
           content: "";
-          position: absolute;
-          left: 0;
-          bottom: -2px;
-          height: 1px;
-          width: 100%;
           background: #707070;
           opacity: 0;
           transform: scaleX(0);

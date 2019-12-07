@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const ErrorStyles = styled.div`
-  padding: 2rem;
+  padding: 24px;
   background: white;
-  margin: 2rem 0;
+  margin: 24px 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-left: 5px solid red;
 
@@ -16,7 +16,7 @@ const ErrorStyles = styled.div`
   }
 
   strong {
-    margin-right: 1rem;
+    margin-right: 16px;
   }
 `;
 

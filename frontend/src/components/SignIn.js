@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "react-apollo";
+import { position } from "polished";
 import styled from "styled-components";
 import { USER_SIGNIN_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
@@ -10,13 +11,11 @@ import Form from "../styles/Form";
 import TextField from "./TextField";
 
 const ResetPasswordLink = styled(Link)`
-  bottom: 0;
+  ${position("absolute", null, "20px", 0, null)}
   color: #000;
   font-family: "Maisonneue Bold";
   /* Size of Input Height */
   line-height: 38px;
-  position: absolute;
-  right: 20px;
 `;
 
 const SignIn = () => {

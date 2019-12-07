@@ -3,10 +3,10 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Styles = styled.div`
-  max-width: 61.5rem;
-  width: calc(100% - 3rem);
-  position: relative;
   margin: auto;
+  max-width: 61.5rem;
+  position: relative;
+  width: calc(100% - 3rem);
 
   h1 {
     display: block;

@@ -30,8 +30,8 @@ const Jump = styled.h1`
   }
 
   span {
-    position: relative;
     display: inline-block;
+    position: relative;
   }
 `;
 

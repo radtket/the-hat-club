@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useHistory } from "react-router-dom";
 import { useLazyQuery } from "react-apollo";
 import Downshift, { resetIdCounter } from "downshift";
@@ -37,7 +38,7 @@ const SearchBar = () => {
                   type: "search",
                   placeholder: "Search For An Item",
                   id: "search",
-                  className: loading ? "loading" : "",
+                  className: clsx(loading && "loading"),
                   onChange: e => {
                     e.persist();
                     onChange(e);

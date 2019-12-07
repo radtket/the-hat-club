@@ -1,4 +1,5 @@
 import React from "react";
+import { position } from "polished";
 import styled from "styled-components";
 import { DeliveryTruckIcon, RefreshIcon } from "./Icons";
 
@@ -6,10 +7,10 @@ const ListStyles = styled.ul`
   margin: 10px 0;
 
   li {
-    position: relative;
-    padding-left: 24px;
     font-size: 16px;
     margin-bottom: 8px;
+    padding-left: 24px;
+    position: relative;
 
     a {
       display: block;
@@ -17,12 +18,10 @@ const ListStyles = styled.ul`
 
     /* &::before { */
     svg {
-      position: absolute;
+      ${position("absolute", "2px", null, null, "2px")}
       height: 14px;
-      /* width: 14px; */
       vertical-align: middle;
-      top: 2px;
-      left: 0;
+      /* width: 14px; */
     }
   }
 

@@ -21,56 +21,51 @@ export const CartOverlay = styled.div`
 `;
 
 export const CartHeader = styled.header`
+  ${position("absolute", 0, null, null, 0)};
   background: #333;
   border-bottom: 1px solid #464646;
   color: #282828;
   font-size: 16px;
-  left: 0;
   line-height: 1;
   overflow: hidden;
   padding: 32px 37px;
-  position: absolute;
   text-align: right;
-  top: 0;
   width: 100%;
   z-index: 110;
 
   button {
-    color: #eee;
     background: transparent;
-    padding: 0;
+    color: #eee;
     line-height: 1;
+    padding: 0;
   }
 `;
 
 export const CartFooter = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
-  z-index: 102;
-  padding: 0 37px 37px;
-  overflow: hidden;
+  ${position("absolute", null, null, 0, 0)};
   background: #333;
+  overflow: hidden;
+  padding: 0 37px 37px;
+  width: 100%;
+  z-index: 102;
 
   dl {
     ${padding("20px", 0)}
+    border-bottom: 1px solid #464646;
+    border-top: 1px solid #464646;
+    color: #eee;
     display: flex;
-    justify-content: space-between;
-    width: 100%;
     font-size: 16px;
+    justify-content: space-between;
     line-height: 1;
     margin-bottom: 36px;
-    border-top: 1px solid #464646;
-    border-bottom: 1px solid #464646;
-    color: #eee;
+    width: 100%;
   }
 
   nav {
     button {
-      width: 48%;
       margin-bottom: 12px;
+      width: 48%;
 
       @media (max-width: 2100px) {
         display: block;
@@ -91,12 +86,9 @@ export const RemoveFromCartButton = styled.button`
 
   &::before,
   &::after {
+    ${position("absolute", "50%", null, null, 0)};
+    ${size("2px", "100%")};
     content: "";
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    top: 50%;
-    left: 0;
     margin-top: -1px;
     background: #a5a5a5;
     transition: background 0.2s ease;
@@ -105,6 +97,7 @@ export const RemoveFromCartButton = styled.button`
   &::before {
     transform: rotate(45deg);
   }
+
   &::after {
     transform: rotate(-45deg);
   }
@@ -155,17 +148,16 @@ export const CartItemQuanityStyles = styled.label`
   fieldset {
     button {
       ${size("24px")}
-      position: relative;
+      background: transparent;
       font-size: 0;
       line-height: 24px;
-      background: transparent;
+      position: relative;
       vertical-align: top;
 
       &::before {
+        ${position("absolute", "50%", null, null, null)};
         content: "";
         display: block;
-        position: absolute;
-        top: 50%;
         margin-top: -7px;
         transition: border-color 0.2s ease;
       }
@@ -176,6 +168,7 @@ export const CartItemQuanityStyles = styled.label`
             border-right-color: #eee;
           }
         }
+
         &::before {
           ${triangle({
             pointingDirection: "left",
@@ -206,9 +199,8 @@ export const CartItemQuanityStyles = styled.label`
 `;
 
 export const CartItemStyles = styled.li`
+  ${padding("12px", null)}
   display: flex;
-  padding-top: 12px;
-  padding-bottom: 12px;
   position: relative;
   border-bottom: 1px solid #464646;
 
@@ -232,6 +224,7 @@ export const CartItemStyles = styled.li`
     dt {
       display: block;
       font-size: 16px;
+
       > a {
         color: inherit;
       }
@@ -281,6 +274,7 @@ export const CartDrawer = styled.aside`
   @media (max-width: 2100px) {
     width: 410px;
   }
+
   /* Container */
   > div {
     ${size("100%", "auto")}

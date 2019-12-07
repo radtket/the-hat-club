@@ -1,4 +1,5 @@
 import React from "react";
+import { padding, size } from "polished";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Flex, Box } from "@rebass/grid";
@@ -18,9 +19,8 @@ import {
 import { socialMediaUrls } from "../utils/constants";
 
 const FooterSyles = styled.footer`
+  ${padding("120px", null, "40px")}
   background: #ee5050;
-  padding-top: 120px;
-  padding-bottom: 40px;
 
   .privacy-policy {
     color: #ffffff;
@@ -58,8 +58,7 @@ const FooterSyles = styled.footer`
   }
 
   .list--social__icon {
-    width: 36px;
-    height: 36px;
+    ${size("36px")}
   }
 
   .list--social {

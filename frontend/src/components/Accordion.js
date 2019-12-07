@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { position, size } from "polished";
 import { MinusIcon, PlusIcon } from "./Icons";
 
 export const AccordionItemStyles = styled.dl`
@@ -14,13 +15,10 @@ export const AccordionItemStyles = styled.dl`
     cursor: pointer;
 
     &::before {
+      ${position("absolute", "-2px", null, null, "-8px")};
+      ${size("26px")}
       content: "";
-      position: absolute;
-      top: -2px;
-      left: -8px;
       background: rgba(0, 0, 0, 0.04);
-      width: 26px;
-      height: 26px;
       border-radius: 50%;
       transform: scale(0.7);
       opacity: 0;
@@ -45,21 +43,15 @@ export const AccordionItemStyles = styled.dl`
 
   .plus,
   .minus {
-    position: absolute;
-    top: -2px;
-    left: -8px;
-    width: 26px;
-    height: 26px;
+    ${position("absolute", "-2px", null, null, "-8px")};
+    ${size("26px")}
     border-radius: 50%;
     transition: all 0.3s ease;
 
     svg {
+      ${size("10px")}
+      ${position("absolute", "calc(50% - 5px)", null, null, "calc(50% - 5px)")};
       display: block;
-      width: 10px;
-      height: 10px;
-      position: absolute;
-      top: calc(50% - 5px);
-      left: calc(50% - 5px);
       max-width: 100%;
     }
   }

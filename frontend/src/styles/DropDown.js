@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { size, position } from "polished";
 
 const glow = keyframes`
   from {
@@ -11,10 +12,10 @@ const glow = keyframes`
 `;
 
 const DropDown = styled.div`
+  border: 1px solid ${({ theme }) => theme.lightgrey};
   position: absolute;
   width: 100%;
   z-index: 2;
-  border: 1px solid ${({ theme }) => theme.lightgrey};
 `;
 
 const DropDownItem = styled.div`
@@ -42,31 +43,27 @@ const SearchStyles = styled.fieldset`
     position: relative;
 
     &::after {
+      ${position("absolute", null, null, 0, 0)}
+      ${size("1px", 0)}
       content: "";
       display: block;
-      height: 1px;
-      width: 0;
-      position: absolute;
-      left: 0;
-      bottom: 0;
       background: #bada55;
     }
   }
 
   input {
+    ${size("60px", "100%")}
     background: transparent;
     border: 0;
     border-radius: 0;
     color: #fff;
     font-size: 36px;
     font-weight: 400;
-    height: 60px;
     margin: 0;
     max-width: 100%;
     outline: 0;
     padding: 0 50px 0 0;
     transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-    width: 100%;
 
     &.loading {
       animation: ${glow} 0.5s ease-in-out infinite alternate;

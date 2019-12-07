@@ -24,7 +24,6 @@ import Product from "./Product";
 import ProductCard from "./ProductCard";
 import RequestPasswordReset from "./RequestPasswordReset";
 import SearchBar from "./SearchBar";
-import SectionSmall from "./SectionSmall";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SingleItem from "./SingleItem";
@@ -64,7 +63,6 @@ export {
   ProductCard,
   RequestPasswordReset,
   SearchBar,
-  SectionSmall,
   SignIn,
   SignUp,
   SingleItem,

@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
 const FilterNavItem = ({ tag, setTag, label, tagName }) => (
   <button
-    className={`${tag === tagName ? "active" : ""}`}
+    className={clsx(tag === tagName && "active")}
     onClick={() => setTag(tagName)}
     type="button"
   >

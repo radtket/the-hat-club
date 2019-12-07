@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 import { SearchIcon } from "./Icons";
 import MenuOverlay from "./MenuOverlay";
 import NavbarStyles from "../styles/NavbarStyles";
@@ -18,7 +19,7 @@ const Navbar = () => {
     <>
       <NavbarStyles
         {...{ isMenuOpen }}
-        className={`navbar ${isMenuOpen ? "is-active" : ""}`}
+        className={clsx("navbar", isMenuOpen && "is-active")}
       >
         <div className="navbar__inner container">
           <NavLink className="navbar__logo" to="/">

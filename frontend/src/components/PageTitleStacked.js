@@ -11,9 +11,7 @@ const PageTitleStyles = styled(SmallSection)`
   h1 {
     font-family: "Maisonneue Bold";
     font-size: 64px;
-    margin-bottom: ${({ theme }) => theme.smallSpacing};
-    margin-top: 0;
-    margin: auto;
+    margin: 0 auto 12px;
     max-width: 650px;
   }
 `;

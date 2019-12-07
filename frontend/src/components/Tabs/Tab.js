@@ -4,23 +4,22 @@ import styled from "styled-components";
 import { TabContext } from ".";
 
 const TabStyles = styled.button`
-  display: inline-block;
+  color: ${({ isActive }) => (isActive ? "#000" : "#777")};
   cursor: pointer;
+  display: inline-block;
   font-size: 18px;
   line-height: 1;
-  margin: 0;
-  margin-bottom: 24px;
-  color: ${({ isActive }) => (isActive ? "#000" : "#777777")};
-  position: relative;
+  margin-bottom: 18px;
   outline: 0;
   padding: 0;
+  position: relative;
 
   /* &::after {
     position: absolute;
     content: "";
     width: 100%;
     height: 1px;
-    background: ${({ isActive }) => (isActive ? "#777777" : "transparent")};
+    background: ${({ isActive }) => (isActive ? "#777" : "transparent")};
     bottom: -5px;
     left: 0;
   } */

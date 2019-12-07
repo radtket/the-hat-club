@@ -1,17 +1,17 @@
 import React from "react";
+import { size } from "polished";
 import styled from "styled-components";
 
 const LoadingWrapper = styled.div`
+  ${size("100vh", "100%")}
   background: #000000;
-  height: 100vh;
-  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
   .ball {
-    width: 10px;
-    height: 10px;
+    ${size("10px")}
     margin: 10px auto;
     border-radius: 50px;
 
