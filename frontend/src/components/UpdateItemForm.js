@@ -6,10 +6,11 @@ import { UPDATE_ITEM_MUTATION } from "../reslovers/Mutation";
 
 // Components
 import ErrorMessage from "./ErrorMessage";
-import SubmitButton from "./SubmitButton";
 import Form from "../styles/Form";
-import TextField from "./TextField";
+import LoadingSpinner from "./LoadingSpinner";
+import SubmitButton from "./SubmitButton";
 import TextArea from "./TextArea";
+import TextField from "./TextField";
 
 const UpdateItemForm = ({ id, title, description, price }) => {
   const [updateItem, { error, loading }] = useMutation(UPDATE_ITEM_MUTATION);
@@ -42,7 +43,7 @@ const UpdateItemForm = ({ id, title, description, price }) => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

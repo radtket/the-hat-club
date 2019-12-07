@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 const Styles = styled.div`
   position: relative;
@@ -107,6 +108,18 @@ const BigTitle = ({ accent, title, bgColor }) => {
       </div>
     </Styles>
   );
+};
+
+BigTitle.propTypes = {
+  accent: PropTypes.string,
+  title: PropTypes.string,
+  bgColor: PropTypes.string,
+};
+
+BigTitle.defaultProps = {
+  accent: null,
+  title: null,
+  bgColor: null,
 };
 
 export default BigTitle;

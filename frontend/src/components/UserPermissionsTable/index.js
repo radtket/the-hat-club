@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-apollo";
 import { ALL_USERS_QUERY } from "../../reslovers/Query";
 import ErrorMessage from "../ErrorMessage";
+import LoadingSpinner from "../LoadingSpinner";
 import SingleUserPermissions from "./SingleUserPermissions";
 import { possiblePermissions } from "../../utils/constants";
 import Table from "../../styles/Table";
@@ -10,7 +11,7 @@ const UserPermissionsTable = () => {
   const { data, loading, error } = useQuery(ALL_USERS_QUERY);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { formatMoney } from "../utils/helpers";
 import { USER_ORDERS_QUERY } from "../reslovers/Query";
-import ErrorMessage from "./ErrorMessage";
 import Button from "./Button";
+import ErrorMessage from "./ErrorMessage";
+import LoadingSpinner from "./LoadingSpinner";
 
 const OrdersTableStyles = styled.table`
   width: 100%;
@@ -43,7 +44,7 @@ const OrdersTable = () => {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

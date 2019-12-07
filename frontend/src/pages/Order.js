@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { format } from "date-fns";
 import { SINGLE_ORDER_QUERY } from "../reslovers/Query";
-import { ErrorMessage, OrderItem, SectionSmall } from "../components";
+import {
+  ErrorMessage,
+  LoadingSpinner,
+  OrderItem,
+  SectionSmall,
+} from "../components";
 import OrderStyles from "../styles/OrderStyles";
 
 const Order = () => {
@@ -15,7 +20,7 @@ const Order = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

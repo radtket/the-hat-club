@@ -9,11 +9,12 @@ import { CREATE_ITEM_MUTATION } from "../reslovers/Mutation";
 import Button from "./Button";
 import ErrorMessage from "./ErrorMessage";
 import Form from "../styles/Form";
+import ImageUploader from "./ImageUploader";
+import LoadingSpinner from "./LoadingSpinner";
 import RadioButton from "./RadioButton";
 import Select from "./Select";
 import TextArea from "./TextArea";
 import TextField from "./TextField";
-import ImageUploader from "./ImageUploader";
 
 const CreateItemForm = () => {
   const { push } = useHistory();
@@ -80,7 +81,7 @@ const CreateItemForm = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

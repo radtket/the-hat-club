@@ -5,6 +5,7 @@ import { useQuery } from "react-apollo";
 import PropTypes from "prop-types";
 import { PAGINATION_QUERY } from "../reslovers/Query";
 import ErrorMessage from "./ErrorMessage";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -33,7 +34,7 @@ const Pagination = ({ page, perPage }) => {
   const { data, error, loading } = useQuery(PAGINATION_QUERY);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

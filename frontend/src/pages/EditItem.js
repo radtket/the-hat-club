@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-apollo";
 import { GET_SINGLE_ITEM_QUERY } from "../reslovers/Query";
 
-import { ErrorMessage, UpdateItemForm } from "../components";
+import { ErrorMessage, LoadingSpinner, UpdateItemForm } from "../components";
 
 const EditItem = () => {
   const { id } = useParams();
@@ -14,7 +14,7 @@ const EditItem = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

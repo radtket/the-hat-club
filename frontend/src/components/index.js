@@ -10,6 +10,7 @@ import FaqItem from "./FaqItem";
 import FilterNav from "./FilterNav";
 import HomeSlider from "./HomeSlider";
 import Loading from "./Loading";
+import LoadingSpinner from "./LoadingSpinner";
 import Logout from "./Logout";
 import Navbar from "./Navbar";
 import OrderItem from "./OrderItem";
@@ -47,6 +48,7 @@ export {
   FaqItem,
   FilterNav,
   HomeSlider,
+  LoadingSpinner,
   Loading,
   Logout,
   Navbar,

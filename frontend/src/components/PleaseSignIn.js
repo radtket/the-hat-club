@@ -3,12 +3,13 @@ import { useQuery } from "react-apollo";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import SignIn from "./SignIn";
 import ErrorMessage from "./ErrorMessage";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PleaseSignIn = ({ children }) => {
   const { data, loading, error } = useQuery(CURRENT_USER_QUERY);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

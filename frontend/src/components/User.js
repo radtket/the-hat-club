@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useQuery } from "react-apollo";
-import ErrorMessage from "./ErrorMessage";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import ErrorMessage from "./ErrorMessage";
+import LoadingSpinner from "./LoadingSpinner";
 import Logout from "./Logout";
 import NavItem from "./NavItem";
 
@@ -10,7 +11,7 @@ const User = ({ setIsHovering, toggleMenu }) => {
   const { data, error, loading } = useQuery(CURRENT_USER_QUERY);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {
