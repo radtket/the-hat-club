@@ -3,7 +3,7 @@ import { cover, size, position, margin } from "polished";
 
 const ProductSyles = styled.div`
   border-radius: 5px;
-  box-shadow: 0 25px 70px rgba(#101010, 0.07);
+  box-shadow: 0 25px 70px rgba(#111, 0.07);
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
@@ -19,7 +19,7 @@ const ProductSyles = styled.div`
       &__image {
         > a {
           &::after {
-            background-color: rgba(20, 21, 28, 0.25);
+            background-color: rgba(17, 17, 17, 0.25);
           }
         }
       }
@@ -73,7 +73,7 @@ const ProductSyles = styled.div`
     &__title {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
-      color: #101010;
+      color: #111;
       margin-bottom: 12px;
       overflow: hidden;
       text-decoration: none;
@@ -87,7 +87,7 @@ const ProductSyles = styled.div`
     }
 
     &__price {
-      color: #5f5f5f;
+      color: #747474;
       font-family: "Maisonneue Bold";
       font-size: 14px;
     }

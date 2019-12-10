@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { TabContext } from ".";
 
 const TabStyles = styled.button`
-  color: ${({ isActive }) => (isActive ? "#000" : "#777")};
+  color: ${({ isActive }) => (isActive ? "#000" : "#747474")};
   cursor: pointer;
   display: inline-block;
   font-size: 18px;
@@ -19,7 +19,7 @@ const TabStyles = styled.button`
     content: "";
     width: 100%;
     height: 1px;
-    background: ${({ isActive }) => (isActive ? "#777" : "transparent")};
+    background: ${({ isActive }) => (isActive ? "#747474" : "transparent")};
     bottom: -5px;
     left: 0;
   } */

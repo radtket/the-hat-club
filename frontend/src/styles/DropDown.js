@@ -12,14 +12,14 @@ const glow = keyframes`
 `;
 
 const DropDown = styled.div`
-  border: 1px solid ${({ theme }) => theme.lightgrey};
+  border: 1px solid #eee;
   position: absolute;
   width: 100%;
   z-index: 2;
 `;
 
 const DropDownItem = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.lightgrey};
+  border-bottom: 1px solid #eee;
   background: ${({ highlighted }) => (highlighted ? "#f7f7f7" : "white")};
   padding: 1rem;
   transition: all 0.2s;

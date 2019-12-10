@@ -59,7 +59,7 @@ const Styles = styled.figure`
   }
 
   figcaption {
-    color: #272727;
+    color: #242424;
     margin: auto;
     max-width: 315px;
     text-align: center;
@@ -98,13 +98,13 @@ const Styles = styled.figure`
 
       > a {
         position: relative;
-        color: #707070;
+        color: #747474;
 
         &::after {
           ${position("absolute", null, null, "-2px", 0)}
           ${size("1px", "100%")}
           content: "";
-          background: #707070;
+          background: #747474;
           opacity: 0;
           transform: scaleX(0);
           /* transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s; */

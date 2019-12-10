@@ -25,7 +25,7 @@ const Styles = styled.div`
     > a {
       border-bottom-right-radius: 24px;
       border-bottom-left-radius: 24px;
-      box-shadow: 0px 15px 10px -15px rgba(155, 155, 155, 0.45);
+      box-shadow: 0px 15px 10px -15px rgba(158, 158, 158, 0.45);
     }
 
     img {
@@ -66,7 +66,7 @@ const Styles = styled.div`
   }
 
   dl {
-    color: #272727;
+    color: #242424;
     font-size: 18px;
     margin: auto;
     max-width: 315px;
@@ -87,7 +87,7 @@ const Styles = styled.div`
   }
 
   nav {
-    background: #272727;
+    background: #242424;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     bottom: 100%;

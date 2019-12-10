@@ -76,7 +76,7 @@ const ButtonStyles = styled.button`
         `;
       case "gray":
         return css`
-          color: #777;
+          color: #747474;
           background: #e5e5e5;
 
           &:hover,
@@ -100,7 +100,7 @@ const ButtonStyles = styled.button`
       default:
         return css`
           color: #fff;
-          background: rgba(34, 34, 34, 0.9);
+          background: rgba(36, 36, 36, 0.9);
 
           &:hover,
           &:focus {

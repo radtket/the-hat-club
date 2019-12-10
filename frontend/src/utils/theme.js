@@ -5,49 +5,40 @@ import GlobalStyles from "../styles/Global";
 
 // eslint-disable-next-line no-unused-vars
 const colors = [
-  "#000",
-  "#101010",
-  "#111",
-  "#262626",
-  "#272727",
-  "#282828",
-  "#333",
-  "#343434",
-  "#393939",
-  "#3a3a3a",
-  "#464646",
-  "#4b4e53",
-  "#5f5f5f",
-  "#707070",
-  "#777",
-  "#7e8082",
-  "#888",
-  "#999",
-  "#a0a0a0",
-  "#ccc",
-  "#e1e1e1",
-  "#e8e8e8",
-  "#eaeaea",
-  "#ededed",
-  "#eee",
-  "#f6f6f6",
-  "#fff",
-  "rgb(155, 155, 155)",
-  "rgb(241, 241, 241)",
-  "#a02727",
-  "#cc0000",
-  "#cf3a3a",
-  "#ee5050",
-  "#ff0000",
-  "rgb(255, 0, 0)",
+  "#000", // x 36
+  "#111", //  x 7 rgb(17, 17, 17)
+  "#242424", // x 13 RGBA rgba(36, 36, 36)
+  "#333", // x 13 posible replacement "#424242"
+  "#464646", // x 5 posible replacement "#424242"
+  "#747474", // x11
+  "#888", // x 3
+  "#9e9e9e", // x 5 rgb(158, 158, 158)
+  "#d3d3d3", // x 3
+  "#eee", // x34 rgb(238, 238, 238)
+  "#fff", // x 61
+  "#a02727", // x 8
+  "#cc0000", // x 2
+  "#cf3a3a", // x 3
+  "#ee5050", // x 13
+  "#ff0000", // x5
 ];
+
+export const gray = {
+  "50": "#FAFAFA",
+  "100": "#F5F5F5",
+  "200": "#EEEEEE",
+  "300": "#E0E0E0",
+  "400": "#BDBDBD",
+  "500": "#9E9E9E",
+  "600": "#757575",
+  "700": "#616161",
+  "800": "#424242",
+  "900": "#212121",
+};
 
 const theme = {
   red: "#FF0000",
-  black: "#393939",
-  grey: "#3a3a3a",
-  lightgrey: "#e1e1e1",
-  offWhite: "#ededed",
+  lightgrey: "#eee",
   maxWidth: "1000px",
   bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
   smallSpacing: "12px",

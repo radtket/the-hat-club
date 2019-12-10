@@ -32,7 +32,7 @@ const SelectStyles = styled.div`
   .form-control {
     background-color: #fff;
     border-radius: 0;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #eee;
     color: #333;
     display: block;
     font-size: 16px;
@@ -57,7 +57,7 @@ const SelectStyles = styled.div`
     user-select: none;
 
     &:focus {
-      border-color: #999;
+      border-color: #9e9e9e;
     }
   }
 `;

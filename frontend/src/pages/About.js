@@ -51,7 +51,7 @@ const AboutStyles = styled.div`
 
   .bg-gray {
     background: #f4f4f7;
-    color: #272727;
+    color: #242424;
   }
 
   .bg-black {

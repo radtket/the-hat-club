@@ -4,7 +4,7 @@ import { position, padding, size, triangle } from "polished";
 export const CartOverlay = styled.div`
   ${position("fixed", 0)};
   ${size(0)}
-  background: rgba(241, 241, 241, 0.73);
+  background: rgba(238, 238, 238, 0.73);
   opacity: 0;
   transition: opacity 0.2s ease 0s;
   visibility: hidden;
@@ -24,7 +24,7 @@ export const CartHeader = styled.header`
   ${position("absolute", 0, null, null, 0)};
   background: #333;
   border-bottom: 1px solid #464646;
-  color: #282828;
+  color: #242424;
   font-size: 16px;
   line-height: 1;
   overflow: hidden;

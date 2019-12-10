@@ -13,7 +13,7 @@ const OrderStyles = styled.div`
       margin: 43px 0 42px;
       padding: 20px 0 18px;
       text-align: center;
-      color: #777;
+      color: #747474;
       background: #f7f7f7;
 
       ul {
@@ -32,7 +32,7 @@ const OrderStyles = styled.div`
           overflow: visible;
 
           strong {
-            color: #282828;
+            color: #242424;
             display: block;
           }
         }
@@ -84,7 +84,6 @@ const OrderStyles = styled.div`
             padding-top: 17px;
             padding-bottom: 17px;
             border-bottom: 1px solid #eee;
-            border-bottom-color: rgb(238, 238, 238);
           }
         }
       }

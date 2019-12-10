@@ -10,7 +10,7 @@ import LoadingSpinner from "./LoadingSpinner";
 const PaginationStyles = styled.div`
   align-content: center;
   align-items: stretch;
-  border: 1px solid lightgrey;
+  border: 1px solid #d3d3d3;
   border-radius: 10px;
   display: inline-flex;
   justify-content: center;
@@ -18,7 +18,7 @@ const PaginationStyles = styled.div`
   text-align: center;
 
   & > * {
-    border-right: 1px solid lightgrey;
+    border-right: 1px solid #d3d3d3;
     margin: 0;
     padding: 15px 30px;
 

@@ -13,7 +13,7 @@ const FaqItemStyles = styled(Flex)`
   }
 
   dd {
-    color: #777;
+    color: #747474;
   }
 `;
 

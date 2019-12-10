@@ -9,7 +9,7 @@ const Styles = styled.nav`
   line-height: 18px;
 
   button {
-    color: #272727;
+    color: #242424;
     display: inline-block;
     font-family: "Maisonneue Bold";
     font-size: 20px;
@@ -27,7 +27,7 @@ const Styles = styled.nav`
   }
 
   span {
-    color: #ccc;
+    color: #d3d3d3;
     font-size: 14px;
   }
 `;

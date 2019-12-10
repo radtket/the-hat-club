@@ -4,14 +4,14 @@ import { size, margin } from "polished";
 export const IconButton = styled.button`
   &:hover {
     svg {
-      fill: #282828;
+      fill: #242424;
     }
   }
 
   svg {
     display: block;
     height: 18px;
-    fill: #a0a0a0;
+    fill: #9e9e9e;
     transition: fill 0.3s;
   }
 `;
@@ -27,7 +27,7 @@ const Form = styled.form`
   select {
     ${size("48px", "100%")}
     ${margin("4px", null)}
-    border: 1px solid #e8e8e8;
+    border: 1px solid #eee;
     display: inline-block;
     font-size: 16px;
     line-height: 1.42857143;
@@ -39,7 +39,7 @@ const Form = styled.form`
     }
 
     &:focus {
-      border-color: #262626;
+      border-color: #242424;
       outline: 0;
     }
   }

@@ -8,7 +8,7 @@ const CartTableStyles = styled(Box)`
   table {
     border-collapse: collapse;
     border-spacing: 0;
-    color: #343434;
+    color: #333;
     margin-bottom: 48px;
     table-layout: auto;
     text-align: left;
@@ -20,8 +20,8 @@ const CartTableStyles = styled(Box)`
       vertical-align: middle;
 
       tr {
-        border-bottom: 1px solid #eaeaea;
-        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
 
         th {
           line-height: 1;
@@ -34,12 +34,12 @@ const CartTableStyles = styled(Box)`
     tbody {
       td,
       th {
-        color: #343434;
+        color: #333;
         text-align: inherit;
       }
 
       tr {
-        border-top: 1px solid #eaeaea;
+        border-top: 1px solid #eee;
 
         td {
           padding: 30px 25px 30px 0;

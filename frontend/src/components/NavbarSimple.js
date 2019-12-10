@@ -38,7 +38,7 @@ const Navbar = styled.header`
 
     a,
     button {
-      color: ${({ isCompact }) => (isCompact ? "#707070" : "#fff")};
+      color: ${({ isCompact }) => (isCompact ? "#747474" : "#fff")};
       display: inline-block;
       font-size: 18px;
       line-height: 1;
@@ -48,17 +48,17 @@ const Navbar = styled.header`
       vertical-align: bottom;
 
       &:hover {
-        color: ${({ isCompact }) => (isCompact ? "#282828" : "#ee5050")};
+        color: ${({ isCompact }) => (isCompact ? "#242424" : "#ee5050")};
 
         svg {
-          fill: ${({ isCompact }) => (isCompact ? "#282828" : "#ee5050")};
+          fill: ${({ isCompact }) => (isCompact ? "#242424" : "#ee5050")};
         }
       }
     }
 
     svg {
       display: block;
-      fill: ${({ isCompact }) => (isCompact ? "#707070" : "#fff")};
+      fill: ${({ isCompact }) => (isCompact ? "#747474" : "#fff")};
       height: 18px;
       transition: fill 0.2s ease;
     }

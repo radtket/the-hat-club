@@ -4,7 +4,7 @@ import { position } from "polished";
 const BreadCrumbStyles = styled.ul`
   li {
     ${position("relative", null, null, null, "1px")}
-    color: #101010;
+    color: #111;
     display: inline-block;
     font-size: 16px;
     margin-right: 12px;
@@ -22,20 +22,20 @@ const BreadCrumbStyles = styled.ul`
 
     &::after {
       ${position("absolute", 0, "-4px", null, null)}
-      color: #101010;
+      color: #111;
       content: "/";
       font-size: inherit;
       font-weight: 400;
     }
 
     a {
-      color: #7e8082;
+      color: #747474;
       outline: none;
       text-decoration: none;
       transition: all 0.3s ease;
 
       &:hover {
-        color: #101010;
+        color: #111;
       }
     }
   }

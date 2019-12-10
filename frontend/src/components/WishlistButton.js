@@ -16,7 +16,7 @@ const WishlistButtonStyles = styled(IconButton)`
     }
 
     .stroke {
-      fill: #a0a0a0;
+      fill: #9e9e9e;
     }
 
     .fill {
@@ -27,7 +27,7 @@ const WishlistButtonStyles = styled(IconButton)`
   &:hover {
     svg {
       .stroke {
-        fill: #282828;
+        fill: #242424;
       }
     }
   }

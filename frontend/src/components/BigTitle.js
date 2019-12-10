@@ -18,7 +18,7 @@ const Styles = styled.div`
 
     .big-title {
       ${position("absolute", "-20px", null, null, null)}
-      color: #f6f6f6;
+      color: #eee;
       font-family: "square721_cn_btbold";
       font-size: 130px;
       font-weight: 800;
@@ -77,7 +77,7 @@ const Styles = styled.div`
             }
 
             h2 {
-              color: #272727;
+              color: #242424;
             }
           }
         `;
@@ -87,7 +87,7 @@ const Styles = styled.div`
           background: #fff;
           .sec-title {
             .big-title {
-              color: #f6f6f6;
+              color: #eee;
             }
 
             h2 {
