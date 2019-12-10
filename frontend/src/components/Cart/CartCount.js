@@ -8,7 +8,7 @@ import { isArrayEmpty } from "../../utils/helpers";
 const Dot = styled.div`
   ${size("16px")}
   ${position("absolute", 0, 0, null, null)}
-  background: ${({ theme }) => theme.red};
+  background: ${({ theme: { colors } }) => colors.red[500]};
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(255, 0, 0, 0.16), 0 2px 4px rgba(255, 0, 0, 0.23);
   color: #fff;

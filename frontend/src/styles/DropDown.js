@@ -20,14 +20,16 @@ const DropDown = styled.div`
 
 const DropDownItem = styled.div`
   border-bottom: 1px solid #eee;
-  background: ${({ highlighted }) => (highlighted ? "#f7f7f7" : "white")};
+  background: ${({ highlighted, theme: { colors } }) =>
+    highlighted ? colors.gray[100] : colors.common.white};
   padding: 1rem;
   transition: all 0.2s;
   ${({ highlighted }) => (highlighted ? "padding-left: 2rem;" : null)};
   display: flex;
   align-items: center;
   border-left: 10px solid
-    ${({ highlighted, theme }) => (highlighted ? theme.lightgrey : "white")};
+    ${({ highlighted, theme: { colors } }) =>
+      highlighted ? colors.gray[200] : colors.common.white};
   img {
     margin-right: 10px;
   }

@@ -65,8 +65,6 @@ const WishlistButton = ({ id }) => {
   const wishlistItem =
     data && data.me && data.me.wishlist.some(({ item }) => item.id === id);
 
-  // console.log(`${wishlistItem ? "Remove" : "Add"} wishlist: ID# ${id}`);
-
   return (
     <WishlistButtonStyles
       className={clsx(wishlistItem && "active")}

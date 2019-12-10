@@ -91,7 +91,7 @@ export default createGlobalStyle`
 
 		a {
 			text-decoration: none;
-			color: ${({ theme }) => theme.red};
+			color: ${({ theme: { colors } }) => colors.red[500]};
   	}
 
 		figure {
