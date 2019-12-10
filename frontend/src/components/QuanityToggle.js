@@ -17,9 +17,9 @@ const QuanityToggleStyles = styled.div`
   .qty {
     ${size("48px", "51px")}
     background: transparent;
-    border: 1px solid #333;
+    border: 1px solid #424242;
     border-radius: 3px 0 0 3px;
-    color: #333;
+    color: #424242;
     display: inline-flex;
     font-size: 16px;
     font-weight: 400;
@@ -52,9 +52,9 @@ const QuanityToggleStyles = styled.div`
     ${size("24px", "23px")}
     align-items: center;
     background: transparent;
-    border: 1px solid #333;
+    border: 1px solid #424242;
     border-radius: 0;
-    color: #333;
+    color: #424242;
     cursor: pointer;
     display: flex;
     font-weight: 400;

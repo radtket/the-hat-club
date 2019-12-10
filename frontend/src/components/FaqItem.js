@@ -7,9 +7,10 @@ import { margin } from "polished";
 const FaqItemStyles = styled(Flex)`
   font-size: 18px;
   line-height: 1.6;
+  margin-top: 16px;
 
   dt {
-    ${margin("1em", null)}
+    ${margin("16px", null)}
   }
 
   dd {

@@ -37,13 +37,13 @@ const MenuStyles = styled.div`
     transition: opacity 700ms cubic-bezier(0.8, 0, 0.55, 0.94);
 
     .column {
-      border-left: 1px solid #888;
+      border-left: 1px solid #616161;
       display: none;
       flex: 1;
       height: 110%;
 
       &:nth-child(2) {
-        border-right: 1px solid #888;
+        border-right: 1px solid #616161;
       }
 
       @media (min-width: 600px) {
@@ -54,7 +54,7 @@ const MenuStyles = styled.div`
         display: block;
 
         &:nth-child(2) {
-          border-left: 1px solid #888;
+          border-left: 1px solid #616161;
           border-right: 0;
         }
       }

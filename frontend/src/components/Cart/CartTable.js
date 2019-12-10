@@ -8,7 +8,7 @@ const CartTableStyles = styled(Box)`
   table {
     border-collapse: collapse;
     border-spacing: 0;
-    color: #333;
+    color: #424242;
     margin-bottom: 48px;
     table-layout: auto;
     text-align: left;
@@ -34,7 +34,7 @@ const CartTableStyles = styled(Box)`
     tbody {
       td,
       th {
-        color: #333;
+        color: #424242;
         text-align: inherit;
       }
 

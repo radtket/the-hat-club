@@ -30,7 +30,7 @@ export const NavigationArrowButton = styled.button`
 
   svg {
     display: block;
-    fill: #333;
+    fill: #424242;
     height: ${({ size }) => `${size}`};
   }
 `;

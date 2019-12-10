@@ -29,7 +29,7 @@ const Styles = styled.div`
 
     h2 {
       position: relative;
-      color: #333;
+      color: #424242;
       font-size: 43px;
       line-height: 1.2em;
       margin: 0;
@@ -91,7 +91,7 @@ const Styles = styled.div`
             }
 
             h2 {
-              color: #333;
+              color: #424242;
             }
           }
         `;

@@ -3,7 +3,7 @@ import { SmallSection } from "../components/Sections";
 
 const PageTitleStyles = styled(SmallSection)`
   background: #eee;
-  color: #464646;
+  color: #424242;
   margin-bottom: ${({ theme }) => theme.largeSpacing};
 
   h1 {

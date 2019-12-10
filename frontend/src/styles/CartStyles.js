@@ -22,8 +22,8 @@ export const CartOverlay = styled.div`
 
 export const CartHeader = styled.header`
   ${position("absolute", 0, null, null, 0)};
-  background: #333;
-  border-bottom: 1px solid #464646;
+  background: #424242;
+  border-bottom: 1px solid #424242;
   color: #242424;
   font-size: 16px;
   line-height: 1;
@@ -43,7 +43,7 @@ export const CartHeader = styled.header`
 
 export const CartFooter = styled.footer`
   ${position("absolute", null, null, 0, 0)};
-  background: #333;
+  background: #424242;
   overflow: hidden;
   padding: 0 37px 37px;
   width: 100%;
@@ -51,8 +51,8 @@ export const CartFooter = styled.footer`
 
   dl {
     ${padding("20px", 0)}
-    border-bottom: 1px solid #464646;
-    border-top: 1px solid #464646;
+    border-bottom: 1px solid #424242;
+    border-top: 1px solid #424242;
     color: #eee;
     display: flex;
     font-size: 16px;
@@ -202,7 +202,7 @@ export const CartItemStyles = styled.li`
   ${padding("12px", null)}
   display: flex;
   position: relative;
-  border-bottom: 1px solid #464646;
+  border-bottom: 1px solid #424242;
 
   &:last-of-type {
     border-bottom-color: transparent;
@@ -262,7 +262,7 @@ export const CartItems = styled.ul`
 export const CartDrawer = styled.aside`
   ${position("fixed", 0, 0, 0, null)};
   ${size("100%", "500px")}
-  background: #333;
+  background: #424242;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
   line-height: 1.2;
   overflow: hidden;

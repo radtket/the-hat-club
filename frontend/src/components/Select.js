@@ -33,7 +33,7 @@ const SelectStyles = styled.div`
     background-color: #fff;
     border-radius: 0;
     border: 1px solid #eee;
-    color: #333;
+    color: #424242;
     display: block;
     font-size: 16px;
     padding: 10px 20px;

@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { position, size } from "polished";
+import { position, size, margin } from "polished";
 import { MinusIcon, PlusIcon } from "./Icons";
 
 export const AccordionItemStyles = styled.dl`
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  padding-bottom: 20px;
   margin-top: 20px;
+  padding-bottom: 20px;
 
   .toggle-title {
-    position: relative;
-    padding-left: 27px;
     cursor: pointer;
+    padding-left: 27px;
+    position: relative;
 
     &::before {
       ${position("absolute", "-2px", null, null, "-8px")};
       ${size("26px")}
-      content: "";
       background: rgba(0, 0, 0, 0.04);
       border-radius: 50%;
-      transform: scale(0.7);
+      content: "";
       opacity: 0;
+      transform: scale(0.7);
       transition: all 0.3s ease;
       ${({ isActive }) =>
         isActive &&
@@ -34,11 +34,11 @@ export const AccordionItemStyles = styled.dl`
   }
 
   .toggle-name {
-    font-weight: 400;
     font-size: 16px;
+    font-weight: 400;
     line-height: 22px;
-    text-transform: none;
     margin: 0;
+    text-transform: none;
   }
 
   .plus,
@@ -71,8 +71,7 @@ export const AccordionItemStyles = styled.dl`
 `;
 
 export const Accordion = styled.div`
-  margin-top: 30px;
-  margin-bottom: 30px;
+  ${margin("30px", null)}
 
   ${AccordionItemStyles} {
     &:first-child {

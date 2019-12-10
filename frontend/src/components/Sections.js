@@ -2,15 +2,15 @@ import styled from "styled-components";
 import { padding } from "polished";
 
 export const Section = styled.section`
-  width: 100%;
-  display: block;
-  position: relative;
-  overflow: hidden;
   background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
   box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 `;
 
 export const PageSection = styled(Section)`
