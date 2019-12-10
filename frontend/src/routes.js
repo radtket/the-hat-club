@@ -2,9 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 // Components
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import NavbarSimple from "./components/NavbarSimple";
 import Cart from "./components/Cart";
 
 // Pages
@@ -25,7 +24,7 @@ import Signup from "./pages/Signup";
 const Routes = () => {
   return (
     <>
-      <NavbarSimple />
+      <Navbar />
       <Cart />
       <main
         style={{

@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const ErrorStyles = styled.div`
-  padding: 24px;
   background: white;
-  margin: 24px 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-left: 5px solid red;
+  border-left: 5px solid #ff0000;
+  margin: 24px 0;
+  padding: 24px;
 
   p {
     margin: 0;
