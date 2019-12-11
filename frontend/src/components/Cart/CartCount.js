@@ -3,15 +3,19 @@ import styled from "styled-components";
 import { useQuery } from "react-apollo";
 import { size, position } from "polished";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
-import { isArrayEmpty } from "../../utils/helpers";
+import { isArrayEmpty, rgba } from "../../utils/helpers";
+import { red, white } from "../../utils/colors";
 
 const Dot = styled.div`
   ${size("16px")}
   ${position("absolute", 0, 0, null, null)}
-  background: ${({ theme: { colors } }) => colors.red[500]};
+  background: ${red[500]};
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(255, 0, 0, 0.16), 0 2px 4px rgba(255, 0, 0, 0.23);
-  color: #fff;
+  box-shadow: 0 2px 4px ${rgba(red[500], 0.16)}, 0 2px 4px ${rgba(
+  red[500],
+  0.23
+)};
+  color: ${white};
   display: block;
   font-feature-settings: "tnum";
   font-size: 10px;

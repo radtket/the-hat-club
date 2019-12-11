@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { FacebookNoBgIcon, TwitterIcon, MailIcon } from "./Icons";
 import { IconButton } from "../styles/Form";
 import WishlistButton from "./WishlistButton";
+import { gray } from "../utils/colors";
 
 const Styles = styled.div`
   ${margin("24px", null, "36px")}
@@ -26,7 +27,7 @@ const Styles = styled.div`
     &::after {
       ${position("absolute", 0, null, null, 0)};
       ${size("100%", "1px")}
-      background: #dadada;
+      background: ${gray[300]};
       content: "";
     }
   }

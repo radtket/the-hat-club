@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { position, size } from "polished";
+import { red, white } from "../../utils/colors";
+import { rgba } from "../../utils/helpers";
 
 const SquareSolid = styled.div`
   ${position("absolute", "32px", "32px", null, null)};
   ${size("100%")}
-  background: #ee5050;
+  background: ${red[400]};
   content: "";
   z-index: 2;
 `;
@@ -14,20 +16,20 @@ const SquareSolid = styled.div`
 const SquareOutline = styled.div`
   ${position("absolute", null, null, "32px", "32px")};
   ${size("100%")}
-  border: 6px solid #ee5050;
+  border: 6px solid ${red[400]};
   content: "";
   z-index: 4;
 `;
 
 const SlideWrap = styled.figure`
-  color: #fff;
+  color: ${white};
   display: inline-block;
   margin: 32px;
   position: relative;
 
   figcaption {
     ${position("absolute", null, "20%", "32px", null)};
-    background: #ee5050;
+    background: ${red[400]};
     display: block;
     letter-spacing: -1.25px;
     padding: 32px;
@@ -43,7 +45,7 @@ const SlideWrap = styled.figure`
     }
 
     a {
-      color: #fff;
+      color: ${white};
       display: inline-block;
       font-size: 18px;
       padding: 6px 3px 0;
@@ -52,7 +54,7 @@ const SlideWrap = styled.figure`
       transition: color 0.3s;
 
       &:hover {
-        color: rgba(255, 255, 255, 0.88);
+        color: ${rgba(white, 0.88)};
 
         &::before {
           width: 100%;
@@ -63,7 +65,7 @@ const SlideWrap = styled.figure`
         ${position("absolute", "0", null, null, 0)};
         ${size("2px", "40%")}
         content: "";
-        background: #cf3a3a;
+        background: ${red[300]};
         transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
     }

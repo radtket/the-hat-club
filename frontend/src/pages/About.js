@@ -10,6 +10,8 @@ import CactusChallenge from "../assets/images/about/chuck_dirk.png";
 import ChildrensHospital from "../assets/images/about/childrens-hospital.jpg";
 import BoysGirlsClub from "../assets/images/about/boys-and-girls.jpg";
 import { HLogo } from "../components/Branding";
+import { white, red, black, gray } from "../utils/colors";
+import { rgba } from "../utils/helpers";
 
 const Row = styled(SmallSection)`
   align-items: center;
@@ -31,7 +33,7 @@ const AboutStyles = styled.div`
 
   img {
     border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px 0px;
+    box-shadow: ${rgba(black, 0.3)} 0px 10px 20px 0px;
     display: block;
     margin: auto;
     position: relative;
@@ -39,26 +41,27 @@ const AboutStyles = styled.div`
 
   svg {
     display: block;
-    fill: #cf3a3a;
+    fill: ${red[300]};
     margin: auto;
     max-height: 200px;
   }
 
   .bg-red {
-    background: #ee5050;
-    color: #fff;
+    background: ${red[400]};
+    color: ${white};
   }
 
   .bg-gray {
-    background: #f4f4f7;
-    color: #242424;
+    background: ${gray[100]};
+    color: ${gray[800]};
   }
 
   .bg-black {
-    background: #24262b;
-    color: #fff;
+    background: ${gray[800]};
+    color: ${white};
   }
 `;
+
 const About = () => {
   return (
     <AboutStyles>
@@ -67,8 +70,8 @@ const About = () => {
           <Row>
             <BigCallout
               style={{
-                background: "#ee5050",
-                color: "#fff",
+                background: red[400],
+                color: white,
               }}
             >
               Our story so far.

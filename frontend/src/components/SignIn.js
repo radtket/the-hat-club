@@ -9,10 +9,11 @@ import ErrorMessage from "./ErrorMessage";
 import Button from "./Button";
 import Form from "../styles/Form";
 import TextField from "./TextField";
+import { black } from "../utils/colors";
 
 const ResetPasswordLink = styled(Link)`
   ${position("absolute", null, "20px", 0, null)}
-  color: #000;
+  color: ${black};
   font-family: "Maisonneue Bold";
   /* Size of Input Height */
   line-height: 38px;

@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { margin } from "polished";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { formatMoney } from "../utils/helpers";
+import { formatMoney, rgba } from "../utils/helpers";
 import { CartIcon } from "./Icons";
+import { black, white, gray, red } from "../utils/colors";
 
 const Styles = styled.div`
   ${margin("48px", null)}
@@ -25,7 +26,7 @@ const Styles = styled.div`
     > a {
       border-bottom-right-radius: 24px;
       border-bottom-left-radius: 24px;
-      box-shadow: 0px 15px 10px -15px rgba(158, 158, 158, 0.45);
+      box-shadow: 0px 15px 10px -15px ${rgba(gray[400], 0.45)};
     }
 
     img {
@@ -39,7 +40,7 @@ const Styles = styled.div`
 
     nav {
       bottom: -45px;
-      box-shadow: 0px 15px 10px -15px #111;
+      box-shadow: 0px 15px 10px -15px ${gray[900]};
     }
   }
 
@@ -50,7 +51,7 @@ const Styles = styled.div`
   }
 
   > a {
-    background: #fff;
+    background: ${white};
     display: block;
     overflow: hidden;
     position: relative;
@@ -66,7 +67,7 @@ const Styles = styled.div`
   }
 
   dl {
-    color: #242424;
+    color: ${gray[800]};
     font-size: 18px;
     margin: auto;
     max-width: 315px;
@@ -87,7 +88,7 @@ const Styles = styled.div`
   }
 
   nav {
-    background: #242424;
+    background: ${gray[800]};
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     bottom: 100%;
@@ -101,14 +102,14 @@ const Styles = styled.div`
     button {
       &:hover {
         svg {
-          fill: #ee5050;
+          fill: ${red[400]};
         }
       }
     }
 
     svg {
       display: block;
-      fill: #fff;
+      fill: ${white};
       height: 18px;
     }
   }

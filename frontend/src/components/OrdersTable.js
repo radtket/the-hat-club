@@ -8,6 +8,7 @@ import { USER_ORDERS_QUERY } from "../reslovers/Query";
 import Button from "./Button";
 import ErrorMessage from "./ErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
+import { gray } from "../utils/colors";
 
 const OrdersTableStyles = styled.table`
   border-collapse: collapse;
@@ -26,17 +27,17 @@ const OrdersTableStyles = styled.table`
   tr {
     &:last-child {
       td {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid ${gray[200]};
       }
     }
 
     td {
-      border-top: 1px solid #eee;
+      border-top: 1px solid ${gray[200]};
     }
   }
 
   td {
-    border-top: 1px solid #eee;
+    border-top: 1px solid ${gray[200]};
   }
 `;
 

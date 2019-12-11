@@ -3,9 +3,11 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { position, size, margin } from "polished";
 import { MinusIcon, PlusIcon } from "./Icons";
+import { rgba } from "../utils/helpers";
+import { black } from "../utils/colors";
 
 export const AccordionItemStyles = styled.dl`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid ${rgba(black, 0.12)};
   margin-top: 20px;
   padding-bottom: 20px;
 
@@ -17,7 +19,7 @@ export const AccordionItemStyles = styled.dl`
     &::before {
       ${position("absolute", "-2px", null, null, "-8px")};
       ${size("26px")}
-      background: rgba(0, 0, 0, 0.04);
+      background: ${rgba(black, 0.04)};
       border-radius: 50%;
       content: "";
       opacity: 0;

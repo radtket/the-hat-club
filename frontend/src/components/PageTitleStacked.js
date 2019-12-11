@@ -5,7 +5,7 @@ import BreadCrumbs from "./BreadCrumbs";
 import { SmallSection } from "./Sections";
 
 const PageTitleStyles = styled(SmallSection)`
-  margin-bottom: ${({ theme }) => theme.largeSpacing};
+  margin-bottom: ${({ theme }) => theme.spacing.large};
   text-align: center;
 
   h1 {

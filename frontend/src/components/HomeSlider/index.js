@@ -14,6 +14,8 @@ import {
   NavigationArrow,
   NavigationArrowButton,
 } from "../SingleProductSlider/NavigationArrow";
+import { white, red, black } from "../../utils/colors";
+import { rgba } from "../../utils/helpers";
 
 const HomeSliderStyles = styled(Slider)`
   /* overflow: hidden; */
@@ -38,14 +40,14 @@ const HomeSliderStyles = styled(Slider)`
   }
 
   img {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 20px 0px;
+    box-shadow: ${rgba(black, 0.3)} 0px 10px 20px 0px;
     border-radius: 6px;
   }
 
   .slick-dots {
     ${position("absolute", null, null, "96px", "15%")}
     display: inline-block !important;
-    background: #ee5050;
+    background: ${red[400]};
     z-index: 7;
     padding: 12px;
     width: auto;
@@ -69,7 +71,7 @@ const HomeSliderStyles = styled(Slider)`
         text-indent: -1000em;
         overflow: hidden;
         box-sizing: content-box;
-        background-color: #a02727;
+        background-color: ${red[100]};
 
         &::before {
           display: none;
@@ -79,7 +81,7 @@ const HomeSliderStyles = styled(Slider)`
       &.slick-active {
         button {
           ${size("10px")}
-          border: 2px solid #fff;
+          border: 2px solid ${white};
           background: none;
         }
       }

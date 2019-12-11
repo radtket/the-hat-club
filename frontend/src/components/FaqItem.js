@@ -3,6 +3,7 @@ import { Flex, Box } from "@rebass/grid";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { margin } from "polished";
+import { gray } from "../utils/colors";
 
 const FaqItemStyles = styled(Flex)`
   font-size: 18px;
@@ -14,7 +15,7 @@ const FaqItemStyles = styled(Flex)`
   }
 
   dd {
-    color: #747474;
+    color: ${gray[500]};
   }
 `;
 

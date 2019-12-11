@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { position } from "polished";
+import { gray, red, white } from "../utils/colors";
 
 const SelectStyles = styled.div`
   position: relative;
@@ -14,7 +15,7 @@ const SelectStyles = styled.div`
     content: " ";
     margin-top: -4px;
     border: 6px solid transparent;
-    border-top: 8px solid #cc0000;
+    border-top: 8px solid ${red[200]};
     pointer-events: none;
   }
 
@@ -23,27 +24,27 @@ const SelectStyles = styled.div`
   }
 
   &:before {
-    border-bottom: 8px solid #cc0000;
+    border-bottom: 8px solid ${red[200]};
     border-top: transparent;
     top: 37%;
     z-index: 10;
   }
 
   .form-control {
-    background-color: #fff;
+    background-color: ${white};
     border-radius: 0;
-    border: 1px solid #eee;
-    color: #424242;
+    border: 1px solid ${gray[200]};
+    color: ${gray[700]};
     display: block;
     font-size: 16px;
     padding: 10px 20px;
     width: 100%;
     /* line-height: normal; */
-    /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    /* box-shadow: inset 0 1px 1pxrgba(black, 0.075);
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; */
 
     &:focus {
-      border-color: #ddd;
+      border-color: ${gray[300]};
     }
   }
 
@@ -57,7 +58,7 @@ const SelectStyles = styled.div`
     user-select: none;
 
     &:focus {
-      border-color: #9e9e9e;
+      border-color: ${gray[400]};
     }
   }
 `;

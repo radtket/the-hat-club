@@ -1,17 +1,19 @@
 import styled from "styled-components";
 import { size, margin } from "polished";
+import { gray, black } from "../utils/colors";
+import { rgba } from "../utils/helpers";
 
 export const IconButton = styled.button`
   &:hover {
     svg {
-      fill: #242424;
+      fill: ${gray[800]};
     }
   }
 
   svg {
     display: block;
     height: 18px;
-    fill: #9e9e9e;
+    fill: ${gray[400]};
     transition: fill 0.3s;
   }
 `;
@@ -27,7 +29,7 @@ const Form = styled.form`
   select {
     ${size("48px", "100%")}
     ${margin("4px", null)}
-    border: 1px solid #eee;
+    border: 1px solid ${gray[200]};
     display: inline-block;
     font-size: 16px;
     line-height: 1.42857143;
@@ -35,11 +37,11 @@ const Form = styled.form`
     transition: border-color ease-in-out 0.15s;
 
     &:hover {
-      border-color: rgba(0, 0, 0, 0.24);
+      border-color: ${rgba(black, 0.24)};
     }
 
     &:focus {
-      border-color: #242424;
+      border-color: ${gray[800]};
       outline: 0;
     }
   }

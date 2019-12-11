@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { cover, size, position, margin } from "polished";
+import { gray, white } from "../utils/colors";
+import { rgba } from "../utils/helpers";
 
 const ProductSyles = styled.div`
   border-radius: 5px;
-  box-shadow: 0 25px 70px rgba(#111, 0.07);
+  box-shadow: 0 25px 70px ${rgba(gray[900], 0.07)};
   overflow: hidden;
   position: relative;
   transition: transform 0.3s ease;
@@ -19,7 +21,7 @@ const ProductSyles = styled.div`
       &__image {
         > a {
           &::after {
-            background-color: rgba(17, 17, 17, 0.25);
+            background-color: ${rgba(gray[900], 0.25)};
           }
         }
       }
@@ -38,7 +40,7 @@ const ProductSyles = styled.div`
           ${size("100%")}
           backface-visibility: hidden;
           background-color: transparent;
-          box-shadow: inset 0 0 0 0 #fff;
+          box-shadow: inset 0 0 0 0 ${white};
           content: "";
           display: block;
           transition: box-shadow 0.5s cubic-bezier(0.19, 1, 0.22, 1),
@@ -73,7 +75,7 @@ const ProductSyles = styled.div`
     &__title {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
-      color: #111;
+      color: ${gray[900]};
       margin-bottom: 12px;
       overflow: hidden;
       text-decoration: none;
@@ -87,7 +89,7 @@ const ProductSyles = styled.div`
     }
 
     &__price {
-      color: #747474;
+      color: ${gray[500]};
       font-family: "Maisonneue Bold";
       font-size: 14px;
     }

@@ -3,12 +3,13 @@ import { Box } from "@rebass/grid";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import CartTableRow from "./CartTableRow";
+import { gray } from "../../utils/colors";
 
 const CartTableStyles = styled(Box)`
   table {
     border-collapse: collapse;
     border-spacing: 0;
-    color: #424242;
+    color: ${gray[700]};
     margin-bottom: 48px;
     table-layout: auto;
     text-align: left;
@@ -20,8 +21,8 @@ const CartTableStyles = styled(Box)`
       vertical-align: middle;
 
       tr {
-        border-bottom: 1px solid #eee;
-        border-top: 1px solid #eee;
+        border-bottom: 1px solid ${gray[200]};
+        border-top: 1px solid ${gray[200]};
 
         th {
           line-height: 1;
@@ -34,12 +35,12 @@ const CartTableStyles = styled(Box)`
     tbody {
       td,
       th {
-        color: #424242;
+        color: ${gray[700]};
         text-align: inherit;
       }
 
       tr {
-        border-top: 1px solid #eee;
+        border-top: 1px solid ${gray[200]};
 
         td {
           padding: 30px 25px 30px 0;

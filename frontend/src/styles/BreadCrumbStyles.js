@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { position } from "polished";
+import { gray } from "../utils/colors";
 
 const BreadCrumbStyles = styled.ul`
   li {
     ${position("relative", null, null, null, "1px")}
-    color: #111;
+    color: ${gray[900]};
     display: inline-block;
     font-size: 16px;
     margin-right: 12px;
@@ -22,20 +23,20 @@ const BreadCrumbStyles = styled.ul`
 
     &::after {
       ${position("absolute", 0, "-4px", null, null)}
-      color: #111;
+      color: ${gray[900]};
       content: "/";
       font-size: inherit;
       font-weight: 400;
     }
 
     a {
-      color: #747474;
+      color: ${gray[500]};
       outline: none;
       text-decoration: none;
       transition: all 0.3s ease;
 
       &:hover {
-        color: #111;
+        color: ${gray[900]};
       }
     }
   }

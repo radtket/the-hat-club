@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { position, size } from "polished";
+import { white, black } from "../utils/colors";
 
 const barWidth = "20px";
 const barHeight = "1px";
@@ -7,8 +8,7 @@ const barSpacing = "6px";
 
 const NavbarStyles = styled.header`
   ${position("absolute", 0, null, null, 0)};
-  background-color: ${({ isMenuOpen }) =>
-    isMenuOpen ? "transparent" : "#000"};
+  background-color: ${({ isMenuOpen }) => (isMenuOpen ? "transparent" : black)};
   transition: background-color 700ms cubic-bezier(0.8, 0, 0.55, 0.94);
   transition-delay: 700ms;
   width: 100%;
@@ -50,7 +50,7 @@ const NavbarStyles = styled.header`
     svg {
       display: block;
       height: 40px;
-      fill: #fff;
+      fill: ${white};
     }
   }
 
@@ -71,7 +71,7 @@ const NavbarStyles = styled.header`
     background: transparent;
     border: 0;
     border-radius: 0;
-    padding: ${({ theme }) => theme.smallSpacing};
+    padding: ${({ theme }) => theme.theme.spacing.small};
 
     &.svg-button {
       transition: visibility 700ms cubic-bezier(0.8, 0, 0.55, 0.94) 1400ms;
@@ -79,7 +79,7 @@ const NavbarStyles = styled.header`
 
       svg {
         display: block;
-        fill: #fff;
+        fill: ${white};
         height: 18px;
         opacity: 1;
         transition: opacity 700ms cubic-bezier(0.8, 0, 0.55, 0.94) 700ms;
@@ -95,7 +95,7 @@ const NavbarStyles = styled.header`
   .hamburger-menu {
     ${size(barHeight, barWidth)}
     display: block;
-    background: #fff;
+    background: ${white};
     position: relative;
     transition: all 0ms 700ms;
 
@@ -103,7 +103,7 @@ const NavbarStyles = styled.header`
     &::after {
       ${position("absolute", null, null, null, 0)}
       ${size(barHeight, barWidth)}
-      background: #fff;
+      background: ${white};
       content: "";
       display: block;
     }

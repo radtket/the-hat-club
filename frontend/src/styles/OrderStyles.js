@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { gray } from "../utils/colors";
 
 const OrderStyles = styled.div`
   padding-top: 24px;
@@ -13,8 +14,8 @@ const OrderStyles = styled.div`
       margin: 43px 0 42px;
       padding: 20px 0 18px;
       text-align: center;
-      color: #747474;
-      background: #f7f7f7;
+      color: ${gray[500]};
+      background: ${gray[100]};
 
       ul {
         display: inline-block;
@@ -32,7 +33,7 @@ const OrderStyles = styled.div`
           overflow: visible;
 
           strong {
-            color: #242424;
+            color: ${gray[800]};
             display: block;
           }
         }
@@ -77,13 +78,13 @@ const OrderStyles = styled.div`
         tr {
           &:first-child {
             td {
-              border-top: 1px solid #eee;
+              border-top: 1px solid ${gray[200]};
             }
           }
           td {
             padding-top: 17px;
             padding-bottom: 17px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid ${gray[200]};
           }
         }
       }
@@ -123,8 +124,8 @@ const OrderStyles = styled.div`
               font-size: 18px;
               padding-top: 17px;
               padding-bottom: 17px;
-              border-top: 1px solid #eee;
-              border-bottom: 1px solid #eee;
+              border-top: 1px solid ${gray[200]};
+              border-bottom: 1px solid ${gray[200]};
             }
           }
         }

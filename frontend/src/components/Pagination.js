@@ -6,11 +6,12 @@ import PropTypes from "prop-types";
 import { PAGINATION_QUERY } from "../reslovers/Query";
 import ErrorMessage from "./ErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
+import { gray } from "../utils/colors";
 
 const PaginationStyles = styled.div`
   align-content: center;
   align-items: stretch;
-  border: 1px solid #d3d3d3;
+  border: 1px solid ${gray[300]};
   border-radius: 10px;
   display: inline-flex;
   justify-content: center;
@@ -18,7 +19,7 @@ const PaginationStyles = styled.div`
   text-align: center;
 
   & > * {
-    border-right: 1px solid #d3d3d3;
+    border-right: 1px solid ${gray[300]};
     margin: 0;
     padding: 15px 30px;
 

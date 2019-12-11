@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { gray } from "../utils/colors";
 
 const Table = styled.table`
-  border: 1px solid #eee;
+  border: 1px solid ${gray[200]};
   border-spacing: 0;
   width: 100%;
 
@@ -11,8 +12,8 @@ const Table = styled.table`
 
   td,
   th {
-    border-bottom: 1px solid #eee;
-    border-right: 1px solid #eee;
+    border-bottom: 1px solid ${gray[200]};
+    border-right: 1px solid ${gray[200]};
     padding: 5px;
     position: relative;
 
@@ -33,7 +34,7 @@ const Table = styled.table`
 
   tr {
     &:hover {
-      background: #eee;
+      background: ${gray[200]};
     }
   }
 `;

@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { position, padding, size, triangle } from "polished";
+import { black, gray } from "../utils/colors";
+import { rgba } from "../utils/helpers";
 
 export const CartOverlay = styled.div`
   ${position("fixed", 0)};
   ${size(0)}
-  background: rgba(238, 238, 238, 0.73);
+  background: ${rgba(gray[200], 0.73)};
   opacity: 0;
   transition: opacity 0.2s ease 0s;
   visibility: hidden;
@@ -22,9 +24,9 @@ export const CartOverlay = styled.div`
 
 export const CartHeader = styled.header`
   ${position("absolute", 0, null, null, 0)};
-  background: #424242;
-  border-bottom: 1px solid #424242;
-  color: #242424;
+  background: ${gray[700]};
+  border-bottom: 1px solid ${gray[700]};
+  color: ${gray[800]};
   font-size: 16px;
   line-height: 1;
   overflow: hidden;
@@ -35,7 +37,7 @@ export const CartHeader = styled.header`
 
   button {
     background: transparent;
-    color: #eee;
+    color: ${gray[200]};
     line-height: 1;
     padding: 0;
   }
@@ -43,7 +45,7 @@ export const CartHeader = styled.header`
 
 export const CartFooter = styled.footer`
   ${position("absolute", null, null, 0, 0)};
-  background: #424242;
+  background: ${gray[700]};
   overflow: hidden;
   padding: 0 37px 37px;
   width: 100%;
@@ -51,9 +53,9 @@ export const CartFooter = styled.footer`
 
   dl {
     ${padding("20px", 0)}
-    border-bottom: 1px solid #424242;
-    border-top: 1px solid #424242;
-    color: #eee;
+    border-bottom: 1px solid ${gray[700]};
+    border-top: 1px solid ${gray[700]};
+    color: ${gray[200]};
     display: flex;
     font-size: 16px;
     justify-content: space-between;
@@ -90,7 +92,7 @@ export const RemoveFromCartButton = styled.button`
     ${size("2px", "100%")};
     content: "";
     margin-top: -1px;
-    background: #a5a5a5;
+    background: ${gray[400]};
     transition: background 0.2s ease;
   }
 
@@ -105,14 +107,14 @@ export const RemoveFromCartButton = styled.button`
   &:hover {
     &::before,
     &::after {
-      background: #eee;
+      background: ${gray[200]};
     }
   }
 `;
 
 export const CartItemQuanityStyles = styled.label`
   display: flex;
-  color: #a5a5a5;
+  color: ${gray[400]};
 
   fieldset {
     margin-left: 12px;
@@ -125,7 +127,7 @@ export const CartItemQuanityStyles = styled.label`
     border-radius: 0;
     border: 0 none;
     box-shadow: none;
-    color: #a5a5a5;
+    color: ${gray[400]};
     display: inline-block;
     font-size: 16px;
     height: auto;
@@ -165,7 +167,7 @@ export const CartItemQuanityStyles = styled.label`
       &.minus {
         &:hover {
           &::before {
-            border-right-color: #eee;
+            border-right-color: ${gray[200]};
           }
         }
 
@@ -174,7 +176,7 @@ export const CartItemQuanityStyles = styled.label`
             pointingDirection: "left",
             width: "10px",
             height: "10px",
-            foregroundColor: "#a5a5a5",
+            foregroundColor: `${gray[400]}`,
           })}
         }
       }
@@ -182,7 +184,7 @@ export const CartItemQuanityStyles = styled.label`
       &.add {
         &:hover {
           &::before {
-            border-left-color: #eee;
+            border-left-color: ${gray[200]};
           }
         }
         &::before {
@@ -190,7 +192,7 @@ export const CartItemQuanityStyles = styled.label`
             pointingDirection: "right",
             width: "10px",
             height: "10px",
-            foregroundColor: "#a5a5a5",
+            foregroundColor: `${gray[400]}`,
           })}
         }
       }
@@ -202,7 +204,7 @@ export const CartItemStyles = styled.li`
   ${padding("12px", null)}
   display: flex;
   position: relative;
-  border-bottom: 1px solid #424242;
+  border-bottom: 1px solid ${gray[700]};
 
   &:last-of-type {
     border-bottom-color: transparent;
@@ -219,7 +221,7 @@ export const CartItemStyles = styled.li`
   dl {
     margin-left: 24px;
     width: calc(100% - 80px);
-    color: #eee;
+    color: ${gray[200]};
 
     dt {
       display: block;
@@ -249,7 +251,7 @@ export const CartItemsWrap = styled.div`
 
 export const CartItems = styled.ul`
   position: relative;
-  color: #eee;
+  color: ${gray[200]};
   padding: 7px 0 6px;
 
   > ${CartItemStyles} {
@@ -262,8 +264,8 @@ export const CartItems = styled.ul`
 export const CartDrawer = styled.aside`
   ${position("fixed", 0, 0, 0, null)};
   ${size("100%", "500px")}
-  background: #424242;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.2);
+  background: ${gray[700]};
+  box-shadow: 0 0 10px 3px ${rgba(black, 0.2)};
   line-height: 1.2;
   overflow: hidden;
   transform: translateX(100%);

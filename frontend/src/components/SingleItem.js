@@ -4,6 +4,7 @@ import { margin, cover, size, position } from "polished";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { formatMoney } from "../utils/helpers";
+import { gray } from "../utils/colors";
 
 const Styles = styled.figure`
   ${margin("48px", null)}
@@ -59,7 +60,7 @@ const Styles = styled.figure`
   }
 
   figcaption {
-    color: #242424;
+    color: ${gray[800]};
     margin: auto;
     max-width: 315px;
     text-align: center;
@@ -98,13 +99,13 @@ const Styles = styled.figure`
 
       > a {
         position: relative;
-        color: #747474;
+        color: ${gray[500]};
 
         &::after {
           ${position("absolute", null, null, "-2px", 0)}
           ${size("1px", "100%")}
           content: "";
-          background: #747474;
+          background: ${gray[500]};
           opacity: 0;
           transform: scaleX(0);
           /* transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.33s; */

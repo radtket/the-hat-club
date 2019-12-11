@@ -8,6 +8,7 @@ import { ErrorMessage } from "../../../components";
 import { formatMoney, isArrayEmpty } from "../../../utils/helpers";
 import DeleteItem from "../../../components/ProductCard/actions/DeleteItem";
 import EditItem from "../../../components/ProductCard/actions/EditItem";
+import { gray } from "../../../utils/colors";
 
 export const SellingTableStyles = styled.table`
   border-collapse: collapse;
@@ -25,12 +26,12 @@ export const SellingTableStyles = styled.table`
   tr {
     &:last-child {
       td {
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid ${gray[200]};
       }
     }
 
     td {
-      border-top: 1px solid #eee;
+      border-top: 1px solid ${gray[200]};
     }
   }
 

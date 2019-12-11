@@ -2,6 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { position } from "polished";
+import { rgba } from "../utils/helpers";
+import { black, white, gray, red } from "../utils/colors";
 
 const Styles = styled.div`
   font-weight: 400;
@@ -18,7 +20,7 @@ const Styles = styled.div`
 
     .big-title {
       ${position("absolute", "-20px", null, null, null)}
-      color: #eee;
+      color: ${gray[200]};
       font-family: "square721_cn_btbold";
       font-size: 130px;
       font-weight: 800;
@@ -29,7 +31,7 @@ const Styles = styled.div`
 
     h2 {
       position: relative;
-      color: #424242;
+      color: ${gray[700]};
       font-size: 43px;
       line-height: 1.2em;
       margin: 0;
@@ -40,58 +42,57 @@ const Styles = styled.div`
     switch (bgColor) {
       case "black":
         return css`
-          /* background: #24262b; */
-          background: #1c1c1c;
+          background: ${gray[800]};
           .sec-title {
             .big-title {
-              color: rgba(255, 255, 255, 0.1);
+              color: ${rgba(white, 0.1)};
             }
 
             h2 {
-              color: #ffffff;
+              color: ${white};
             }
           }
         `;
       case "red":
         return css`
-          background: #ee5050;
+          background: ${red[400]};
 
           .sec-title {
             .big-title {
-              color: rgba(160, 39, 39, 0.2);
+              color: ${rgba(red[100], 0.2)};
             }
 
             h2 {
-              color: #a02727;
+              color: ${red[100]};
             }
           }
         `;
 
       case "grey":
         return css`
-          background: #f4f4f7;
+          background: ${gray[100]};
 
           .sec-title {
             .big-title {
-              color: rgba(0, 0, 0, 0.1);
+              color: ${rgba(black, 0.12)};
             }
 
             h2 {
-              color: #242424;
+              color: ${gray[800]};
             }
           }
         `;
 
       default:
         return css`
-          background: #fff;
+          background: ${white};
           .sec-title {
             .big-title {
-              color: #eee;
+              color: ${gray[200]};
             }
 
             h2 {
-              color: #424242;
+              color: ${gray[700]};
             }
           }
         `;

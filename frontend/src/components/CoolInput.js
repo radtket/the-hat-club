@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { position, size } from "polished";
+import { tempColors } from "../utils/colors";
+import { rgba } from "../utils/helpers";
 
 const Styles = styled.label`
   display: inline-block;
@@ -11,7 +13,7 @@ const Styles = styled.label`
 
   .label {
     ${position("absolute", "16px", null, null, 0)};
-    color: #9098a9;
+    color: ${tempColors.grayDark};
     font-size: 16px;
     font-weight: 500;
     transform-origin: 0 0;
@@ -21,7 +23,7 @@ const Styles = styled.label`
   .border {
     ${size("2px", "100%")};
     ${position("absolute", null, null, 0, 0)};
-    background: #07f;
+    background: ${tempColors.blueLite};
     transform: scaleX(0);
     transform-origin: 0 0;
     transition: all 0.15s ease;
@@ -31,9 +33,9 @@ const Styles = styled.label`
     ${size("48px", "100%")};
     background: none;
     border: 0;
-    border-bottom: 2px solid #c8ccd4;
+    border-bottom: 2px solid ${tempColors.grayLite};
     border-radius: 0;
-    color: #223254;
+    color: ${tempColors.blueDark};
     font-family: inherit;
     font-size: 16px;
     font-weight: 500;
@@ -43,7 +45,7 @@ const Styles = styled.label`
     transition: all 0.15s ease;
 
     &:hover {
-      background: rgba(34, 50, 84, 0.03);
+      background: ${rgba(tempColors.blueDark, 0.03)};
     }
 
     &:focus {
@@ -51,7 +53,7 @@ const Styles = styled.label`
       outline: none;
 
       + span {
-        color: #07f;
+        color: ${tempColors.blueLite};
         transform: translateY(-26px) scale(0.75);
 
         + .border {
@@ -61,7 +63,7 @@ const Styles = styled.label`
     }
 
     &:not(:placeholder-shown) + span {
-      color: #5a667f;
+      color: ${tempColors.grayAlt};
       transform: translateY(-26px) scale(0.75);
     }
   }

@@ -2,6 +2,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { black, white, gray, red } from "../utils/colors";
+import { rgba } from "../utils/helpers";
 
 const ButtonStyles = styled.button`
   border-radius: 0;
@@ -43,69 +45,69 @@ const ButtonStyles = styled.button`
     switch (color) {
       case "glass":
         return css`
-          color: rgba(255, 255, 255, 0.75);
-          background: rgba(0, 0, 0, 0.4);
+          color: ${rgba(white, 0.75)};
+          background: ${rgba(black, 0.4)};
 
           &:hover,
           &:focus {
-            color: #fff;
-            background: #000;
+            color: ${white};
+            background: ${black};
           }
         `;
       case "white":
         return css`
-          color: #111;
-          background: rgba(255, 255, 255, 0.8);
+          color: ${gray[900]};
+          background: ${rgba(white, 0.8)};
 
           &:hover,
           &:focus {
-            color: #111;
-            background: #fff;
+            color: ${gray[900]};
+            background: ${white};
           }
         `;
       case "white-color":
         return css`
-          color: #e41919;
-          background: #fff;
+          color: ${red[600]};
+          background: ${white};
 
           &:hover,
           &:focus {
-            color: #151515;
-            background: #fff;
+            color: ${gray[900]};
+            background: ${white};
           }
         `;
       case "gray":
         return css`
-          color: #747474;
-          background: #e5e5e5;
+          color: ${gray[500]};
+          background: ${gray[200]};
 
           &:hover,
           &:focus {
-            color: #444;
-            background: #d5d5d5;
+            color: ${gray[700]};
+            background: ${gray[300]};
           }
         `;
       case "primary":
         return css`
-          color: #fff;
-          background: #e41919;
+          color: ${white};
+          background: ${red[600]};
 
           &:hover,
           &:focus {
-            color: #fff;
-            background: #e41919;
+            color: ${white};
+            background: ${red[600]};
             opacity: 0.85;
           }
         `;
       default:
         return css`
-          color: #fff;
-          background: rgba(36, 36, 36, 0.9);
+          color: ${white};
+          background: ${rgba(gray[800], 0.9)};
 
           &:hover,
           &:focus {
-            color: rgba(255, 255, 255, 0.85);
-            background: rgba(0, 0, 0, 0.7);
+            color: ${rgba(white, 0.85)};
+            background: ${rgba(black, 0.7)};
           }
         `;
     }
@@ -144,41 +146,41 @@ const ButtonStyles = styled.button`
     switch (border) {
       case true:
         return css`
-          color: #151515;
-          border: 1px solid #151515;
+          color: ${gray[900]};
+          border: 1px solid ${gray[900]};
           background: transparent;
 
           &:hover,
           &:focus {
-            color: #fff;
+            color: ${white};
             border-color: transparent;
-            background: #000;
+            background: ${black};
           }
         `;
       case "primary":
         return css`
-          color: #e41919;
-          border: 1px solid #e41919;
+          color: ${red[600]};
+          border: 1px solid ${red[600]};
           background: transparent;
 
           &:hover,
           &:focus {
-            color: #fff;
+            color: ${white};
             border-color: transparent;
-            background: #e41919;
+            background: ${red[600]};
           }
         `;
       case "white":
         return css`
-          color: #fff;
-          border: 1px solid rgba(255, 255, 255, 0.75);
+          color: ${white};
+          border: 1px solid ${rgba(white, 0.75)};
           background: transparent;
 
           &:hover,
           &:focus {
-            color: #111;
+            color: ${gray[900]};
             border-color: transparent;
-            background: #fff;
+            background: ${white};
           }
         `;
       default:

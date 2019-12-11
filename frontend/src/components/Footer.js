@@ -17,26 +17,27 @@ import {
   DiscoverIcon,
 } from "./Icons";
 import { socialMediaUrls } from "../utils/constants";
+import { white, red } from "../utils/colors";
 
 const FooterSyles = styled.footer`
   ${padding("120px", null, "40px")}
-  background: #ee5050;
+  background: ${red[400]};
 
   .privacy-policy {
-    color: #ffffff;
+    color: ${white};
     font-size: 14px;
   }
 
   a {
-    color: #ffffff;
+    color: ${white};
 
     &:hover {
-      color: #a02727;
+      color: ${red[100]};
     }
   }
 
   svg.logo {
-    fill: #a02727;
+    fill: ${red[100]};
     display: block;
     max-width: 240px;
     width: 100%;
@@ -64,7 +65,7 @@ const FooterSyles = styled.footer`
   .list--social {
     svg {
       display: block;
-      fill: #fff;
+      fill: ${white};
       height: 24px;
     }
   }
@@ -76,7 +77,7 @@ const FooterSyles = styled.footer`
 
     &:hover {
       svg {
-        fill: #a02727;
+        fill: ${red[100]};
       }
     }
 
@@ -87,7 +88,7 @@ const FooterSyles = styled.footer`
 
   h4 {
     margin-top: 0;
-    color: #a02727;
+    color: ${red[100]};
     letter-spacing: 0.015em;
     text-transform: uppercase;
     font-family: "Maisonneue Bold";
@@ -105,10 +106,10 @@ const FooterSyles = styled.footer`
     a {
       font-size: 18px;
       font-weight: bold;
-      color: #ffffff;
+      color: ${white};
 
       &:hover {
-        color: #a02727;
+        color: ${red[100]};
       }
     }
   }
@@ -120,7 +121,7 @@ const FooterSyles = styled.footer`
     width: 100%;
 
     svg {
-      fill: #a02727;
+      fill: ${red[100]};
       display: block;
       width: 42px;
       max-height: 42px;

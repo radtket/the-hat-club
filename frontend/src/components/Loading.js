@@ -1,10 +1,11 @@
 import React from "react";
 import { size } from "polished";
 import styled from "styled-components";
+import { white, black } from "../utils/colors";
 
 const LoadingWrapper = styled.div`
   ${size("100vh", "100%")}
-  background: #000000;
+  background: ${black};
 
   display: flex;
   justify-content: center;
@@ -16,37 +17,37 @@ const LoadingWrapper = styled.div`
     border-radius: 50px;
 
     &:nth-child(1) {
-      background: #ffffff;
+      background: ${white};
       animation: right 1s infinite ease-in-out;
     }
 
     &:nth-child(2) {
-      background: #ffffff;
+      background: ${white};
       animation: left 1.1s infinite ease-in-out;
     }
 
     &:nth-child(3) {
-      background: #ffffff;
+      background: ${white};
       animation: right 1.05s infinite ease-in-out;
     }
 
     &:nth-child(4) {
-      background: #ffffff;
+      background: ${white};
       animation: left 1.15s infinite ease-in-out;
     }
 
     &:nth-child(5) {
-      background: #ffffff;
+      background: ${white};
       animation: right 1.1s infinite ease-in-out;
     }
 
     &:nth-child(6) {
-      background: #ffffff;
+      background: ${white};
       animation: left 1.05s infinite ease-in-out;
     }
 
     &:nth-child(7) {
-      background: #ffffff;
+      background: ${white};
       animation: right 1s infinite ease-in-out;
     }
   }

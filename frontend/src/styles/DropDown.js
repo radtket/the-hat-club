@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { size, position } from "polished";
+import { white, gray, bada55 } from "../utils/colors";
 
 const glow = keyframes`
   from {
@@ -12,24 +13,22 @@ const glow = keyframes`
 `;
 
 const DropDown = styled.div`
-  border: 1px solid #eee;
+  border: 1px solid ${gray[200]};
   position: absolute;
   width: 100%;
   z-index: 2;
 `;
 
 const DropDownItem = styled.div`
-  border-bottom: 1px solid #eee;
-  background: ${({ highlighted, theme: { colors } }) =>
-    highlighted ? colors.gray[100] : colors.common.white};
+  border-bottom: 1px solid ${gray[200]};
+  background: ${({ highlighted }) => (highlighted ? gray[100] : white)};
   padding: 1rem;
   transition: all 0.2s;
   ${({ highlighted }) => (highlighted ? "padding-left: 2rem;" : null)};
   display: flex;
   align-items: center;
   border-left: 10px solid
-    ${({ highlighted, theme: { colors } }) =>
-      highlighted ? colors.gray[200] : colors.common.white};
+    ${({ highlighted }) => (highlighted ? gray[200] : white)};
   img {
     margin-right: 10px;
   }
@@ -49,7 +48,7 @@ const SearchStyles = styled.fieldset`
       ${size("1px", 0)}
       content: "";
       display: block;
-      background: #bada55;
+      background: ${bada55};
     }
   }
 
@@ -58,7 +57,7 @@ const SearchStyles = styled.fieldset`
     background: transparent;
     border: 0;
     border-radius: 0;
-    color: #fff;
+    color: ${white};
     font-size: 36px;
     font-weight: 400;
     margin: 0;

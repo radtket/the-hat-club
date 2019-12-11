@@ -7,6 +7,7 @@ import { HeartSolidStrokeIcon } from "./Icons";
 import { IconButton } from "../styles/Form";
 import { ITEM_WISHLIST_TOGGLE_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
+import { gray, red } from "../utils/colors";
 
 const WishlistButtonStyles = styled(IconButton)`
   svg {
@@ -16,7 +17,7 @@ const WishlistButtonStyles = styled(IconButton)`
     }
 
     .stroke {
-      fill: #9e9e9e;
+      fill: ${gray[400]};
     }
 
     .fill {
@@ -27,7 +28,7 @@ const WishlistButtonStyles = styled(IconButton)`
   &:hover {
     svg {
       .stroke {
-        fill: #242424;
+        fill: ${gray[800]};
       }
     }
   }
@@ -36,14 +37,14 @@ const WishlistButtonStyles = styled(IconButton)`
     svg {
       .stroke,
       .fill {
-        fill: #ee5050;
+        fill: ${red[400]};
       }
     }
     &:hover {
       svg {
         .stroke,
         .fill {
-          fill: #cf3a3a;
+          fill: ${red[300]};
         }
       }
     }

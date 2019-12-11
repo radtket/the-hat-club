@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { TabContext } from ".";
+import { black, gray } from "../../utils/colors";
 
 const TabStyles = styled.button`
-  color: ${({ isActive }) => (isActive ? "#000" : "#747474")};
+  color: ${({ isActive }) => (isActive ? black : gray[500])};
   cursor: pointer;
   display: inline-block;
   font-size: 18px;
@@ -19,7 +20,7 @@ const TabStyles = styled.button`
     content: "";
     width: 100%;
     height: 1px;
-    background: ${({ isActive }) => (isActive ? "#747474" : "transparent")};
+    background: ${({ isActive }) => (isActive ? gray[500] : "transparent")};
     bottom: -5px;
     left: 0;
   } */

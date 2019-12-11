@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { size } from "polished";
+import { gray } from "../utils/colors";
 
 const QuanityToggleStyles = styled.div`
   display: inline-flex;
@@ -17,9 +18,9 @@ const QuanityToggleStyles = styled.div`
   .qty {
     ${size("48px", "51px")}
     background: transparent;
-    border: 1px solid #424242;
+    border: 1px solid ${gray[700]};
     border-radius: 3px 0 0 3px;
-    color: #424242;
+    color: ${gray[700]};
     display: inline-flex;
     font-size: 16px;
     font-weight: 400;
@@ -52,9 +53,9 @@ const QuanityToggleStyles = styled.div`
     ${size("24px", "23px")}
     align-items: center;
     background: transparent;
-    border: 1px solid #424242;
+    border: 1px solid ${gray[700]};
     border-radius: 0;
-    color: #424242;
+    color: ${gray[700]};
     cursor: pointer;
     display: flex;
     font-weight: 400;

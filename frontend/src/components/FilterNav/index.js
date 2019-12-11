@@ -3,13 +3,14 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { padding } from "polished";
 import FilterNavItem from "./FilterNavItem";
+import { gray, red } from "../../utils/colors";
 
 const Styles = styled.nav`
   ${padding("12px", null)}
   line-height: 18px;
 
   button {
-    color: #242424;
+    color: ${gray[800]};
     display: inline-block;
     font-family: "Maisonneue Bold";
     font-size: 20px;
@@ -18,7 +19,7 @@ const Styles = styled.nav`
     vertical-align: middle;
 
     &.active {
-      color: #ee5050;
+      color: ${red[400]};
     }
 
     &:first-of-type {
@@ -27,7 +28,7 @@ const Styles = styled.nav`
   }
 
   span {
-    color: #d3d3d3;
+    color: ${gray[300]};
     font-size: 14px;
   }
 `;

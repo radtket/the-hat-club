@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { ChevronRight, ChevronLeft } from "../Icons";
+import { black, gray } from "../../utils/colors";
 
 export const NavigationArrowButton = styled.button`
   height: ${({ size }) => `${size}`};
@@ -16,7 +17,7 @@ export const NavigationArrowButton = styled.button`
 
   &:hover {
     svg {
-      fill: #000;
+      fill: ${black};
     }
   }
 
@@ -30,7 +31,7 @@ export const NavigationArrowButton = styled.button`
 
   svg {
     display: block;
-    fill: #424242;
+    fill: ${gray[700]};
     height: ${({ size }) => `${size}`};
   }
 `;

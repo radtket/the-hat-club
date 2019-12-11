@@ -10,12 +10,12 @@ import AccountButton from "./AccountButton";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import CartCount from "./Cart/CartCount";
 import { CartIcon } from "./Icons";
+import { gray, white, red } from "../utils/colors";
 
 const Header = styled.header`
   ${padding(({ isCompact }) => (isCompact ? "12px" : "6px"), null)}
   ${position("fixed", 0, null, null, 0)}
-  background: ${({ isCompact, theme: { colors } }) =>
-    isCompact ? colors.common.white : colors.gray[800]};
+  background: ${({ isCompact }) => (isCompact ? white : gray[800])};
   transition-duration: 0.5s;
   transition-property: background, padding;
   width: 100%;
@@ -25,8 +25,7 @@ const Header = styled.header`
     svg {
       ${position("absolute", null, null, null, "50%")}
       ${size("100%", "124px")}
-      fill: ${({ isCompact, theme: { colors } }) =>
-        isCompact ? colors.gray[800] : colors.common.white};
+      fill: ${({ isCompact }) => (isCompact ? gray[800] : white)};
       margin-left: ${124 * -0.5}px;
       transition: fill 0.5s;
     }
@@ -39,8 +38,7 @@ const Header = styled.header`
 
     a,
     button {
-      color: ${({ isCompact, theme: { colors } }) =>
-        isCompact ? colors.gray[500] : colors.common.white};
+      color: ${({ isCompact }) => (isCompact ? gray[500] : white)};
       display: inline-block;
       font-size: 18px;
       line-height: 1;
@@ -50,20 +48,17 @@ const Header = styled.header`
       vertical-align: bottom;
 
       &:hover {
-        color: ${({ isCompact, theme: { colors } }) =>
-          isCompact ? colors.gray[800] : colors.red[400]};
+        color: ${({ isCompact }) => (isCompact ? gray[800] : red[400])};
 
         svg {
-          fill: ${({ isCompact, theme: { colors } }) =>
-            isCompact ? colors.gray[800] : colors.red[400]};
+          fill: ${({ isCompact }) => (isCompact ? gray[800] : red[400])};
         }
       }
     }
 
     svg {
       display: block;
-      fill: ${({ isCompact, theme: { colors } }) =>
-        isCompact ? colors.gray[500] : colors.common.white};
+      fill: ${({ isCompact }) => (isCompact ? gray[500] : white)};
       height: 18px;
       transition: fill 0.2s ease;
     }

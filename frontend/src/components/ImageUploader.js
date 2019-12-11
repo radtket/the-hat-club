@@ -5,6 +5,7 @@ import { position, size } from "polished";
 import styled from "styled-components";
 import Button from "./Button";
 import { PlusIcon, PhotoPlaceholderIcon, CloseIcon } from "./Icons";
+import { gray, bada55 } from "../utils/colors";
 
 const Styles = styled.div`
   display: flex;
@@ -14,13 +15,13 @@ const Styles = styled.div`
   .left,
   .right {
     display: flex;
-    border-top: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-top: 1px solid ${gray[300]};
+    border-left: 1px solid ${gray[300]};
   }
 
   .left {
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid ${gray[300]};
     flex-grow: 1;
     justify-content: center;
     text-align: center;
@@ -38,8 +39,8 @@ const Styles = styled.div`
     li {
       ${size("200px", "50%")}
       align-items: center;
-      border-bottom: 1px solid #ddd;
-      border-right: 1px solid #ddd;
+      border-bottom: 1px solid ${gray[300]};
+      border-right: 1px solid ${gray[300]};
       display: flex;
       justify-content: center;
       position: relative;
@@ -80,7 +81,7 @@ const AddPhotosButton = styled.button`
 const CloseButton = styled.button`
   ${position("absolute", "6px", "6px", null, null)}
   ${size("24px", "100%")}
-  background: #bada55;
+  background: ${bada55};
   border-radius: 50%;
   display: block;
   max-width: 24px;
