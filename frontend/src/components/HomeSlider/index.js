@@ -6,10 +6,10 @@ import styled from "styled-components";
 import Slide from "./Slide";
 
 // Images
-import MLB from "../../assets/images/slider-mlb.jpg";
-import NFL from "../../assets/images/slider-nfl.jpg";
-import MILLB from "../../assets/images/slider-miilb.jpg";
-import NewArivals from "../../assets/images/slider-new-arivals.jpg";
+import MLB from "../../assets/images/slider/slider-mlb.jpg";
+import NFL from "../../assets/images/slider/slider-nfl.jpg";
+import MILLB from "../../assets/images/slider/slider-miilb.jpg";
+import NewArivals from "../../assets/images/slider/slider-new-arivals.jpg";
 import {
   NavigationArrow,
   NavigationArrowButton,
