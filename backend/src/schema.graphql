@@ -7,6 +7,7 @@ type SuccessMessage {
 }
 
 type Mutation {
+	createItems(items: [CreateItemInput]): [Item]
 	toggleItemToWishlist(id: ID!): WishlistItem
 	createItem(
 		title: String
@@ -64,6 +65,14 @@ type User {
 	permissions: [Permission!]!
 	cart: [CartItem!]!
 	wishlist: [WishlistItem!]!
+}
+
+input CreateItemInput {
+	title: String!
+	description: String!
+	price: Int!
+	images: [ImageCreateInput]
+	tag: String!
 }
 
 # Types

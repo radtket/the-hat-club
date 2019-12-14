@@ -71,3 +71,11 @@ type Order {
 	createdAt: DateTime! @createdAt
 	updatedAt: DateTime! @updatedAt
 }
+
+input CreateItemInput {
+	title: String!
+	description: String!
+	price: Int!
+	images: [Image!]
+	tag: String!
+}

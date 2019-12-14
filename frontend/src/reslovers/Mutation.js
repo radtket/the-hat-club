@@ -29,6 +29,14 @@ export const CREATE_ITEM_MUTATION = gql`
   }
 `;
 
+export const CREATE_ITEMS_MUTATION = gql`
+  mutation CREATE_ITEMS_MUTATION($items: [CreateItemInput]) {
+    createItems(items: $items) {
+      title
+    }
+  }
+`;
+
 export const UPDATE_ITEM_MUTATION = gql`
   mutation UPDATE_ITEM_MUTATION(
     $id: ID!

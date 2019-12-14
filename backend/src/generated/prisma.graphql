@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/taylor-radtke-87ca27/ohhhh-sick/dev
-# timestamp: Thu Dec 05 2019 12:25:02 GMT-0500 (Eastern Standard Time)
+# timestamp: Sat Dec 14 2019 17:41:29 GMT-0400 (Atlantic Standard Time)
 
 type AggregateCartItem {
   count: Int!

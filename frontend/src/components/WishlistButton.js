@@ -64,7 +64,10 @@ const WishlistButton = ({ id }) => {
   );
 
   const wishlistItem =
-    data && data.me && data.me.wishlist.some(({ item }) => item.id === id);
+    data &&
+    data.me &&
+    data.me.wishlist &&
+    data.me.wishlist.some(({ item }) => item && item.id === id);
 
   return (
     <WishlistButtonStyles

@@ -13,6 +13,41 @@ const { forwardTo } = require("prisma-binding");
 
 const Mutation = {
   updateCartItem: forwardTo("db"),
+  async createItems(
+    parent,
+    { items },
+    {
+      req,
+      db: { mutation },
+    },
+    info
+  ) {
+    isLoggedIn(req);
+
+    const newItems = items.map(async ({ images, ...data }) => {
+      const item = await mutation.createItem(
+        {
+          data: {
+            // This is how to create a relationship between the Item and the User
+            user: {
+              connect: {
+                id: req.userId,
+              },
+            },
+            ...data,
+            images: {
+              create: images,
+            },
+          },
+        },
+        info
+      );
+
+      return item;
+    });
+
+    return newItems;
+  },
   async toggleItemToWishlist(
     parent,
     { id },

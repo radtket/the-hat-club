@@ -11,6 +11,7 @@ frontend/coverage
 
 # production
 frontend/build
+inspiration
 
 # misc
 .DS_Store
