@@ -123,7 +123,13 @@ const SingleItem = ({ id, title, price, images }) => {
     <Styles>
       <Link to={`/item/${id}`}>
         <img alt={title} src={primaryImage.largeImage} />
-        <img alt={title} src={secondaryImage.largeImage} />
+        <img
+          alt={title}
+          src={
+            (secondaryImage && secondaryImage.largeImage) ||
+            primaryImage.largeImage
+          }
+        />
       </Link>
       <figcaption>
         <h3>{title}</h3>

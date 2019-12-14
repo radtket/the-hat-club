@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
+import axios from "axios";
 
 export const useTheme = () => useContext(ThemeContext);
 
@@ -63,4 +64,42 @@ export const hexToRgb = hex => {
 export const rgba = (hex, opacity) => {
   const { r, g, b } = hexToRgb(hex);
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+};
+
+export const stripHtmlString = string => string.replace(/<[^>]*>?/gm, "");
+
+export const parseHtmlEntities = string =>
+  JSON.parse(string.replace(/&quot;/g, '"'));
+
+export const getApiData = (emptyArray, tag) => {
+  axios("https://api.searchspring.net/api/search/search.json", {
+    params: {
+      resultsFormat: "native",
+      siteId: `${process.env.REACT_APP_DATA_API_SITE_ID}`,
+      domain: `${process.env.REACT_APP_DATA_API_ENDPOINT}/${tag}`,
+      "bgfilter.collection_id": "67251073",
+      userId: `${process.env.REACT_APP_DATA_API_USER_ID}`,
+    },
+  }).then(({ data }) => {
+    data.results.forEach(async ({ url, price }) => {
+      const {
+        data: { product },
+      } = await axios(`${url}.json?ref=tfx`, {
+        Accept: "*/*",
+      });
+
+      const { title } = product;
+
+      emptyArray.push({
+        title,
+        description: stripHtmlString(product.body_html),
+        price: price * 100,
+        tag,
+        images: product.images.map(({ src }) => ({
+          image: src,
+          largeImage: src,
+        })),
+      });
+    });
+  });
 };
