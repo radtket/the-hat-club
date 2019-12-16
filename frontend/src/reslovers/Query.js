@@ -2,8 +2,8 @@ import { gql } from "apollo-boost";
 import { perPage } from "../utils/constants";
 
 export const ALL_ITEMS_QUERY = gql`
-  query ALL_ITEMS_QUERY($skip: Int = 0, $first: Int = ${perPage}) {
-    items(first: $first, skip: $skip, orderBy: createdAt_DESC) {
+  query ALL_ITEMS_QUERY($where: ItemWhereInput = {}, $skip: Int = 0, $first: Int = ${perPage}) {
+    items(where: $where, first: $first, skip: $skip, orderBy: createdAt_DESC) {
       id
       title
       price
@@ -13,19 +13,6 @@ export const ALL_ITEMS_QUERY = gql`
         image
         largeImage
       }
-    }
-  }
-`;
-
-export const ALL_ITEMS_BY_TAG_QUERY = gql`
-  query ALL_ITEMS_BY_TAG_QUERY($tag: String!) {
-    items(where: { tag: $tag }) {
-      id
-      images {
-        image
-        largeImage
-      }
-      title
     }
   }
 `;

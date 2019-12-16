@@ -38,6 +38,8 @@ export const isArrayEmpty = arrayArg => {
   return true;
 };
 
+export const isObjectEmpty = myObject => !Object.keys(myObject).length;
+
 export const asyncMap = async (array, callback) => {
   const results = [];
 

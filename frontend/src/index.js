@@ -12,8 +12,8 @@ import ScrollToTop from "./components/ScrollToTop";
 ReactDOM.render(
   <Theme>
     <Router>
-      <ScrollToTop />
       <ApolloProvider {...{ client }}>
+        <ScrollToTop />
         <Routes />
       </ApolloProvider>
     </Router>

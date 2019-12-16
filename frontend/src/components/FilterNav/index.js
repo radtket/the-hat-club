@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { padding } from "polished";
 import FilterNavItem from "./FilterNavItem";
 import { gray, red } from "../../utils/colors";
+import { isObjectEmpty } from "../../utils/helpers";
 
 const Styles = styled.nav`
   ${padding("12px", null)}
@@ -33,21 +34,49 @@ const Styles = styled.nav`
   }
 `;
 
-const FilterNav = ({ tag, setTag }) => {
+const FilterNav = ({ tagArg, setTagArg }) => {
   return (
     <Styles>
-      <FilterNavItem {...{ tag, setTag }} label="All" tagName="ALL" />
+      <FilterNavItem
+        isActive={isObjectEmpty(tagArg)}
+        label="All"
+        onClick={() => {
+          setTagArg({});
+        }}
+      />
       <span>/</span>
-      <FilterNavItem {...{ tag, setTag }} tagName="MLB" />
+      <FilterNavItem
+        isActive={tagArg && tagArg.tag === "MLB"}
+        label="MLB"
+        onClick={() => {
+          setTagArg({
+            tag: "MLB",
+          });
+        }}
+      />
       <span>/</span>
-      <FilterNavItem {...{ tag, setTag }} tagName="NFL" />
+      <FilterNavItem
+        isActive={tagArg && tagArg.tag === "NFL"}
+        label="NFL"
+        onClick={() => {
+          setTagArg({
+            tag: "NFL",
+          });
+        }}
+      />
     </Styles>
   );
 };
 
 FilterNav.propTypes = {
-  tag: PropTypes.string.isRequired,
-  setTag: PropTypes.func.isRequired,
+  tagArg: PropTypes.shape({
+    tag: PropTypes.string,
+  }),
+  setTagArg: PropTypes.func.isRequired,
+};
+
+FilterNav.defaultProps = {
+  tagArg: {},
 };
 
 export default FilterNav;
