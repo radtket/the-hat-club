@@ -10,6 +10,7 @@ import Cart from "./components/Cart";
 import About from "./pages/About";
 import Account from "./pages/Account";
 import CartDetails from "./pages/CartDetails";
+import CreateItems from "./pages/CreateItems";
 import EditItem from "./pages/EditItem";
 import FAQ from "./pages/FAQ";
 import Item from "./pages/Item";
@@ -70,6 +71,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/faq">
             <FAQ />
+          </Route>
+          <Route exact path="/create-items">
+            <CreateItems />
           </Route>
         </Switch>
       </main>

@@ -71,6 +71,22 @@ export const stripHtmlString = string => string.replace(/<[^>]*>?/gm, "");
 export const parseHtmlEntities = string =>
   JSON.parse(string.replace(/&quot;/g, '"'));
 
+export const getImageThumbnail = src => {
+  let extension;
+  switch (src) {
+    case src.includes(".png"):
+      extension = ".png";
+      break;
+    case src.includes(".jpg"):
+      extension = ".jpg";
+      break;
+    default:
+      break;
+  }
+  const [urlBase, query] = src.split(extension);
+  return `${urlBase}_70x70_crop_center${extension}${query}`;
+};
+
 export const getApiData = (emptyArray, tag) => {
   axios("https://api.searchspring.net/api/search/search.json", {
     params: {
@@ -95,10 +111,13 @@ export const getApiData = (emptyArray, tag) => {
         description: stripHtmlString(product.body_html),
         price: price * 100,
         tag,
-        images: product.images.map(({ src }) => ({
-          image: src,
-          largeImage: src,
-        })),
+        images: product.images.map(({ src }) => {
+          const image = getImageThumbnail(src) || src;
+          return {
+            image,
+            largeImage: src,
+          };
+        }),
       });
     });
   });
