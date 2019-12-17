@@ -9,6 +9,7 @@ import ErrorMessage from "./ErrorMessage";
 import FaqItem from "./FaqItem";
 import FilterNav from "./FilterNav";
 import HomeSlider from "./HomeSlider";
+import UserSellingTable from "./UserSellingTable";
 import Loading from "./Loading";
 import LoadingSpinner from "./LoadingSpinner";
 import Logout from "./Logout";
@@ -47,6 +48,7 @@ export {
   FaqItem,
   FilterNav,
   HomeSlider,
+  UserSellingTable,
   LoadingSpinner,
   Loading,
   Logout,

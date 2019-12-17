@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useQuery } from "react-apollo";
+import PropTypes from "prop-types";
 import { size, position } from "polished";
-import { CURRENT_USER_QUERY } from "../../reslovers/Query";
 import { isArrayEmpty, rgba } from "../../utils/helpers";
 import { red, white } from "../../utils/colors";
 
@@ -28,11 +27,24 @@ const Dot = styled.div`
   transition: 0.2s linear;
 `;
 
-const CartCount = () => {
-  const { data } = useQuery(CURRENT_USER_QUERY);
-  const cart = data && data.me && data.me.cart;
+const CartCount = ({ me }) => {
+  if (!me || isArrayEmpty(me.cart)) {
+    return null;
+  }
 
-  return !isArrayEmpty(cart) && <Dot>{cart.length}</Dot>;
+  return <Dot>{me.cart.length}</Dot>;
+};
+
+CartCount.propTypes = {
+  me: PropTypes.shape({
+    cart: PropTypes.arrayOf(PropTypes.object),
+  }),
+};
+
+CartCount.defaultProps = {
+  me: {
+    cart: [],
+  },
 };
 
 export default CartCount;

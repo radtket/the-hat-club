@@ -88,7 +88,7 @@ const Navbar = () => {
                 position: "relative",
               }}
             >
-              <CartCount />
+              <CartCount {...data} />
               <CartIcon />
             </CartToggleButton>
           </div>

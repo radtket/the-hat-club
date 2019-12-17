@@ -1,56 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import styled from "styled-components";
-import { margin } from "polished";
-import { Link } from "react-router-dom";
 import { ALL_ITEMS_QUERY } from "../../../reslovers/Query";
-import { ErrorMessage } from "../../../components";
-import { formatMoney, isArrayEmpty } from "../../../utils/helpers";
-import DeleteItem from "../../../components/ProductCard/actions/DeleteItem";
-import EditItem from "../../../components/ProductCard/actions/EditItem";
-import { gray } from "../../../utils/colors";
-
-export const SellingTableStyles = styled.table`
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-
-  th,
-  td {
-    font-weight: inherit;
-    padding: 12px;
-    text-align: left;
-    vertical-align: middle;
-  }
-
-  tr {
-    &:last-child {
-      td {
-        border-bottom: 1px solid ${gray[200]};
-      }
-    }
-
-    td {
-      border-top: 1px solid ${gray[200]};
-    }
-  }
-
-  td {
-    img {
-      display: block;
-      height: 64px;
-    }
-
-    button {
-      ${margin(null, "6px")}
-
-      svg {
-        display: block;
-        height: 20px;
-      }
-    }
-  }
-`;
+import { ErrorMessage, UserSellingTable } from "../../../components";
 
 const Selling = () => {
   const { data, loading, error } = useQuery(ALL_ITEMS_QUERY);
@@ -63,70 +14,7 @@ const Selling = () => {
     return <ErrorMessage {...{ error }} />;
   }
 
-  if (!isArrayEmpty(data.items)) {
-    return (
-      <dl
-        style={{
-          textAlign: "center",
-        }}
-      >
-        <dt>No Items Listed:</dt>
-        <dd
-          style={{
-            marginLeft: 0,
-          }}
-        >
-          <Link to="/sell">List your item now!</Link>
-        </dd>
-      </dl>
-    );
-  }
-
-  return (
-    <SellingTableStyles>
-      <thead>
-        <tr>
-          <th>Photo</th>
-          <th>Product</th>
-          <th
-            style={{
-              textAlign: "center",
-            }}
-          >
-            Price
-          </th>
-          <th
-            style={{
-              textAlign: "center",
-            }}
-          >
-            Actions
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.items.map(({ id, image, price, title }) => {
-          return (
-            <tr key={id}>
-              <td>
-                <img alt={title} src={image} />
-              </td>
-              <td>{title}</td>
-              <td>{formatMoney(price)}</td>
-              <td
-                style={{
-                  minWidth: "124px",
-                }}
-              >
-                <DeleteItem {...{ id }} />
-                <EditItem {...{ id }} />
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </SellingTableStyles>
-  );
+  return <UserSellingTable {...data} />;
 };
 
 export default Selling;

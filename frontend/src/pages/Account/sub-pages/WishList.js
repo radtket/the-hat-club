@@ -1,21 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { isArrayEmpty } from "../../../utils/helpers";
+import UserWishlistTable from "../../../components/UserWishlistTable";
 
 const WishList = ({ wishlist }) => {
   return (
     <>
       <h2>WishList</h2>
-
-      <ul>
-        {isArrayEmpty(wishlist) ? (
-          <li>No Items in Wishlist</li>
-        ) : (
-          wishlist.map(({ item }) => {
-            return <li key={item.id}>{item.title}</li>;
-          })
-        )}
-      </ul>
+      <UserWishlistTable {...{ wishlist }} />
     </>
   );
 };
