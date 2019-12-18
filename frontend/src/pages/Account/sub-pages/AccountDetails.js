@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import TextField from "../../../components/TextField";
 import Form from "../../../styles/Form";
-
-const AccountDetailsStyles = styled.div`
-  ${Form} {
-    margin-bottom: 48px;
-
-    legend {
-      font-size: 24px;
-      margin-bottom: 16px;
-    }
-  }
-`;
+import { StyledAccountDetails } from "../../../styles/Pages";
 
 const AccountDetails = ({ name, email }) => {
   const [values, setValues] = useState({
@@ -34,7 +23,7 @@ const AccountDetails = ({ name, email }) => {
   };
 
   return (
-    <AccountDetailsStyles>
+    <StyledAccountDetails>
       <Form
         method="post"
         onSubmit={e => {
@@ -101,7 +90,7 @@ const AccountDetails = ({ name, email }) => {
           />
         </fieldset>
       </Form>
-    </AccountDetailsStyles>
+    </StyledAccountDetails>
   );
 };
 

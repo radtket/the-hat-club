@@ -1,6 +1,4 @@
 import React from "react";
-import { padding, size } from "polished";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Flex, Box } from "@rebass/grid";
 import {
@@ -17,122 +15,12 @@ import {
   DiscoverIcon,
 } from "./Icons";
 import { socialMediaUrls } from "../utils/constants";
-import { white, red } from "../utils/colors";
-
-const FooterSyles = styled.footer`
-  ${padding("120px", null, "40px")}
-  background: ${red[400]};
-
-  .privacy-policy {
-    color: ${white};
-    font-size: 14px;
-  }
-
-  a {
-    color: ${white};
-
-    &:hover {
-      color: ${red[100]};
-    }
-  }
-
-  svg.logo {
-    fill: ${red[100]};
-    display: block;
-    max-width: 240px;
-    width: 100%;
-  }
-
-  .list--social {
-    margin: 0;
-    padding: 0;
-  }
-
-  .list--social__item {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .list--social__link,
-  .list--social__icon {
-    display: block;
-  }
-
-  .list--social__icon {
-    ${size("36px")}
-  }
-
-  .list--social {
-    svg {
-      display: block;
-      fill: ${white};
-      height: 24px;
-    }
-  }
-
-  .list--social__link {
-    padding: 0.4rem;
-    transition-property: fill, transform;
-    transform-origin: center;
-
-    &:hover {
-      svg {
-        fill: ${red[100]};
-      }
-    }
-
-    &:active {
-      transform: scale(0.85);
-    }
-  }
-
-  h4 {
-    margin-top: 0;
-    color: ${red[100]};
-    letter-spacing: 0.015em;
-    text-transform: uppercase;
-    font-family: "Maisonneue Bold";
-  }
-
-  nav {
-    display: flex;
-  }
-
-  .menu {
-    li {
-      margin-bottom: 6px;
-    }
-
-    a {
-      font-size: 18px;
-      font-weight: bold;
-      color: ${white};
-
-      &:hover {
-        color: ${red[100]};
-      }
-    }
-  }
-
-  .payment-options {
-    justify-content: space-evenly;
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    svg {
-      fill: ${red[100]};
-      display: block;
-      width: 42px;
-      max-height: 42px;
-    }
-  }
-`;
+import { StyledFooter } from "../styles/General";
 
 const Footer = () => {
   const { facebook, twitter, instagram } = socialMediaUrls;
   return (
-    <FooterSyles>
+    <StyledFooter>
       <Flex
         className="container"
         flexWrap="wrap"
@@ -269,7 +157,7 @@ const Footer = () => {
           </li>
         </ul>
       </Flex>
-    </FooterSyles>
+    </StyledFooter>
   );
 };
 

@@ -1,83 +1,11 @@
 import React from "react";
-import { Box } from "@rebass/grid";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 import CartTableRow from "./CartTableRow";
-import { gray } from "../../utils/colors";
-
-const CartTableStyles = styled(Box)`
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    color: ${gray[700]};
-    margin-bottom: 48px;
-    table-layout: auto;
-    text-align: left;
-    width: 100%;
-
-    thead {
-      border-color: inherit;
-      display: table-header-group;
-      vertical-align: middle;
-
-      tr {
-        border-bottom: 1px solid ${gray[200]};
-        border-top: 1px solid ${gray[200]};
-
-        th {
-          line-height: 1;
-          padding: 20px 0;
-          text-align: left;
-        }
-      }
-    }
-
-    tbody {
-      td,
-      th {
-        color: ${gray[700]};
-        text-align: inherit;
-      }
-
-      tr {
-        border-top: 1px solid ${gray[200]};
-
-        td {
-          padding: 30px 25px 30px 0;
-
-          /* &:last-child {
-            text-align: right;
-            padding-right: 0;
-          } */
-
-          &.product-remove {
-            position: relative;
-            width: 40px;
-          }
-
-          &.product-thumbnail {
-            width: 100px;
-            a {
-              display: inline-block;
-
-              img {
-                display: inline-block;
-                height: auto;
-                max-width: 100%;
-                vertical-align: middle;
-                -ms-interpolation-mode: bicubic;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { StyledCartTableWrap } from "../../styles/Tables";
 
 const CartTable = ({ cart }) => {
   return (
-    <CartTableStyles width={1}>
+    <StyledCartTableWrap width={1}>
       <table cellSpacing="0">
         <thead>
           <tr>
@@ -94,7 +22,7 @@ const CartTable = ({ cart }) => {
           })}
         </tbody>
       </table>
-    </CartTableStyles>
+    </StyledCartTableWrap>
   );
 };
 

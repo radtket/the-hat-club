@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { position, padding, size, triangle } from "polished";
-import { black, gray } from "../utils/colors";
+import { black, gray, red, white } from "../utils/colors";
 import { rgba } from "../utils/helpers";
 
 export const CartOverlay = styled.div`
@@ -283,4 +283,26 @@ export const CartDrawer = styled.aside`
     overflow-x: hidden;
     overflow-y: scroll;
   }
+`;
+
+export const StyledDot = styled.div`
+  ${size("16px")}
+  ${position("absolute", 0, 0, null, null)}
+  background: ${red[500]};
+  border-radius: 50%;
+  box-shadow: 0 2px 4px ${rgba(red[500], 0.16)}, 0 2px 4px ${rgba(
+  red[500],
+  0.23
+)};
+  color: ${white};
+  display: block;
+  font-feature-settings: "tnum";
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 100;
+  line-height: 16px;
+  margin: 2px;
+  padding: 0;
+  transform: scale(1);
+  transition: 0.2s linear;
 `;

@@ -4,43 +4,15 @@ import {
   TwitterShareButton,
   EmailShareButton,
 } from "react-share";
-import { position, size, margin, padding } from "polished";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { FacebookNoBgIcon, TwitterIcon, MailIcon } from "./Icons";
-import { IconButton } from "../styles/Form";
+import { IconButton } from "../styles/Buttons";
 import WishlistButton from "./WishlistButton";
-import { gray } from "../utils/colors";
-
-const Styles = styled.div`
-  ${margin("24px", null, "36px")}
-
-  button,
-  > .divider {
-    ${padding("4px", null)}
-  }
-
-  .divider {
-    ${margin(null, "12px")}
-    position: relative;
-
-    &::after {
-      ${position("absolute", 0, null, null, 0)};
-      ${size("100%", "1px")}
-      background: ${gray[300]};
-      content: "";
-    }
-  }
-
-  > div {
-    display: inline-block;
-    margin-right: 6px;
-  }
-`;
+import { StyledProduceShareSocial } from "../styles/Navs";
 
 const ProduceShareSocial = ({ id, title }) => {
   return (
-    <Styles>
+    <StyledProduceShareSocial>
       <WishlistButton {...{ id }} />
       <span className="divider" />
       <EmailShareButton
@@ -72,7 +44,7 @@ const ProduceShareSocial = ({ id, title }) => {
           <TwitterIcon />
         </IconButton>
       </TwitterShareButton>
-    </Styles>
+    </StyledProduceShareSocial>
   );
 };
 

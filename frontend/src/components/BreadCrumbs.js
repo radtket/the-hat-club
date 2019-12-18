@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import BreadCrumbStyles from "../styles/BreadCrumbStyles";
+import StyledBreadcrumbs from "../styles/Breadcrumbs";
 
 const BreadCrumbs = ({ activePage, tag }) => {
   return (
-    <BreadCrumbStyles>
+    <StyledBreadcrumbs>
       <li>
         <Link to="/">Home</Link>
       </li>
@@ -15,7 +15,7 @@ const BreadCrumbs = ({ activePage, tag }) => {
         </li>
       )}
       <li>{activePage}</li>
-    </BreadCrumbStyles>
+    </StyledBreadcrumbs>
   );
 };
 

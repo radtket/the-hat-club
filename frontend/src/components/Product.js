@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Flex, Box } from "@rebass/grid";
 import { useMutation } from "react-apollo";
-import { PageSection } from "./Sections";
 import Button from "./Button";
 import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import BreadCrumbs from "./BreadCrumbs";
@@ -12,6 +11,7 @@ import SingleProductSlider from "./SingleProductSlider";
 import ProduceShareSocial from "./ProduceShareSocial";
 import QuanityToggle from "./QuanityToggle";
 import ProductTerms from "./ProductTerms";
+import { PageSection } from "../styles/General";
 
 const Product = ({ description, id, images, price, title, tag }) => {
   const [quantity, setQuantity] = useState(1);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SmallSection } from "../components/Sections";
+import { SmallSection } from "./General";
 import { gray } from "../utils/colors";
 
 const PageTitleStyles = styled(SmallSection)`

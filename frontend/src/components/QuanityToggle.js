@@ -1,93 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { size } from "polished";
-import { gray } from "../utils/colors";
-
-const QuanityToggleStyles = styled.div`
-  display: inline-flex;
-  padding-right: 22px;
-  position: relative;
-  vertical-align: middle;
-
-  .screen-reader-text,
-  &.hidden {
-    display: none;
-  }
-
-  .qty {
-    ${size("48px", "51px")}
-    background: transparent;
-    border: 1px solid ${gray[700]};
-    border-radius: 3px 0 0 3px;
-    color: ${gray[700]};
-    display: inline-flex;
-    font-size: 16px;
-    font-weight: 400;
-    justify-content: center;
-    line-height: 48px;
-    margin: 0;
-    max-width: 100%;
-    outline: 0;
-    padding: 0;
-    text-align: center;
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      margin: 0;
-      -moz-appearance: none;
-      -webkit-appearance: none;
-    }
-  }
-
-  span {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .plus,
-  .minus {
-    ${size("24px", "23px")}
-    align-items: center;
-    background: transparent;
-    border: 1px solid ${gray[700]};
-    border-radius: 0;
-    color: ${gray[700]};
-    cursor: pointer;
-    display: flex;
-    font-weight: 400;
-    justify-content: center;
-    margin: 0;
-    outline: 0;
-    overflow: visible;
-    padding: 0;
-    position: absolute;
-    text-decoration: none;
-    text-shadow: none;
-    user-select: none;
-  }
-
-  .plus {
-    border-radius: 0 3px 0 0;
-    height: 25px;
-    line-height: 24px;
-    right: 0;
-    top: 0;
-  }
-
-  .minus {
-    border-radius: 0 0 3px 0;
-    bottom: 0;
-    right: 0;
-  }
-`;
+import { StyledQuanityToggle } from "../styles/Inputs";
 
 const QuanityToggle = ({ quantityState, setQuantityState }) => {
   return (
-    <QuanityToggleStyles className="quantity buttons_added">
+    <StyledQuanityToggle className="quantity buttons_added">
       <button
         className="minus"
         onClick={e => {
@@ -132,7 +49,7 @@ const QuanityToggle = ({ quantityState, setQuantityState }) => {
       >
         +
       </button>
-    </QuanityToggleStyles>
+    </StyledQuanityToggle>
   );
 };
 

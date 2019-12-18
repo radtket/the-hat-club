@@ -1,23 +1,13 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "react-apollo";
-import { position } from "polished";
-import styled from "styled-components";
 import { USER_SIGNIN_MUTATION } from "../reslovers/Mutation";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import ErrorMessage from "./ErrorMessage";
 import Button from "./Button";
 import Form from "../styles/Form";
 import TextField from "./TextField";
-import { black } from "../utils/colors";
-
-const ResetPasswordLink = styled(Link)`
-  ${position("absolute", null, "20px", 0, null)}
-  color: ${black};
-  font-family: "Maisonneue Bold";
-  /* Size of Input Height */
-  line-height: 38px;
-`;
+import { ResetPasswordLink } from "../styles/Links";
 
 const SignIn = () => {
   const defaultValues = {

@@ -2,44 +2,13 @@ import React from "react";
 import { useQuery } from "react-apollo";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+
 import { formatMoney } from "../utils/helpers";
 import { USER_ORDERS_QUERY } from "../reslovers/Query";
 import Button from "./Button";
 import ErrorMessage from "./ErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
-import { gray } from "../utils/colors";
-
-const OrdersTableStyles = styled.table`
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-
-  th,
-  td {
-    font-weight: inherit;
-    padding: 14px;
-    text-align: left;
-    vertical-align: middle;
-    vertical-align: top;
-  }
-
-  tr {
-    &:last-child {
-      td {
-        border-bottom: 1px solid ${gray[200]};
-      }
-    }
-
-    td {
-      border-top: 1px solid ${gray[200]};
-    }
-  }
-
-  td {
-    border-top: 1px solid ${gray[200]};
-  }
-`;
+import { StyledOrdersTable } from "../styles/Tables";
 
 const OrdersTable = () => {
   const { data, loading, error } = useQuery(USER_ORDERS_QUERY);
@@ -55,7 +24,7 @@ const OrdersTable = () => {
   const { orders } = data;
 
   return (
-    <OrdersTableStyles>
+    <StyledOrdersTable>
       <thead>
         <tr>
           <th>Order</th>
@@ -84,7 +53,7 @@ const OrdersTable = () => {
           );
         })}
       </tbody>
-    </OrdersTableStyles>
+    </StyledOrdersTable>
   );
 };
 

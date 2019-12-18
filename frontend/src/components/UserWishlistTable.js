@@ -1,53 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { margin } from "polished";
 import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import DeleteItem from "./ProductCard/actions/DeleteItem";
 import AddToCart from "./ProductCard/actions/AddToCart";
-import { gray } from "../utils/colors";
-
-export const WishlistTableStyles = styled.table`
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-
-  th,
-  td {
-    font-weight: inherit;
-    padding: 12px;
-    text-align: left;
-    vertical-align: middle;
-  }
-
-  tr {
-    &:last-child {
-      td {
-        border-bottom: 1px solid ${gray[200]};
-      }
-    }
-
-    td {
-      border-top: 1px solid ${gray[200]};
-    }
-  }
-
-  td {
-    img {
-      display: block;
-      height: 64px;
-    }
-
-    button {
-      ${margin(null, "6px")}
-
-      svg {
-        display: block;
-        height: 20px;
-      }
-    }
-  }
-`;
+import { StyledWishlistTable } from "../styles/Tables";
 
 const UserWishlistTable = ({ wishlist }) => {
   if (isArrayEmpty(wishlist)) {
@@ -55,7 +11,7 @@ const UserWishlistTable = ({ wishlist }) => {
   }
 
   return (
-    <WishlistTableStyles>
+    <StyledWishlistTable>
       <thead>
         <tr>
           <th>Photo</th>
@@ -107,7 +63,7 @@ const UserWishlistTable = ({ wishlist }) => {
           );
         })}
       </tbody>
-    </WishlistTableStyles>
+    </StyledWishlistTable>
   );
 };
 

@@ -1,30 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { TabContext } from ".";
-import { black, gray } from "../../utils/colors";
-
-const TabStyles = styled.button`
-  color: ${({ isActive }) => (isActive ? black : gray[500])};
-  cursor: pointer;
-  display: inline-block;
-  font-size: 18px;
-  line-height: 1;
-  margin-bottom: 18px;
-  outline: 0;
-  padding: 0;
-  position: relative;
-
-  /* &::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 1px;
-    background: ${({ isActive }) => (isActive ? gray[500] : "transparent")};
-    bottom: -5px;
-    left: 0;
-  } */
-`;
+import { StyledTab } from "../../styles/General";
 
 const Tab = ({ name, className, onClick, children, ...restProps }) => {
   const { activeTab, changeTab } = useContext(TabContext);
@@ -35,7 +12,7 @@ const Tab = ({ name, className, onClick, children, ...restProps }) => {
   };
 
   return (
-    <TabStyles
+    <StyledTab
       className={`
       tab
       ${className}
@@ -46,7 +23,7 @@ const Tab = ({ name, className, onClick, children, ...restProps }) => {
       isActive={activeTab === name}
     >
       {children}
-    </TabStyles>
+    </StyledTab>
   );
 };
 

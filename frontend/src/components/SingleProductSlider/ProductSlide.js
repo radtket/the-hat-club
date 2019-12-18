@@ -1,20 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReactImageMagnify from "react-image-magnify";
-import styled from "styled-components";
-
-const ProductSlideStyles = styled.button`
-  display: block;
-  margin: auto;
-
-  img {
-    max-width: unset;
-  }
-`;
+import { StyledProductSlide } from "../../styles/Sliders";
 
 const ProductSlide = ({ alt, image, largeImage }) => {
   return (
-    <ProductSlideStyles type="button">
+    <StyledProductSlide type="button">
       <figure>
         <ReactImageMagnify
           {...{
@@ -33,7 +24,7 @@ const ProductSlide = ({ alt, image, largeImage }) => {
           }}
         />
       </figure>
-    </ProductSlideStyles>
+    </StyledProductSlide>
   );
 };
 

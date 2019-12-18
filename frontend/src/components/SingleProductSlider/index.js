@@ -1,29 +1,10 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import Slider from "react-slick";
 import PropTypes from "prop-types";
-import { ImageNav, ImageNavItem } from "./styles";
-import { NavigationArrow, NavigationArrowButton } from "./NavigationArrow";
+import { StyledImageNav, StyledImageNavItem } from "../../styles/Navs";
+import NavigationArrow from "./NavigationArrow";
 import ProductSlide from "./ProductSlide";
 import { isArrayEmpty } from "../../utils/helpers";
-
-const ProductSliderStyles = styled(Slider)`
-  margin-left: 100px;
-
-  &:hover {
-    ${NavigationArrowButton} {
-      opacity: 1;
-
-      &.slide-prev {
-        left: 24px;
-      }
-
-      &.slide-next {
-        right: 24px;
-      }
-    }
-  }
-`;
+import { StyledProductSlider } from "../../styles/Sliders";
 
 const SingleProductSlider = ({ images, title }) => {
   const ref = useRef();
@@ -39,21 +20,21 @@ const SingleProductSlider = ({ images, title }) => {
         position: "relative",
       }}
     >
-      <ImageNav>
+      <StyledImageNav>
         {images.map(({ image, largeImage }, i) => {
           return (
-            <ImageNavItem
+            <StyledImageNavItem
               key={largeImage}
               isActive={i === slideIndex}
               onClick={() => ref.current.slickGoTo(i)}
               type="button"
             >
               <img alt={title} src={image} />
-            </ImageNavItem>
+            </StyledImageNavItem>
           );
         })}
-      </ImageNav>
-      <ProductSliderStyles
+      </StyledImageNav>
+      <StyledProductSlider
         {...{
           ref,
           dots: false,
@@ -77,7 +58,7 @@ const SingleProductSlider = ({ images, title }) => {
             />
           );
         })}
-      </ProductSliderStyles>
+      </StyledProductSlider>
     </div>
   );
 };

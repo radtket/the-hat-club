@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@rebass/grid";
 import { useQuery } from "react-apollo";
-import styled from "styled-components";
 import {
   ErrorMessage,
   Loading,
@@ -10,7 +9,6 @@ import {
   SmallSection,
   Tab,
   TabList,
-  TabPanel,
   Tabs,
 } from "../../components";
 
@@ -21,13 +19,7 @@ import Orders from "./sub-pages/Orders";
 import Selling from "./sub-pages/Selling";
 import WishList from "./sub-pages/WishList";
 import { CURRENT_USER_QUERY } from "../../reslovers/Query";
-
-export const TabContent = styled(TabPanel)`
-  h2 {
-    font-weight: normal;
-    margin-top: 0;
-  }
-`;
+import { StyledAboutTabContent } from "../../styles/Pages";
 
 const Account = () => {
   const { data, loading, error } = useQuery(CURRENT_USER_QUERY);
@@ -72,21 +64,21 @@ const Account = () => {
               }}
             />
           </Box>
-          <TabContent name="tab-orders">
+          <StyledAboutTabContent name="tab-orders">
             <Orders />
-          </TabContent>
-          <TabContent name="tab-wishlist">
+          </StyledAboutTabContent>
+          <StyledAboutTabContent name="tab-wishlist">
             <WishList {...me} />
-          </TabContent>
-          <TabContent name="tab-addresses">
+          </StyledAboutTabContent>
+          <StyledAboutTabContent name="tab-addresses">
             <Addresses />
-          </TabContent>
-          <TabContent name="tab-account-details">
+          </StyledAboutTabContent>
+          <StyledAboutTabContent name="tab-account-details">
             <AccountDetails {...me} />
-          </TabContent>
-          <TabContent name="tab-selling">
+          </StyledAboutTabContent>
+          <StyledAboutTabContent name="tab-selling">
             <Selling />
-          </TabContent>
+          </StyledAboutTabContent>
         </Tabs>
       </SmallSection>
     </>

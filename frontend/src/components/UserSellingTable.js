@@ -1,54 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { margin } from "polished";
 import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import DeleteItem from "./ProductCard/actions/DeleteItem";
 import EditItem from "./ProductCard/actions/EditItem";
-import { gray } from "../utils/colors";
-
-export const SellingTableStyles = styled.table`
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-
-  th,
-  td {
-    font-weight: inherit;
-    padding: 12px;
-    text-align: left;
-    vertical-align: middle;
-  }
-
-  tr {
-    &:last-child {
-      td {
-        border-bottom: 1px solid ${gray[200]};
-      }
-    }
-
-    td {
-      border-top: 1px solid ${gray[200]};
-    }
-  }
-
-  td {
-    img {
-      display: block;
-      height: 64px;
-    }
-
-    button {
-      ${margin(null, "6px")}
-
-      svg {
-        display: block;
-        height: 20px;
-      }
-    }
-  }
-`;
+import { StyledSellingTable } from "../styles/Tables";
 
 const UserSellingTable = ({ items }) => {
   if (isArrayEmpty(items)) {
@@ -71,7 +27,7 @@ const UserSellingTable = ({ items }) => {
   }
 
   return (
-    <SellingTableStyles>
+    <StyledSellingTable>
       <thead>
         <tr>
           <th>Photo</th>
@@ -113,7 +69,7 @@ const UserSellingTable = ({ items }) => {
           );
         })}
       </tbody>
-    </SellingTableStyles>
+    </StyledSellingTable>
   );
 };
 

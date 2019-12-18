@@ -3,21 +3,6 @@ import { size, margin } from "polished";
 import { gray, black } from "../utils/colors";
 import { rgba } from "../utils/helpers";
 
-export const IconButton = styled.button`
-  &:hover {
-    svg {
-      fill: ${gray[800]};
-    }
-  }
-
-  svg {
-    display: block;
-    height: 18px;
-    fill: ${gray[400]};
-    transition: fill 0.3s;
-  }
-`;
-
 const Form = styled.form`
   label {
     display: block;

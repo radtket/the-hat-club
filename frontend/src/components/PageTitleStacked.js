@@ -1,27 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import BreadCrumbs from "./BreadCrumbs";
-import { SmallSection } from "./Sections";
-
-const PageTitleStyles = styled(SmallSection)`
-  margin-bottom: ${({ theme }) => theme.spacing.large};
-  text-align: center;
-
-  h1 {
-    font-family: "Maisonneue Bold";
-    font-size: 64px;
-    margin: 0 auto 12px;
-    max-width: 650px;
-  }
-`;
+import { StyledPageTitle } from "../styles/Typography";
 
 const PageTitleStacked = ({ title, label }) => {
   return (
-    <PageTitleStyles className="container">
+    <StyledPageTitle className="container">
       <h1>{title}</h1>
       <BreadCrumbs activePage={label || title} />
-    </PageTitleStyles>
+    </StyledPageTitle>
   );
 };
 

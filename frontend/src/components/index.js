@@ -1,5 +1,5 @@
-import { Accordion, AccordionItem } from "./Accordion";
-import { PageSection, SmallSection } from "./Sections";
+import AccordionItem from "./AccordionItem";
+import { PageSection, SmallSection } from "../styles/General";
 import BigCallout from "./BigCallout";
 import BigTitle from "./BigTitle";
 import Button from "./Button";
@@ -37,7 +37,6 @@ import UpdateItemForm from "./UpdateItemForm";
 import UserPermissionsTable from "./UserPermissionsTable";
 
 export {
-  Accordion,
   AccordionItem,
   BigCallout,
   BigTitle,

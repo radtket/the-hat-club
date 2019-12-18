@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@rebass/grid";
-import styled from "styled-components";
-import { BigCallout, PageSection, SmallSection } from "../components";
+import { BigCallout, PageSection } from "../components";
+import { white, red } from "../utils/colors";
 
 // Images
 import HatsOnShelves from "../assets/images/about/hats-on-shelves.jpg";
@@ -10,64 +10,14 @@ import CactusChallenge from "../assets/images/about/chuck_dirk.png";
 import ChildrensHospital from "../assets/images/about/childrens-hospital.jpg";
 import BoysGirlsClub from "../assets/images/about/boys-and-girls.jpg";
 import { HLogo } from "../components/Branding";
-import { white, red, black, gray } from "../utils/colors";
-import { rgba } from "../utils/helpers";
-
-const Row = styled(SmallSection)`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-`;
-
-const AboutStyles = styled.div`
-  h2 {
-    font-size: 32px;
-    margin: 0;
-    /* font-family: "Maisonneue Bold"; */
-  }
-
-  p {
-    font-size: 18px;
-    line-height: 1.7;
-  }
-
-  img {
-    border-radius: 6px;
-    box-shadow: ${rgba(black, 0.3)} 0px 10px 20px 0px;
-    display: block;
-    margin: auto;
-    position: relative;
-  }
-
-  svg {
-    display: block;
-    fill: ${red[300]};
-    margin: auto;
-    max-height: 200px;
-  }
-
-  .bg-red {
-    background: ${red[400]};
-    color: ${white};
-  }
-
-  .bg-gray {
-    background: ${gray[100]};
-    color: ${gray[800]};
-  }
-
-  .bg-black {
-    background: ${gray[800]};
-    color: ${white};
-  }
-`;
+import { StyledRow, StyledAboutPage } from "../styles/Pages";
 
 const About = () => {
   return (
-    <AboutStyles>
+    <StyledAboutPage>
       <PageSection className="bg-red">
         <div className="container">
-          <Row>
+          <StyledRow>
             <BigCallout
               style={{
                 background: red[400],
@@ -76,8 +26,8 @@ const About = () => {
             >
               Our story so far.
             </BigCallout>
-          </Row>
-          <Row>
+          </StyledRow>
+          <StyledRow>
             <Box px={2} width={1 / 2}>
               <h2>The Begining.</h2>
               <p>
@@ -91,12 +41,12 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <HLogo />
             </Box>
-          </Row>
+          </StyledRow>
         </div>
       </PageSection>
       <PageSection className="bg-gray">
         <div className="container">
-          <Row>
+          <StyledRow>
             <Box px={4} width={1 / 2}>
               <img alt="" src={HatsOnShelves} />
             </Box>
@@ -118,8 +68,8 @@ const About = () => {
                 and Undefeated, to name a few.
               </p>
             </Box>
-          </Row>
-          <Row>
+          </StyledRow>
+          <StyledRow>
             <Box px={2} width={1 / 2}>
               <h2>Our Bond</h2>
               <p>
@@ -149,12 +99,12 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <img alt="" src={DannyAinge} />
             </Box>
-          </Row>
+          </StyledRow>
         </div>
       </PageSection>
       <PageSection className="bg-black">
         <div className="container">
-          <Row>
+          <StyledRow>
             <Box
               px={4}
               style={{
@@ -170,8 +120,8 @@ const About = () => {
                 sponsoring a number of charity programs.
               </p>
             </Box>
-          </Row>
-          <Row>
+          </StyledRow>
+          <StyledRow>
             <Box px={2} width={1 / 2}>
               <h2>The Hat Club Cactus Challenge</h2>
               <p>
@@ -184,8 +134,8 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <img alt="" src={CactusChallenge} />
             </Box>
-          </Row>
-          <Row>
+          </StyledRow>
+          <StyledRow>
             <Box px={4} width={1 / 2}>
               <img alt="" src={ChildrensHospital} />
             </Box>
@@ -198,8 +148,8 @@ const About = () => {
                 promotions and proceeds donations.
               </p>
             </Box>
-          </Row>
-          <Row>
+          </StyledRow>
+          <StyledRow>
             <Box px={2} width={1 / 2}>
               <h2>Boys & Girls Club</h2>
               <p>
@@ -211,10 +161,10 @@ const About = () => {
             <Box px={4} width={1 / 2}>
               <img alt="" src={BoysGirlsClub} />
             </Box>
-          </Row>
+          </StyledRow>
         </div>
       </PageSection>
-    </AboutStyles>
+    </StyledAboutPage>
   );
 };
 

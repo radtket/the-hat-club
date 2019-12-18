@@ -1,73 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import { position } from "polished";
-import { gray, red, white } from "../utils/colors";
-
-const SelectStyles = styled.div`
-  position: relative;
-  display: block;
-  width: 100%;
-
-  &:after,
-  &:before {
-    ${position("absolute", null, "18px", null, null)}
-    content: " ";
-    margin-top: -4px;
-    border: 6px solid transparent;
-    border-top: 8px solid ${red[200]};
-    pointer-events: none;
-  }
-
-  &:after {
-    top: "64px";
-  }
-
-  &:before {
-    border-bottom: 8px solid ${red[200]};
-    border-top: transparent;
-    top: 37%;
-    z-index: 10;
-  }
-
-  .form-control {
-    background-color: ${white};
-    border-radius: 0;
-    border: 1px solid ${gray[200]};
-    color: ${gray[700]};
-    display: block;
-    font-size: 16px;
-    padding: 10px 20px;
-    width: 100%;
-    /* line-height: normal; */
-    /* box-shadow: inset 0 1px 1pxrgba(black, 0.075);
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; */
-
-    &:focus {
-      border-color: ${gray[300]};
-    }
-  }
-
-  .select-select {
-    appearance: none;
-    cursor: pointer;
-    outline: 0;
-    padding-right: 50px;
-    position: relative;
-    text-overflow: "";
-    user-select: none;
-
-    &:focus {
-      border-color: ${gray[400]};
-    }
-  }
-`;
+import { StyledSelect } from "../styles/Inputs";
 
 const Select = ({ options, name, label, ...props }) => {
   return (
     <label htmlFor={name}>
       {label}
-      <SelectStyles>
+      <StyledSelect>
         <select
           className="select-select  form-control"
           id={name}
@@ -80,7 +19,7 @@ const Select = ({ options, name, label, ...props }) => {
             </option>
           ))}
         </select>
-      </SelectStyles>
+      </StyledSelect>
     </label>
   );
 };

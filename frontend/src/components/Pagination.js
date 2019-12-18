@@ -1,38 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { useQuery } from "react-apollo";
 import PropTypes from "prop-types";
 import { PAGINATION_QUERY } from "../reslovers/Query";
 import ErrorMessage from "./ErrorMessage";
 import LoadingSpinner from "./LoadingSpinner";
-import { gray } from "../utils/colors";
-
-const PaginationStyles = styled.div`
-  align-content: center;
-  align-items: stretch;
-  border: 1px solid ${gray[300]};
-  border-radius: 10px;
-  display: inline-flex;
-  justify-content: center;
-  margin: 2rem 0;
-  text-align: center;
-
-  & > * {
-    border-right: 1px solid ${gray[300]};
-    margin: 0;
-    padding: 15px 30px;
-
-    &:last-child {
-      border-right: 0;
-    }
-  }
-
-  a[aria-disabled="true"] {
-    color: grey;
-    pointer-events: none;
-  }
-`;
+import { StyledPagination } from "../styles/Navs";
 
 const Pagination = ({ page, perPage }) => {
   const { data, error, loading } = useQuery(PAGINATION_QUERY);
@@ -49,7 +22,7 @@ const Pagination = ({ page, perPage }) => {
   const pages = Math.ceil(count / perPage);
 
   return (
-    <PaginationStyles>
+    <StyledPagination>
       <Link
         aria-disabled={page <= 1}
         className="prev"
@@ -74,7 +47,7 @@ const Pagination = ({ page, perPage }) => {
       >
         Next →
       </Link>
-    </PaginationStyles>
+    </StyledPagination>
   );
 };
 

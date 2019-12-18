@@ -1,102 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useDropzone } from "react-dropzone";
-import { position, size } from "polished";
-import styled from "styled-components";
 import Button from "./Button";
-import { PlusIcon, PhotoPlaceholderIcon, CloseIcon } from "./Icons";
-import { gray, bada55 } from "../utils/colors";
-
-const Styles = styled.div`
-  display: flex;
-  margin-bottom: 1rem;
-  width: 100%;
-
-  .left,
-  .right {
-    display: flex;
-    border-top: 1px solid ${gray[300]};
-    border-left: 1px solid ${gray[300]};
-  }
-
-  .left {
-    align-items: center;
-    border-bottom: 1px solid ${gray[300]};
-    flex-grow: 1;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .right {
-    width: 400px;
-  }
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-
-    li {
-      ${size("200px", "50%")}
-      align-items: center;
-      border-bottom: 1px solid ${gray[300]};
-      border-right: 1px solid ${gray[300]};
-      display: flex;
-      justify-content: center;
-      position: relative;
-      text-align: center;
-
-      figure {
-        ${size("100%")}
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: 12px;
-      }
-
-      span {
-        svg {
-          height: 20px;
-        }
-
-        p {
-          margin: 0;
-        }
-      }
-    }
-  }
-`;
-
-const AddPhotosButton = styled.button`
-  font-size: 16px;
-  text-align: center;
-
-  svg {
-    display: block;
-    height: 20px;
-    margin: 0 auto 12px;
-  }
-`;
-
-const CloseButton = styled.button`
-  ${position("absolute", "6px", "6px", null, null)}
-  ${size("24px", "100%")}
-  background: ${bada55};
-  border-radius: 50%;
-  display: block;
-  max-width: 24px;
-  padding: 0;
-
-  svg {
-    ${size("10px", "100%")}
-    display: block;
-  }
-`;
-
-const ThumbnailPlaceholder = styled(PhotoPlaceholderIcon)`
-  height: 33%;
-  display: block;
-`;
+import { PlusIcon, CloseIcon } from "./Icons";
+import {
+  StyledImageUploader,
+  StyledCloseButton,
+  StyledAddPhotosButton,
+  StyledThumbnailPlaceholder,
+} from "../styles/ImageUploader";
 
 const ImageUploader = ({ files, setFiles }) => {
   const NumberOfPhotos = 4;
@@ -122,7 +34,7 @@ const ImageUploader = ({ files, setFiles }) => {
         case files[i] !== undefined:
           items.push(
             <li key={`${files[i].name} ${i}`}>
-              <CloseButton
+              <StyledCloseButton
                 onClick={e => {
                   e.preventDefault();
 
@@ -133,7 +45,7 @@ const ImageUploader = ({ files, setFiles }) => {
                 type="button"
               >
                 <CloseIcon />
-              </CloseButton>
+              </StyledCloseButton>
               <figure
                 style={{
                   backgroundImage: `url('${files[i].preview}')`,
@@ -145,21 +57,21 @@ const ImageUploader = ({ files, setFiles }) => {
         case files.length === i:
           items.push(
             <li key={i}>
-              <AddPhotosButton
+              <StyledAddPhotosButton
                 disabled={files.length >= NumberOfPhotos}
                 onClick={open}
                 type="button"
               >
                 <PlusIcon />
                 Add Photos
-              </AddPhotosButton>
+              </StyledAddPhotosButton>
             </li>
           );
           break;
         default:
           items.push(
             <li key={i}>
-              <ThumbnailPlaceholder />
+              <StyledThumbnailPlaceholder />
             </li>
           );
       }
@@ -169,7 +81,7 @@ const ImageUploader = ({ files, setFiles }) => {
   };
 
   return (
-    <Styles>
+    <StyledImageUploader>
       <div className="left" {...getRootProps()}>
         <nav>
           <Button
@@ -194,7 +106,7 @@ const ImageUploader = ({ files, setFiles }) => {
           <Thumbs />
         </ul>
       </div>
-    </Styles>
+    </StyledImageUploader>
   );
 };
 

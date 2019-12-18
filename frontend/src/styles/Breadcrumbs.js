@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { position } from "polished";
 import { gray } from "../utils/colors";
 
-const BreadCrumbStyles = styled.ul`
+const StyledBreadcrumbs = styled.ul`
   li {
     ${position("relative", null, null, null, "1px")}
     color: ${gray[900]};
@@ -42,4 +42,4 @@ const BreadCrumbStyles = styled.ul`
   }
 `;
 
-export default BreadCrumbStyles;
+export default StyledBreadcrumbs;
