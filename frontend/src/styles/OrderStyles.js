@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { padding } from "polished";
 import { gray } from "../utils/colors";
 
 const OrderStyles = styled.div`
-  padding-top: 24px;
-  padding-bottom: 24px;
+  ${padding("24px", null)}
 
   > .container {
     max-width: 900px;

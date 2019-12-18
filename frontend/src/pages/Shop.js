@@ -45,6 +45,7 @@ const Shop = () => {
           {data.items.map(item => (
             <Box key={item.id} px={3} width={1 / 3}>
               <SingleItem {...item} />
+              {/* <SingleItemSlideOutNav {...item} /> */}
               {/* <ProductCard {...item} /> */}
             </Box>
           ))}

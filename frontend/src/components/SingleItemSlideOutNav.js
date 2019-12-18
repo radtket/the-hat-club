@@ -5,11 +5,16 @@ import { formatMoney } from "../utils/helpers";
 import { CartIcon } from "./Icons";
 import { StyledSingleItemSlideOutNav } from "../styles/SingleItem";
 
-const SingleItemSlideOutNav = ({ id, title, price, image }) => {
+const SingleItemSlideOutNav = ({
+  id,
+  title,
+  price,
+  images: [primaryImage],
+}) => {
   return (
     <StyledSingleItemSlideOutNav>
       <Link to={`/item/${id}`}>
-        <img alt={title} src={image} />
+        <img alt={title} src={primaryImage.image} />
       </Link>
       <figcaption>
         <dl>
@@ -36,7 +41,12 @@ SingleItemSlideOutNav.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  image: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      image: PropTypes.string.isRequired,
+      largeImage: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default SingleItemSlideOutNav;
