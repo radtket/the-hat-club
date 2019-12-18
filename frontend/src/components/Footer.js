@@ -2,17 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Flex, Box } from "@rebass/grid";
 import {
-  TwitterIcon,
+  AmazonPayIcon,
+  AmexIcon,
+  ApplePayIcon,
+  DiscoverIcon,
   FacebookIcon,
   InstagramIcon,
-  AmexIcon,
+  KlarnaIcon,
   MasterCardIcon,
   PayPalIcon,
-  AmazonPayIcon,
-  KlarnaIcon,
-  ApplePayIcon,
+  TwitterIcon,
   VisaIcon,
-  DiscoverIcon,
 } from "./Icons";
 import { socialMediaUrls } from "../utils/constants";
 import { StyledFooter } from "../styles/General";

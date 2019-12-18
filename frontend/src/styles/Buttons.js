@@ -2,6 +2,28 @@ import styled, { css } from "styled-components";
 import { black, white, gray, red } from "../utils/colors";
 import { rgba } from "../utils/helpers";
 
+export const StyledTab = styled.button`
+  color: ${({ isActive }) => (isActive ? black : gray[500])};
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  margin-bottom: 18px;
+  outline: 0;
+  padding: 0;
+  position: relative;
+
+  /* &::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: ${({ isActive }) => (isActive ? gray[500] : "transparent")};
+    bottom: -5px;
+    left: 0;
+  } */
+`;
+
 export const IconButton = styled.button`
   &:hover {
     svg {

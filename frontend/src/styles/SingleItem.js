@@ -2,21 +2,12 @@ import styled from "styled-components";
 import { margin, cover, size, position } from "polished";
 import { white, gray, red } from "../utils/colors";
 import { rgba } from "../utils/helpers";
+import { MoveUpDown } from "./Animations";
 
 export const StyledSingleItemSlideOutNav = styled.div`
   ${margin("48px", null)}
   position: relative;
   overflow: hidden;
-
-  @keyframes MoveUpDown {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-    50% {
-      transform: translate3d(0, -6px, 0);
-    }
-  }
 
   &:hover {
     > a {
@@ -27,7 +18,7 @@ export const StyledSingleItemSlideOutNav = styled.div`
 
     img {
       /* transform: translate3d(0, -6px, 0); */
-      animation: MoveUpDown 1.5s linear infinite;
+      animation: ${MoveUpDown} 1.5s linear infinite;
     }
 
     figcaption {

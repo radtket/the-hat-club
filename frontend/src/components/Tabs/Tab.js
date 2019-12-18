@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { TabContext } from ".";
-import { StyledTab } from "../../styles/General";
+import { StyledTab } from "../../styles/Buttons";
 
 const Tab = ({ name, className, onClick, children, ...restProps }) => {
   const { activeTab, changeTab } = useContext(TabContext);

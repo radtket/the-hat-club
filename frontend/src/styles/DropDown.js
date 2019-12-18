@@ -1,16 +1,7 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { size, position } from "polished";
 import { white, gray, bada55 } from "../utils/colors";
-
-const glow = keyframes`
-  from {
-    box-shadow: 0 0 0px yellow;
-  }
-
-  to {
-    box-shadow: 0 0 10px 1px yellow;
-  }
-`;
+import { glow } from "./Animations";
 
 const DropDown = styled.div`
   border: 1px solid ${gray[200]};

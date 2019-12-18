@@ -12,6 +12,15 @@ const StyledBreadcrumbs = styled.ul`
     padding-right: 12px;
     text-transform: capitalize;
 
+    &::after {
+      ${position("absolute", 0, "-4px", null, null)}
+      color: ${gray[900]};
+      content: "/";
+      font-size: inherit;
+      font-weight: 400;
+    }
+
+
     &:last-child {
       margin-right: 0;
       padding-right: 0;
@@ -19,14 +28,6 @@ const StyledBreadcrumbs = styled.ul`
       &::after {
         display: none;
       }
-    }
-
-    &::after {
-      ${position("absolute", 0, "-4px", null, null)}
-      color: ${gray[900]};
-      content: "/";
-      font-size: inherit;
-      font-weight: 400;
     }
 
     a {

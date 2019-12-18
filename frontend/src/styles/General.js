@@ -1,7 +1,8 @@
 import { padding, size } from "polished";
 import styled from "styled-components";
-import { loadingColors, black, white, red, gray } from "../utils/colors";
+import { loadingColors, black, white, red } from "../utils/colors";
 import { rgba } from "../utils/helpers";
+import { right, left, ball1, ball2 } from "./Animations";
 
 export const StyledFooter = styled.footer`
   ${padding("120px", null, "40px")}
@@ -145,118 +146,42 @@ export const StyledLoadingWrapper = styled.div`
 
     &:nth-child(1) {
       background: ${white};
-      animation: right 1s infinite ease-in-out;
+      animation: ${right} 1s infinite ease-in-out;
     }
 
     &:nth-child(2) {
       background: ${white};
-      animation: left 1.1s infinite ease-in-out;
+      animation: ${left} 1.1s infinite ease-in-out;
     }
 
     &:nth-child(3) {
       background: ${white};
-      animation: right 1.05s infinite ease-in-out;
+      animation: ${right} 1.05s infinite ease-in-out;
     }
 
     &:nth-child(4) {
       background: ${white};
-      animation: left 1.15s infinite ease-in-out;
+      animation: ${left} 1.15s infinite ease-in-out;
     }
 
     &:nth-child(5) {
       background: ${white};
-      animation: right 1.1s infinite ease-in-out;
+      animation: ${right} 1.1s infinite ease-in-out;
     }
 
     &:nth-child(6) {
       background: ${white};
-      animation: left 1.05s infinite ease-in-out;
+      animation: ${left} 1.05s infinite ease-in-out;
     }
 
     &:nth-child(7) {
       background: ${white};
-      animation: right 1s infinite ease-in-out;
-    }
-  }
-
-  @keyframes right {
-    0% {
-      transform: translate(-15px);
-    }
-
-    50% {
-      transform: translate(15px);
-    }
-
-    100% {
-      transform: translate(-15px);
-    }
-  }
-
-  @keyframes left {
-    0% {
-      transform: translate(15px);
-    }
-
-    50% {
-      transform: translate(-15px);
-    }
-
-    100% {
-      transform: translate(15px);
+      animation: ${right} 1s infinite ease-in-out;
     }
   }
 `;
 
 export const StyledLoadingSpinner = styled.div`
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg) scale(0.8);
-    }
-
-    50% {
-      transform: rotate(360deg) scale(1.2);
-    }
-
-    100% {
-      transform: rotate(720deg) scale(0.8);
-    }
-  }
-
-  @keyframes ball1 {
-    0% {
-      box-shadow: 30px 0 0 ${loadingColors.yellow};
-    }
-
-    50% {
-      box-shadow: 0 0 0 ${loadingColors.yellow};
-      margin-bottom: 0;
-      transform: translate(15px, 15px);
-    }
-
-    100% {
-      box-shadow: 30px 0 0 ${loadingColors.yellow};
-      margin-bottom: 10px;
-    }
-  }
-
-  @keyframes ball2 {
-    0% {
-      box-shadow: 30px 0 0 ${loadingColors.green};
-    }
-
-    50% {
-      box-shadow: 0 0 0 ${loadingColors.green};
-      margin-top: -20px;
-      transform: translate(15px, 15px);
-    }
-
-    100% {
-      box-shadow: 30px 0 0 ${loadingColors.green};
-      margin-top: 0;
-    }
-  }
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -275,14 +200,14 @@ export const StyledLoadingSpinner = styled.div`
     }
 
     &:before {
-      animation: ball1 1s infinite;
+      animation: ${ball1} 1s infinite;
       background-color: ${red[200]};
       box-shadow: 30px 0 0 ${loadingColors.yellow};
       margin-bottom: 10px;
     }
 
     &:after {
-      animation: ball2 1s infinite;
+      animation: ${ball2} 1s infinite;
       background-color: ${loadingColors.teal};
       box-shadow: 30px 0 0 ${loadingColors.green};
     }
@@ -327,26 +252,4 @@ export const SmallSection = styled(Section)`
   @media (min-width: 768px) {
     ${padding("70px", null)}
   }
-`;
-
-export const StyledTab = styled.button`
-  color: ${({ isActive }) => (isActive ? black : gray[500])};
-  cursor: pointer;
-  display: inline-block;
-  font-size: 18px;
-  line-height: 1;
-  margin-bottom: 18px;
-  outline: 0;
-  padding: 0;
-  position: relative;
-
-  /* &::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 1px;
-    background: ${({ isActive }) => (isActive ? gray[500] : "transparent")};
-    bottom: -5px;
-    left: 0;
-  } */
 `;
