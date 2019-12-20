@@ -2,18 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { StyledQuanityToggle } from "../styles/Inputs";
 
-const QuanityToggle = ({ quantityState, setQuantityState }) => {
+const QuanityToggle = ({ loading, quantity, updateQuantity }) => {
   return (
     <StyledQuanityToggle className="quantity buttons_added">
       <button
         className="minus"
-        onClick={e => {
-          e.preventDefault();
-          if (quantityState >= 2) {
-            setQuantityState(quantityState - 1);
-          }
-          return false;
-        }}
+        disabled={loading || quantity === 1}
+        onClick={() => updateQuantity(quantity - 1)}
         type="button"
       >
         -
@@ -29,21 +24,21 @@ const QuanityToggle = ({ quantityState, setQuantityState }) => {
           max=""
           min="0"
           name="cart[084b6fbb10729ed4da8c3d3f5a3ae7c9][qty]"
-          onChange={e => {
-            console.log(e.target, e.target.value);
+          onChange={({ target }) => {
+            updateQuantity(target.value);
           }}
           size="4"
           step="1"
           title="Qty"
           type="text"
-          value={quantityState}
+          value={quantity}
         />
       </label>
       <button
         className="plus"
-        onClick={e => {
-          e.preventDefault();
-          setQuantityState(quantityState + 1);
+        disabled={loading}
+        onClick={() => {
+          updateQuantity(quantity + 1);
         }}
         type="button"
       >
@@ -54,8 +49,13 @@ const QuanityToggle = ({ quantityState, setQuantityState }) => {
 };
 
 QuanityToggle.propTypes = {
-  quantityState: PropTypes.number.isRequired,
-  setQuantityState: PropTypes.func.isRequired,
+  quantity: PropTypes.number.isRequired,
+  updateQuantity: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+};
+
+QuanityToggle.defaultProps = {
+  loading: false,
 };
 
 export default QuanityToggle;

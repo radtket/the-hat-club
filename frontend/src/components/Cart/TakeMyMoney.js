@@ -68,7 +68,7 @@ const TakeMyMoney = ({ cart, email }) => {
           description={`Order of ${totalItems(cart)} items!`}
           disabled={loading}
           email={email}
-          image={cart[0].item && cart[0].item.image}
+          image={cart[0].item && cart[0].item.images[0].image}
           name="Sick Fits"
           stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
           token={res => onToken(res)}

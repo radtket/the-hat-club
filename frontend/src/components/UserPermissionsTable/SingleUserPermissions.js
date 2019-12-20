@@ -7,6 +7,7 @@ import { UPDATE_PERMISSIONS_MUTATION } from "../../reslovers/Mutation";
 import ErrorMessage from "../ErrorMessage";
 import { ALL_USERS_QUERY } from "../../reslovers/Query";
 import Button from "../Button";
+import { StyledCheckboxLabel } from "../../styles/Inputs";
 
 const SingleUserPermissions = ({ user }) => {
   const { name, email, id: userId } = user;
@@ -54,7 +55,7 @@ const SingleUserPermissions = ({ user }) => {
       <td>{email}</td>
       {possiblePermissions.map(permission => (
         <td key={permission}>
-          <label htmlFor={`${userId}-permission-${permission}`}>
+          <StyledCheckboxLabel htmlFor={`${userId}-permission-${permission}`}>
             <input
               checked={permissions.includes(permission)}
               id={`${userId}-permission-${permission}`}
@@ -62,11 +63,21 @@ const SingleUserPermissions = ({ user }) => {
               type="checkbox"
               value={permission}
             />
-          </label>
+          </StyledCheckboxLabel>
         </td>
       ))}
-      <td>
-        <Button disabled={loading} onClick={updatePermissions} type="button">
+      <td
+        style={{
+          width: "100%",
+          borderRight: 0,
+        }}
+      >
+        <Button
+          disabled={loading}
+          fullWidth
+          onClick={updatePermissions}
+          type="button"
+        >
           Updat{loading ? "ing" : "e"}
         </Button>
       </td>

@@ -1,12 +1,13 @@
 import React from "react";
+import { Box } from "@rebass/grid";
 import PropTypes from "prop-types";
 import CartTableRow from "./CartTableRow";
-import { StyledCartTableWrap } from "../../styles/Tables";
+import { StyledCartTable } from "../../styles/Tables";
 
 const CartTable = ({ cart }) => {
   return (
-    <StyledCartTableWrap width={1}>
-      <table cellSpacing="0">
+    <Box width={1}>
+      <StyledCartTable cellSpacing="0">
         <thead>
           <tr>
             <th>&nbsp;</th>
@@ -14,15 +15,18 @@ const CartTable = ({ cart }) => {
             <th className="product-price">Price</th>
             <th className="product-quantity">Quantity</th>
             <th className="product-subtotal">Subtotal</th>
+            <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {cart.map(({ id, item, quantity }) => {
-            return <CartTableRow key={id} {...{ ...item, quantity }} />;
+            return (
+              <CartTableRow key={id} {...{ ...item, quantity, itemId: id }} />
+            );
           })}
         </tbody>
-      </table>
-    </StyledCartTableWrap>
+      </StyledCartTable>
+    </Box>
   );
 };
 

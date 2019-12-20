@@ -3,6 +3,11 @@ import { position, size, margin } from "polished";
 import { tempColors, gray, red, white } from "../utils/colors";
 import { rgba } from "../utils/helpers";
 
+export const StyledCheckboxLabel = styled.label`
+  display: block;
+  padding: 10px 5px;
+`;
+
 export const StyledCoolInput = styled.label`
   display: inline-block;
   margin: auto;

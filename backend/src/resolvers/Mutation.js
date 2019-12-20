@@ -519,7 +519,10 @@ const Mutation = {
             price
             id
             description
-            image
+            images {
+              image
+              largeImage
+            }
           }
         }
       }`
@@ -538,13 +541,15 @@ const Mutation = {
 
     // 4. Convert the CartItems to OrderItems
     const orderItems = cart.map(
-      ({ item: { description, image, price, title }, quantity }) => {
+      ({ item: { description, images, price, title }, quantity }) => {
         // Return New: OrderItem
         return {
           title,
           description,
           price,
-          image,
+          images: {
+            create: images,
+          },
           quantity,
           user: {
             connect: {

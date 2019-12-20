@@ -14,7 +14,7 @@ import ProductTerms from "./ProductTerms";
 import { PageSection } from "../styles/General";
 
 const Product = ({ description, id, images, price, title, tag }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, updateQuantity] = useState(1);
   const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
     variables: {
       id,
@@ -37,11 +37,7 @@ const Product = ({ description, id, images, price, title, tag }) => {
           <h2>{title}</h2>
           <h4>{formatMoney(price)}</h4>
           <p>{description}</p>
-
-          <QuanityToggle
-            quantityState={quantity}
-            setQuantityState={setQuantity}
-          />
+          <QuanityToggle {...{ quantity, updateQuantity }} />
           <Button
             aria-label="Add to Shopping Cart"
             fullWidth

@@ -5,7 +5,7 @@ import ErrorMessage from "../ErrorMessage";
 import LoadingSpinner from "../LoadingSpinner";
 import SingleUserPermissions from "./SingleUserPermissions";
 import { possiblePermissions } from "../../utils/constants";
-import Table from "../../styles/Table";
+import { StyledUserPermissionsTable } from "../../styles/Tables";
 
 const UserPermissionsTable = () => {
   const { data, loading, error } = useQuery(ALL_USERS_QUERY);
@@ -19,7 +19,7 @@ const UserPermissionsTable = () => {
   }
 
   return (
-    <Table>
+    <StyledUserPermissionsTable>
       <thead>
         <tr>
           <th>Name</th>
@@ -35,7 +35,7 @@ const UserPermissionsTable = () => {
           return <SingleUserPermissions key={user.id} user={user} />;
         })}
       </tbody>
-    </Table>
+    </StyledUserPermissionsTable>
   );
 };
 

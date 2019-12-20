@@ -1,7 +1,18 @@
 import styled from "styled-components";
 import { position, padding, size, triangle } from "polished";
+import { Link } from "react-router-dom";
 import { black, gray, red, white } from "../utils/colors";
 import { rgba } from "../utils/helpers";
+
+export const CartTableImage = styled(Link)`
+  display: inline-block;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    -ms-interpolation-mode: bicubic;
+  }
+`;
 
 export const CartOverlay = styled.div`
   ${position("fixed", 0)};

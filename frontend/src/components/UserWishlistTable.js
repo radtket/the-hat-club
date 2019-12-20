@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import DeleteItem from "./ProductCard/actions/DeleteItem";
 import AddToCart from "./ProductCard/actions/AddToCart";
-import { StyledWishlistTable } from "../styles/Tables";
+import { StyledTable } from "../styles/Tables";
 
 const UserWishlistTable = ({ wishlist }) => {
   if (isArrayEmpty(wishlist)) {
@@ -11,7 +11,7 @@ const UserWishlistTable = ({ wishlist }) => {
   }
 
   return (
-    <StyledWishlistTable>
+    <StyledTable>
       <thead>
         <tr>
           <th>Photo</th>
@@ -63,7 +63,7 @@ const UserWishlistTable = ({ wishlist }) => {
           );
         })}
       </tbody>
-    </StyledWishlistTable>
+    </StyledTable>
   );
 };
 

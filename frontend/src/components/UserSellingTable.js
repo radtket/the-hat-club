@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { formatMoney, isArrayEmpty } from "../utils/helpers";
 import DeleteItem from "./ProductCard/actions/DeleteItem";
 import EditItem from "./ProductCard/actions/EditItem";
-import { StyledSellingTable } from "../styles/Tables";
+import { StyledTable } from "../styles/Tables";
 
 const UserSellingTable = ({ items }) => {
   if (isArrayEmpty(items)) {
@@ -27,7 +27,7 @@ const UserSellingTable = ({ items }) => {
   }
 
   return (
-    <StyledSellingTable>
+    <StyledTable>
       <thead>
         <tr>
           <th>Photo</th>
@@ -69,7 +69,7 @@ const UserSellingTable = ({ items }) => {
           );
         })}
       </tbody>
-    </StyledSellingTable>
+    </StyledTable>
   );
 };
 
