@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { padding } from "polished";
+import { padding, margin } from "polished";
 import { gray } from "../utils/colors";
+import { StyledTable } from "./Tables";
 
 const OrderStyles = styled.div`
   ${padding("24px", null)}
@@ -11,26 +12,22 @@ const OrderStyles = styled.div`
 
   .order-details {
     header {
-      margin: 43px 0 42px;
-      padding: 20px 0 18px;
-      text-align: center;
+      ${margin("42px", null)}
+      ${padding("18px", null)}
       color: ${gray[500]};
       background: ${gray[100]};
 
       ul {
         display: inline-block;
-        font-size: inherit;
         line-height: 1.8;
-        margin-top: 0;
-        text-align: left;
 
         li {
+          border-bottom: 0 none;
           display: inline-block;
           line-height: inherit;
           margin: 0 21px;
-          padding: 0;
-          border-bottom: 0 none;
           overflow: visible;
+          padding: 0;
 
           strong {
             color: ${gray[800]};
@@ -45,29 +42,30 @@ const OrderStyles = styled.div`
       margin-bottom: 16px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border-spacing: 0;
-
+    ${StyledTable} {
       thead {
         display: none;
       }
 
+      tr {
+        &:last-child {
+          td {
+            border-bottom: 0;
+          }
+        }
+
+        td {
+          border-top: 0;
+        }
+      }
+
       th,
       td {
-        padding: 14px;
-        vertical-align: middle;
-        font-weight: inherit;
         vertical-align: top;
-        text-align: left;
       }
 
       tr {
         td {
-          &:first-child {
-            text-align: left;
-          }
           &:last-child {
             text-align: right;
           }
@@ -82,8 +80,8 @@ const OrderStyles = styled.div`
             }
           }
           td {
-            padding-top: 17px;
-            padding-bottom: 17px;
+            padding-top: 16px;
+            padding-bottom: 16px;
             border-bottom: 1px solid ${gray[200]};
           }
         }
@@ -95,13 +93,9 @@ const OrderStyles = styled.div`
         }
 
         tr {
-          th,
+
           td {
-            padding-bottom: 12px;
-          }
-          td {
-            padding-left: 19px;
-            text-align: right;
+            padding-left: 20px;
           }
 
           &:nth-last-child(2) {
@@ -121,11 +115,10 @@ const OrderStyles = styled.div`
           &:last-child {
             th,
             td {
-              font-size: 18px;
-              padding-top: 17px;
-              padding-bottom: 17px;
-              border-top: 1px solid ${gray[200]};
+              ${padding("16px", null)}
               border-bottom: 1px solid ${gray[200]};
+              border-top: 1px solid ${gray[200]};
+              font-size: 18px;
             }
           }
         }

@@ -51,15 +51,15 @@ export const StyledHomeSlider = styled(Slider)`
 
       button {
         ${size("6px")}
+        background-color: ${red[100]};
+        border-radius: 30px;
+        border: 0 none;
+        box-sizing: content-box;
         display: block;
         margin: 0;
-        padding: 0;
-        border: 0 none;
-        border-radius: 30px;
-        text-indent: -1000em;
         overflow: hidden;
-        box-sizing: content-box;
-        background-color: ${red[100]};
+        padding: 0;
+        text-indent: -1000em;
 
         &::before {
           display: none;

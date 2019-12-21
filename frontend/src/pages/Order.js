@@ -5,6 +5,8 @@ import { format } from "date-fns";
 import { SINGLE_ORDER_QUERY } from "../reslovers/Query";
 import { ErrorMessage, LoadingSpinner, OrderItem } from "../components";
 import OrderStyles from "../styles/OrderStyles";
+import { formatMoney } from "../utils/helpers";
+import { StyledTable } from "../styles/Tables";
 
 const Order = () => {
   const { id } = useParams();
@@ -23,6 +25,7 @@ const Order = () => {
   }
 
   const { order } = data;
+
   return (
     <OrderStyles>
       <div className="container">
@@ -53,7 +56,7 @@ const Order = () => {
             </ul>
           </header>
           <h2>Order details</h2>
-          <table>
+          <StyledTable>
             <thead>
               <tr>
                 <th>Product</th>
@@ -71,10 +74,7 @@ const Order = () => {
               <tr>
                 <th scope="row">Subtotal:</th>
                 <td>
-                  <span>
-                    <span>$</span>
-                    379.00
-                  </span>
+                  <span>{formatMoney(order.total)}</span>
                 </td>
               </tr>
               <tr>
@@ -94,14 +94,11 @@ const Order = () => {
               <tr>
                 <th scope="row">Total:</th>
                 <td>
-                  <span>
-                    <span>$</span>
-                    {order.total}
-                  </span>
+                  <span>{formatMoney(order.total)}</span>
                 </td>
               </tr>
             </tfoot>
-          </table>
+          </StyledTable>
         </div>
       </div>
     </OrderStyles>
