@@ -91,7 +91,7 @@ const Footer = () => {
                 <Link to="pages/contact-us-2">Contact</Link>
               </li>
               <li>
-                <Link to="tools/store-locator">Store Locations</Link>
+                <Link to="store-locator">Store Locations</Link>
               </li>
               <li>
                 <Link to="/pages/affiliate-signup">Become an Affiliate</Link>

@@ -21,6 +21,7 @@ import Reset from "./pages/Reset";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
+import StoreLocations from "./pages/StoreLocations";
 
 const Routes = () => {
   return (
@@ -74,6 +75,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/create-items">
             <CreateItems />
+          </Route>
+          <Route exact path="/store-locator">
+            <StoreLocations />
           </Route>
         </Switch>
       </main>

@@ -10,11 +10,10 @@ const Select = ({ options, name, label, ...props }) => {
         <select
           className="select-select  form-control"
           id={name}
-          {...props}
-          {...{ name }}
+          {...{ ...props, name }}
         >
           {options.map(value => (
-            <option key={value} value={value}>
+            <option key={value} {...{ value }}>
               {value}
             </option>
           ))}
