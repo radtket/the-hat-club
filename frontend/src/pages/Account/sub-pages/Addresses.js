@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, Box } from "@rebass/grid";
 import { Link } from "react-router-dom";
+import Address from "../../../components/Address";
 
 const Addresses = () => {
   return (
@@ -30,13 +31,13 @@ const Addresses = () => {
           >
             Billing Address
           </h3>
-          <address>
-            Jon Doe
-            <br />
-            555 S. Main St.
-            <br />
-            Arlington, VA 22206
-          </address>
+          <Address
+            city="Arlington"
+            name="Jon Doe"
+            state="VA"
+            street="555 S. Main St."
+            zip="22206"
+          />
           <Link className="edit" to="/edit-address/billing/">
             Edit
           </Link>
@@ -50,13 +51,13 @@ const Addresses = () => {
           >
             Shipping Address
           </h3>
-          <address>
-            Jon Doe
-            <br />
-            555 S. Main St.
-            <br />
-            Arlington, VA 22206
-          </address>
+          <Address
+            city="Arlington"
+            name="Jon Doe"
+            state="VA"
+            street="555 S. Main St."
+            zip="22206"
+          />
           <Link className="edit" to="/edit-address/billing/">
             Edit
           </Link>
