@@ -1,18 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const StyledAddress = styled.address`
+  font-style: normal;
+  line-height: 1.6;
+`;
 
 const Address = ({ name, street, city, state, zip, ...props }) => {
   return (
-    <address {...props}>
+    <StyledAddress {...props}>
       {name && (
         <>
           {name} <br />
         </>
       )}
-      {street}
+      {street.trim()}
       <br />
-      {city}, {state} {zip}
-    </address>
+      {`${city.trim()}, ${state.trim()} ${zip.trim()}`}
+    </StyledAddress>
   );
 };
 
