@@ -2,6 +2,20 @@ import styled from "styled-components";
 
 const MapHeight = "430px";
 
+export const StyledStoreLocations = styled.div`
+  &.container {
+    max-width: 100%;
+  }
+
+  > div {
+    border: solid 1px #e6e6e6;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    /* visibility: visible !important;
+  width: 100%; */
+  }
+`;
+
 export const StyledSidebar = styled.aside`
   box-sizing: border-box;
   float: left;
@@ -17,14 +31,6 @@ export const StyledSidebarContainer = styled.div`
   padding: 15px 10px;
 `;
 
-export const StyledStoreLocations = styled.div`
-  border: solid 1px #e6e6e6;
-  margin-bottom: 12px;
-  margin-top: 12px;
-  /* visibility: visible !important;
-  width: 100%; */
-`;
-
 export const Clearfix = styled.div`
   clear: both;
 `;
@@ -37,15 +43,30 @@ export const StyledLocationCard = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  font-size: 12px;
-  line-height: 1.3;
-  margin-bottom: 10px;
-  padding: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
 
   &:hover {
     background-color: #fdfdfd;
     border: solid 1px #e1e1e1;
     box-sizing: border-box;
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  address {
+    margin-bottom: 6px;
+  }
+
+  .distance {
+    margin-top: 6px;
+    color: rgba(0, 0, 0, 0.56);
+    margin: 0;
   }
 `;
 

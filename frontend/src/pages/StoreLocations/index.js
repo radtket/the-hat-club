@@ -11,15 +11,16 @@ import { StyledStoreLocations, Clearfix } from "../../styles/StoreLocations";
 
 const StoreLocations = () => {
   const [stores, setStores] = useState(data);
+
   return (
-    <div className="container">
-      <StyledStoreLocations>
+    <StyledStoreLocations className="container">
+      <div>
         <LocationsSearchForm />
         <Sidebar {...{ stores }} />
         <LocationsMapWrap {...{ stores, setStores }} />
         <Clearfix />
-      </StyledStoreLocations>
-    </div>
+      </div>
+    </StyledStoreLocations>
   );
 };
 

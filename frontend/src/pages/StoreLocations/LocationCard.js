@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Box, Flex } from "@rebass/grid";
 import Address from "../../components/Address";
 import { StyledLocationCard } from "../../styles/StoreLocations";
-import { formatPhoneNumber, URLify } from "../../utils/helpers";
+import { formatPhoneNumber, URLify, convertState } from "../../utils/helpers";
+import IconListItem from "./IconListItem";
+import { DirectionsMapIcon, PhoneIcon } from "../../components/Icons";
 
 const LocationCard = ({
   id,
@@ -19,34 +22,45 @@ const LocationCard = ({
   return (
     <StyledLocationCard className="preferred storepoint-location" {...{ id }}>
       <h3>{name}</h3>
-      <Address
-        {...{
-          street: address,
-          city,
-          state,
-          zip,
+      <Flex
+        justifyContent="space-between"
+        style={{
+          lineHeight: 1.6,
+          maxWidth: "400px",
         }}
-      />
-      <dl>
-        <dt>Phone:</dt>
-        <dd>
-          <a href={`tel:${formatPhoneNumber(phone)}`}>{phone}</a>
-        </dd>
-      </dl>
-      {distance && (
-        <dl>
-          <dt>Distance:</dt>
-          <dd>{distance} miles</dd>
-        </dl>
-      )}
-      <a
-        className="google-maps-link"
-        href={`https://www.google.com/maps/dir/Current+Location/${URLify(
-          `${city} ${state} ${zip} United States`
-        )}`}
       >
-        Get Directions
-      </a>
+        <Box>
+          <Address
+            {...{
+              street: address,
+              city,
+              state: convertState(state),
+              zip,
+            }}
+          />
+          {distance && (
+            <p className="distance">
+              {distance.toFixed(1)} miles away from you
+            </p>
+          )}
+        </Box>
+        <Box>
+          <IconListItem
+            href={`tel:${formatPhoneNumber(phone)}`}
+            icon={<PhoneIcon />}
+            label="Phone number:"
+            text={phone}
+          />
+          <IconListItem
+            href={`https://www.google.com/maps/dir/Current+Location/${URLify(
+              `${city} ${state} ${zip} United States`
+            )}`}
+            icon={<DirectionsMapIcon />}
+            label="Directions:"
+            text="Get Directions"
+          />
+        </Box>
+      </Flex>
     </StyledLocationCard>
   );
 };
