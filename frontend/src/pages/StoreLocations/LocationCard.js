@@ -12,6 +12,7 @@ const LocationCard = ({
   state,
   zip,
   phone,
+  distance,
   lat,
   long,
 }) => {
@@ -32,6 +33,12 @@ const LocationCard = ({
           <a href={`tel:${formatPhoneNumber(phone)}`}>{phone}</a>
         </dd>
       </dl>
+      {distance && (
+        <dl>
+          <dt>Distance:</dt>
+          <dd>{distance} miles</dd>
+        </dl>
+      )}
       <a
         className="google-maps-link"
         href={`https://www.google.com/maps/dir/Current+Location/${URLify(
@@ -54,6 +61,11 @@ LocationCard.propTypes = {
   phone: PropTypes.string.isRequired,
   lat: PropTypes.string.isRequired,
   long: PropTypes.string.isRequired,
+  distance: PropTypes.number,
+};
+
+LocationCard.defaultProps = {
+  distance: null,
 };
 
 export default LocationCard;

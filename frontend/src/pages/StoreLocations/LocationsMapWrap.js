@@ -1,11 +1,55 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { getDistance, convertDistance } from "geolib";
 import { StyledLocationsMapWrap } from "../../styles/StoreLocations";
 import LocationsMap from "./LocationsMap";
 import MapMarker from "./MapMarker";
 
-const LocationsMapWrap = ({ stores }) => {
+const LocationsMapWrap = ({ stores, setStores }) => {
+  const success = async ({ coords: { latitude, longitude } }) => {
+    const results = await stores
+      .map(item => {
+        const { lat, long } = item;
+
+        return {
+          ...item,
+          distance: convertDistance(
+            getDistance(
+              { latitude, longitude },
+              {
+                latitude: Number(lat),
+                longitude: Number(long),
+              }
+            ),
+            "mi"
+          ),
+        };
+      })
+      .sort(({ distance: a }, { distance: b }) => {
+        if (a > b) {
+          return 1;
+        }
+
+        if (a < b) {
+          return -1;
+        }
+
+        return 0;
+      });
+
+    await setStores(results);
+  };
+
+  const error = err => {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error, {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  });
+
   return (
     <StyledLocationsMapWrap>
       <LocationsMap
@@ -48,6 +92,7 @@ const LocationsMapWrap = ({ stores }) => {
 };
 
 LocationsMapWrap.propTypes = {
+  setStores: PropTypes.func.isRequired,
   stores: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

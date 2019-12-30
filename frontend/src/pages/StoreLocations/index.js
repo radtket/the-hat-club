@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import Sidebar from "./Sidebar";
@@ -6,16 +6,17 @@ import LocationsMapWrap from "./LocationsMapWrap";
 import LocationsSearchForm from "./LocationsSearchForm";
 
 // data
-import stores from "../../utils/data/store-locations";
+import data from "../../utils/data/store-locations";
 import { StyledStoreLocations, Clearfix } from "../../styles/StoreLocations";
 
 const StoreLocations = () => {
+  const [stores, setStores] = useState(data);
   return (
     <div className="container">
       <StyledStoreLocations>
         <LocationsSearchForm />
         <Sidebar {...{ stores }} />
-        <LocationsMapWrap {...{ stores }} />
+        <LocationsMapWrap {...{ stores, setStores }} />
         <Clearfix />
       </StyledStoreLocations>
     </div>
