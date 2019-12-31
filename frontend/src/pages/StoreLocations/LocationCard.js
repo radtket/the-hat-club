@@ -16,8 +16,6 @@ const LocationCard = ({
   zip,
   phone,
   distance,
-  lat,
-  long,
 }) => {
   return (
     <StyledLocationCard className="preferred storepoint-location" {...{ id }}>
@@ -73,8 +71,6 @@ LocationCard.propTypes = {
   state: PropTypes.string.isRequired,
   zip: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
-  lat: PropTypes.string.isRequired,
-  long: PropTypes.string.isRequired,
   distance: PropTypes.number,
 };
 
