@@ -2,13 +2,12 @@ import React, { useState } from "react";
 
 // Components
 import Sidebar from "./Sidebar";
-// import LocationsMapWrap from "./LocationsMapWrap";
+import LocationsMapWrap from "./LocationsMapWrap";
 import LocationsSearchForm from "./LocationsSearchForm";
 
 // data
 import data from "../../utils/data/store-locations";
 import { StyledStoreLocations, Clearfix } from "../../styles/StoreLocations";
-import AltMap from "../AltMap";
 import { isArrayEmpty } from "../../utils/helpers";
 
 const StoreLocations = () => {
@@ -35,15 +34,7 @@ const StoreLocations = () => {
       <div>
         <LocationsSearchForm />
         <Sidebar {...{ setState, activeStoreId, setActiveStore, storeList }} />
-        {/* <LocationsMapWrap {...{ stores, setStores }} /> */}
-        <AltMap
-          {...{
-            ...state,
-            setState,
-            activeStoreId,
-            setActiveStore,
-          }}
-        />
+        <LocationsMapWrap {...{ stores, setState }} />
         <Clearfix />
       </div>
     </StyledStoreLocations>

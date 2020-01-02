@@ -1,10 +1,22 @@
 import styled from "styled-components";
 
-const MapHeight = "430px";
+export const MapHeight = "430px";
 
 export const StyledStoreLocations = styled.div`
   &.container {
     max-width: 100%;
+  }
+  .geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
+    top: 20px;
+  }
+
+  .mapboxgl-ctrl-geocoder {
+    min-width: 100%;
   }
 
   > div {

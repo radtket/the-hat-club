@@ -21,7 +21,8 @@ import Reset from "./pages/Reset";
 import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
-import StoreLocations from "./pages/StoreLocations";
+// import StoreLocations from "./pages/StoreLocations";
+import AltMap from "./components/AltMap";
 
 const Routes = () => {
   return (
@@ -77,7 +78,8 @@ const Routes = () => {
             <CreateItems />
           </Route>
           <Route exact path="/store-locator">
-            <StoreLocations />
+            {/* <StoreLocations /> */}
+            <AltMap />
           </Route>
         </Switch>
       </main>

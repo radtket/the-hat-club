@@ -5,7 +5,7 @@ import { StyledLocationsMapWrap } from "../../styles/StoreLocations";
 import LocationsMap from "./LocationsMap";
 import MapMarker from "./MapMarker";
 
-const LocationsMapWrap = ({ stores, setStores }) => {
+const LocationsMapWrap = ({ stores, setState }) => {
   const success = async ({ coords: { latitude, longitude } }) => {
     const results = await stores
       .map(item => {
@@ -37,7 +37,10 @@ const LocationsMapWrap = ({ stores, setStores }) => {
         return 0;
       });
 
-    await setStores(results);
+    await setState(prev => ({
+      ...prev,
+      stores: results,
+    }));
   };
 
   const error = err => {
@@ -92,7 +95,7 @@ const LocationsMapWrap = ({ stores, setStores }) => {
 };
 
 LocationsMapWrap.propTypes = {
-  setStores: PropTypes.func.isRequired,
+  setState: PropTypes.func.isRequired,
   stores: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

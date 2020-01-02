@@ -5,16 +5,22 @@ import {
   StyledSidebar,
   StyledSidebarContainer,
 } from "../../styles/StoreLocations";
-import StoreList from "../AltMap/components/StoreList";
 
-const Sidebar = ({ storeList, activeStoreId, setActiveStore }) => {
+const Sidebar = ({ stores, activeStoreId, setActiveStore }) => {
   return (
     <StyledSidebar>
       <StyledSidebarContainer>
-        <StoreList {...{ storeList, activeStoreId, setActiveStore }} />
-        {storeList.map(store => (
-          <LocationCard key={store.id} {...store} />
-        ))}
+        {stores.map(location => {
+          const { id } = location;
+          return (
+            <LocationCard
+              key={id}
+              isActive={activeStoreId === id}
+              onClick={() => setActiveStore(location)}
+              {...location}
+            />
+          );
+        })}
       </StyledSidebarContainer>
     </StyledSidebar>
   );
@@ -23,7 +29,7 @@ const Sidebar = ({ storeList, activeStoreId, setActiveStore }) => {
 Sidebar.propTypes = {
   activeStoreId: PropTypes.number,
   setActiveStore: PropTypes.func.isRequired,
-  storeList: PropTypes.arrayOf(
+  stores: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
       name: PropTypes.string,
