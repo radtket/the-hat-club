@@ -17,6 +17,7 @@ const StoreMarker = ({
   distance,
 }) => {
   const coordinates = [lng, lat];
+  console.log({ distance });
   return (
     <>
       <Marker anchor="bottom" {...{ coordinates, onClick }}>
@@ -32,6 +33,7 @@ const StoreMarker = ({
       {isActive && (
         <Popup {...{ coordinates }}>
           <h1>Hi</h1>
+          <h1>{distance}</h1>
         </Popup>
       )}
     </>

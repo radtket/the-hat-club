@@ -61,15 +61,12 @@ const AltMap = () => {
               const copy = { ...prev };
 
               copy.stores = copy.stores
-                .map(item => {
-                  const c = { ...item };
-
-                  c.distance = distance(coordinates, [item.lng, item.lat], {
+                .map(item => ({
+                  ...item,
+                  distance: distance(coordinates, [item.lng, item.lat], {
                     units: "miles",
-                  });
-
-                  return c;
-                })
+                  }),
+                }))
                 .sort(({ distance: a }, { distance: b }) => {
                   if (a > b) {
                     return 1;
@@ -81,16 +78,19 @@ const AltMap = () => {
                 });
 
               const [closestStore] = copy.stores;
-              // copy.zoom = [11];
-
-              setActiveStore(closestStore);
-
-              map.fitBounds(
-                getBbox([closestStore.lng, closestStore.lat], coordinates),
-                {
-                  padding: 200,
-                }
+              copy.activeStoreId = closestStore.id;
+              // center: bounds.getCenter(),
+              copy.fitBounds = getBbox(
+                [closestStore.lng, closestStore.lat],
+                coordinates
               );
+
+              // map.fitBounds(
+              //   getBbox([closestStore.lng, closestStore.lat], coordinates),
+              //   {
+              //     padding: 200,
+              //   }
+              // );
 
               return copy;
             });

@@ -8,6 +8,8 @@ import IconListItem from "./IconListItem";
 import { DirectionsMapIcon, PhoneIcon } from "../../components/Icons";
 
 const LocationCard = ({
+  onClick,
+  isActive,
   id,
   name,
   address,
@@ -16,9 +18,27 @@ const LocationCard = ({
   zip,
   phone,
   distance,
+  ...props
 }) => {
+  console.log({
+    onClick,
+    isActive,
+    id,
+    name,
+    address,
+    city,
+    state,
+    zip,
+    phone,
+    distance,
+    props,
+  });
   return (
-    <StyledLocationCard className="preferred storepoint-location" {...{ id }}>
+    <StyledLocationCard
+      className="preferred storepoint-location"
+      style={{ background: isActive ? "#bada55" : "initial" }}
+      {...{ onClick, id }}
+    >
       <h3>{name}</h3>
       <Flex
         justifyContent="space-between"
@@ -59,11 +79,14 @@ const LocationCard = ({
           />
         </Box>
       </Flex>
+      {distance && <h1>{distance}</h1>}
     </StyledLocationCard>
   );
 };
 
 LocationCard.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
