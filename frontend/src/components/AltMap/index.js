@@ -49,7 +49,9 @@ const AltMap = () => {
           mapboxgl,
           marker: true,
         });
-        document.getElementById("geocoder").appendChild(geocoder.onAdd(map));
+        document
+          .querySelector(".searchbar__container")
+          .appendChild(geocoder.onAdd(map));
         geocoder.on(
           "result",
           ({
@@ -118,7 +120,6 @@ const AltMap = () => {
       <div>
         <LocationsSearchForm />
         <Sidebar {...{ ...state, setActiveStore }} />
-        <div className="geocoder" id="geocoder" />
         <MapBox {...mapConfig(state)}>
           {state.stores.map(store => {
             return (

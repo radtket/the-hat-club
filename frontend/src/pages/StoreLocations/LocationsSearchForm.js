@@ -11,7 +11,7 @@ const LocationsSearchForm = () => {
       }}
     >
       <div className="searchbar__container">
-        <button className="searchbar__clear-search" type="button">
+        {/* <button className="searchbar__clear-search" type="button">
           <CloseIcon alt="clear search" />
         </button>
         <input
@@ -20,7 +20,7 @@ const LocationsSearchForm = () => {
           placeholder="Enter a location"
           title="enter your location"
           type="search"
-        />
+        /> */}
       </div>
       <div
         aria-haspopup="true"
