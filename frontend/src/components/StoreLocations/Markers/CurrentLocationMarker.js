@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledMarker } from "../../styles/StoreLocations";
+import { StyledMarker } from "../../../styles/StoreLocations";
 
 const CurrentLocationMarker = ({ userLocation, iconHeight }) => {
   return (

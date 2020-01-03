@@ -4,7 +4,7 @@ import LocationCard from "./LocationCard";
 import {
   StyledSidebar,
   StyledSidebarContainer,
-} from "../../styles/StoreLocations";
+} from "../../../styles/StoreLocations";
 
 const Sidebar = ({ stores, activeStoreId, setActiveStore }) => {
   return (

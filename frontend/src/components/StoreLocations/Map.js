@@ -5,9 +5,10 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { MapHeight } from "../../styles/StoreLocations";
-import StoreMarker from "./StoreMarker";
+import StoreMarker from "./Markers/StoreMarker";
 import { getStoresDetails } from "./utils";
-import CurrentLocationMarker from "./CurrentLocationMarker";
+import CurrentLocationMarker from "./Markers/CurrentLocationMarker";
+import usePosition from "../../utils/hooks/usePosition";
 
 const accessToken =
   "pk.eyJ1IjoiY29tbW9kaXR5dmVjdG9ycyIsImEiOiJjamR3eWFvd3owcTUwMzRzNmg1eXJjYWlzIn0.QESIireyCutiiFOTlI4y5w";
@@ -31,9 +32,10 @@ const Map = ({
   fitBounds,
   center,
   zoom,
-  userLocation,
 }) => {
   const mapRef = useRef();
+  const { latitude, longitude } = usePosition();
+  const userLocation = longitude && latitude && [longitude, latitude];
 
   const mapConfig = () => {
     return {
@@ -118,12 +120,10 @@ Map.propTypes = {
   fitBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   center: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoom: PropTypes.arrayOf(PropTypes.number).isRequired,
-  userLocation: PropTypes.arrayOf(PropTypes.number),
 };
 
 Map.defaultProps = {
   activeStoreId: null,
-  userLocation: null,
 };
 
 export default Map;

@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledLocationsSearchForm } from "../../styles/StoreLocations";
-import { CloseIcon } from "../../components/Icons";
+// import { CloseIcon } from "../Icons";
 
 const LocationsSearchForm = () => {
   return (

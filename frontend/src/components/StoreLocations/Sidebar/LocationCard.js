@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Flex } from "@rebass/grid";
-import Address from "../../components/Address";
-import { StyledLocationCard } from "../../styles/StoreLocations";
-import { formatPhoneNumber, URLify, convertState } from "../../utils/helpers";
-import IconListItem from "../../components/IconListItem";
-import { DirectionsMapIcon, PhoneIcon } from "../../components/Icons";
+import Address from "../../Address";
+import { StyledLocationCard } from "../../../styles/StoreLocations";
+import {
+  formatPhoneNumber,
+  URLify,
+  convertState,
+} from "../../../utils/helpers";
+import IconListItem from "../../IconListItem";
+import { DirectionsMapIcon, PhoneIcon } from "../../Icons";
 
 const LocationCard = ({
   onClick,

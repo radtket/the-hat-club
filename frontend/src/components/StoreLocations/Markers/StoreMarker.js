@@ -1,9 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Address from "../Address";
-import { MapPinIcon } from "../Icons";
-import { StyledPopup, StyledMarker } from "../../styles/StoreLocations";
-import { convertState, formatPhoneNumber, URLify } from "../../utils/helpers";
+import Address from "../../Address";
+import { MapPinIcon } from "../../Icons";
+import { StyledPopup, StyledMarker } from "../../../styles/StoreLocations";
+import {
+  convertState,
+  formatPhoneNumber,
+  URLify,
+} from "../../../utils/helpers";
 
 const StoreMarker = ({
   isActive,

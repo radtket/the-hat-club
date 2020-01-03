@@ -71,32 +71,6 @@ export const StyledLocationCard = styled.div`
   }
 `;
 
-export const StyledLocationsMapWrap = styled.div`
-  @media (min-width: 600px) {
-    box-sizing: border-box;
-    float: right;
-    height: ${MapHeight};
-    width: 65%;
-  }
-`;
-
-export const StyledMapMarker = styled.div`
-  background-color: #000;
-  border-radius: 100%;
-  border: 2px solid #fff;
-  height: 18px;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  user-select: none;
-  width: 18px;
-  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
-  &:hover {
-    z-index: 1;
-  }
-`;
-
 export const StyledLocationsSearchForm = styled.form`
   position: relative;
   background-color: #fcfcfc;
@@ -259,5 +233,24 @@ export const StyledMarker = styled(Marker)`
   svg {
     height: ${({ iconHeight }) => `${iconHeight}px`};
     display: block;
+  }
+`;
+
+// No Longer in use
+
+export const StyledMapMarker = styled.div`
+  background-color: #000;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  height: 18px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  width: 18px;
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
+  &:hover {
+    z-index: 1;
   }
 `;
