@@ -65,6 +65,26 @@ export const TrashIcon = props => (
   </svg>
 );
 
+export const MapPinIcon = props => (
+  <svg
+    {...props}
+    viewBox="0 0 175.02 280.03"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M78.76 131.26v140a8.75 8.75 0 0017.5 0v-140z" fill="#324d5b" />
+    <path
+      d="M87.51 0A87.52 87.52 0 110 87.51 87.52 87.52 0 0187.51 0z"
+      fill="#e2574c"
+    />
+    <path
+      d="M96.26 166.28a87.42 87.42 0 01-66-144.81 87.44 87.44 0 10123.29 123.34 87 87 0 01-57.29 21.47z"
+      fill="#cb4e44"
+    />
+    <path d="M97.82 113.2V103h15.34V92.72H72.1V82.38h41.08V72.11H97.83V61.82h41.1v10.29h-15.32v30.78H139v10.31z" />
+    <path d="M36.06 113.19v-10.28h15.36V72.14H36.06V61.82h41.1v10.27H61.85v30.81h15.31v10.29z" />
+  </svg>
+);
+
 export const MailIcon = props => (
   <svg
     {...props}

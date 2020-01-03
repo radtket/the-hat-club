@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Marker, Popup } from "react-mapbox-gl";
 
 export const MapHeight = "430px";
 
@@ -245,5 +246,18 @@ export const StyledIconListItem = styled.a`
   }
   .whiteSpace-noWrap {
     white-space: nowrap !important;
+  }
+`;
+
+export const StyledPopup = styled(Popup)`
+  h3 {
+    margin: 0;
+  }
+`;
+
+export const StyledMarker = styled(Marker)`
+  svg {
+    height: ${({ iconHeight }) => `${iconHeight}px`};
+    display: block;
   }
 `;

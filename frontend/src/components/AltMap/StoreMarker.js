@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Marker, Popup } from "react-mapbox-gl";
+import Address from "../Address";
+import { MapPinIcon } from "../Icons";
+import { StyledPopup, StyledMarker } from "../../styles/StoreLocations";
+import { convertState, formatPhoneNumber, URLify } from "../../utils/helpers";
 
 const StoreMarker = ({
   isActive,
   onClick,
-  lng,
-  lat,
-  id,
   name,
   address,
   city,
@@ -15,26 +15,50 @@ const StoreMarker = ({
   zip,
   phone,
   distance,
+  coordinates,
+  iconHeight,
 }) => {
-  const coordinates = [lng, lat];
-  console.log({ distance });
   return (
     <>
-      <Marker anchor="bottom" {...{ coordinates, onClick }}>
-        <div
-          style={{
-            width: "28px",
-            height: "28px",
-            backgroundColor: "#33f",
-            borderRadius: "50%",
-          }}
-        />
-      </Marker>
+      <StyledMarker anchor="bottom" {...{ coordinates, onClick, iconHeight }}>
+        <button type="button">
+          <MapPinIcon />
+        </button>
+      </StyledMarker>
       {isActive && (
-        <Popup {...{ coordinates }}>
-          <h1>Hi</h1>
-          <h1>{distance}</h1>
-        </Popup>
+        <StyledPopup
+          {...{ coordinates }}
+          anchor="bottom"
+          offset={[0, -(iconHeight + 10)]}
+        >
+          <h3>{name}</h3>
+          <ul>
+            <li>
+              <Address
+                {...{
+                  street: address,
+                  city,
+                  state: convertState(state),
+                  zip,
+                }}
+              />
+            </li>
+            <li>
+              <a href={`tel:${formatPhoneNumber(phone)}`}>{phone}</a>
+            </li>
+            {distance && (
+              <li>
+                <a
+                  href={`https://www.google.com/maps/dir/Current+Location/${URLify(
+                    `${city} ${state} ${zip} United States`
+                  )}`}
+                >
+                  {Math.round(distance * 100) / 100} miles away
+                </a>
+              </li>
+            )}
+          </ul>
+        </StyledPopup>
       )}
     </>
   );
@@ -43,7 +67,6 @@ const StoreMarker = ({
 StoreMarker.propTypes = {
   isActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
@@ -51,12 +74,13 @@ StoreMarker.propTypes = {
   zip: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   distance: PropTypes.number,
-  lng: PropTypes.number.isRequired,
-  lat: PropTypes.number.isRequired,
+  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+  iconHeight: PropTypes.number,
 };
 
 StoreMarker.defaultProps = {
   distance: null,
+  iconHeight: 28,
 };
 
 export default StoreMarker;

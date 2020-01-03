@@ -121,12 +121,13 @@ const AltMap = () => {
         <LocationsSearchForm />
         <Sidebar {...{ ...state, setActiveStore }} />
         <MapBox {...mapConfig(state)}>
-          {state.stores.map(store => {
+          {state.stores.map(({ id, lat, lng, ...store }) => {
             return (
               <StoreMarker
-                key={store.id}
-                isActive={store.id === state.activeStoreId}
-                onClick={() => setActiveStore(store)}
+                key={id}
+                coordinates={[lng, lat]}
+                isActive={id === state.activeStoreId}
+                onClick={() => setActiveStore({ id, lat, lng })}
                 {...store}
               />
             );

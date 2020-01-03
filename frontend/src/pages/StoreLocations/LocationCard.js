@@ -79,7 +79,6 @@ const LocationCard = ({
           />
         </Box>
       </Flex>
-      {distance && <h1>{distance}</h1>}
     </StyledLocationCard>
   );
 };
