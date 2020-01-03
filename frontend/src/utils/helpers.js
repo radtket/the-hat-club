@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import axios from "axios";
+import { states, provinces } from "./constants";
 
 export const useTheme = () => useContext(ThemeContext);
 
@@ -134,4 +135,33 @@ export const formatPhoneNumber = phoneNumberString => {
     return `(${match[1]}) ${match[2]}-${match[3]}`;
   }
   return null;
+};
+
+export const convertState = state => {
+  const selectedState = states.find(s =>
+    s.find(x => x.toLowerCase() === state.toLowerCase())
+  );
+  if (selectedState) {
+    return selectedState
+      .filter(s => s.toLowerCase() !== state.toLowerCase())
+      .join("");
+  }
+  return null;
+};
+
+const toRad = num => (num * Math.PI) / 180;
+
+export const calculateDistance = (p1, p2) => {
+  const R = 6378137; // Earth’s mean radius in meter
+  const dLat = toRad(p2.lat() - p1.lat());
+  const dLong = toRad(p2.lng() - p1.lng());
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(p1.lat())) *
+      Math.cos(toRad(p2.lat())) *
+      Math.sin(dLong / 2) *
+      Math.sin(dLong / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const d = R * c;
+  return d; // returns the distance in meter
 };
