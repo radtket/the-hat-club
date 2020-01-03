@@ -138,7 +138,8 @@ export const formatPhoneNumber = phoneNumberString => {
 };
 
 export const convertState = state => {
-  const selectedState = states.find(s =>
+  const regions = states.concat(provinces);
+  const selectedState = regions.find(s =>
     s.find(x => x.toLowerCase() === state.toLowerCase())
   );
   if (selectedState) {

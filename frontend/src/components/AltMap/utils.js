@@ -32,7 +32,7 @@ export const getBounds = stores => {
   });
 
   return {
-    center: bounds.getCenter(),
+    center: bounds.getCenter().toArray(),
     fitBounds: bounds.toArray(),
   };
 };
