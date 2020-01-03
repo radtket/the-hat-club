@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledIconListItem } from "../../styles/StoreLocations";
+import { StyledIconListItem } from "../styles/StoreLocations";
 
 const IconListItem = ({ icon, text, label }) => {
   return (

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import ReactMapboxGl from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
@@ -6,14 +6,21 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { MapHeight } from "../../styles/StoreLocations";
 import StoreMarker from "./StoreMarker";
-import { getBbox } from "./utils";
+import { getStoresDetails } from "./utils";
+import CurrentLocationMarker from "./CurrentLocationMarker";
 
-const { distance } = require("@turf/turf");
+const accessToken =
+  "pk.eyJ1IjoiY29tbW9kaXR5dmVjdG9ycyIsImEiOiJjamR3eWFvd3owcTUwMzRzNmg1eXJjYWlzIn0.QESIireyCutiiFOTlI4y5w";
 
 const MapBox = ReactMapboxGl({
-  accessToken:
-    "pk.eyJ1IjoiY29tbW9kaXR5dmVjdG9ycyIsImEiOiJjamR3eWFvd3owcTUwMzRzNmg1eXJjYWlzIn0.QESIireyCutiiFOTlI4y5w",
+  accessToken,
   interactive: true,
+});
+
+const geocoder = new MapboxGeocoder({
+  mapboxgl,
+  accessToken,
+  marker: true,
 });
 
 const Map = ({
@@ -24,6 +31,7 @@ const Map = ({
   fitBounds,
   center,
   zoom,
+  userLocation,
 }) => {
   const mapRef = useRef();
 
@@ -31,59 +39,18 @@ const Map = ({
     return {
       onStyleLoad: map => {
         mapRef.current = map;
-        const geocoder = new MapboxGeocoder({
-          accessToken: mapboxgl.accessToken,
-          mapboxgl,
-          marker: true,
-        });
+
         document
           .querySelector(".searchbar__container")
           .appendChild(geocoder.onAdd(map));
-        geocoder.on(
-          "result",
-          ({
-            result: {
-              geometry: { coordinates },
-            },
-          }) => {
-            setState(prev => {
-              const copy = { ...prev };
 
-              copy.stores = copy.stores
-                .map(item => ({
-                  ...item,
-                  distance: distance(coordinates, [item.lng, item.lat], {
-                    units: "miles",
-                  }),
-                }))
-                .sort(({ distance: a }, { distance: b }) => {
-                  if (a > b) {
-                    return 1;
-                  }
-                  if (a < b) {
-                    return -1;
-                  }
-                  return 0; // a must be equal to b
-                });
-
-              const [closestStore] = copy.stores;
-              copy.activeStoreId = closestStore.id;
-              // center: bounds.getCenter(),
-              copy.fitBounds = getBbox(
-                [closestStore.lng, closestStore.lat],
-                coordinates
-              );
-
-              // map.fitBounds(
-              //   getBbox([closestStore.lng, closestStore.lat], coordinates),
-              //   {
-              //     padding: 200,
-              //   }
-              // );
-
-              return copy;
-            });
-          }
+        geocoder.on("result", ({ result: { geometry: { coordinates } } }) =>
+          setState(prev => {
+            return {
+              ...prev,
+              ...getStoresDetails(coordinates, prev.stores),
+            };
+          })
         );
       },
       style: "mapbox://styles/mapbox/light-v10",
@@ -102,8 +69,21 @@ const Map = ({
     };
   };
 
+  useEffect(() => {
+    if (userLocation && !activeStoreId) {
+      setState(prev => {
+        const copy = {
+          ...prev,
+          ...getStoresDetails(userLocation, prev.stores),
+        };
+        return copy;
+      });
+    }
+  }, [activeStoreId, setState, userLocation]);
+
   return (
-    <MapBox {...mapConfig({ fitBounds, center, zoom })}>
+    <MapBox {...mapConfig({ fitBounds, center, zoom, userLocation })}>
+      {userLocation && <CurrentLocationMarker {...{ userLocation }} />}
       {stores.map(({ id, lat, lng, ...store }) => {
         return (
           <StoreMarker
@@ -138,10 +118,12 @@ Map.propTypes = {
   fitBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   center: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoom: PropTypes.arrayOf(PropTypes.number).isRequired,
+  userLocation: PropTypes.arrayOf(PropTypes.number),
 };
 
 Map.defaultProps = {
   activeStoreId: null,
+  userLocation: null,
 };
 
 export default Map;

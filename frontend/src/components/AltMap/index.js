@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import stores from "../../utils/data/store-locations";
 import Sidebar from "../../pages/StoreLocations/Sidebar";
@@ -13,7 +13,22 @@ const AltMap = () => {
     zoom: [14],
     stores,
     activeStoreId: null,
+    userLocation: null,
   });
+
+  useEffect(() => {
+    window.navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setState(prev => ({
+          ...prev,
+          userLocation: [longitude, latitude],
+        }));
+      },
+      err => {
+        console.error("Cannot retrieve your current position", err);
+      }
+    );
+  }, []);
 
   const setActiveStore = ({ id, lat, lng }) => {
     setState(prev => ({

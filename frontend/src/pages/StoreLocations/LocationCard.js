@@ -4,7 +4,7 @@ import { Box, Flex } from "@rebass/grid";
 import Address from "../../components/Address";
 import { StyledLocationCard } from "../../styles/StoreLocations";
 import { formatPhoneNumber, URLify, convertState } from "../../utils/helpers";
-import IconListItem from "./IconListItem";
+import IconListItem from "../../components/IconListItem";
 import { DirectionsMapIcon, PhoneIcon } from "../../components/Icons";
 
 const LocationCard = ({
@@ -18,21 +18,7 @@ const LocationCard = ({
   zip,
   phone,
   distance,
-  ...props
 }) => {
-  console.log({
-    onClick,
-    isActive,
-    id,
-    name,
-    address,
-    city,
-    state,
-    zip,
-    phone,
-    distance,
-    props,
-  });
   return (
     <StyledLocationCard
       className="preferred storepoint-location"
