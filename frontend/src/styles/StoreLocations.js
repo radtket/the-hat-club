@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { Marker, Popup } from "react-mapbox-gl";
 
-export const MapHeight = "430px";
+const navbar = 80;
+const mapnav = 66;
+
+export const MapHeight = `calc(100vh - ${navbar + mapnav}px)`;
+export const SidebarWidth = "450px";
 
 export const StyledStoreLocations = styled.div`
   &.container {
@@ -12,8 +16,8 @@ export const StyledStoreLocations = styled.div`
     border: solid 1px #e6e6e6;
     margin-bottom: 12px;
     margin-top: 12px;
-    /* visibility: visible !important;
-  width: 100%; */
+    position: relative;
+    overflow: hidden;
   }
 `;
 
@@ -22,7 +26,7 @@ export const StyledSidebar = styled.aside`
   float: left;
   height: ${MapHeight};
   position: relative;
-  width: 35%;
+  width: ${SidebarWidth};
 `;
 
 export const StyledSidebarContainer = styled.div`

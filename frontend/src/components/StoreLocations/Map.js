@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import ReactMapboxGl from "react-mapbox-gl";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import { MapHeight } from "../../styles/StoreLocations";
+import { MapHeight, SidebarWidth } from "../../styles/StoreLocations";
 import StoreMarker from "./Markers/StoreMarker";
 import { getStoresDetails } from "./utils";
 import CurrentLocationMarker from "./Markers/CurrentLocationMarker";
@@ -33,15 +33,12 @@ const Map = ({
   center,
   zoom,
 }) => {
-  const mapRef = useRef();
   const { latitude, longitude } = usePosition();
   const userLocation = longitude && latitude && [longitude, latitude];
 
   const mapConfig = () => {
     return {
       onStyleLoad: map => {
-        mapRef.current = map;
-
         document
           .querySelector(".searchbar__container")
           .appendChild(geocoder.onAdd(map));
@@ -66,7 +63,7 @@ const Map = ({
         boxSizing: "border-box",
         float: "right",
         height: MapHeight,
-        width: "65%",
+        width: `calc(100% - ${SidebarWidth})`,
       },
     };
   };
