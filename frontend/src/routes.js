@@ -22,6 +22,7 @@ import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
 import StoreLocations from "./pages/StoreLocations";
+import Contact from "./pages/Contact";
 
 const Routes = () => {
   return (
@@ -78,6 +79,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/store-locator">
             <StoreLocations />
+          </Route>
+          <Route exact path="/contact-us">
+            <Contact />
           </Route>
         </Switch>
       </main>
