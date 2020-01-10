@@ -24,7 +24,7 @@ const CartDetails = () => {
   const { me } = data;
 
   return (
-    <PageSection className="bg-red">
+    <PageSection>
       <div className="container">
         <Flex alignItems="center" justifyContent="center">
           <PageTitleStacked title="Cart." />

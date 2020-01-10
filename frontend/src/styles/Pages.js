@@ -37,21 +37,6 @@ export const StyledAboutPage = styled.div`
     margin: auto;
     max-height: 200px;
   }
-
-  .bg-red {
-    background: ${red[400]};
-    color: ${white};
-  }
-
-  .bg-gray {
-    background: ${gray[100]};
-    color: ${gray[800]};
-  }
-
-  .bg-black {
-    background: ${gray[800]};
-    color: ${white};
-  }
 `;
 
 export const StyledAccountDetails = styled.div`

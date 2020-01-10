@@ -1,6 +1,6 @@
 import { padding, size } from "polished";
 import styled from "styled-components";
-import { loadingColors, black, white, red } from "../utils/colors";
+import { loadingColors, black, white, red, gray } from "../utils/colors";
 import { rgba } from "../utils/helpers";
 import { right, left, ball1, ball2 } from "./Animations";
 
@@ -224,6 +224,21 @@ export const Section = styled.section`
   overflow: hidden;
   position: relative;
   width: 100%;
+
+  &.bg-red {
+    background: ${red[400]};
+    color: ${white};
+  }
+
+  &.bg-gray {
+    background: ${gray[100]};
+    color: ${gray[800]};
+  }
+
+  &.bg-black {
+    background: ${gray[800]};
+    color: ${white};
+  }
 `;
 
 export const PageSection = styled(Section)`
