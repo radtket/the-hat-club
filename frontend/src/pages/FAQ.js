@@ -1,5 +1,7 @@
 import React from "react";
 import { PageTitleStacked, FaqItem } from "../components";
+import EmailAddress from "../components/EmailAddress";
+import PhoneNumber from "../components/PhoneNumber";
 
 const FAQ = () => {
   return (
@@ -18,8 +20,9 @@ const FAQ = () => {
             carriers' websites. Once your order is shipped, you will receive an
             email from either FedEx or USPS with your package's tracking number.
             If you need further help in tracking details of your order, please
-            call us toll free at 888-428-6322 or email us at
-            customerservice@hatclub.com.
+            call us toll free at <PhoneNumber phone="888.428.6322" /> or email
+            us at
+            <EmailAddress email="customerservice@hatclub.com" />
           </p>
         </FaqItem>
 

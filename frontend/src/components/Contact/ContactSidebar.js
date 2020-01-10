@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { PaperPlaneIcon, MapWithMarkerIcon } from "../Icons";
 import Address from "../Address";
 import { StyledIconList } from "../../styles/ContactForm";
+import PhoneNumber from "../PhoneNumber";
+import EmailAddress from "../EmailAddress";
 
 const ContactSidebar = () => {
   return (
@@ -16,13 +19,13 @@ const ContactSidebar = () => {
             <dl>
               <dt>Phone:</dt>
               <dd>
-                <a href="#">888.428.6322</a>
+                <PhoneNumber phone="888.428.6322" />
               </dd>
             </dl>
             <dl>
               <dt>Email:</dt>
               <dd>
-                <a href="#">customerservice@hatclub.com</a>
+                <EmailAddress email="customerservice@hatclub.com" />
               </dd>
             </dl>
           </div>
@@ -43,9 +46,7 @@ const ContactSidebar = () => {
                 zip: "85281",
               }}
             />
-            <p>
-              <a href="#">Get Directions</a>
-            </p>
+            <Link to="/store-locator">View All Locations</Link>
           </div>
         </div>
       </StyledIconList>
