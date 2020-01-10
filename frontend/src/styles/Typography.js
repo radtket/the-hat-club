@@ -3,6 +3,7 @@ import { position } from "polished";
 import { rgba } from "../utils/helpers";
 import { black, white, gray, red } from "../utils/colors";
 import { SmallSection } from "./General";
+import StyledBreadcrumbs from "./Breadcrumbs";
 
 export const StyledBigCallout = styled.div`
   margin: auto;
@@ -148,5 +149,16 @@ export const StyledPageTitle = styled(SmallSection)`
     font-size: 64px;
     margin: 0 auto 12px;
     max-width: 650px;
+  }
+
+  ${StyledBreadcrumbs} {
+    li {
+      color: inherit;
+
+      &::after,
+      a {
+        color: inherit;
+      }
+    }
   }
 `;

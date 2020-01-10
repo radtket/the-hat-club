@@ -3,11 +3,8 @@ import PropTypes from "prop-types";
 import Address from "../../Address";
 import { MapPinIcon } from "../../Icons";
 import { StyledPopup, StyledMarker } from "../../../styles/StoreLocations";
-import {
-  convertState,
-  formatPhoneNumber,
-  URLify,
-} from "../../../utils/helpers";
+import { convertState, URLify } from "../../../utils/helpers";
+import PhoneNumber from "../../PhoneNumber";
 
 const StoreMarker = ({
   isActive,
@@ -48,7 +45,7 @@ const StoreMarker = ({
               />
             </li>
             <li>
-              <a href={`tel:${formatPhoneNumber(phone)}`}>{phone}</a>
+              <PhoneNumber {...{ phone }} />
             </li>
             {distance && (
               <li>
