@@ -66,6 +66,7 @@ const Alt1 = ({
           </span>
           <a
             href="https://www.google.com/maps/dir//124 N Washington St, Falls Church, VA 22046"
+            rel="noopener noreferrer"
             target="_blank"
           >
             Directions
@@ -94,6 +95,7 @@ const Alt1 = ({
           <a
             href="http://hatclub.com/"
             ng-href="http://hatclub.com/"
+            rel="noopener noreferrer"
             target="_blank"
           >
             http://hatclub.com/

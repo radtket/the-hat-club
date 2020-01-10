@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { white, red, black, gray } from "../utils/colors";
+import { red, black } from "../utils/colors";
 import { rgba } from "../utils/helpers";
 import { SmallSection } from "./General";
 import Form from "./Form";
