@@ -1,5 +1,6 @@
 import styledNormalize from "styled-normalize";
 import { createGlobalStyle } from "styled-components";
+import { size } from "polished";
 
 export default createGlobalStyle`
 	${styledNormalize}
@@ -71,14 +72,13 @@ export default createGlobalStyle`
     }
 
     .visuallyhidden {
+      ${size("1px")};
       border: 0;
       clip: rect(0 0 0 0);
-      height: 1px;
       margin: -1px;
       overflow: hidden;
       padding: 0;
       position: absolute;
-      width: 1px;
     }
 
 
@@ -90,8 +90,13 @@ export default createGlobalStyle`
 		}
 
 		a {
-			text-decoration: none;
-			color: ${({ theme: { colors } }) => colors.red[500]};
+			color: ${({ theme: { colors } }) => colors.gray[500]};
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+			  color: ${({ theme: { colors } }) => colors.gray[800]};
+      }
   	}
 
 		figure {
@@ -130,152 +135,140 @@ export default createGlobalStyle`
 			position: relative;
 		}
 
-    .slick-slider {
-        position: relative;
-        display: block;
-        box-sizing: border-box;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -ms-touch-action: pan-y;
-        touch-action: pan-y;
-        -webkit-tap-highlight-color: transparent;
-    }
-    .slick-list {
-        position: relative;
-        overflow: hidden;
-        display: block;
-        margin: 0;
-        padding: 0;
 
-        &:focus {
-            outline: none;
-        }
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: pan-y;
 
-        &.dragging {
-            cursor: pointer;
-            cursor: hand;
-        }
-    }
-    .slick-slider .slick-track,
-    .slick-slider .slick-list {
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        -o-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    .slick-track {
-        position: relative;
-        left: 0;
-        top: 0;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-
-        &:before,
-        &:after {
-            content: "";
-            display: table;
-        }
-
-        &:after {
-            clear: both;
-        }
-
-        .slick-loading & {
-            visibility: hidden;
-        }
-    }
-    .slick-slide {
-        float: left;
-        height: 100%;
-        min-height: 1px;
-        [dir="rtl"] & {
-            float: right;
-        }
-        img {
-            display: block;
-        }
-        &.slick-loading img {
-            display: none;
-        }
-
-        display: none;
-
-        &.dragging img {
-            pointer-events: none;
-        }
-
-        .slick-initialized & {
-            display: block;
-        }
-
-        .slick-loading & {
-            visibility: hidden;
-        }
-
-        .slick-vertical & {
-            display: block;
-            height: auto;
-            border: 1px solid transparent;
-        }
-    }
-    .slick-arrow.slick-hidden {
-        display: none;
-    }
-
-
-.slick-loading .slick-list {
-  background: #fff url('./ajax-loader.gif') center center no-repeat;
+  .slick-track,
+  .slick-list {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-/* Icons */
-@font-face {
-  font-family: 'slick';
-  font-weight: normal;
-  font-style: normal;
-  src: url('/fonts/slick/slick.eot');
-  src: url('/fonts/slick/slick.eot?#iefix') format("embedded-opentype"), url('/fonts/slick/slick.woff') format("woff"), url('/fonts/slick/slick.ttf') format("truetype"), url('/fonts/slick/slick.svg#slick') format("svg");
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
 }
 
-/* Arrows */
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
-.slick-prev,
-.slick-next {
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.slick-loading {
+
+  .slick-track,
+  .slick-slide {
+    visibility: hidden;
+  }
+
+  .slick-list {
+    background: #fff url(./ajax-loader.gif) center center no-repeat;
+  }
+}
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none;
+
+  img {
+    display: block;
+  }
+
+  &.slick-loading {
+    img {
+      display: none;
+    }
+  }
+
+  &.dragging {
+    img {
+      pointer-events: none;
+    }
+  }
+}
+
+[dir=rtl] {
+  .slick-slide {
+    float: right;
+  }
+
+  .slick-prev {
+    right: -25px;
+    left: auto;
+
+    &:before {
+      content: "→";
+    }
+  }
+
+  .slick-next {
+    right: auto;
+    left: -25px;
+
+    &:before {
+      content: "←";
+    }
+  }
+}
+
+
+.slick-next,
+.slick-prev {
+  background: transparent;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+  display: block;
   font-size: 0;
+  height: 20px;
   line-height: 0;
+  outline: none;
+  padding: 0;
   position: absolute;
   top: 50%;
-  display: block;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
-  cursor: pointer;
-  color: transparent;
-  border: none;
-  outline: none;
-  background: transparent;
-}
+  width: 20px;
 
-.slick-prev,
-.slick-next {
-    &::before {
-      font-family: 'slick';
-      font-size: 20px;
-      line-height: 1;
-      opacity: .75;
-      color: white;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  &::before {
+    font-family: slick;
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0.75;
+    color: #fff;
+  }
 
   &:hover,
   &:focus {
@@ -290,50 +283,29 @@ export default createGlobalStyle`
 
   &.slick-disabled {
     &::before {
-      opacity: .25;
+      opacity: 0.25;
     }
   }
 }
 
+
 .slick-prev {
   left: -25px;
-}
 
-[dir='rtl'] .slick-prev {
-  right: -25px;
-  left: auto;
-}
-
-.slick-prev:before {
-  content: '←';
-}
-
-[dir='rtl'] .slick-prev:before {
-  content: '→';
+  &:before {
+    content: "←";
+  }
 }
 
 .slick-next {
   right: -25px;
+
+  &:before {
+    content: "→";
+  }
 }
 
-[dir='rtl'] .slick-next {
-  right: auto;
-  left: -25px;
-}
 
-.slick-next:before {
-  content: '→';
-}
-
-[dir='rtl'] .slick-next:before {
-  content: '←';
-}
-
-/* Dots */
-
-.slick-dotted.slick-slider {
-  margin-bottom: 30px;
-}
 
 .slick-dots {
   position: absolute;
@@ -367,16 +339,17 @@ export default createGlobalStyle`
       outline: none;
       background: transparent;
 
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         outline: none;
-      }
 
-      &:hover:before, &:focus:before {
-        opacity: 1;
+        &:before {
+          opacity: 1;
+        }
       }
 
       &:before {
-        font-family: 'slick';
+        font-family: slick;
         font-size: 6px;
         line-height: 20px;
         position: absolute;
@@ -384,20 +357,45 @@ export default createGlobalStyle`
         left: 0;
         width: 20px;
         height: 20px;
-        content: '•';
+        content: "•";
         text-align: center;
-        opacity: .25;
-        color: black;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        opacity: 0.25;
+        color: #000;
       }
     }
 
-    &.slick-active button:before {
-      opacity: .75;
-      color: black;
+    &.slick-active {
+      button {
+        &::before {
+          opacity: 0.75;
+          color: #000;
+        }
+      }
     }
   }
 }
+
+.slick-initialized {
+  .slick-slide {
+    display: block;
+  }
+}
+
+.slick-vertical {
+  .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+
 
 `;
