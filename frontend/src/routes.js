@@ -9,7 +9,9 @@ import Cart from "./components/Cart";
 // Pages
 import About from "./pages/About";
 import Account from "./pages/Account";
+import Careers from "./pages/Careers";
 import CartDetails from "./pages/CartDetails";
+import Contact from "./pages/Contact";
 import CreateItems from "./pages/CreateItems";
 import EditItem from "./pages/EditItem";
 import FAQ from "./pages/FAQ";
@@ -22,7 +24,6 @@ import Sell from "./pages/Sell";
 import Shop from "./pages/Shop";
 import Signup from "./pages/Signup";
 import StoreLocations from "./pages/StoreLocations";
-import Contact from "./pages/Contact";
 
 const Routes = () => {
   return (
@@ -82,6 +83,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/contact-us">
             <Contact />
+          </Route>
+          <Route exact path="/job-oppurtunities">
+            <Careers />
           </Route>
         </Switch>
       </main>

@@ -92,10 +92,10 @@ const Footer = () => {
                 <Link to="/store-locator">Store Locations</Link>
               </li>
               <li>
-                <Link to="/pages/affiliate-signup">Become an Affiliate</Link>
+                <Link to="/affiliate-signup">Become an Affiliate</Link>
               </li>
               <li>
-                <Link to="pages/job-oppurtunities">Job Opportunities</Link>
+                <Link to="job-oppurtunities">Job Opportunities</Link>
               </li>
             </ul>
           </Box>
@@ -106,27 +106,25 @@ const Footer = () => {
                 <Link to="/faq">FAQs</Link>
               </li>
               <li>
-                <Link to="/pages/shipping-info">Shipping Info</Link>
+                <Link to="/shipping-info">Shipping Info</Link>
               </li>
               <li>
-                <Link to="/pages/returns-exchanges">
-                  Returns &amp; Exchanges
-                </Link>
+                <Link to="/returns-exchanges">Returns &amp; Exchanges</Link>
               </li>
               <li>
                 {data && data.me ? (
-                  <Link to="/account/login">Account</Link>
+                  <Link to="/account">Account</Link>
                 ) : (
                   <Link to="/account/login">Login</Link>
                 )}
               </li>
               <li>
-                <Link to="/pages/accessibility-statement">
+                <Link to="/accessibility-statement">
                   Accessibility Statement
                 </Link>
               </li>
               <li>
-                <Link to="/pages/klarna-faqs">Klarna FAQ's</Link>
+                <Link to="/klarna-faqs">Klarna FAQ's</Link>
               </li>
             </ul>
           </Box>
