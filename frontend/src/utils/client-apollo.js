@@ -9,6 +9,7 @@ const client = new ApolloClient({
     process.env.NODE_ENV === "development"
       ? process.env.REACT_APP_LOCAL_ENDPOINT
       : process.env.REACT_APP_PROD_ENDPOINT,
+  credentials: "include",
   request: operation => {
     const token = (cookies && cookies.get("frontend_token")) || "";
 
