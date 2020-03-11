@@ -1,17 +1,26 @@
 import ApolloClient from "apollo-boost";
+import Cookies from "universal-cookie";
 import { LOCAL_STATE_QUERY } from "../reslovers/Query";
+
+const cookies = new Cookies();
 
 const client = new ApolloClient({
   uri:
     process.env.NODE_ENV === "development"
       ? process.env.REACT_APP_LOCAL_ENDPOINT
-      : process.env.REACT_APP_PRISMA_ENDPOINT,
+      : process.env.REACT_APP_PROD_ENDPOINT,
   request: operation => {
+    const token = (cookies && cookies.get("frontend_token")) || "";
+
     operation.setContext({
+      credentials: "include",
       fetchOptions: {
         credentials: "include",
       },
-      // headers,
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+        token,
+      },
     });
   },
   // Client State

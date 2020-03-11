@@ -16,6 +16,9 @@ const schema = makeExecutableSchema({
 const server = new ApolloServer({
   schema,
   context: req => ({ ...req, db }),
+  cors: false,
+  introspection: true,
+  playground: true,
 });
 
 module.exports = server;

@@ -2,10 +2,12 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const db = require("./db");
 const server = require("./server");
+
 const app = express();
 
 app.use(
@@ -15,11 +17,13 @@ app.use(
   })
 );
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 // decode the JWT so we can get the user Id on each request
 app.use((req, res, next) => {
-  const { token } = req.cookies;
+  const { token } = req.cookies || req.headers;
 
   if (token) {
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
@@ -32,7 +36,7 @@ app.use((req, res, next) => {
 // Create a middleware that populates the user on each request
 app.use(async (req, res, next) => {
   // if they aren't logged in, skip this
-  if (!req.userId) {
+  if (!req.userId || !req.headers.token) {
     return next();
   }
 
@@ -55,6 +59,10 @@ server.applyMiddleware({
   cors: false, // disables the apollo-server-express cors to allow the cors middleware use
 });
 
-app.listen({ port: 4444 }, () => {
-  console.log(`🚀 Server ready at http://localhost:4444${server.graphqlPath}`);
-});
+const port = process.env.PORT || 4444;
+
+app.listen(port, () =>
+  console.log(
+    `🔥🔥🔥 GraphQL + Express auth tutorial listening on port ${port}!`
+  )
+);
