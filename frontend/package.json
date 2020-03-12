@@ -64,7 +64,6 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"proxy": "http://localhost:4444",
 	"browserslist": {
 		"production": [
 			">0.2%",
