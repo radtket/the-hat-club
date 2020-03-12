@@ -63,6 +63,7 @@ const AccountDetails = ({ name, email }) => {
         <fieldset>
           <legend>Password change</legend>
           <TextField
+            autoComplete="off"
             label="Current password (leave blank to leave unchanged)"
             name="password_current"
             onChange={handleChange("password")}
@@ -72,6 +73,7 @@ const AccountDetails = ({ name, email }) => {
           />
 
           <TextField
+            autoComplete="off"
             label="New password (leave blank to leave unchanged)"
             name="newPasswordConfirm"
             onChange={handleChange("newPassword")}
@@ -81,6 +83,7 @@ const AccountDetails = ({ name, email }) => {
           />
 
           <TextField
+            autoComplete="off"
             label="Confirm new password"
             name="newPasswordConfirm"
             onChange={handleChange("newPasswordConfirm")}

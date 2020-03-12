@@ -4,15 +4,11 @@ import { LOCAL_STATE_QUERY } from "../reslovers/Query";
 
 export const cookies = new Cookies();
 
-const uri =
-  process.env.NODE_ENV === "development"
-    ? process.env.REACT_APP_LOCAL_ENDPOINT
-    : process.env.REACT_APP_PROD_ENDPOINT;
-
-console.log({ uri });
-
 export const client = new ApolloClient({
-  uri,
+  uri:
+    process.env.NODE_ENV === "development"
+      ? process.env.REACT_APP_LOCAL_ENDPOINT
+      : process.env.REACT_APP_PROD_ENDPOINT,
   credentials: "include",
   request: operation => {
     const token = (cookies && cookies.get("frontend_token")) || "";

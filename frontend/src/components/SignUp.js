@@ -76,6 +76,7 @@ const SignUp = () => {
           value={values.email}
         />
         <TextField
+          autoComplete="off"
           label="Password"
           name="password"
           onChange={handleChange("password")}

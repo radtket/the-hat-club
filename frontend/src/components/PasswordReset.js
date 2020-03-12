@@ -61,6 +61,7 @@ const PasswordReset = ({ resetToken }) => {
       >
         <fieldset aria-busy={loading} disabled={loading}>
           <TextField
+            autoComplete="off"
             label="Password"
             name="password"
             onChange={handleChange("password")}
@@ -70,6 +71,7 @@ const PasswordReset = ({ resetToken }) => {
           />
 
           <TextField
+            autoComplete="off"
             label="Confirm Password"
             name="confirmPassword"
             onChange={handleChange("confirmPassword")}
