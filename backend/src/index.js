@@ -12,8 +12,8 @@ const app = express();
 
 app.use(
   cors({
-    credentials: true,
     origin: process.env.FRONTEND_URL,
+    credentials: true,
   })
 );
 
@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 // decode the JWT so we can get the user Id on each request
 app.use((req, res, next) => {
-  const { token } = req.cookies || req.headers;
+  const { token } = req.headers;
 
   if (token) {
     const { userId } = jwt.verify(token, process.env.APP_SECRET);

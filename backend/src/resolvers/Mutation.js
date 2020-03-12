@@ -10,6 +10,7 @@ const {
   isLoggedIn,
 } = require("../utils");
 const { forwardTo } = require("prisma-binding");
+require("dotenv").config();
 
 const Mutation = {
   updateCartItem: forwardTo("db"),
@@ -226,6 +227,8 @@ const Mutation = {
     // We set the jwt as a cookie on the response
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,
+      domain: process.env.FRONTEND_URL, // set your domain
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
     });
 
@@ -265,6 +268,8 @@ const Mutation = {
     // 4. Set the cookie with the token
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,
+      domain: process.env.FRONTEND_URL, // set your domain
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
     });
 
@@ -273,6 +278,7 @@ const Mutation = {
   },
   logout(parent, args, { res }) {
     res.clearCookie("token");
+    res.clearCookie("frontend_token");
     return { message: "Goodbye" };
   },
   async requestReset(
@@ -358,6 +364,8 @@ const Mutation = {
     // 7. Set the JWT Cookie
     res.cookie("token", token, {
       httpOnly: true,
+      secure: true,
+      domain: process.env.FRONTEND_URL, // set your domain
       maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
     });
 
