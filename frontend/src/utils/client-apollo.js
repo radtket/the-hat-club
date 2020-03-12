@@ -8,7 +8,7 @@ const client = new ApolloClient({
   uri:
     process.env.NODE_ENV === "development"
       ? process.env.REACT_APP_LOCAL_ENDPOINT
-      : process.env.REACT_APP_PROD_ENDPOINT,
+      : "https://hat-club-yoga-prod.herokuapp.com",
   credentials: "include",
   request: operation => {
     const token = (cookies && cookies.get("frontend_token")) || "";
