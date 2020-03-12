@@ -2,9 +2,9 @@ import ApolloClient from "apollo-boost";
 import Cookies from "universal-cookie";
 import { LOCAL_STATE_QUERY } from "../reslovers/Query";
 
-const cookies = new Cookies();
+export const cookies = new Cookies();
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri:
     process.env.NODE_ENV === "development"
       ? process.env.REACT_APP_LOCAL_ENDPOINT
@@ -51,5 +51,3 @@ const client = new ApolloClient({
     },
   },
 });
-
-export default client;

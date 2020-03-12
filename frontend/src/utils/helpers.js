@@ -2,7 +2,9 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import axios from "axios";
+import jwt from "jsonwebtoken";
 import { states, provinces } from "./constants";
+import { cookies } from "./client-apollo";
 
 export const useTheme = () => useContext(ThemeContext);
 
@@ -165,4 +167,18 @@ export const calculateDistance = (p1, p2) => {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const d = R * c;
   return d; // returns the distance in meter
+};
+
+export const setFrontendCookie = userId => {
+  const token = jwt.sign(
+    {
+      userId,
+    },
+    process.env.REACT_APP_APP_SECRET
+  );
+
+  cookies.set("frontend_token", token, {
+    // httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
+  });
 };

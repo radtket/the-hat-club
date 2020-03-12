@@ -1,11 +1,9 @@
 import React from "react";
-import Cookies from "universal-cookie";
 import { useMutation } from "react-apollo";
 import { useHistory } from "react-router-dom";
 import { CURRENT_USER_QUERY } from "../reslovers/Query";
 import { USER_LOGOUT_MUTATION } from "../reslovers/Mutation";
-
-const cookies = new Cookies();
+import { cookies } from "../utils/client-apollo";
 
 const Logout = props => {
   const { push } = useHistory();

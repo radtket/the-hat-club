@@ -4,7 +4,7 @@ import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
 import * as serviceWorker from "./serviceWorker";
-import client from "./utils/client-apollo";
+import { client } from "./utils/client-apollo";
 import Theme from "./utils/theme";
 import "simple-react-notifications/dist/index.css";
 import ScrollToTop from "./components/ScrollToTop";
