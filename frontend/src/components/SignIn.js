@@ -49,24 +49,27 @@ const SignIn = () => {
       method="post"
       onSubmit={e => {
         e.preventDefault();
-        signin().then(({ data }) => {
-          const token = jwt.sign(
-            {
-              userId: data.signin.id,
-            },
-            process.env.REACT_APP_APP_SECRET
-          );
+        signin()
+          .then(({ data }) => {
+            const token = jwt.sign(
+              {
+                userId: data.signin.id,
+              },
+              process.env.REACT_APP_APP_SECRET
+            );
 
-          cookies.set("frontend_token", token, {
-            // httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
+            cookies.set("frontend_token", token, {
+              // httpOnly: true,
+              maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
+            });
+          })
+          .then(() => {
+            push("/");
+            window.location.reload(false);
+            setValues({
+              ...defaultValues,
+            });
           });
-
-          push("/");
-          setValues({
-            ...defaultValues,
-          });
-        });
       }}
     >
       <fieldset aria-busy={loading} disabled={loading}>
