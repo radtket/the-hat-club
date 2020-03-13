@@ -124,7 +124,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/klarna-faqs">Klarna FAQ's</Link>
+                <Link to="/create-items">Klarna FAQ's</Link>
               </li>
             </ul>
           </Box>
