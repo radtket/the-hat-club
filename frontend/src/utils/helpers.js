@@ -100,6 +100,7 @@ export const getApiData = (emptyArray, tag) => {
       domain: `${process.env.REACT_APP_DATA_API_ENDPOINT}/${tag}`,
       "bgfilter.collection_id": "67251073",
       userId: `${process.env.REACT_APP_DATA_API_USER_ID}`,
+      "filter.is_published": "yes",
     },
   }).then(({ data }) => {
     data.results.forEach(async ({ url, price }) => {
@@ -109,10 +110,8 @@ export const getApiData = (emptyArray, tag) => {
         Accept: "*/*",
       });
 
-      const { title } = product;
-
       emptyArray.push({
-        title,
+        title: product.title,
         description: stripHtmlString(product.body_html),
         price: price * 100,
         tag,
