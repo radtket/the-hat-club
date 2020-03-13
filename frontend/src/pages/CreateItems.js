@@ -7,7 +7,7 @@ import { getApiData } from "../utils/helpers";
 const CreateItems = () => {
   const items = [];
 
-  getApiData(items, "MLB");
+  getApiData(items, "NBA");
 
   const [createItems, { loading, error }] = useMutation(CREATE_ITEMS_MUTATION, {
     variables: {
