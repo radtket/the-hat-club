@@ -51,16 +51,6 @@ const ProduceShareSocial = ({ id, title }) => {
 ProduceShareSocial.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  wishlistItem: PropTypes.oneOfType([
-    PropTypes.shape({
-      id: PropTypes.string,
-    }),
-    PropTypes.bool,
-  ]),
-};
-
-ProduceShareSocial.defaultProps = {
-  wishlistItem: false,
 };
 
 export default ProduceShareSocial;

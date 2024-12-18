@@ -12,7 +12,7 @@ const WishList = ({ wishlist }) => {
 };
 
 WishList.propTypes = {
-  wishlist: PropTypes.arrayOf(PropTypes.object),
+  wishlist: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 WishList.defaultProps = {

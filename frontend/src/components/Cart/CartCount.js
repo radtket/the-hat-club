@@ -13,7 +13,7 @@ const CartCount = ({ me }) => {
 
 CartCount.propTypes = {
   me: PropTypes.shape({
-    cart: PropTypes.arrayOf(PropTypes.object),
+    cart: PropTypes.arrayOf(PropTypes.shape({})),
   }),
 };
 

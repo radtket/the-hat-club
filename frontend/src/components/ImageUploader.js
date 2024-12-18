@@ -111,7 +111,7 @@ const ImageUploader = ({ files, setFiles }) => {
 };
 
 ImageUploader.propTypes = {
-  files: PropTypes.arrayOf(PropTypes.object),
+  files: PropTypes.arrayOf(PropTypes.shape({})),
   setFiles: PropTypes.func.isRequired,
 };
 

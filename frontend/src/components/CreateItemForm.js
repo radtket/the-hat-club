@@ -59,11 +59,13 @@ const CreateItemForm = () => {
     data.append("file", file);
     data.append(
       "upload_preset",
-      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+      import.meta.env.VITE_APP_CLOUDINARY_UPLOAD_PRESET
     );
 
     return fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${
+        import.meta.env.VITE_APP_CLOUDINARY_CLOUD_NAME
+      }/image/upload`,
       {
         method: "POST",
         body: data,

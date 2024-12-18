@@ -68,7 +68,7 @@ const UserWishlistTable = ({ wishlist }) => {
 };
 
 UserWishlistTable.propTypes = {
-  wishlist: PropTypes.arrayOf(PropTypes.object),
+  wishlist: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 UserWishlistTable.defaultProps = {

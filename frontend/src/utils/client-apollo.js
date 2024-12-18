@@ -6,9 +6,9 @@ export const cookies = new Cookies();
 
 export const client = new ApolloClient({
   uri:
-    process.env.NODE_ENV === "development"
-      ? process.env.REACT_APP_LOCAL_ENDPOINT
-      : process.env.REACT_APP_PROD_ENDPOINT,
+    import.meta.env.NODE_ENV === "development"
+      ? import.meta.env.VITE_APP_LOCAL_ENDPOINT
+      : import.meta.env.VITE_APP_PROD_ENDPOINT,
   credentials: "include",
   request: operation => {
     const token = (cookies && cookies.get("frontend_token")) || "";

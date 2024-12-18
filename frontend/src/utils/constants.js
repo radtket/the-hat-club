@@ -8,7 +8,10 @@ export const possiblePermissions = [
 ];
 
 // Pagination
-export const perPage = parseInt(process.env.REACT_APP_PAGINATION_PER_PAGE, 10);
+export const perPage = parseInt(
+  import.meta.env.VITE_APP_PAGINATION_PER_PAGE,
+  10
+);
 
 export const socialMediaHandle = "hatclub";
 

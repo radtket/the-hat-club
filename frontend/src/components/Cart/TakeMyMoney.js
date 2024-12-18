@@ -70,7 +70,7 @@ const TakeMyMoney = ({ cart, email }) => {
           email={email}
           image={cart[0].item && cart[0].item.images[0].image}
           name="Sick Fits"
-          stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}
+          stripeKey={import.meta.env.VITE_APP_STRIPE_PUBLISHABLE_KEY}
           token={res => onToken(res)}
         >
           <Button size="lg" type="button">

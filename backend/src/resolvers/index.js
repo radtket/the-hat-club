@@ -1,7 +1,9 @@
-import Query from "./Query";
-import Mutation from "./Mutation";
+import Query from "./Query.js";
+import Mutation from "./Mutation.js";
 
-export default {
+const resolvers = {
   Query,
   Mutation,
 };
+
+export default resolvers;

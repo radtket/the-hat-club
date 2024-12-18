@@ -1,5 +1,5 @@
 import { forwardTo } from "prisma-binding";
-import { hasPermission, isLoggedIn } from "../utils";
+import { hasPermission, isLoggedIn } from "../utils.js";
 
 const Query = {
   items: forwardTo("db"),

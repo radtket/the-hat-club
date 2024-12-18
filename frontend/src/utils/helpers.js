@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import axios from "axios";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 import { states, provinces } from "./constants";
 import { cookies } from "./client-apollo";
 
@@ -96,10 +96,10 @@ export const getApiData = (emptyArray, tag) => {
   axios("https://api.searchspring.net/api/search/search.json", {
     params: {
       resultsFormat: "native",
-      siteId: `${process.env.REACT_APP_DATA_API_SITE_ID}`,
-      domain: `${process.env.REACT_APP_DATA_API_ENDPOINT}/${tag}`,
+      siteId: `${import.meta.env.VITE_APP_DATA_API_SITE_ID}`,
+      domain: `${import.meta.env.VITE_APP_DATA_API_ENDPOINT}/${tag}`,
       "bgfilter.collection_id": "67251073",
-      userId: `${process.env.REACT_APP_DATA_API_USER_ID}`,
+      userId: `${import.meta.env.VITE_APP_DATA_API_USER_ID}`,
       "filter.is_published": "yes",
     },
   }).then(({ data }) => {
@@ -169,14 +169,14 @@ export const calculateDistance = (p1, p2) => {
 };
 
 export const setFrontendCookie = userId => {
-  const token = jwt.sign(
-    {
-      userId,
-    },
-    process.env.REACT_APP_APP_SECRET
-  );
+  // const token = jwt.sign(
+  //   {
+  //     userId,
+  //   },
+  //   process.env.VITE_APP_APP_SECRET
+  // );
 
-  cookies.set("frontend_token", token, {
+  cookies.set("frontend_token", "1123323", {
     // httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year
   });

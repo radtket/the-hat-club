@@ -28,7 +28,7 @@ TabPanel.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  style: PropTypes.object,
+  style: PropTypes.shape({}),
 };
 
 TabPanel.defaultProps = {
