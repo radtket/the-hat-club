@@ -4,8 +4,8 @@ import { randomBytes } from "crypto";
 import { promisify } from "util";
 import { forwardTo } from "prisma-binding";
 import dotenv from "dotenv";
-import { transport, makeANiceEmail } from "../mail";
-import { hasPermission, calcTotalPrice, stripe, isLoggedIn } from "../utils";
+import { transport, makeANiceEmail } from "../mail.js";
+import { hasPermission, calcTotalPrice, stripe, isLoggedIn } from "../utils.js";
 
 dotenv.config();
 

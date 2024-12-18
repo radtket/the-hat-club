@@ -5,8 +5,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import ViteExpress from "vite-express";
-import db from "./db";
-import server from "./server";
+import db from "./db.js";
+import server from "./server.js";
 
 dotenv.config();
 
@@ -57,21 +57,11 @@ app.use(async (req, res, next) => {
 
 server.applyMiddleware({
   app,
-  path: "/",
+  path: "/graphql",
   cors: false, // disables the apollo-server-express cors to allow the cors middleware use
 });
 
 const port = process.env.PORT || 4444;
-
-app.listen(port, () =>
-  console.log(
-    `🔥🔥🔥 GraphQL + Express auth tutorial listening on port ${port}!`
-  )
-);
-
-app.get("/graphql", (req, res) => {
-  res.send("Hello Vite + React!");
-});
 
 ViteExpress.listen(app, port, () =>
   console.log(`Server is listening on port ${port}...`)
