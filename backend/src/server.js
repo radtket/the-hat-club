@@ -1,11 +1,12 @@
-const { importSchema } = require("graphql-import");
-const { ApolloServer, makeExecutableSchema } = require("apollo-server-express");
-require("dotenv").config();
-
-const resolvers = require("./resolvers");
-const db = require("./db");
+import { importSchema } from "graphql-import";
+import { ApolloServer, makeExecutableSchema } from "apollo-server-express";
+import dotenv from "dotenv";
+import resolvers from "./resolvers";
+import db from "./db";
 
 const typeDefs = importSchema("./src/schema.graphql");
+
+dotenv.config();
 
 const schema = makeExecutableSchema({
   typeDefs,
@@ -21,4 +22,4 @@ const server = new ApolloServer({
   playground: true,
 });
 
-module.exports = server;
+export default server;

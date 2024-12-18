@@ -1,13 +1,15 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+import stripePackage from "stripe";
 
-const isArrayEmpty = arrayArg => {
+export const stripe = stripePackage(process.env.STRIPE_SECRET_KEY);
+
+export const isArrayEmpty = arrayArg => {
   if (arrayArg && arrayArg.length) {
     return false;
   }
   return true;
 };
 
-const hasPermission = (user, permissionsNeeded) => {
+export const hasPermission = (user, permissionsNeeded) => {
   const matchedPermissions = user.permissions.filter(permissionTheyHave =>
     permissionsNeeded.includes(permissionTheyHave)
   );
@@ -24,7 +26,7 @@ const hasPermission = (user, permissionsNeeded) => {
   }
 };
 
-const calcTotalPrice = cart => {
+export const calcTotalPrice = cart => {
   return cart.reduce((tally, { item, quantity }) => {
     if (!item) {
       return tally;
@@ -33,14 +35,8 @@ const calcTotalPrice = cart => {
   }, 0);
 };
 
-const isLoggedIn = req => {
+export const isLoggedIn = req => {
   if (!req.userId) {
     throw new Error("You must be logged in to do that");
   }
 };
-
-exports.hasPermission = hasPermission;
-exports.isArrayEmpty = isArrayEmpty;
-exports.calcTotalPrice = calcTotalPrice;
-exports.stripe = stripe;
-exports.isLoggedIn = isLoggedIn;

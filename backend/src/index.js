@@ -1,12 +1,14 @@
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-require("dotenv").config();
+import express from "express";
+import cookieParser from "cookie-parser";
+import jwt from "jsonwebtoken";
+import cors from "cors";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import ViteExpress from "vite-express";
+import db from "./db";
+import server from "./server";
 
-const db = require("./db");
-const server = require("./server");
+dotenv.config();
 
 const app = express();
 
@@ -65,4 +67,12 @@ app.listen(port, () =>
   console.log(
     `🔥🔥🔥 GraphQL + Express auth tutorial listening on port ${port}!`
   )
+);
+
+app.get("/graphql", (req, res) => {
+  res.send("Hello Vite + React!");
+});
+
+ViteExpress.listen(app, port, () =>
+  console.log(`Server is listening on port ${port}...`)
 );

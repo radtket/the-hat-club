@@ -1,28 +1,17 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const { randomBytes } = require("crypto");
-const { promisify } = require("util");
-const { transport, makeANiceEmail } = require("../mail");
-const {
-  hasPermission,
-  calcTotalPrice,
-  stripe,
-  isLoggedIn,
-} = require("../utils");
-const { forwardTo } = require("prisma-binding");
-require("dotenv").config();
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { randomBytes } from "crypto";
+import { promisify } from "util";
+import { forwardTo } from "prisma-binding";
+import dotenv from "dotenv";
+import { transport, makeANiceEmail } from "../mail";
+import { hasPermission, calcTotalPrice, stripe, isLoggedIn } from "../utils";
+
+dotenv.config();
 
 const Mutation = {
   updateCartItem: forwardTo("db"),
-  async createItems(
-    parent,
-    { items },
-    {
-      req,
-      db: { mutation },
-    },
-    info
-  ) {
+  async createItems(parent, { items }, { req, db: { mutation } }, info) {
     isLoggedIn(req);
 
     const newItems = items.map(async ({ images, ...data }) => {
@@ -52,10 +41,7 @@ const Mutation = {
   async toggleItemToWishlist(
     parent,
     { id },
-    {
-      req,
-      db: { query, mutation },
-    },
+    { req, db: { query, mutation } },
     info
   ) {
     isLoggedIn(req);
@@ -67,7 +53,7 @@ const Mutation = {
           user: {
             id: req.userId,
           },
-          item: { id: id },
+          item: { id },
         },
       }
       // , `{ id }`
@@ -97,7 +83,7 @@ const Mutation = {
           },
           item: {
             connect: {
-              id: id,
+              id,
             },
           },
           // ...args,
@@ -108,15 +94,7 @@ const Mutation = {
 
     return item;
   },
-  async createItem(
-    parent,
-    args,
-    {
-      req,
-      db: { mutation },
-    },
-    info
-  ) {
+  async createItem(parent, args, { req, db: { mutation } }, info) {
     isLoggedIn(req);
 
     const item = await mutation.createItem(
@@ -136,14 +114,7 @@ const Mutation = {
 
     return item;
   },
-  async updateItem(
-    parent,
-    args,
-    {
-      db: { mutation },
-    },
-    info
-  ) {
+  async updateItem(parent, args, { db: { mutation } }, info) {
     // first take a copy of the updates
     const updates = { ...args };
 
@@ -167,10 +138,7 @@ const Mutation = {
   async deleteItem(
     parent,
     { id },
-    {
-      req: { user, userId },
-      db: { query, mutation },
-    },
+    { req: { user, userId }, db: { query, mutation } },
     info
   ) {
     // 1. find the item
@@ -189,15 +157,7 @@ const Mutation = {
     // 3. Delete it
     return mutation.deleteItem({ where: { id } }, info);
   },
-  async signup(
-    parent,
-    args,
-    {
-      res,
-      db: { mutation },
-    },
-    info
-  ) {
+  async signup(parent, args, { res, db: { mutation } }, info) {
     const data = { ...args };
     data.email = data.email.toLowerCase();
     // hash their password
@@ -235,14 +195,7 @@ const Mutation = {
     // return user to the browser
     return user;
   },
-  async signin(
-    parent,
-    { email, password },
-    {
-      res,
-      db: { query },
-    }
-  ) {
+  async signin(parent, { email, password }, { res, db: { query } }) {
     // 1. Check if there is a user with that email
     const user = await query.user({ where: { email } });
 
@@ -281,13 +234,7 @@ const Mutation = {
     res.clearCookie("frontend_token");
     return { message: "Goodbye" };
   },
-  async requestReset(
-    parent,
-    { email },
-    {
-      db: { query, mutation },
-    }
-  ) {
+  async requestReset(parent, { email }, { db: { query, mutation } }) {
     // 1. Check if this is a real user
     const user = await query.user({ where: { email } });
     if (!user) {
@@ -324,10 +271,7 @@ const Mutation = {
   async resetPassword(
     parent,
     { password, confirmPassword, resetToken },
-    {
-      res,
-      db: { query, mutation },
-    }
+    { res, db: { query, mutation } }
   ) {
     // 1. Check if the passwords match
     if (password !== confirmPassword) {
@@ -336,7 +280,7 @@ const Mutation = {
     // 2. Chick if it's it a legit reset token and not expired
     const [user] = await query.users({
       where: {
-        resetToken: resetToken,
+        resetToken,
         resetTokenExpiry_gte: Date.now() - 36000000,
       },
     });
@@ -375,10 +319,7 @@ const Mutation = {
   async updatePermissions(
     parent,
     { permissions, userId },
-    {
-      req,
-      db: { query, mutation },
-    },
+    { req, db: { query, mutation } },
     info
   ) {
     // 1. Check if they are logged in
@@ -415,10 +356,7 @@ const Mutation = {
   async addToCart(
     parent,
     { id, quantity },
-    {
-      req,
-      db: { mutation, query },
-    },
+    { req, db: { mutation, query } },
     info
   ) {
     // 1. Make sure they are signed in
@@ -460,15 +398,7 @@ const Mutation = {
       info
     );
   },
-  async removeFromCart(
-    parent,
-    { id },
-    {
-      req,
-      db: { mutation, query },
-    },
-    info
-  ) {
+  async removeFromCart(parent, { id }, { req, db: { mutation, query } }, info) {
     // 1. Find the cart item
     const cartItem = await query.cartItem(
       {
@@ -497,14 +427,7 @@ const Mutation = {
       info
     );
   },
-  async createOrder(
-    parent,
-    { token },
-    {
-      req,
-      db: { query, mutation },
-    }
-  ) {
+  async createOrder(parent, { token }, { req, db: { query, mutation } }) {
     // 1. Query the current user and make sure they are signed in
     isLoggedIn(req);
     const { userId } = req;
@@ -598,4 +521,4 @@ const Mutation = {
   },
 };
 
-module.exports = Mutation;
+export default Mutation;

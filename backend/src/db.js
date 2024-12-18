@@ -1,5 +1,7 @@
-const { Prisma } = require("prisma-binding");
-require("dotenv").config();
+import { Prisma } from "prisma-binding";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const db = new Prisma({
   typeDefs: "src/generated/prisma.graphql",
@@ -8,4 +10,4 @@ const db = new Prisma({
   debug: false,
 });
 
-module.exports = db;
+export default db;

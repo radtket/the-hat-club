@@ -3,8 +3,7 @@
 		"airbnb",
 		"airbnb/hooks",
 		"prettier",
-		"prettier/react",
-		"jest-enzyme"
+		"prettier/react"
 	],
 	"parser": "babel-eslint",
 	"parserOptions": {
@@ -19,15 +18,13 @@
 		"browser": true,
 		"es6": true,
 		"node": true,
-		"commonjs": true,
-		"jest": true,
-		"jest/globals": true
+		"commonjs": true
 	},
 	"settings": {
 		"ecmascript": 6,
 		"jsx": true
 	},
-	"plugins": ["prettier", "jest"],
+	"plugins": ["prettier"],
 	"rules": {
 		"comma-dangle": 0,
 		"react/jsx-filename-extension": 0,
